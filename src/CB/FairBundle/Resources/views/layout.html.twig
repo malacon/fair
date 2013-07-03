@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/fair/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/bootstrap.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    {% block header %}
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container" style="width: auto;">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/">St. John Primary and St. Theresa School Fair Registration</a>
+                    <div class="nav-collapse">
+                        <ul class="nav pull-right">
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <li><a href="{{ path('logout') }}">Logout</a></li>
+                            {% endif %}
+                        </ul>
+                    </div><!-- /.nav-collapse -->
+                </div>
+            </div><!-- /navbar-inner -->
+        </div>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+        <footer class="footer">
+            <div class="container">
+                <p>Designed by: mE</p>
+            </div>
+        </footer>
+    {% endblock %}
+{% endblock %}
