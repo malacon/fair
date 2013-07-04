@@ -3,6 +3,7 @@
 namespace CB\FairBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * AuctionItem
@@ -49,6 +50,21 @@ class AuctionItem
      */
     private $user;
 
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $created;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
 
     /**
      * Get id
@@ -150,5 +166,51 @@ class AuctionItem
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return AuctionItem
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return AuctionItem
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

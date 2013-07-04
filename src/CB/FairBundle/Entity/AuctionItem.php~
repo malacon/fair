@@ -3,11 +3,12 @@
 namespace CB\FairBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * AuctionItem
  *
- * @ORM\Table()
+ * @ORM\Table(name="fair_auction_item")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\AuctionItemRepository")
  */
 class AuctionItem
@@ -24,7 +25,7 @@ class AuctionItem
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
@@ -36,7 +37,7 @@ class AuctionItem
     private $quantity;
 
     /**
-     * @var decimal
+     * @var float
      *
      * @ORM\Column(name="cost", type="decimal")
      */
@@ -45,10 +46,25 @@ class AuctionItem
     /**
      * @var integer
      *
-     * @ORM\Column(name="value", type="integer")
+     * @ORM\Column(name="value", type="integer", nullable=true)
      */
     private $user;
 
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    private $created;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
 
     /**
      * Get id
@@ -104,5 +120,97 @@ class AuctionItem
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Set cost
+     *
+     * @param float $cost
+     * @return AuctionItem
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return float 
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
+
+    /**
+     * Set user
+     *
+     * @param integer $user
+     * @return AuctionItem
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return integer 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return AuctionItem
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return AuctionItem
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }
