@@ -1,20 +1,41 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
+{% form_theme form 'FairBundle:Form:form_cb_type.html.twig' %}
 {% block content -%}
     <h1>Booth creation</h1>
 
     <form action="{{ path('booth_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
+        {#{{ form_widget(form) }}#}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.location) }}
+        <h4>Times</h4>
+        <ul class="times" data-prototype="{{ form_widget(form.times.vars.prototype)|e }}">
+            {% for time in form.times %}
+                <li>{{ form_row(time.time) }}</li>
+            {% endfor %}
+        </ul>
         <p>
-            <button type="submit">Create</button>
+            <button class="btn btn-primary" type="submit">Create</button>
         </p>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('booth') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('booth') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/time/jqueryui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/time/time.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+   {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/fair/css/time/jqueryui.css') }}"/>
 {% endblock %}

@@ -21,7 +21,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/data-fixtures": "1.0.*@dev",
         "doctrine/doctrine-fixtures-bundle": "2.1.*@dev",
-        "components/bootstrap": "dev-master"
+        "components/bootstrap": "dev-master",
+        "friendsofsymfony/user-bundle": "2.0.x-dev",
+        "phpunit/phpunit": "3.7.*"
     },
     "scripts": {
         "post-install-cmd": [

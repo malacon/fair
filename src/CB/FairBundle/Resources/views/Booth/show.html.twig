@@ -43,7 +43,7 @@
         <form action="{{ path('booth_delete', { 'id': entity.id }) }}" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
+            <button class="btn btn-danger btn-small" type="submit">Delete</button>
         </form>
     </li>
 </ul>

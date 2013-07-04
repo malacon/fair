@@ -2,6 +2,7 @@
 
 namespace CB\FairBundle\Controller;
 
+use CB\FairBundle\Entity\Time;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -72,6 +73,12 @@ class BoothController extends Controller
     public function newAction()
     {
         $entity = new Booth();
+
+        $time1 = new Time();
+        $time1->setTime(new \DateTime('2013-09-07'));
+        $time1->setBooth($entity);
+        $entity->getTimes()->add($time1);
+
         $form   = $this->createForm(new BoothType(), $entity);
 
         return array(

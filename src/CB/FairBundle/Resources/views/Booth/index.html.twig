@@ -23,10 +23,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('booth_show', { 'id': entity.id }) }}">show</a>
+                        <a class="btn btn-info btn-mini" href="{{ path('booth_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('booth_edit', { 'id': entity.id }) }}">edit</a>
+                        <a class="btn btn-success btn-mini" href="{{ path('booth_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -37,8 +37,8 @@
 
         <ul>
         <li>
-            <a href="{{ path('booth_new') }}">
-                Create a new entry
+            <a class="btn btn-primary" href="{{ path('booth_new') }}">
+                Create a new booth
             </a>
         </li>
     </ul>

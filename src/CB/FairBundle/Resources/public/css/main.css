@@ -23,3 +23,12 @@ ul {
     background: url(../images/logo_sm.png) left center;
     background-repeat: no-repeat;
 }
+
+ul.record_actions {
+    margin: 0;
+}
+
+ul.times > li a {
+    text-decoration: none;
+    padding-left: 10px;
+}

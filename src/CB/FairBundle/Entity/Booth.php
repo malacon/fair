@@ -53,7 +53,7 @@ class Booth
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Time", mappedBy="booth")
+     * @ORM\OneToMany(targetEntity="Time", mappedBy="booth", cascade={"persist"})
      */
     private $times;
 
@@ -175,7 +175,14 @@ class Booth
 
     public function addTime(Time $time)
     {
-        $this->times[] = $time;
+        $time->setBooth($this);
+
+        $this->times->add($time);
+    }
+
+    public function removeTime(Time $time)
+    {
+        $this->times->removeElement($time);
     }
 
     public function __toString()

@@ -5,6 +5,7 @@ namespace CB\FairBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use CB\FairBundle\Form\TimeType;
 
 class BoothType extends AbstractType
 {
@@ -15,7 +16,12 @@ class BoothType extends AbstractType
             ->add('description')
             ->add('location')
             ->add('quantity')
-            ->add('times')
+            ->add('times', 'collection', array(
+                'type' => new TimeType(),
+                'allow_add' => true,
+                'by_reference' => false,
+                'allow_delete' => true,
+            ))
         ;
     }
 

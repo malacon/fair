@@ -1,28 +1,49 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
-{% block body -%}
+{% form_theme edit_form 'FairBundle:Form:form_cb_type.html.twig' %}
+{% block content -%}
     <h1>Booth edit</h1>
 
     <form action="{{ path('booth_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
-        {{ form_widget(edit_form) }}
+        {#{{ form_widget(form) }}#}
+        {{ form_row(edit_form.name) }}
+        {{ form_row(edit_form.description) }}
+        {{ form_row(edit_form.location) }}
+        <h4>Times</h4>
+        <ul class="times" data-prototype="{{ form_widget(edit_form.times.vars.prototype)|e }}">
+            {% for time in edit_form.times %}
+                <li>{{ form_row(time.time) }}</li>
+            {% endfor %}
+        </ul>
         <p>
-            <button type="submit">Edit</button>
+            <button class="btn btn-primary" type="submit">Edit</button>
         </p>
     </form>
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('booth') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('booth_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+            <li>
+                <a href="{{ path('booth') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <form action="{{ path('booth_delete', { 'id': entity.id }) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    {{ form_widget(delete_form) }}
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </li>
+        </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/time/jqueryui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/time/time.js') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/fair/css/time/jqueryui.css') }}"/>
 {% endblock %}
