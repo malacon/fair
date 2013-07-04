@@ -1,0 +1,46 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>BakedItem</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>{{ entity.quantity }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ entity.user }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('bakeditem') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('bakeditem_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('bakeditem_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

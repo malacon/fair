@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BakedITem
  *
- * @ORM\Table(name="fair_baked_items)
+ * @ORM\Table(name="fair_baked_items")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\BakedItemRepository")
  */
 class BakedItem
@@ -38,7 +38,7 @@ class BakedItem
     /**
      * @var integer
      *
-     * @ORM\Column(name="user", type="integer")
+     * @ORM\Column(name="user", type="integer", nullable=true)
      */
     private $user;
 

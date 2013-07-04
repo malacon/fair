@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AuctionItem
  *
- * @ORM\Table(fair_auction_item)
+ * @ORM\Table(name="fair_auction_item")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\AuctionItemRepository")
  */
 class AuctionItem
@@ -22,7 +22,7 @@ class AuctionItem
     private $id;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
@@ -36,7 +36,7 @@ class AuctionItem
     private $quantity;
 
     /**
-     * @var decimal
+     * @var float
      *
      * @ORM\Column(name="cost", type="decimal")
      */
@@ -45,7 +45,7 @@ class AuctionItem
     /**
      * @var integer
      *
-     * @ORM\Column(name="value", type="integer")
+     * @ORM\Column(name="value", type="integer", nullable=true)
      */
     private $user;
 

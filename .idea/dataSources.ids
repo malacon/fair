@@ -18,6 +18,21 @@
       </library>
     </libraries>
     <schema name="" catalog="symfair"/>
+    <table name="fair_auction_item" schema="" catalog="symfair" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="quantity" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="cost" sqlType="DECIMAL" length="10" precision="0" nullable="false" jdbcType="3"/>
+      <column name="value" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="fair_baked_items" schema="" catalog="symfair" type="TABLE">
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1"/>
+      <column name="quantity" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="user" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
     <table name="fair_booth" schema="" catalog="symfair" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>

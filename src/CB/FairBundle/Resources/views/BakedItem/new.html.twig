@@ -1,0 +1,20 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>BakedItem creation</h1>
+
+    <form action="{{ path('bakeditem_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('bakeditem') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
