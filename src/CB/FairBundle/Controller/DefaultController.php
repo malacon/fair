@@ -2,14 +2,13 @@
 
 namespace CB\FairBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @Template("FairBundle:Default:index.html.twig")
      */
     public function registerAction()

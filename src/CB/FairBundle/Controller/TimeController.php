@@ -3,7 +3,6 @@
 namespace CB\FairBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use CB\FairBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -46,7 +45,7 @@ class TimeController extends Controller
     {
         $entity  = new Time();
         $form = $this->createForm(new TimeType(), $entity);
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -189,7 +188,7 @@ class TimeController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('time'));
+        return $this->redirect($this->generateUrl('home'));
     }
 
     /**
@@ -201,20 +200,20 @@ class TimeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         /** @var $time \CB\FairBundle\Entity\Time $entity */
-        $time = $em->getRepository('FairBundle:Booth')->find($id);
+        $time = $em->getRepository('FairBundle:Time')->find($id);
 
         if (!$time) {
-            throw $this->createNotFoundException()
+            throw $this->createNotFoundException();
         }
 
         if (!$time->hasWorker($this->getUser())) {
             $time->getWorkers()->add($this->getUser());
         }
 
-        $em->persist();
+        $em->persist($time);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('time'))
+        return $this->redirect($this->generateUrl('home'));
     }
 
     /**
@@ -224,7 +223,22 @@ class TimeController extends Controller
      */
     public function unworkBoothTimeAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        /** @var $time \CB\FairBundle\Entity\Time $entity */
+        $time = $em->getRepository('FairBundle:Time')->find($id);
 
+        if (!$time) {
+            throw $this->createNotFoundException();
+        }
+
+        if ($time->hasWorker($this->getUser())) {
+            $time->getWorkers()->removeElement($this->getUser());
+        }
+
+        $em->persist($time);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('home'));
     }
 
     /**

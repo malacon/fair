@@ -33,7 +33,7 @@ class Time
     private $time;
 
     /**
-     * @var integer
+     * @var Booth
      *
      * @ORM\ManyToOne(targetEntity="Booth", inversedBy="times", cascade={"remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
@@ -105,6 +105,15 @@ class Time
         return $this->time;
     }
 
+    public function numOfWorkers()
+    {
+        return count($this->workers);
+    }
+
+    public function isFilled()
+    {
+        return !($this->numOfWorkers() < $this->booth->getQuantity());
+    }
 
     /**
      * Get users

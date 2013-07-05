@@ -8,7 +8,18 @@
         <li>{{ booth }}
             <ul>
                 {% for time in booth.times %}
-                    <li>{{ time }}</li>
+                    <li>
+                        {{ time }}
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            {% if not time.isFilled() and not time.hasWorker(app.user) %}
+                                <a href="{{ path('booth_work', {'id': time.id}) }}" class="text-info">Signup</a>
+                            {% elseif time.hasWorker(app.user) %}
+                                <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="text-warning">Remove</a>
+                            {% else %}
+                                <span class="text-muted">Unavailable</span>
+                            {% endif %}
+                        {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         </li>
