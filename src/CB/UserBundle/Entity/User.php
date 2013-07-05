@@ -63,6 +63,7 @@ class User extends BaseUser
 
     public function __construct()
     {
+        parent::__construct();
         $this->times = new ArrayCollection();
         $this->auctionItems = new ArrayCollection();
         $this->bakedItems = new ArrayCollection();
