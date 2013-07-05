@@ -5,6 +5,7 @@ namespace CB\FairBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints\DateTime;
+use CB\UserBundle\Entity\User;
 
 /**
  * AuctionItem
@@ -45,9 +46,10 @@ class AuctionItem
     private $cost;
 
     /**
-     * @var integer
+     * @var User
      *
-     * @ORM\Column(name="value", type="integer", nullable=true)
+     * @ORM\Column(name="user", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="auctionItems")
      */
     private $user;
 
@@ -157,7 +159,7 @@ class AuctionItem
      * @param integer $user
      * @return AuctionItem
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     
@@ -167,7 +169,7 @@ class AuctionItem
     /**
      * Get user
      *
-     * @return integer 
+     * @return User
      */
     public function getUser()
     {

@@ -2,9 +2,11 @@
 
 namespace CB\FairBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use CB\FairBundle\Entity\Booth;
 use Gedmo\Mapping\Annotation as Gedmo;
+use CB\UserBundle\Entity\User;
 
 /**
  * Time
@@ -41,12 +43,13 @@ class Time
     /**
      * @var integer
      *
-     * @ORM\Column(name="user", type="integer", nullable=true)
+     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="times")
+     * @ORM\JoinTable(name="fair_times_users")
      */
-    private $user;
+    private $users;
 
     /**
-     * @var datetime
+     * @var \Datetime
      *
      * @ORM\Column(name="created", type="datetime")
      * @Gedmo\Timestampable(on="create")
@@ -54,7 +57,7 @@ class Time
     private $created;
 
     /**
-     * @var datetime
+     * @var \Datetime
      *
      * @ORM\Column(name="updated", type="datetime")
      * @Gedmo\Timestampable(on="update")
@@ -63,6 +66,7 @@ class Time
 
     public function __construct()
     {
+        $this->users = new ArrayCollection();
         $this->created = new \DateTime('NOW');
         $this->updated = new \DateTime('NOW');
     }
@@ -101,26 +105,27 @@ class Time
     }
 
     /**
-     * Set user
+     * Add user
      *
-     * @param integer $user
+     * @param User $user
      * @return Time
      */
-    public function setUser($user)
+    public function addUser(User $user)
     {
-        $this->user = $user;
+        $user->addBoothTime($this);
+        $this->users[] = $user;
     
         return $this;
     }
 
     /**
-     * Get user
+     * Get users
      *
-     * @return integer 
+     * @return ArrayCollection
      */
-    public function getUser()
+    public function getUsers()
     {
-        return $this->user;
+        return $this->users;
     }
 
     /**
@@ -192,4 +197,5 @@ class Time
     {
         return $this->updated;
     }
+
 }

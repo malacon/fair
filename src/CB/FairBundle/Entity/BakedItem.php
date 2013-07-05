@@ -40,6 +40,7 @@ class BakedItem
      * @var integer
      *
      * @ORM\Column(name="user", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="bakedItems")
      */
     private $user;
 

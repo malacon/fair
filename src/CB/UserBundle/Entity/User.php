@@ -2,8 +2,12 @@
 
 namespace CB\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use CB\FairBundle\Entity\Time;
+use CB\FairBundle\Entity\AuctionItem;
+use CB\FairBundle\Entity\BakedItem;
 
 /**
  * User
@@ -36,6 +40,33 @@ class User extends BaseUser
      */
     private $children;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="CB\FairBundle\Entity\Time", mappedBy="users")
+     */
+    private $times;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="CB\FairBundle\Entity\AuctionItem", mappedBy="user")
+     */
+    private $auctionItems;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="CB\FairBundle\Entity\BakedItem", mappedBy="user")
+     */
+    private $bakedItems;
+
+    public function __construct()
+    {
+        $this->times = new ArrayCollection();
+        $this->auctionItems = new ArrayCollection();
+        $this->bakedItems = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -160,5 +191,53 @@ class User extends BaseUser
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimes()
+    {
+        return $this->times;
+    }
+
+    /**
+     * @param int $times
+     */
+    public function addTime(Time $time)
+    {
+        $this->times[] = $time;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAuctionItems()
+    {
+        return $this->auctionItems;
+    }
+
+    /**
+     * @param int $auctionItems
+     */
+    public function addAuctionItems(AuctionItem $auctionItem)
+    {
+        $this->auctionItems[] = $auctionItem;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBakedItems()
+    {
+        return $this->bakedItems;
+    }
+
+    /**
+     * @param int $bakedItem
+     */
+    public function addBakedItems(BakedItem $bakedItem)
+    {
+        $this->bakedItems[] = $bakedItem;
     }
 }
