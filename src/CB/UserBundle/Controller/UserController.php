@@ -1,28 +1,27 @@
 <?php
 
-namespace CB\FairBundle\Controller;
+namespace CB\UserBundle\Controller;
 
-use CB\FairBundle\Entity\Time;
 use Symfony\Component\HttpFoundation\Request;
-use CB\FairBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use CB\FairBundle\Entity\Booth;
-use CB\FairBundle\Form\BoothType;
+use CB\UserBundle\Entity\User;
+use CB\UserBundle\Form\UserType;
 
 /**
- * Booth controller.
+ * User controller.
  *
- * @Route("/admin/booth")
+ * @Route("/user")
  */
-class BoothController extends Controller
+class UserController extends Controller
 {
 
     /**
-     * Lists all Booth entities.
+     * Lists all User entities.
      *
-     * @Route("/", name="booth")
+     * @Route("/", name="user")
      * @Method("GET")
      * @Template()
      */
@@ -30,31 +29,31 @@ class BoothController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FairBundle:Booth')->findAll();
+        $entities = $em->getRepository('UserBundle:User')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Booth entity.
+     * Creates a new User entity.
      *
-     * @Route("/", name="booth_create")
+     * @Route("/", name="user_create")
      * @Method("POST")
-     * @Template("FairBundle:Booth:new.html.twig")
+     * @Template("UserBundle:User:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity  = new Booth();
-        $form = $this->createForm(new BoothType(), $entity);
-        $form->bind($request);
+        $entity  = new User();
+        $form = $this->createForm(new UserType(), $entity);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('booth_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -64,22 +63,16 @@ class BoothController extends Controller
     }
 
     /**
-     * Displays a form to create a new Booth entity.
+     * Displays a form to create a new User entity.
      *
-     * @Route("/new", name="booth_new")
+     * @Route("/new", name="user_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Booth();
-
-        $time1 = new Time();
-        $time1->setTime(new \DateTime('2013-09-07'));
-        $time1->setBooth($entity);
-        $entity->getTimes()->add($time1);
-
-        $form   = $this->createForm(new BoothType(), $entity);
+        $entity = new User();
+        $form   = $this->createForm(new UserType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -88,9 +81,9 @@ class BoothController extends Controller
     }
 
     /**
-     * Finds and displays a Booth entity.
+     * Finds and displays a User entity.
      *
-     * @Route("/{id}", name="booth_show")
+     * @Route("/{id}", name="user_show")
      * @Method("GET")
      * @Template()
      */
@@ -98,10 +91,10 @@ class BoothController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FairBundle:Booth')->find($id);
+        $entity = $em->getRepository('UserBundle:User')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Booth entity.');
+            throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -113,9 +106,9 @@ class BoothController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Booth entity.
+     * Displays a form to edit an existing User entity.
      *
-     * @Route("/{id}/edit", name="booth_edit")
+     * @Route("/{id}/edit", name="user_edit")
      * @Method("GET")
      * @Template()
      */
@@ -123,13 +116,13 @@ class BoothController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FairBundle:Booth')->find($id);
+        $entity = $em->getRepository('UserBundle:User')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Booth entity.');
+            throw $this->createNotFoundException('Unable to find User entity.');
         }
 
-        $editForm = $this->createForm(new BoothType(), $entity);
+        $editForm = $this->createForm(new UserType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -140,31 +133,31 @@ class BoothController extends Controller
     }
 
     /**
-     * Edits an existing Booth entity.
+     * Edits an existing User entity.
      *
-     * @Route("/{id}", name="booth_update")
+     * @Route("/{id}", name="user_update")
      * @Method("PUT")
-     * @Template("FairBundle:Booth:edit.html.twig")
+     * @Template("UserBundle:User:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FairBundle:Booth')->find($id);
+        $entity = $em->getRepository('UserBundle:User')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Booth entity.');
+            throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new BoothType(), $entity);
+        $editForm = $this->createForm(new UserType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('booth_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
         }
 
         return array(
@@ -174,9 +167,9 @@ class BoothController extends Controller
         );
     }
     /**
-     * Deletes a Booth entity.
+     * Deletes a User entity.
      *
-     * @Route("/{id}", name="booth_delete")
+     * @Route("/{id}", name="user_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -186,22 +179,21 @@ class BoothController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FairBundle:Booth')->find($id);
+            $entity = $em->getRepository('UserBundle:User')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Booth entity.');
+                throw $this->createNotFoundException('Unable to find User entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('booth'));
+        return $this->redirect($this->generateUrl('user'));
     }
 
-
     /**
-     * Creates a form to delete a Booth entity by id.
+     * Creates a form to delete a User entity by id.
      *
      * @param mixed $id The entity id
      *

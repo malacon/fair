@@ -2,27 +2,26 @@
 
 namespace CB\FairBundle\Controller;
 
-use CB\FairBundle\Entity\Time;
 use Symfony\Component\HttpFoundation\Request;
 use CB\FairBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use CB\FairBundle\Entity\Booth;
-use CB\FairBundle\Form\BoothType;
+use CB\FairBundle\Entity\Time;
+use CB\FairBundle\Form\TimeType;
 
 /**
- * Booth controller.
+ * Time controller.
  *
- * @Route("/admin/booth")
+ * @Route("/time")
  */
-class BoothController extends Controller
+class TimeController extends Controller
 {
 
     /**
-     * Lists all Booth entities.
+     * Lists all Time entities.
      *
-     * @Route("/", name="booth")
+     * @Route("/", name="time")
      * @Method("GET")
      * @Template()
      */
@@ -30,23 +29,23 @@ class BoothController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FairBundle:Booth')->findAll();
+        $entities = $em->getRepository('FairBundle:Time')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Booth entity.
+     * Creates a new Time entity.
      *
-     * @Route("/", name="booth_create")
+     * @Route("/", name="time_create")
      * @Method("POST")
-     * @Template("FairBundle:Booth:new.html.twig")
+     * @Template("FairBundle:Time:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity  = new Booth();
-        $form = $this->createForm(new BoothType(), $entity);
+        $entity  = new Time();
+        $form = $this->createForm(new TimeType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -54,7 +53,7 @@ class BoothController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('booth_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('time_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -64,22 +63,16 @@ class BoothController extends Controller
     }
 
     /**
-     * Displays a form to create a new Booth entity.
+     * Displays a form to create a new Time entity.
      *
-     * @Route("/new", name="booth_new")
+     * @Route("/new", name="time_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Booth();
-
-        $time1 = new Time();
-        $time1->setTime(new \DateTime('2013-09-07'));
-        $time1->setBooth($entity);
-        $entity->getTimes()->add($time1);
-
-        $form   = $this->createForm(new BoothType(), $entity);
+        $entity = new Time();
+        $form   = $this->createForm(new TimeType(), $entity);
 
         return array(
             'entity' => $entity,
@@ -88,9 +81,9 @@ class BoothController extends Controller
     }
 
     /**
-     * Finds and displays a Booth entity.
+     * Finds and displays a Time entity.
      *
-     * @Route("/{id}", name="booth_show")
+     * @Route("/{id}", name="time_show")
      * @Method("GET")
      * @Template()
      */
@@ -98,10 +91,10 @@ class BoothController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FairBundle:Booth')->find($id);
+        $entity = $em->getRepository('FairBundle:Time')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Booth entity.');
+            throw $this->createNotFoundException('Unable to find Time entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -113,9 +106,9 @@ class BoothController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Booth entity.
+     * Displays a form to edit an existing Time entity.
      *
-     * @Route("/{id}/edit", name="booth_edit")
+     * @Route("/{id}/edit", name="time_edit")
      * @Method("GET")
      * @Template()
      */
@@ -123,13 +116,13 @@ class BoothController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FairBundle:Booth')->find($id);
+        $entity = $em->getRepository('FairBundle:Time')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Booth entity.');
+            throw $this->createNotFoundException('Unable to find Time entity.');
         }
 
-        $editForm = $this->createForm(new BoothType(), $entity);
+        $editForm = $this->createForm(new TimeType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -140,31 +133,31 @@ class BoothController extends Controller
     }
 
     /**
-     * Edits an existing Booth entity.
+     * Edits an existing Time entity.
      *
-     * @Route("/{id}", name="booth_update")
+     * @Route("/{id}", name="time_update")
      * @Method("PUT")
-     * @Template("FairBundle:Booth:edit.html.twig")
+     * @Template("FairBundle:Time:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FairBundle:Booth')->find($id);
+        $entity = $em->getRepository('FairBundle:Time')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Booth entity.');
+            throw $this->createNotFoundException('Unable to find Time entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new BoothType(), $entity);
+        $editForm = $this->createForm(new TimeType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('booth_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('time_edit', array('id' => $id)));
         }
 
         return array(
@@ -174,9 +167,9 @@ class BoothController extends Controller
         );
     }
     /**
-     * Deletes a Booth entity.
+     * Deletes a Time entity.
      *
-     * @Route("/{id}", name="booth_delete")
+     * @Route("/{id}", name="time_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -186,22 +179,56 @@ class BoothController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FairBundle:Booth')->find($id);
+            $entity = $em->getRepository('FairBundle:Time')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Booth entity.');
+                throw $this->createNotFoundException('Unable to find Time entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('booth'));
+        return $this->redirect($this->generateUrl('time'));
     }
 
+    /**
+     * Assigns worker to booth time
+     *
+     * @Route("/{id}/work", name="booth_work")
+     */
+    public function workBoothTimeAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var $time \CB\FairBundle\Entity\Time $entity */
+        $time = $em->getRepository('FairBundle:Booth')->find($id);
+
+        if (!$time) {
+            throw $this->createNotFoundException()
+        }
+
+        if (!$time->hasWorker($this->getUser())) {
+            $time->getWorkers()->add($this->getUser());
+        }
+
+        $em->persist();
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('time'))
+    }
 
     /**
-     * Creates a form to delete a Booth entity by id.
+     * Unassigns worker to booth time
+     *
+     * @Route("/{id}/unwork", name="booth_unwork")
+     */
+    public function unworkBoothTimeAction($id)
+    {
+
+    }
+
+    /**
+     * Creates a form to delete a Time entity by id.
      *
      * @param mixed $id The entity id
      *

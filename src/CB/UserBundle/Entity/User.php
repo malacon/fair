@@ -43,13 +43,6 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="CB\FairBundle\Entity\Time", mappedBy="users")
-     */
-    private $times;
-
-    /**
-     * @var ArrayCollection
-     *
      * @ORM\OneToMany(targetEntity="CB\FairBundle\Entity\AuctionItem", mappedBy="user")
      */
     private $auctionItems;
@@ -192,6 +185,11 @@ class User extends BaseUser
     public function getChildren()
     {
         return $this->children;
+    }
+
+    public function addChild($name, $grade)
+    {
+        $this->children[] = array('name' => $name, 'grade' => $grade);
     }
 
     /**

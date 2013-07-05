@@ -52,11 +52,12 @@
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="booth_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="time" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
-      <column name="user" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <column name="created" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <column name="updated" sqlType="DATETIME" length="19" precision="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_7966F61A18707CED" columns="booth_id" ref-table="fair_booth" ref-schema="" ref-catalog="symfair" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_202EDF645EEADD3B" table="time_user" schema="" catalog="symfair" columns="time_id"/>
+      <exported-key name="FK_CF50556B5EEADD3B" table="times_users" schema="" catalog="symfair" columns="time_id"/>
       <index name="IDX_7966F61A18707CED" unique="false" columns="booth_id"/>
     </table>
     <table name="fair_user" schema="" catalog="symfair" type="TABLE">
@@ -80,6 +81,7 @@
       <column name="familyName" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="children" sqlType="LONGTEXT" length="2147483647" precision="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6YXJyYXkp"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_CF50556BA76ED395" table="times_users" schema="" catalog="symfair" columns="user_id"/>
       <index name="UNIQ_9B61B81692FC23A8" unique="true" columns="username_canonical"/>
       <index name="UNIQ_9B61B816A0D96FBF" unique="true" columns="email_canonical"/>
     </table>

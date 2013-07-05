@@ -59,7 +59,7 @@ class Booth
     private $times;
 
     /**
-     * @var datetime
+     * @var /Datetime
      *
      * @ORM\Column(name="created", type="datetime")
      * @Gedmo\Timestampable(on="create")
@@ -67,12 +67,18 @@ class Booth
     private $created;
 
     /**
-     * @var datetime
+     * @var /Datetime
      *
      * @ORM\Column(name="updated", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
     private $updated;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", length=255, unique=true)
+     */
+    protected $slug;
 
     public function __construct()
     {

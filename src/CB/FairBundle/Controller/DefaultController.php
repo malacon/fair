@@ -10,9 +10,9 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/")
-     * @Template()
+     * @Template("FairBundle:Default:index.html.twig")
      */
-    public function indexAction()
+    public function registerAction()
     {
         // Get User's AuctionItems, BakedItems, and BoothTimes
 
@@ -20,6 +20,10 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('FairBundle:Booth');
         $booths = $repository->findAll();
 
-        return array('booths' => $booths);
+        $form = $this->createFormBuilder()
+            ->add('register', 'submit')
+            ->getForm();
+
+        return array('booths' => $booths, 'form' => $form->createView());
     }
 }

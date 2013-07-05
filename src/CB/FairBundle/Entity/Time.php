@@ -35,18 +35,19 @@ class Time
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="Booth", inversedBy="time")
+     * @ORM\ManyToOne(targetEntity="Booth", inversedBy="times", cascade={"remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $booth;
 
     /**
-     * @var integer
-     *
-     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="times")
-     * @ORM\JoinTable(name="fair_times_users")
+     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User")
+     * @ORM\JoinTable(
+     *      joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
+     *      )
      */
-    private $users;
+    private $workers;
 
     /**
      * @var \Datetime
@@ -66,7 +67,7 @@ class Time
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->workers = new ArrayCollection();
         $this->created = new \DateTime('NOW');
         $this->updated = new \DateTime('NOW');
     }
@@ -104,28 +105,24 @@ class Time
         return $this->time;
     }
 
-    /**
-     * Add user
-     *
-     * @param User $user
-     * @return Time
-     */
-    public function addUser(User $user)
-    {
-        $user->addBoothTime($this);
-        $this->users[] = $user;
-    
-        return $this;
-    }
 
     /**
      * Get users
      *
      * @return ArrayCollection
      */
-    public function getUsers()
+    public function getWorkers()
     {
-        return $this->users;
+        return $this->workers;
+    }
+
+    /**
+     * @param User $worker
+     * @return bool
+     */
+    public function hasWorker(User $worker)
+    {
+        return $this->getWorkers()->contains($worker);
     }
 
     /**

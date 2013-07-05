@@ -1,17 +1,19 @@
 <?php
 namespace CB\FairBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use CB\FairBundle\Entity\Booth;
 use CB\FairBundle\Entity\Time;
 use Doctrine\Common\Collections\ArrayCollection;
-use CB\UserBundle\Entity\User;
 
-class LoadBoothData implements FixtureInterface
+class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
+        $user = $this->getReference('user-user');
+
         $booth1 = new Booth();
         $booth1->setName('Darts');
         $booth1->setDescription('Throwing darts at balloons.  What could be more fun?');
@@ -24,6 +26,9 @@ class LoadBoothData implements FixtureInterface
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth1);
+            if ($i == 14 || $i == 15) {
+                $time->getWorkers()->add($user);
+            }
             $booth1->addTime($time);
             $manager->persist($time);
         }
@@ -40,6 +45,9 @@ class LoadBoothData implements FixtureInterface
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth2);
+            if ($i == 16 || $i == 18) {
+                $time->getWorkers()->add($user);
+            }
             $booth2->addTime($time);
             $manager->persist($time);
         }
@@ -65,6 +73,16 @@ class LoadBoothData implements FixtureInterface
         $manager->persist($booth2);
         $manager->persist($booth3);
         $manager->flush();
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    function getOrder()
+    {
+        return 20;
     }
 }
 
