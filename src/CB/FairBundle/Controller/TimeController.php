@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use CB\FairBundle\Entity\Time;
 use CB\FairBundle\Form\TimeType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Time controller.
@@ -194,7 +195,7 @@ class TimeController extends Controller
     /**
      * Assigns worker to booth time
      *
-     * @Route("/{id}/work", name="booth_work")
+     * @Route("/{id}/work.{_format}", name="booth_work", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
      */
     public function workBoothTimeAction($id)
     {
@@ -213,15 +214,19 @@ class TimeController extends Controller
         $em->persist($time);
         $em->flush();
 
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createWorkingJson(true);
+        }
+
         return $this->redirect($this->generateUrl('home'));
     }
 
     /**
      * Unassigns worker to booth time
      *
-     * @Route("/{id}/unwork", name="booth_unwork")
+     * @Route("/{id}/unwork.{_format}", name="booth_unwork", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
      */
-    public function unworkBoothTimeAction($id)
+    public function unworkBoothTimeAction($id, $_format)
     {
         $em = $this->getDoctrine()->getManager();
         /** @var $time \CB\FairBundle\Entity\Time $entity */
@@ -238,7 +243,26 @@ class TimeController extends Controller
         $em->persist($time);
         $em->flush();
 
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createWorkingJson(false);
+        }
+
         return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @param bool $attending
+     * @return Response
+     */
+    private function createWorkingJson($attending)
+    {
+        $data = array(
+            'working' => $attending
+        );
+
+        $response = new Response(json_encode($data));
+
+        return $response;
     }
 
     /**

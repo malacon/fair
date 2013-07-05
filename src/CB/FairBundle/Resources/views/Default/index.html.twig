@@ -11,13 +11,12 @@
                     <li>
                         {{ time }}
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            {% if not time.isFilled() and not time.hasWorker(app.user) %}
-                                <a href="{{ path('booth_work', {'id': time.id}) }}" class="text-info">Signup</a>
-                            {% elseif time.hasWorker(app.user) %}
-                                <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="text-warning">Remove</a>
-                            {% else %}
-                                <span class="text-muted">Unavailable</span>
-                            {% endif %}
+                            <a href="{{ path('booth_work', {'id': time.id}) }}" class="text-info attend-toggle{{ time.hasWorker(app.user) ? ' hidden' : '' }}">Signup</a>
+                            <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="text-warning attend-toggle{{ time.hasWorker(app.user) ? '' : ' hidden' }}">Remove</a>
+
+                            {#{% else %}#}
+                                {#<span class="text-muted">Unavailable</span>#}
+                            {#{% endif %}#}
                         {% endif %}
                     </li>
                 {% endfor %}
@@ -26,4 +25,31 @@
     {% endfor %}
     </ul>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('.attend-toggle').click(function(e) {
+                var $this = $(this),
+                    url = $this.attr('href') + '.json';
+
+                e.preventDefault();
+                $this.siblings().toggleClass('hidden');
+                $this.toggleClass('hidden');
+
+                $.post(url, null, function(data) {
+                    console.log(data);
+                    if (data.working) {
+                        console.log('Working!');
+                    } else {
+                        console.log('O well!');
+                    }
+                });
+
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
