@@ -43,14 +43,14 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="CB\FairBundle\Entity\AuctionItem", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="user")
      */
     private $auctionItems;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="CB\FairBundle\Entity\BakedItem", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\BakedItem", mappedBy="user")
      */
     private $bakedItems;
 

@@ -2,6 +2,7 @@
 
 namespace CB\FairBundle\Controller;
 
+use CB\FairBundle\Form\RegisterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -16,13 +17,18 @@ class DefaultController extends Controller
         // Get User's AuctionItems, BakedItems, and BoothTimes
 
         // Get Booths
-        $repository = $this->getDoctrine()->getRepository('FairBundle:Booth');
-        $booths = $repository->findAll();
+        /** @var \CB\FairBundle\Entity\BoothRepository $boothRepo */
+        $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
+        $booths = $boothRepo->findAll();
 
-        $form = $this->createFormBuilder()
-            ->add('register', 'submit')
-            ->getForm();
+        /** @var \CB\FairBundle\Entity\AuctionItemRepository $auctionRepo */
+        $auctionRepo = $this->getDoctrine()->getRepository('FairBundle:AuctionItem');
+        $auctionItems = $auctionRepo->findByUser($this->getUser());
 
-        return array('booths' => $booths, 'form' => $form->createView());
+        /** @var \CB\FairBundle\Entity\BakedItemRepository $bakedRepo */
+        $bakedRepo = $this->getDoctrine()->getRepository('FairBundle:BakedItem');
+        $bakedItems = $bakedRepo->findByUser($this->getUser());
+
+        return array('booths' => $booths, 'bakedItems' => $bakedItems, 'auctionItems' => $auctionItems);
     }
 }

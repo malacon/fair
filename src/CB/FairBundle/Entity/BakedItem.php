@@ -39,8 +39,8 @@ class BakedItem
     /**
      * @var integer
      *
-     * @ORM\Column(name="user", type="integer", nullable=true)
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="bakedItems")
+     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\User", inversedBy="bakedItems")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -189,5 +189,10 @@ class BakedItem
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    public function __toString()
+    {
+        return $this->description;
     }
 }

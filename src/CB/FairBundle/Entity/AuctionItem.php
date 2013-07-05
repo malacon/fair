@@ -46,10 +46,10 @@ class AuctionItem
     private $cost;
 
     /**
-     * @var User
+     * @var integer
      *
-     * @ORM\Column(name="user", type="integer", nullable=true)
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="auctionItems")
+     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\User", inversedBy="auctionItems")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -220,5 +220,10 @@ class AuctionItem
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    public function __toString()
+    {
+        return $this->description;
     }
 }

@@ -2,7 +2,25 @@
 
 {% block content -%}
 
-    {{ form(form) }}
+    <h3>Baked Goods</h3>
+    <ul class="bakedItems">
+        {% if not bakedItems %}
+            No Auction Items
+        {% endif %}
+        {% for bakedItem in bakedItems %}
+            <li>{{ bakedItem.quantity }} {{ bakedItem.description }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Auction Items</h3>
+    <ul class="auctionItems">
+        {% if not auctionItems %}
+            No Auction Items
+        {% endif %}
+        {% for auctionItem in auctionItems %}
+            <li>{{ auctionItem.quantity }} {{ auctionItem.description }} for ${{ auctionItem.cost |number_format(2, '.', ',') }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Booths</h3>
     <ul>
     {% for booth in booths %}
         <li>{{ booth }}
