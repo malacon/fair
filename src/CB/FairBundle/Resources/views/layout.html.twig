@@ -16,7 +16,7 @@
 
 {% block body %}
     {% block header %}
-        <div class="navbar">
+        <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container" style="width: auto;">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -26,7 +26,8 @@
                     </a>
                     <a class="brand" href="/">St. John Primary and St. Theresa School Fair Registration</a>
                     <div class="nav-collapse">
-                        <ul class="nav pull-right">
+                        <ul class="nav pull-right nav-list">
+                            {% if is_granted("ROLE_ADMIN") %}
                             <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin Tools<b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a tabindex="-1" href="{{ path('booth') }}">Booths</a></li>
@@ -34,9 +35,20 @@
                                     <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>
                                 </ul>
                             </li>
-                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                                <li><a href="{{ path('logout') }}">Logout</a></li>
                             {% endif %}
+                            <li class="divider-vertical"></li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li>
+                                    <a href="{{ path('fos_user_security_logout') }}">
+                                        {{ 'Logout'|trans({}, 'FOSUserBundle') }}
+                                    </a>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li class="nav-header "><span class="text-info">{{ 'User: ' ~ app.user.username -}}</span></li>
+                            {% else %}
+                                <li><a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a></li>
+                            {% endif %}
+                            </li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div>

@@ -14,7 +14,7 @@ use CB\FairBundle\Form\BoothType;
 /**
  * Booth controller.
  *
- * @Route("/booth")
+ * @Route("/admin/booth")
  */
 class BoothController extends Controller
 {

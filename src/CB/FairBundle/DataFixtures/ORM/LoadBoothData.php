@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use CB\FairBundle\Entity\Booth;
 use CB\FairBundle\Entity\Time;
 use Doctrine\Common\Collections\ArrayCollection;
+use CB\UserBundle\Entity\User;
 
 class LoadBoothData implements FixtureInterface
 {

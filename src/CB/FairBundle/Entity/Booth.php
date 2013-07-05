@@ -74,10 +74,11 @@ class Booth
      */
     private $updated;
 
-
     public function __construct()
     {
         $this->times = new ArrayCollection();
+        $this->created = new \DateTime('NOW');
+        $this->updated = new \DateTime('NOW');
     }
 
     /**

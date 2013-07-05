@@ -61,6 +61,11 @@ class Time
      */
     private $updated;
 
+    public function __construct()
+    {
+        $this->created = new \DateTime('NOW');
+        $this->updated = new \DateTime('NOW');
+    }
 
     /**
      * Get id

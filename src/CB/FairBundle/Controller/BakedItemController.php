@@ -13,7 +13,7 @@ use CB\FairBundle\Form\BakedItemType;
 /**
  * BakedItem controller.
  *
- * @Route("/bakeditem")
+ * @Route("/admin/bakeditem")
  */
 class BakedItemController extends Controller
 {

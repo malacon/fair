@@ -4,6 +4,7 @@ namespace CB\FairBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * AuctionItem
@@ -66,6 +67,11 @@ class AuctionItem
      */
     private $updated;
 
+    public function __construct()
+    {
+        $this->created = new \DateTime('NOW');
+        $this->updated = new \DateTime('NOW');
+    }
     /**
      * Get id
      *

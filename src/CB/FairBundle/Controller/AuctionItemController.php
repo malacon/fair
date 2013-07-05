@@ -13,7 +13,7 @@ use CB\FairBundle\Form\AuctionItemType;
 /**
  * AuctionItem controller.
  *
- * @Route("/auctionitem")
+ * @Route("/admin/auctionitem")
  */
 class AuctionItemController extends Controller
 {

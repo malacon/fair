@@ -1,3 +1,7 @@
+body {
+    margin-top: 60px;
+}
+
 ul {
     list-style: none;
 }
@@ -14,7 +18,7 @@ ul {
     float: left;
     display: block;
     padding: 10px 20px 10px;
-    margin-left: -20px;
+    margin-left: 0;
     padding-left:45px;
     font-size: 20px;
     font-weight: 200;
@@ -31,4 +35,34 @@ ul.record_actions {
 ul.times > li a {
     text-decoration: none;
     padding-left: 10px;
+}
+
+.login-box {
+    position: relative;
+    padding: 39px 19px 14px;
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.login-box:before {
+    content: "Login";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #F5F5F5;
+    border: 1px solid #DDD;
+    color: #9DA0A4;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
+}
+
+.signup {
+    margin-top: 20px;
 }
