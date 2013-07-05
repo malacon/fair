@@ -1,2 +1,16 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
+{% block content -%}
+    <ul>
+    {% for booth in booths %}
+        <li>{{ booth }}
+            <ul>
+                {% for time in booth.times %}
+                    <li>{{ time }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

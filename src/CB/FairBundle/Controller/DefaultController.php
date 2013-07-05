@@ -14,6 +14,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        // Get User's AuctionItems, BakedItems, and BoothTimes
+
+        // Get Booths
+        $repository = $this->getDoctrine()->getRepository('FairBundle:Booth');
+        $booths = $repository->findAll();
+
+        return array('booths' => $booths);
     }
 }
