@@ -12,16 +12,32 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * @param $username
+     * @return array
+     */
     public function findByUsernameChunk($username)
     {
         $username = '%'.$username.'%';
         return $this->createQueryBuilder('u')
-            ->select('u.username')
+            ->select('u.username, u.roles')
             ->andWhere('u.username LIKE :username')
             ->setParameter('username', $username)
             ->orderBy('u.username', 'ASC')
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function isUser($username)
+    {
+        $result = $this->createQueryBuilder('u')
+            ->andWhere('u.username = :username')
+            ->setParameter('username', $username)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        return $result?true:false;
     }
 }

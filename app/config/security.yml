@@ -22,7 +22,7 @@ security:
                 csrf_provider: form.csrf_provider
             logout: true
             anonymous: true
-            switch_user: { role: ROLE_ADMIN, parameter: _to_be }
+            switch_user: { role: ROLE_ADMIN }
             #http_basic:
             #    realm: "Secured Demo Area"
 

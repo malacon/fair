@@ -56,6 +56,20 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('home'));
     }
 
+    /**
+     * @Route("/isUser.{_format}", name="is_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function isUserAction()
+    {
+        $user = $this->getRequest()->request->get('user');
+        /** @var \CB\UserBundle\Entity\UserRepository $userRepo */
+        $userRepo = $this->getDoctrine()->getRepository('UserBundle:User');
+        $isUser = $userRepo->isUser($user);
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createWorkingJson(array('isUser' => $isUser));
+        }
+    }
+
     private function createWorkingJson(Array $list)
     {
         $response = new Response(json_encode($list, 0));
