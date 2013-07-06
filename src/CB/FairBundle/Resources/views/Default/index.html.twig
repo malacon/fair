@@ -2,71 +2,90 @@
 
 {% block content -%}
 
-    {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-        <h3>Baked Goods</h3>
-        <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
-        {% for bakedItem in form.bakedItems %}
-            <li>
-                {{ form_widget(bakedItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
-                of
-                {{ form_widget(bakedItem.description, {'attr': {'rows': '1'}}) }}
-            </li>
-        {% endfor %}
-        </ul>
-
-        <h3>Auction Items</h3>
-        <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}}) }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}'>
-            {% for auctionItem in form.auctionItems %}
-                <li>
-                    {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
-                    of
-                    {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
-                    for
-                    {{ form_widget(auctionItem.description, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
-                </li>
-            {% endfor %}
-        </ul>
-    {{ form_end(form) }}
-    {#<h3>Baked Goods</h3>#}
-    {#<ul class="bakedItems">#}
-        {#{% if not bakedItems %}#}
-            {#No Auction Items#}
-        {#{% endif %}#}
-        {#{% for bakedItem in bakedItems %}#}
-            {#<li>{{ bakedItem.quantity }} {{ bakedItem.description }}</li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
-    {#<h3>Auction Items</h3>#}
-    {#<ul class="auctionItems">#}
-        {#{% if not auctionItems %}#}
-            {#No Auction Items#}
-        {#{% endif %}#}
-        {#{% for auctionItem in auctionItems %}#}
-            {#<li>{{ auctionItem.quantity }} {{ auctionItem.description }} for ${{ auctionItem.cost |number_format(2, '.', ',') }}</li>#}
-        {#{% endfor %}#}
-    {#</ul>#}
-    {#<h3>Booths</h3>#}
-    {#<ul>#}
-    {% for booth in booths %}
-        <li>{{ booth }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="well">
+            <p class="lead">The following links will allow you to see (and edit, be careful!) the parts of the fair.</p>
             <ul>
-                {% for time in booth.times %}
+                <li><a href="{{ path('booth') }}">Booths</a></li>
+                <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
+                <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="well">
+            {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+                <h3>Baked Goods</h3>
+                <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
+                {% for bakedItem in form.bakedItems %}
                     <li>
-                        {{ time }}
-                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            <a href="{{ path('booth_work', {'id': time.id}) }}" class="text-info attend-toggle{{ time.hasWorker(app.user) ? ' hidden' : '' }}">Signup</a>
-                            <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="text-warning attend-toggle{{ time.hasWorker(app.user) ? '' : ' hidden' }}">Remove</a>
-
-                            {#{% else %}#}
-                                {#<span class="text-muted">Unavailable</span>#}
-                            {#{% endif %}#}
-                        {% endif %}
+                        {{ form_widget(bakedItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
+                        of
+                        {{ form_widget(bakedItem.description, {'attr': {'rows': '1'}}) }}
                     </li>
                 {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-    </ul>
+                </ul>
+
+                <h3>Auction Items</h3>
+                <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}}) }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}'>
+                    {% for auctionItem in form.auctionItems %}
+                        <li>
+                            {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
+                            of
+                            {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
+                            for
+                            {{ form_widget(auctionItem.description, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {{ form_end(form) }}
+            {#<h3>Baked Goods</h3>#}
+            {#<ul class="bakedItems">#}
+                {#{% if not bakedItems %}#}
+                    {#No Auction Items#}
+                {#{% endif %}#}
+                {#{% for bakedItem in bakedItems %}#}
+                    {#<li>{{ bakedItem.quantity }} {{ bakedItem.description }}</li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+            {#<h3>Auction Items</h3>#}
+            {#<ul class="auctionItems">#}
+                {#{% if not auctionItems %}#}
+                    {#No Auction Items#}
+                {#{% endif %}#}
+                {#{% for auctionItem in auctionItems %}#}
+                    {#<li>{{ auctionItem.quantity }} {{ auctionItem.description }} for ${{ auctionItem.cost |number_format(2, '.', ',') }}</li>#}
+                {#{% endfor %}#}
+            {#</ul>#}
+            {#<h3>Booths</h3>#}
+            {#<ul>#}
+            <dl>
+            {% for booth in booths %}
+                <dt>{{ booth }}</dt>
+                <dd>{{ booth.description }}</dd>
+                <dt>Location</dt>
+                <dd>{{ booth.location }}</dd>
+                <dt>Times</dt>
+                <dd class="times">
+                    <ul>
+                        {% for time in booth.times %}
+                            <li>
+                                {{ time }}
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    <a href="{{ path('booth_work', {'id': time.id}) }}" class="text-info attend-toggle{{ time.hasWorker(app.user) ? ' hidden' : '' }}">Signup</a>
+                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="text-warning attend-toggle{{ time.hasWorker(app.user) ? '' : ' hidden' }}">Remove</a>
+
+                                    {#{% else %}#}
+                                        {#<span class="text-muted">Unavailable</span>#}
+                                    {#{% endif %}#}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+            {% endfor %}
+            </dl>
+        </div>
+    {% endif %}
 
 {% endblock %}
 
