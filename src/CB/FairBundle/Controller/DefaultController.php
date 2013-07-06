@@ -5,6 +5,7 @@ namespace CB\FairBundle\Controller;
 use CB\FairBundle\Form\RegisterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -12,23 +13,24 @@ class DefaultController extends Controller
      * @Route("/", name="home")
      * @Template("FairBundle:Default:index.html.twig")
      */
-    public function registerAction()
+    public function registerAction(Request $request)
     {
-        // Get User's AuctionItems, BakedItems, and BoothTimes
+        $em = $this->getDoctrine()->getManager();
 
         // Get Booths
         /** @var \CB\FairBundle\Entity\BoothRepository $boothRepo */
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
         $booths = $boothRepo->findAll();
 
-        /** @var \CB\FairBundle\Entity\AuctionItemRepository $auctionRepo */
-        $auctionRepo = $this->getDoctrine()->getRepository('FairBundle:AuctionItem');
-        $auctionItems = $auctionRepo->findByUser($this->getUser());
+        $form = $this->createForm(new RegisterType(), $this->getUser());
 
-        /** @var \CB\FairBundle\Entity\BakedItemRepository $bakedRepo */
-        $bakedRepo = $this->getDoctrine()->getRepository('FairBundle:BakedItem');
-        $bakedItems = $bakedRepo->findByUser($this->getUser());
+        $form->handleRequest($request);
 
-        return array('booths' => $booths, 'bakedItems' => $bakedItems, 'auctionItems' => $auctionItems);
+        if ($form->isValid()) {
+            $em->persist($this->getUser());
+            $em->flush();
+        }
+
+        return array('booths' => $booths, 'form' => $form->createView());
     }
 }

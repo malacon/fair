@@ -13,8 +13,9 @@ class AuctionItemType extends AbstractType
         $builder
             ->add('description')
             ->add('quantity')
-            ->add('cost')
-            ->add('user')
+            ->add('cost', 'money', array(
+                'currency' => 'USD'
+            ))
         ;
     }
 

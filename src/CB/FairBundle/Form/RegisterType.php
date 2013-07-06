@@ -9,6 +9,7 @@ namespace CB\FairBundle\Form;
 
 use CB\FairBundle\Form\AuctionItemType;
 use CB\FairBundle\Form\BakedItemType;
+use Doctrine\Tests\ORM\Tools\Pagination\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -36,8 +37,17 @@ class RegisterType extends AbstractType
                 'by_reference' => false,
                 'allow_delete' => true,
             ))
+            ->add('submit', 'submit')
         ;
     }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+           'data_class' => 'CB\UserBundle\Entity\User',
+        ));
+    }
+
     /**
      * Returns the name of this type.
      *

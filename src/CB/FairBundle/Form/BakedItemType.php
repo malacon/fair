@@ -13,7 +13,6 @@ class BakedItemType extends AbstractType
         $builder
             ->add('description')
             ->add('quantity')
-            ->add('user')
         ;
     }
 

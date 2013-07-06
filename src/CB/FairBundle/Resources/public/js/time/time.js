@@ -5,6 +5,7 @@
  */
 
 // Get the ul that holds the collection of times
+
 var collectionHolder = $('ul.times');
 
 // setup an "add a time" link

@@ -2,26 +2,51 @@
 
 {% block content -%}
 
-    <h3>Baked Goods</h3>
-    <ul class="bakedItems">
-        {% if not bakedItems %}
-            No Auction Items
-        {% endif %}
-        {% for bakedItem in bakedItems %}
-            <li>{{ bakedItem.quantity }} {{ bakedItem.description }}</li>
+    {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+        <h3>Baked Goods</h3>
+        <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
+        {% for bakedItem in form.bakedItems %}
+            <li>
+                {{ form_widget(bakedItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
+                of
+                {{ form_widget(bakedItem.description, {'attr': {'rows': '1'}}) }}
+            </li>
         {% endfor %}
-    </ul>
-    <h3>Auction Items</h3>
-    <ul class="auctionItems">
-        {% if not auctionItems %}
-            No Auction Items
-        {% endif %}
-        {% for auctionItem in auctionItems %}
-            <li>{{ auctionItem.quantity }} {{ auctionItem.description }} for ${{ auctionItem.cost |number_format(2, '.', ',') }}</li>
-        {% endfor %}
-    </ul>
-    <h3>Booths</h3>
-    <ul>
+        </ul>
+
+        <h3>Auction Items</h3>
+        <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}}) }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}'>
+            {% for auctionItem in form.auctionItems %}
+                <li>
+                    {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
+                    of
+                    {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
+                    for
+                    {{ form_widget(auctionItem.description, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
+                </li>
+            {% endfor %}
+        </ul>
+    {{ form_end(form) }}
+    {#<h3>Baked Goods</h3>#}
+    {#<ul class="bakedItems">#}
+        {#{% if not bakedItems %}#}
+            {#No Auction Items#}
+        {#{% endif %}#}
+        {#{% for bakedItem in bakedItems %}#}
+            {#<li>{{ bakedItem.quantity }} {{ bakedItem.description }}</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+    {#<h3>Auction Items</h3>#}
+    {#<ul class="auctionItems">#}
+        {#{% if not auctionItems %}#}
+            {#No Auction Items#}
+        {#{% endif %}#}
+        {#{% for auctionItem in auctionItems %}#}
+            {#<li>{{ auctionItem.quantity }} {{ auctionItem.description }} for ${{ auctionItem.cost |number_format(2, '.', ',') }}</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
+    {#<h3>Booths</h3>#}
+    {#<ul>#}
     {% for booth in booths %}
         <li>{{ booth }}
             <ul>
@@ -47,6 +72,7 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/register/register.js') }}"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('.attend-toggle').click(function(e) {
