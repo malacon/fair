@@ -5,7 +5,9 @@ namespace CB\FairBundle\Controller;
 use CB\FairBundle\Form\RegisterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -32,5 +34,32 @@ class DefaultController extends Controller
         }
 
         return array('booths' => $booths, 'form' => $form->createView());
+    }
+
+    /**
+     * Retrieves the list of basic users
+     *
+     * @Route("/getUser.{_format}", name="get_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function getUsersJsonAction()
+    {
+//        $user = $this->getRequest()->request->get('user');
+        $user = $this->getRequest()->request->get('user');
+        /** @var \CB\UserBundle\Entity\UserRepository $userRepo */
+        $userRepo = $this->getDoctrine()->getRepository('UserBundle:User');
+        $users = $userRepo->findByUsernameChunk($user);
+
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createWorkingJson($users);
+        }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    private function createWorkingJson(Array $list)
+    {
+        $response = new Response(json_encode($list, 0));
+
+        return $response;
     }
 }
