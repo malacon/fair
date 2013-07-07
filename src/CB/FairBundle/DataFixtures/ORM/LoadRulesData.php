@@ -32,7 +32,7 @@ class LoadRulesData extends AbstractFixture implements OrderedFixtureInterface
      */
     function getOrder()
     {
-        return 30;
+        return 1;
     }
 }
 

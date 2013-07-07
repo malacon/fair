@@ -21,8 +21,8 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new CB\FairBundle\FairBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new CB\FairBundle\FairBundle(),
             new CB\UserBundle\UserBundle(),
         );
 

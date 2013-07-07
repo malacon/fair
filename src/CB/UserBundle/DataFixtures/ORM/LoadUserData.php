@@ -30,7 +30,18 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user2->addChild('Samantha', 'K');
         $user2->addChild('Lucy', '2');
 
+        $user3 = new User();
+        $user3->setUsername('done');
+        $user3->setPlainPassword('done');
+        $user3->setFamilyName('Doner');
+        $user3->setEmail('craig.d.baker+done@gmail.com');
+        $user3->setEnabled(true);
+        $user3->setRoles(array('ROLE_USER'));
+        $user3->addChild('Ruth', '3');
+        $user3->addChild('Bobby', '8');
+
         $this->addReference('user-user', $user2);
+        $this->addReference('user-done', $user2);
 
         $manager->persist($user1);
         $manager->persist($user2);

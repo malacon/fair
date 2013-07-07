@@ -57,7 +57,8 @@ class User extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", mappedBy="workers", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="workers", cascade={"persist"})
+     * @ORM\JoinTable(name="users_times")
      */
     private $times;
 
@@ -219,6 +220,7 @@ class User extends BaseUser
      */
     public function addTime(Time $time)
     {
+        $time->addWorker($this);
         $this->times[] = $time;
     }
 

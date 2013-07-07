@@ -41,11 +41,7 @@ class Time
     private $booth;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", inversedBy="times")
-     * @ORM\JoinTable(
-     *      joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
-     *      )
+     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="users", cascade={"persist"})
      */
     private $workers;
 
@@ -123,6 +119,11 @@ class Time
     public function getWorkers()
     {
         return $this->workers;
+    }
+
+    public function addWorker(User $worker)
+    {
+        $this->workers[] = $worker;
     }
 
     /**

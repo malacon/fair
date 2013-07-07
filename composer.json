@@ -26,7 +26,9 @@
         "phpunit/phpunit": "3.7.*",
         "jms/security-extra-bundle": "1.5.*@dev",
         "gedmo/doctrine-extensions": "2.3.*@dev",
-        "stof/doctrine-extensions-bundle": "1.1.*@dev"
+        "stof/doctrine-extensions-bundle": "1.1.*@dev",
+        "friendsofsymfony/rest-bundle": "0.13.*@dev",
+        "jms/serializer-bundle": "0.12.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

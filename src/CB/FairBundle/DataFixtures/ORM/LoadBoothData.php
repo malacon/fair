@@ -13,6 +13,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $user = $this->getReference('user-user');
+        $userDone = $this->getReference('user-done');
 
         $booth1 = new Booth();
         $booth1->setName('Darts');
@@ -28,6 +29,9 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time->setBooth($booth1);
             if ($i == 14 || $i == 15) {
                 $time->getWorkers()->add($user);
+            }
+            if ($i >8 && $i < 20) {
+                $time->getWorkers()->add($userDone);
             }
             $booth1->addTime($time);
             $manager->persist($time);
