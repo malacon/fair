@@ -28,10 +28,10 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth1);
             if ($i == 14 || $i == 15) {
-                $time->getWorkers()->add($user);
+                $time->addWorker($user);
             }
             if ($i >8 && $i < 20) {
-                $time->getWorkers()->add($userDone);
+                $time->addWorker($userDone);
             }
             $booth1->addTime($time);
             $manager->persist($time);
@@ -50,7 +50,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth2);
             if ($i == 16 || $i == 18) {
-                $time->getWorkers()->add($user);
+                $time->addWorker($user);
             }
             $booth2->addTime($time);
             $manager->persist($time);
