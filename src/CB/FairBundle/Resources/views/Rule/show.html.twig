@@ -1,0 +1,26 @@
+<tr>
+    <td>
+        <strong>{{ entity.description }}: </strong>
+        {% if entity.numberOfTimes -%}
+            {{ entity.numberOfTimes }} hours of booth time
+        {% endif %}
+        {% if entity.numberOfBakedItems -%}
+            , {{ entity.numberOfBakedItems }} baked goods
+        {% endif %}
+        {% if entity.numberOfAuctionItems -%}
+            , {{ entity.numberOfAuctionItems }} auction items
+        {% endif %}
+    </td>
+    <td>
+        <div class="btn-group btn-group-vertical">
+            <a class="btn btn-info btn-small" href="{{ path('rule_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
+
+            <form action="{{ path('rule_delete', { 'id': entity.id }) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger btn-small delete-rule" type="submit"><i class="icon-trash"></i> Delete</button>
+            </form>
+        </div>
+    </td>
+</tr>
+

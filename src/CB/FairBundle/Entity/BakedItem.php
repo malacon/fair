@@ -4,6 +4,7 @@ namespace CB\FairBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use CB\UserBundle\Entity\User;
 
 /**
  * BakedITem
@@ -128,7 +129,7 @@ class BakedItem
      * @param integer $user
      * @return BakedITem
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     

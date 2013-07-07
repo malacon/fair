@@ -2,6 +2,8 @@
 
 namespace CB\UserBundle\Form;
 
+use CB\FairBundle\Entity\AuctionItem;
+use CB\FairBundle\Entity\BakedItem;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -17,6 +19,18 @@ class UserType extends AbstractType
             ->add('familyName')
             ->add('children')
             ->add('times')
+            ->add('bakedItems', 'collection', array(
+                'type' => new BakedItem(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ))
+            ->add('auctionItems', 'collection', array(
+                'type' => new AuctionItem(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ))
         ;
     }
 

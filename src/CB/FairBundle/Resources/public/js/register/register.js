@@ -74,7 +74,6 @@ jQuery(document).ready(function() {
     function addBakedItemDeleteLink($itemFormLi) {
         var $removeFormA = $('<a href="#"><i class="icon-remove-sign"></i></a>')
         $itemFormLi.append($removeFormA);
-        console.log($itemFormLi);
 
         $removeFormA.on('click', function(e) {
             e.preventDefault();

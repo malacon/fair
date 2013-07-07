@@ -6,6 +6,7 @@
         <div class="well">
             <p class="lead">The following links will allow you to see (and edit, be careful!) the parts of the fair.</p>
             <ul>
+                <li><a href="{{ path('rule') }}">Rules</a></li>
                 <li><a href="{{ path('booth') }}">Booths</a></li>
                 <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
                 <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
@@ -33,31 +34,13 @@
                             of
                             {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
                             for
-                            {{ form_widget(auctionItem.description, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
+                            {{ form_widget(auctionItem.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
                         </li>
                     {% endfor %}
                 </ul>
             {{ form_end(form) }}
-            {#<h3>Baked Goods</h3>#}
-            {#<ul class="bakedItems">#}
-                {#{% if not bakedItems %}#}
-                    {#No Auction Items#}
-                {#{% endif %}#}
-                {#{% for bakedItem in bakedItems %}#}
-                    {#<li>{{ bakedItem.quantity }} {{ bakedItem.description }}</li>#}
-                {#{% endfor %}#}
-            {#</ul>#}
-            {#<h3>Auction Items</h3>#}
-            {#<ul class="auctionItems">#}
-                {#{% if not auctionItems %}#}
-                    {#No Auction Items#}
-                {#{% endif %}#}
-                {#{% for auctionItem in auctionItems %}#}
-                    {#<li>{{ auctionItem.quantity }} {{ auctionItem.description }} for ${{ auctionItem.cost |number_format(2, '.', ',') }}</li>#}
-                {#{% endfor %}#}
-            {#</ul>#}
-            {#<h3>Booths</h3>#}
-            {#<ul>#}
+
+            <h3>Booths</h3>
             <dl>
             {% for booth in booths %}
                 <dt>{{ booth }}</dt>
@@ -103,7 +86,6 @@
                 $this.toggleClass('hidden');
 
                 $.post(url, null, function(data) {
-                    console.log(data);
                     if (data.working) {
                         console.log('Working!');
                     } else {

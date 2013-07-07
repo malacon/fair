@@ -43,14 +43,14 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="user", cascade={"persist"})
      */
     private $auctionItems;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\BakedItem", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\BakedItem", mappedBy="user", cascade={"persist"})
      */
     private $bakedItems;
 
@@ -219,9 +219,19 @@ class User extends BaseUser
     /**
      * @param int $auctionItems
      */
-    public function addAuctionItems(AuctionItem $auctionItem)
+    public function addAuctionItem(AuctionItem $auctionItem)
     {
-        $this->auctionItems[] = $auctionItem;
+        if (!$this->auctionItems->contains($auctionItem)) {
+            $auctionItem->setUser($this);
+            $this->auctionItems[] = $auctionItem;
+        }
+    }
+
+    public function removeAuctionItem(AuctionItem $auctionItem)
+    {
+        if ($this->auctionItems->contains($auctionItem)) {
+            $this->auctionItems->removeElement($auctionItem);
+        }
     }
 
     /**
@@ -235,8 +245,18 @@ class User extends BaseUser
     /**
      * @param int $bakedItem
      */
-    public function addBakedItems(BakedItem $bakedItem)
+    public function addBakedItem(BakedItem $bakedItem)
     {
-        $this->bakedItems[] = $bakedItem;
+        if (!$this->bakedItems->contains($bakedItem)) {
+            $bakedItem->setUser($this);
+            $this->bakedItems[] = $bakedItem;
+        }
+    }
+
+    public function removeBakedItem(BakedItem $bakedItem)
+    {
+        if ($this->bakedItems->contains($bakedItem)) {
+            $this->bakedItems->removeElement($bakedItem);
+        }
     }
 }

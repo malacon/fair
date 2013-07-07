@@ -18,7 +18,6 @@
                 userData;
             $.post(url, {user: $query}, function(data) {
                 var length = data.length, i = 0, usernames = [];
-                console.log(data);
                 for ( ; i < length; i++) {
                     if (data[i]['roles'].length === 0) {
                         usernames.push(data[i]['username']);
@@ -30,7 +29,7 @@
         }
 
         jQuery(document).ready(function() {
-            $('.search-query').typeahead({source: getUserList});
+            $('.search-query').typeahead({source: getUserList}).tooltip({placement: 'bottom'});
 
             $('.navbar-search').on('submit', function(e) {
                 var $this = $(this),
@@ -57,20 +56,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/">St. John Primary and St. Theresa School Fair Registration</a>
+                    <a class="brand" href="{{ path('home') }}">St. John Primary and St. Theresa School Fair Registration</a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right nav-list">
                             {% if is_granted("ROLE_ADMIN") %}
                             <li>
                                 {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
                                     <form class="navbar-search">
-                                        <input data-action="{{ path('get_user') }}.json" type="text" autocomplete="off" class="search-query" placeholder="User Switch">
+                                        <input title="View the site via another user.  Type in their username here and press enter to switch to another user." data-action="{{ path('get_user') }}.json" type="text" autocomplete="off" class="search-query" placeholder="User Switch">
                                     </form>
                                 {% endif %}
                             </li>
                             <li class="divider-vertical"></li>
                             <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin Tools<b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a tabindex="-1" href="{{ path('rule') }}">Rules</a></li>
                                     <li><a tabindex="-1" href="{{ path('booth') }}">Booths</a></li>
                                     <li><a tabindex="-1" href="{{ path('auctionitem') }}">Auction Items</a></li>
                                     <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>

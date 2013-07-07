@@ -1,0 +1,25 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Rule list</h1>
+
+
+    <table class="table table-striped table-hover">
+
+        <tbody>
+        {% for entity in entities %}
+            {{ render(controller('FairBundle:Rule:show', {
+            'id': entity.id
+            })) }}
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('rule_new') }}">
+                Create a new rule
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

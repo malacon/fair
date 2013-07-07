@@ -24,11 +24,44 @@ class DefaultController extends Controller
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
         $booths = $boothRepo->findAll();
 
+        $originalBakedItems = array();
+        foreach($this->getUser()->getBakedItems() as $item) {
+            $originalBakedItems[] = $item;
+        }
+        $originalAuctionItems = array();
+        foreach($this->getUser()->getAuctionItems() as $item) {
+            $originalAuctionItems[] = $item;
+        }
+
         $form = $this->createForm(new RegisterType(), $this->getUser());
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            foreach ($this->getUser()->getBakedItems() as $item) {
+                foreach ($originalBakedItems as $key => $toDel) {
+                    if ($toDel->getId() === $item->getId()) {
+                        unset($originalBakedItems[$key]);
+                    }
+                }
+            }
+
+            foreach ($originalBakedItems as $item) {
+                $em->remove($item);
+            }
+
+            foreach ($this->getUser()->getAuctionItems() as $item) {
+                foreach ($originalAuctionItems as $key => $toDel) {
+                    if ($toDel->getId() === $item->getId()) {
+                        unset($originalAuctionItems[$key]);
+                    }
+                }
+            }
+
+            foreach ($originalAuctionItems as $item) {
+                $em->remove($item);
+            }
+
             $em->persist($this->getUser());
             $em->flush();
         }
