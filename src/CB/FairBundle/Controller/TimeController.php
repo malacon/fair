@@ -212,6 +212,9 @@ class TimeController extends Controller
         }
 
         $em->persist($time);
+        $this->setUserPassed();
+
+        $em->persist($this->getUser());
         $em->flush();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
@@ -241,6 +244,9 @@ class TimeController extends Controller
         }
 
         $em->persist($time);
+        $this->setUserPassed();
+
+        $em->persist($this->getUser());
         $em->flush();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {

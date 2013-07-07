@@ -214,4 +214,24 @@ class Rule
     {
         return $this->updatedAt;
     }
+
+    public function hasEnoughAuctionItems($numberOfAuctionItems)
+    {
+        return ($this->numberOfAuctionItems <= $numberOfAuctionItems);
+    }
+
+    public function hasEnoughBakedItems($numberOfBakedItems)
+    {
+        return ($this->numberOfBakedItems <= $numberOfBakedItems);
+    }
+
+    public function hasEnoughHours($numberOfHours)
+    {
+        return ($this->numberOfTimes <= $numberOfHours);
+    }
+
+    public function __toString()
+    {
+        return $this->description.': '.$this->numberOfTimes.' hours, '.$this->numberOfBakedItems.' baked items, and '.$this->numberOfAuctionItems.' auction items';
+    }
 }

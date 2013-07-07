@@ -21,4 +21,16 @@ class Controller extends BaseController
     {
         return parent::getUser();
     }
+
+    protected function setUserPassed()
+    {
+        /** @var \CB\FairBundle\Entity\RuleRepository $rulesRepo */
+        $rulesRepo = $this->getDoctrine()->getRepository('FairBundle:Rule');
+        $this->getUser()->setPassedRules($rulesRepo->passesRule(
+            $this->getUser()->getNumOfHours(),
+            $this->getUser()->getNumOfBaked(),
+            $this->getUser()->getNumOfAuction()
+        ));
+    }
+
 }

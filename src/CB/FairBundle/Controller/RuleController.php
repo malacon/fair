@@ -131,6 +131,11 @@ class RuleController extends Controller
         );
     }
 
+    public function isPassed()
+    {
+
+    }
+
     /**
      * Edits an existing Rule entity.
      *

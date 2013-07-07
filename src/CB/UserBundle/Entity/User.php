@@ -54,6 +54,20 @@ class User extends BaseUser
      */
     private $bakedItems;
 
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", mappedBy="workers", cascade={"persist"})
+     */
+    private $times;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="passedRules", type="boolean")
+     */
+    private $passedRules = false;
+
     public function __construct()
     {
         parent::__construct();
@@ -258,5 +272,36 @@ class User extends BaseUser
         if ($this->bakedItems->contains($bakedItem)) {
             $this->bakedItems->removeElement($bakedItem);
         }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getPassedRules()
+    {
+        return $this->passedRules;
+    }
+
+    /**
+     * @param boolean $passedRules
+     */
+    public function setPassedRules($passedRules)
+    {
+        $this->passedRules = $passedRules;
+    }
+
+    public function getNumOfHours()
+    {
+        return $this->times->count();
+    }
+
+    public function getNumOfBaked()
+    {
+        return $this->bakedItems->count();
+    }
+
+    public function getNumOfAuction()
+    {
+        return $this->auctionItems->count();
     }
 }

@@ -14,6 +14,13 @@
         </div>
     {% else %}
         <div class="well">
+            <div id="isPassed" class="alert{% if (app.user.getPassedRules()) %} alert-success{% else %} alert-danger{% endif %}">
+                Hours: {{ app.user.getNumOfHours() }}
+            </div>
+            {#<div id="isPassed" class="alert alert-success{% if not (app.user.getPassedRules()) %} hidden{% endif %}">#}
+                    {#Passed {{ app.user.getNumOfHours() }}#}
+            {#</div>#}
+
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
                 <h3>Baked Goods</h3>
                 <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
@@ -79,7 +86,8 @@
         jQuery(document).ready(function() {
             jQuery('.attend-toggle').click(function(e) {
                 var $this = $(this),
-                    url = $this.attr('href') + '.json';
+                    url = $this.attr('href') + '.json',
+                    url2 = '{{ path('is_user_passed') }}.json';
 
                 e.preventDefault();
                 $this.siblings().toggleClass('hidden');
@@ -91,7 +99,19 @@
                     } else {
                         console.log('O well!');
                     }
+                    updatePassed();
                 });
+
+                function updatePassed() {
+                    $.post(url2, null, function(data) {
+                        var alert = $('#isPassed');
+                        console.log(data);
+
+                        if ((data.isUserPassed&& alert.hasClass('alert-danger')) || (!data.isUserPassed && alert.hasClass('alert-success'))) {
+                            alert.toggleClass('alert-danger').toggleClass('alert-success');
+                        }
+                    })
+                }
 
                 return false;
             });

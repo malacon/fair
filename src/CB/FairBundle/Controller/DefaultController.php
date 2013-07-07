@@ -62,11 +62,16 @@ class DefaultController extends Controller
                 $em->remove($item);
             }
 
+            $this->setUserPassed();
+
             $em->persist($this->getUser());
             $em->flush();
         }
 
-        return array('booths' => $booths, 'form' => $form->createView());
+        return array(
+            'booths' => $booths,
+            'form' => $form->createView()
+        );
     }
 
     /**
@@ -101,6 +106,24 @@ class DefaultController extends Controller
         if ($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createWorkingJson(array('isUser' => $isUser));
         }
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @Route("/isUserPassed.{_format}", name="is_user_passed", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function isUserPassedAction()
+    {
+        $data = array(
+            'isUserPassed' => $this->getUser()->getPassedRules(),
+            'hours' => $this->getUser()->getNumOfHours(),
+            'auction' => $this->getUser()->getNumOfAuction(),
+            'baked' => $this->getUser()->getNumOfBaked(),
+        );
+        if($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createWorkingJson($data);
+        }
+        return $this->redirect($this->generateUrl('home'));
     }
 
     private function createWorkingJson(Array $list)

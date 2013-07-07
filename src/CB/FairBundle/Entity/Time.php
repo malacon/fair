@@ -41,7 +41,7 @@ class Time
     private $booth;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User")
+     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", inversedBy="times")
      * @ORM\JoinTable(
      *      joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
      *      inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}

@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class RuleRepository extends EntityRepository
 {
+    public function passesRule($hours, $baked, $auction)
+    {
+
+        $rules = $this->createQueryBuilder('r')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        /** @var \CB\FairBundle\Entity\Rule $rule */
+        foreach ($rules as $rule) {
+            if ($rule->hasEnoughHours($hours) && $rule->hasEnoughBakedItems($baked) && $rule->hasEnoughAuctionItems($auction)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
