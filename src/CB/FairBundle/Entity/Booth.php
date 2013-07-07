@@ -49,7 +49,7 @@ class Booth
      *
      * @ORM\Column(name="quantity", type="integer")
      */
-    private $quantity;
+    private $numberOfWorkers;
 
     /**
      * @var ArrayCollection
@@ -169,17 +169,19 @@ class Booth
     /**
      * @return int
      */
-    public function getQuantity()
+    public function getNumberOfWorkers()
     {
-        return $this->quantity;
+        return $this->numberOfWorkers;
     }
 
     /**
      * @param int $quantity
      */
-    public function setQuantity($quantity)
+    public function setNumberOfWorkers($quantity)
     {
-        $this->quantity = $quantity;
+        $this->numberOfWorkers = $quantity;
+
+        return $this;
     }
 
     /**
@@ -190,24 +192,21 @@ class Booth
         return $this->times;
     }
 
-    /**
-     * @param int $times
-     */
-    public function setTimes(ArrayCollection $times)
-    {
-        $this->times = $times;
-    }
-
     public function addTime(Time $time)
     {
-        $time->setBooth($this);
+        if (!$this->times->contains($time)) {
+            $time->setBooth($this);
+            $this->times->add($time);
+        }
 
-        $this->times->add($time);
+        return $this;
     }
 
     public function removeTime(Time $time)
     {
-        $this->times->removeElement($time);
+        if ($this->times->contains($time)) {
+            $this->times->removeElement($time);
+        }
     }
 
     public function __toString()

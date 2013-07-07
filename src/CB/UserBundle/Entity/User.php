@@ -67,7 +67,7 @@ class User extends BaseUser
      *
      * @ORM\Column(name="passedRules", type="boolean")
      */
-    private $passedRules = false;
+    private $isPassedRules = false;
 
     public function __construct()
     {
@@ -208,7 +208,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return int
+     * @return ArrayCollection
      */
     public function getTimes()
     {
@@ -216,12 +216,37 @@ class User extends BaseUser
     }
 
     /**
-     * @param int $times
+     * Adds the time to the worker.
+     *
+     * @param Time $time
+     * @return $this
      */
     public function addTime(Time $time)
     {
-        $time->addWorker($this);
-        $this->times[] = $time;
+        // If the user hasn't already signed up for this time
+        if (!$this->times->contains($time)) {
+            // Ad the time to the worker
+            $this->times[] = $time;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Removes the time from the worker's list of booths
+     *
+     * @param Time $time
+     * @return $this
+     */
+    public function removeTime(Time $time)
+    {
+        // If the user is signed up for the time:
+        if ($this->times->contains($time)) {
+            // Remove the time from the worker
+            $this->times->removeElement($time);
+        }
+
+        return $this;
     }
 
     /**
@@ -233,7 +258,10 @@ class User extends BaseUser
     }
 
     /**
-     * @param int $auctionItems
+     * Adds an auction item if it doesn't already exist
+     *
+     * @param AuctionItem $auctionItem
+     * @return $this
      */
     public function addAuctionItem(AuctionItem $auctionItem)
     {
@@ -241,13 +269,23 @@ class User extends BaseUser
             $auctionItem->setUser($this);
             $this->auctionItems[] = $auctionItem;
         }
+
+        return $this;
     }
 
+    /**
+     * Removes the auction item if it exists
+     *
+     * @param AuctionItem $auctionItem
+     * @return $this
+     */
     public function removeAuctionItem(AuctionItem $auctionItem)
     {
         if ($this->auctionItems->contains($auctionItem)) {
             $this->auctionItems->removeElement($auctionItem);
         }
+
+        return $this;
     }
 
     /**
@@ -259,7 +297,10 @@ class User extends BaseUser
     }
 
     /**
-     * @param int $bakedItem
+     * Adds a baked item to the user
+     *
+     * @param BakedItem $bakedItem
+     * @return $this
      */
     public function addBakedItem(BakedItem $bakedItem)
     {
@@ -267,42 +308,82 @@ class User extends BaseUser
             $bakedItem->setUser($this);
             $this->bakedItems[] = $bakedItem;
         }
+
+        return $this;
     }
 
+    /**
+     * Adds a baked item to the user
+     *
+     * @param BakedItem $bakedItem
+     * @return $this
+     */
     public function removeBakedItem(BakedItem $bakedItem)
     {
         if ($this->bakedItems->contains($bakedItem)) {
             $this->bakedItems->removeElement($bakedItem);
         }
+
+        return $this;
     }
 
     /**
-     * @return boolean
+     * Returns if the rules are passed for registration
+     *
+     * @return bool
      */
-    public function getPassedRules()
+    public function getIsPassedRules()
     {
-        return $this->passedRules;
+        return $this->isPassedRules;
     }
 
     /**
-     * @param boolean $passedRules
+     * Sets the user as having passed the rules or not
+     *
+     * @param ArrayCollection $rules
+     * @return $this
      */
-    public function setPassedRules($passedRules)
+    public function setIsPassedRules(ArrayCollection $rules)
     {
-        $this->passedRules = $passedRules;
+        /** @var \CB\FairBundle\Entity\Rule $rule */
+        $isPassed = false;
+        foreach ($rules as $rule) {
+            // Checks to see if the rules pass for the user
+            $isPassed = $rule->isPassed($this);
+            if ($isPassed) {
+                break;
+            }
+        }
+        $this->isPassedRules = $isPassed;
+        return $this;
     }
 
+    /**
+     * Returns the number of hours signed up
+     *
+     * @return int
+     */
     public function getNumOfHours()
     {
         return $this->times->count();
     }
 
-    public function getNumOfBaked()
+    /**
+     * Returns the number of baked items
+     *
+     * @return int
+     */
+    public function getNumOfBakedItems()
     {
         return $this->bakedItems->count();
     }
 
-    public function getNumOfAuction()
+    /**
+     * Returns the number of auction items
+     *
+     * @return int
+     */
+    public function getNumOfAuctionItems()
     {
         return $this->auctionItems->count();
     }

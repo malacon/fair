@@ -26,10 +26,10 @@ class Controller extends BaseController
     {
         /** @var \CB\FairBundle\Entity\RuleRepository $rulesRepo */
         $rulesRepo = $this->getDoctrine()->getRepository('FairBundle:Rule');
-        $this->getUser()->setPassedRules($rulesRepo->passesRule(
+        $this->getUser()->setIsPassedRules($rulesRepo->passesRule(
             $this->getUser()->getNumOfHours(),
-            $this->getUser()->getNumOfBaked(),
-            $this->getUser()->getNumOfAuction()
+            $this->getUser()->getNumOfBakedItems(),
+            $this->getUser()->getNumOfAuctionItems()
         ));
     }
 

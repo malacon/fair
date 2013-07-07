@@ -2,6 +2,7 @@
 
 namespace CB\FairBundle\Entity;
 
+use CB\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -215,19 +216,51 @@ class Rule
         return $this->updatedAt;
     }
 
+    /**
+     * This checks to see if the current rule is passed or not
+     *
+     * @param User $worker
+     * @return bool
+     */
+    public function isPassed(User $worker)
+    {
+        return
+            $this->hasEnoughAuctionItems($worker->getNumOfAuctionItems()) &&
+            $this->hasEnoughBakedItems($worker->getNumOfBakedItems()) &&
+            $this->hasEnoughHours($worker->getNumOfHours());
+    }
+
+    /**
+     * Checks to see if the auction items are sufficient
+     *
+     * @param int $numberOfAuctionItems
+     * @return bool
+     */
     public function hasEnoughAuctionItems($numberOfAuctionItems)
     {
-        return ($this->numberOfAuctionItems <= $numberOfAuctionItems);
+        return ($numberOfAuctionItems >= $this->numberOfAuctionItems);
     }
 
+    /**
+     * Checks to see if the baked items are sufficient
+     *
+     * @param int $numberOfBakedItems
+     * @return bool
+     */
     public function hasEnoughBakedItems($numberOfBakedItems)
     {
-        return ($this->numberOfBakedItems <= $numberOfBakedItems);
+        return ($numberOfBakedItems >= $this->numberOfBakedItems);
     }
 
+    /**
+     * Checks to see if the hours are sufficient
+     *
+     * @param int $numberOfHours
+     * @return bool
+     */
     public function hasEnoughHours($numberOfHours)
     {
-        return ($this->numberOfTimes <= $numberOfHours);
+        return ($numberOfHours >= $this->numberOfTimes);
     }
 
     public function __toString()

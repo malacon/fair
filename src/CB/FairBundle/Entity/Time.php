@@ -33,7 +33,7 @@ class Time
     private $time;
 
     /**
-     * @var Booth
+     * @var \CB\FairBundle\Entity\Booth
      *
      * @ORM\ManyToOne(targetEntity="Booth", inversedBy="times", cascade={"remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
@@ -101,14 +101,24 @@ class Time
         return $this->time;
     }
 
-    public function numOfWorkers()
+    /**
+     * Gets the number of workers at a given time for the booth
+     *
+     * @return int
+     */
+    public function getNumOfWorkers()
     {
-        return count($this->workers);
+        return $this->workers->count();
     }
 
+    /**
+     * Tells if time is filled with workers
+     *
+     * @return bool
+     */
     public function isFilled()
     {
-        return !($this->numOfWorkers() < $this->booth->getQuantity());
+        return !($this->getNumOfWorkers() < $this->booth->getNumberOfWorkers());
     }
 
     /**
@@ -121,9 +131,62 @@ class Time
         return $this->workers;
     }
 
+    /**
+     * Adds worker to the booth time
+     *
+     * @param User $worker
+     * @return Bool  If the sign-up is successful it returns true
+     */
     public function addWorker(User $worker)
     {
-        $this->workers[] = $worker;
+        // If the worker is signed up
+        if (!$this->workers->contains($worker) && $this->isUserAlreadySignedUpAtThisTime($worker)) {
+            // Add the time to the worker
+            $worker->addTime($this);
+            // Add the worker to the time
+            $this->workers[] = $worker;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks to see if the user is already signed up for the time
+     *
+     * @param User $worker
+     * @return bool
+     */
+    private function isUserAlreadySignedUpAtThisTime(User $worker)
+    {
+        /** @var \CB\FairBundle\Entity\Time $time */
+        foreach ($worker->getTimes() as $time) {
+            // If the requested time is already on the user's schedule return true
+            if ($time->getTime() == $this->getTime()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Removes a worker from the booth time
+     *  OWNER
+     *
+     * @param User $worker
+     * @return $this
+     */
+    public function removeWorker(User $worker)
+    {
+        // If the worker isn't already signed up
+        if ($this->workers->contains($worker)) {
+            // Remove the time from the worker
+            $worker->removeTime($this);
+            // Remove the worker from the time
+            $this->workers->removeElement($worker);
+        }
+
+        return $this;
     }
 
     /**

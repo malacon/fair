@@ -115,10 +115,10 @@ class DefaultController extends Controller
     public function isUserPassedAction()
     {
         $data = array(
-            'isUserPassed' => $this->getUser()->getPassedRules(),
+            'isUserPassed' => $this->getUser()->getIsPassedRules(),
             'hours' => $this->getUser()->getNumOfHours(),
-            'auction' => $this->getUser()->getNumOfAuction(),
-            'baked' => $this->getUser()->getNumOfBaked(),
+            'auction' => $this->getUser()->getNumOfAuctionItems(),
+            'baked' => $this->getUser()->getNumOfBakedItems(),
         );
         if($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createWorkingJson($data);
