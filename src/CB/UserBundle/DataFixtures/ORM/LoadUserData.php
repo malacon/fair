@@ -7,14 +7,31 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Collections\ArrayCollection;
 use CB\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+    /** @var \Symfony\Component\DependencyInjection\ContainerInterface container */
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        /** @var \Symfony\Component\DependencyInjection\ContainerInterface container */
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager)
     {
+        /** @var \FOS\UserBundle\Doctrine\UserManager $userManager */
+        $userManager = $this->container->get('fos_user.user_manager');
+
         $user1 = new User();
         $user1->setUsername('admin');
-        $user1->setPlainPassword('admin');
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($user1);
+        $user1->setPassword($encoder
+            ->encodePassword('admin', $user1->getSalt()));
         $user1->setFamilyName('Admin');
         $user1->setEmail('craig.d.baker@gmail.com');
         $user1->setEnabled(true);
@@ -22,7 +39,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
         $user2 = new User();
         $user2->setUsername('baker');
-        $user2->setPlainPassword('baker');
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($user2);
+        $user2->setPassword($encoder
+            ->encodePassword('baker', $user2->getSalt()));
         $user2->setFamilyName('Baker');
         $user2->setEmail('craig.d.baker+test@gmail.com');
         $user2->setEnabled(true);
@@ -32,7 +53,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
         $user3 = new User();
         $user3->setUsername('done');
-        $user3->setPlainPassword('done');
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($user3);
+        $user3->setPassword($encoder
+            ->encodePassword('done', $user3->getSalt()));
         $user3->setFamilyName('Doner');
         $user3->setEmail('craig.d.baker+done@gmail.com');
         $user3->setEnabled(true);

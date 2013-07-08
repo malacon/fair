@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints\DateTime;
 use CB\UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * AuctionItem
@@ -28,6 +29,8 @@ class AuctionItem
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min = "3")
      */
     private $description;
 
@@ -35,6 +38,7 @@ class AuctionItem
      * @var integer
      *
      * @ORM\Column(name="quantity", type="integer")
+     * @Assert\NotBlank()
      */
     private $quantity;
 
@@ -42,13 +46,14 @@ class AuctionItem
      * @var float
      *
      * @ORM\Column(name="cost", type="decimal")
+     * @Assert\NotBlank()
      */
     private $cost;
 
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\User", inversedBy="auctionItems")
+     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\User", inversedBy="auctionItems", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
@@ -163,6 +168,13 @@ class AuctionItem
     {
         $this->user = $user;
     
+        return $this;
+    }
+
+    public function addUser(User $user)
+    {
+        $this->user = $user;
+
         return $this;
     }
 

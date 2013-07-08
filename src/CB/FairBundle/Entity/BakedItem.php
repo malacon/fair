@@ -5,6 +5,7 @@ namespace CB\FairBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use CB\UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BakedITem
@@ -27,6 +28,8 @@ class BakedItem
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min = "3")
      */
     private $description;
 
@@ -34,6 +37,7 @@ class BakedItem
      * @var integer
      *
      * @ORM\Column(name="quantity", type="integer")
+     * @Assert\NotBlank()
      */
     private $quantity;
 

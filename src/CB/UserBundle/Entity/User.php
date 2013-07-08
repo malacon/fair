@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use CB\FairBundle\Entity\Time;
 use CB\FairBundle\Entity\AuctionItem;
 use CB\FairBundle\Entity\BakedItem;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -44,6 +45,7 @@ class User extends BaseUser
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="user", cascade={"persist"})
+     * @Assert\Valid
      */
     private $auctionItems;
 
@@ -51,6 +53,7 @@ class User extends BaseUser
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\BakedItem", mappedBy="user", cascade={"persist"})
+     * @Assert\Valid
      */
     private $bakedItems;
 
@@ -59,6 +62,7 @@ class User extends BaseUser
      *
      * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="workers", cascade={"persist"})
      * @ORM\JoinTable(name="users_times")
+     * @Assert\Valid
      */
     private $times;
 
@@ -257,6 +261,16 @@ class User extends BaseUser
         return $this->auctionItems;
     }
 
+    public function getAuctionItemNames()
+    {
+        $names = array();
+        /** @var \CB\FairBundle\Entity\AuctionItem $item */
+        foreach ($this->auctionItems as $item) {
+            $names[] = $item->getDescription();
+        }
+        return $names;
+    }
+
     /**
      * Adds an auction item if it doesn't already exist
      *
@@ -265,10 +279,8 @@ class User extends BaseUser
      */
     public function addAuctionItem(AuctionItem $auctionItem)
     {
-        if (!$this->auctionItems->contains($auctionItem)) {
-            $auctionItem->setUser($this);
-            $this->auctionItems[] = $auctionItem;
-        }
+        $auctionItem->setUser($this);
+        $this->auctionItems->add($auctionItem);
 
         return $this;
     }

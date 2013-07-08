@@ -50,10 +50,11 @@ class RegisterType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'CB\UserBundle\Entity\User',
+            'cascade_validation' => true, //needed to validate embeed forms.
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             // a unique key to help generate the secret token
-            'intention'       => 'register_items',
+            'intention' => 'registration_item',
         ));
     }
 
@@ -64,6 +65,6 @@ class RegisterType extends AbstractType
      */
     public function getName()
     {
-        return 'cb_registration';
+        return 'cb_user_registration';
     }
 }

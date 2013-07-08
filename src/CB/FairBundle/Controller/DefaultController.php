@@ -39,19 +39,13 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $auctionItems = $form->getData('auctionItems');
-            $bakedItems = $form->getData('bakedItems');
-            /** @var \CB\FairBundle\Entity\AuctionItem $item */
-            foreach ($auctionItems as $item) {
-                $item->setUser($this->getUser());
-                $em->persist($item);
-            }
-            /** @var \CB\FairBundle\Entity\BakedItem $item */
-            foreach ($bakedItems as $item) {
-                $item->setUser($this->getUser());
-                $em->persist($item);
-            }
+        $validator = $this->get('validator');
+        $errors = $validator->validate($request);
+        if (count($errors) > 0) {
+            return new Response(print_r($errors, true));
+        }
+
+        if ($form->isSubmitted()) {
 
             foreach ($this->getUser()->getBakedItems() as $item) {
                 foreach ($originalBakedItems as $key => $toDel) {
@@ -61,7 +55,9 @@ class DefaultController extends Controller
                 }
             }
 
+            /** @var \CB\FairBundle\Entity\BakedItem $item */
             foreach ($originalBakedItems as $item) {
+
                 $em->remove($item);
             }
 
@@ -74,11 +70,14 @@ class DefaultController extends Controller
             }
 
             foreach ($originalAuctionItems as $item) {
+                
                 $em->remove($item);
             }
 
             $this->checkUserPassed();
 
+            /** @var \Doctrine\ORM\EntityManager $em */
+            $em->merge($this->getUser());
             $em->persist($this->getUser());
             $em->flush();
         }

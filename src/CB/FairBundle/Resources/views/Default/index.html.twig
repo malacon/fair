@@ -33,7 +33,7 @@
                 </div>
                 <div id="auctionGoods" class="accordion-body collapse">
                     <div class="accordion-inner">
-                        <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}}) }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}'>
+                        <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}})|e }}'>
                             {% for auctionItem in form.auctionItems %}
                                 <li>
                                     {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
