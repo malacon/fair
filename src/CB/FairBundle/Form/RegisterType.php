@@ -43,6 +43,12 @@ class RegisterType extends AbstractType
             ->add('saveAuction', 'submit', array(
                 'label' => 'Update Auction Items'
             ))
+            ->add('saveTop', 'submit', array(
+                'label' => 'Nothing to save',
+            ))
+            ->add('saveBottom', 'submit', array(
+                'label' => 'Nothing to save',
+            ))
         ;
     }
 

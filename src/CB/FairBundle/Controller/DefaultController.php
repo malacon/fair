@@ -70,7 +70,7 @@ class DefaultController extends Controller
             }
 
             foreach ($originalAuctionItems as $item) {
-                
+
                 $em->remove($item);
             }
 

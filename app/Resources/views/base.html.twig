@@ -2,12 +2,17 @@
 <html ng-view="fairApp">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Fair Registration{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/fair/css/bootstrap.min.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/fair/css/bootstrap-responsive.min.css') }}"/>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+
+        {% endblock %}
     </body>
 </html>

@@ -10,11 +10,13 @@
     {% else %}
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+            {{ form_row(form.saveTop, {'attr': {'class': 'btn disabled btn-block'}}) }}
+            <br>
             <div class="accordion" id="registration">
                 <div class="accordion-group">
                     <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#bakedGoods">Baked Goods</a></div>
                 </div>
-                <div id="bakedGoods" class="accordion-body collapse">
+                <div id="bakedGoods" class="accordion-body collapse in">
                     <div class="accordion-inner">
                         <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
                             {% for bakedItem in form.bakedItems %}
@@ -25,13 +27,12 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                        {{ form_row(form.saveBaked, {'attr': {'class': 'btn btn-primary'}}) }}
                     </div>
                 </div>
                 <div class="accordion-group">
                     <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#auctionGoods">Auction Items</a></div>
                 </div>
-                <div id="auctionGoods" class="accordion-body collapse">
+                <div id="auctionGoods" class="accordion-body collapse in">
                     <div class="accordion-inner">
                         <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}})|e }}'>
                             {% for auctionItem in form.auctionItems %}
@@ -44,7 +45,6 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                        {{ form_row(form.saveAuction, {'attr': {'class': 'btn btn-primary'}}) }}
                     </div>
                 </div>
                 <div class="accordion-group">
@@ -77,6 +77,7 @@
                     </div>
                 </div>
             </div>
+            {{ form_row(form.saveBottom, {'attr': {'class': 'btn disabled btn-block'}}) }}
         </div>
     {% endif %}
 
@@ -85,55 +86,4 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/fair/js/register/register.js') }}"></script>
-    <script type="text/javascript">
-        /**
-         * Will cycle through the submit buttons and will disable if the times are the same as the current times
-         *
-         * @param data
-         */
-        function updateDisabledSubmitButtons(data) {
-            // for each data.timestamps
-            //   compare them to each list's timestamp
-            //      if they are equal and the IDs don't match, then disable the button
-            $('[data-timestamp='+data.timestamp+']').each(function() {
-                var $this = $(this),
-                    id = $this.data('time-id');
-
-                if (data.timeFilled) {
-                    $this.find('.attend-toggle').addClass('disabled').text('Not Available');
-                }
-                else if (id !== parseInt(data.id, 10) && data.userAdded) {
-                    $this.find('.attend-toggle').addClass('disabled').text('Not Available');
-                }
-                else if (data.userRemoved) {
-                    $this.find('.attend-toggle').removeClass('disabled').text('Signup');
-                }
-            });
-        }
-        function updateButtons(data) {
-            if (data.userChanged) {
-                $('[data-time-id='+data.id+'] .attend-toggle').toggleClass('hidden', data.userAdded);
-                $('[data-time-id='+data.id+'] .not-attend-toggle').toggleClass('hidden',data.userRemoved);
-                $('.hours').text(data['quantities']['hours']);
-                $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
-
-                updateDisabledSubmitButtons(data);
-            } else if (data.timeFilled) {
-                $('[data-time-id='+data.id+']').find('.attend-toggle').addClass('disabled').text('Not Available');
-            }
-        }
-        jQuery(document).ready(function() {
-            {#checkAllTimestamps({{ app.user.getTimeStamps()|json_encode() }});#}
-
-            jQuery('[data-time-id]').on('click', 'a', function(e) {
-                var $this = $(this),
-                    url = $this.attr('href') + '.json';
-
-                e.preventDefault();
-                $.post(url, null, updateButtons);
-
-                return false;
-            });
-        });
-    </script>
 {% endblock %}

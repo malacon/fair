@@ -1,8 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/fair/css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('bundles/fair/css/bootstrap-responsive.min.css') }}"/>
+    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/fair/css/main.css') }}"/>
     {#{% stylesheets '@FairBundle/Resources/public/css/*' output='css/compiled/main.css' filter='cssrewrite' %}#}
         {#<link rel="stylesheet" href="{{ asset_url }}" />#}
@@ -10,6 +9,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/json2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fair/js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fair/js/bootstrap.js') }}"></script>
     <script type="text/javascript">
@@ -97,7 +98,6 @@
                             {% else %}
                                 <li><a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a></li>
                             {% endif %}
-                            </li>
                         </ul>
                     </div><!-- /.nav-collapse -->
                 </div>

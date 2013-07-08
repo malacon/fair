@@ -17,10 +17,10 @@ var $newLinkLi2 = $('<li></li>').append($addAuctionItemLink);
 
 jQuery(document).ready(function() {
     collectionHolder1.find('li').each(function() {
-        addBakedItemDeleteLink($(this));
+        addItemDeleteLink($(this));
     });
     collectionHolder2.find('li').each(function() {
-        addBakedItemDeleteLink($(this));
+        addItemDeleteLink($(this));
     });
 
     // add the "add a baked item" anchor and li to the bakedItems ul
@@ -48,6 +48,16 @@ jQuery(document).ready(function() {
         addItemForm(collectionHolder2, $newLinkLi2);
     });
 
+    $('[data-time-id]').on('click', 'a', function(e) {
+        var $this = $(this),
+            url = $this.attr('href') + '.json';
+
+        e.preventDefault();
+        $.post(url, null, updateButtons);
+
+        return false;
+    });
+
     function addItemForm(collectionHolder, $newLinkLi) {
         // Get the data-prototype explained earlier
         var prototype = collectionHolder.data('prototype');
@@ -68,16 +78,63 @@ jQuery(document).ready(function() {
 
         $newLinkLi.before($newFormLi);
 
-        addBakedItemDeleteLink($newFormLi);
+        addItemDeleteLink($newFormLi);
+        submitEnabled();
     }
 
-    function addBakedItemDeleteLink($itemFormLi) {
+    function addItemDeleteLink($itemFormLi) {
         var $removeFormA = $('<a href="#"><i class="icon-remove-sign"></i></a>')
         $itemFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {
             e.preventDefault();
             $itemFormLi.remove();
+            submitEnabled()
         });
     }
 });
+
+/**
+ * Will cycle through the submit buttons and will disable if the times are the same as the current times
+ *
+ * @param data
+ */
+function updateDisabledSubmitButtons(data) {
+    // for each data.timestamps
+    //   compare them to each list's timestamp
+    //      if they are equal and the IDs don't match, then disable the button
+    $('[data-timestamp='+data.timestamp+']').each(function() {
+        var $this = $(this),
+            id = $this.data('time-id');
+
+        if (data.timeFilled) {
+            $this.find('.attend-toggle').addClass('disabled').text('Not Available');
+        }
+        else if (id !== parseInt(data.id, 10) && data.userAdded) {
+            $this.find('.attend-toggle').addClass('disabled').text('Not Available');
+        }
+        else if (data.userRemoved) {
+            $this.find('.attend-toggle').removeClass('disabled').text('Signup');
+        }
+    });
+}
+function updateButtons(data) {
+    if (data.userChanged) {
+        $('[data-time-id='+data.id+'] .attend-toggle').toggleClass('hidden', data.userAdded);
+        $('[data-time-id='+data.id+'] .not-attend-toggle').toggleClass('hidden',data.userRemoved);
+        $('.hours').text(data['quantities']['hours']);
+        $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+
+        updateDisabledSubmitButtons(data);
+    } else if (data.timeFilled) {
+        $('[data-time-id='+data.id+']').find('.attend-toggle').addClass('disabled').text('Not Available');
+    }
+}
+
+function submitEnabled() {
+    var saveTopButton = $('#cb_user_registration_saveTop'),
+        saveBottomButton = $('#cb_user_registration_saveBottom');
+
+    saveTopButton.removeClass('disabled').addClass('btn-primary').text('Click here to save your items');
+    saveBottomButton.removeClass('disabled').addClass('btn-primary').text('Click here to save your items');
+}

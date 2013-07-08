@@ -73,7 +73,7 @@ ul.times > li a {
 
 .accordion-group {
     padding: 10px;
-    background: #FFF;
+    background: rgba(0, 0, 0, 0.58);
 }
 
 .accordion-group a {
@@ -84,8 +84,8 @@ ul.times > li a {
     text-decoration: none;
 }
 
-.accordion-group a:hover {
-    color: #000;
+.accordion-group:hover a {
+    color: #F7C8C8;
 }
 
 .accordion-body {
@@ -95,3 +95,4 @@ ul.times > li a {
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
+
