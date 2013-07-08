@@ -105,9 +105,60 @@
         </div>
     {% endblock %}
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="span3">
+                <div class="sidebar" data-spy="affix" data-offset-top="50">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <h4>Admin Tools</h4>
+                        <ul>
+                            <li><a href="{{ path('rule') }}">Rules</a></li>
+                            <li><a href="{{ path('booth') }}">Booths</a></li>
+                            <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
+                            <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
+                        </ul>
+                    {% elseif is_granted('ROLE_USER') %}
+                        <h4>Welcome Mr. and Mrs. {{ app.user.familyName }}</h4>
+
+                        <strong>Instructions</strong>
+                        <p>Select the booth times, baked items and auction items you commit to working/bringing to the Fair.</p>
+                        <div class="family">
+                            <strong>Family Information:</strong>
+                            <ul class="children unstyle">
+                                {% if app.user.children %}
+                                    {% for child in app.user.children %}
+                                        <li>{{ child.name }} in grade {{ child.grade }}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>No Children???</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="info">
+                            <strong>Rules:</strong>
+                            <ul class="rules">
+                                {% for rule in rules %}
+                                    <li>{{ rule }}</li>
+                                {% endfor %}
+                            </ul>
+                            <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
+                                You have signed up for:
+                                <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
+                                <span class="baked">{{ app.user.getNumOfBakedItems() }}</span> baked goods,
+                                <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> auction items,
+                            </div>
+                        </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="{% if is_granted('IS_AUTHENTICATED_FULLY') %}span9{% else %}span12{% endif %}">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     </div>
 
     {% block footer %}

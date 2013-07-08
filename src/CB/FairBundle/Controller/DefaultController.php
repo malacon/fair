@@ -24,6 +24,8 @@ class DefaultController extends Controller
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
         $booths = $boothRepo->findAll();
 
+        $rules = $this->checkUserPassed();
+
         $originalBakedItems = array();
         foreach($this->getUser()->getBakedItems() as $item) {
             $originalBakedItems[] = $item;
@@ -38,6 +40,19 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $auctionItems = $form->getData('auctionItems');
+            $bakedItems = $form->getData('bakedItems');
+            /** @var \CB\FairBundle\Entity\AuctionItem $item */
+            foreach ($auctionItems as $item) {
+                $item->setUser($this->getUser());
+                $em->persist($item);
+            }
+            /** @var \CB\FairBundle\Entity\BakedItem $item */
+            foreach ($bakedItems as $item) {
+                $item->setUser($this->getUser());
+                $em->persist($item);
+            }
+
             foreach ($this->getUser()->getBakedItems() as $item) {
                 foreach ($originalBakedItems as $key => $toDel) {
                     if ($toDel->getId() === $item->getId()) {
@@ -62,7 +77,7 @@ class DefaultController extends Controller
                 $em->remove($item);
             }
 
-            $this->setUserPassed();
+            $this->checkUserPassed();
 
             $em->persist($this->getUser());
             $em->flush();
@@ -70,7 +85,8 @@ class DefaultController extends Controller
 
         return array(
             'booths' => $booths,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'rules' => $rules,
         );
     }
 

@@ -5,22 +5,10 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="well">
             <p class="lead">The following links will allow you to see (and edit, be careful!) the parts of the fair.</p>
-            <ul>
-                <li><a href="{{ path('rule') }}">Rules</a></li>
-                <li><a href="{{ path('booth') }}">Booths</a></li>
-                <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
-                <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
-            </ul>
+
         </div>
     {% else %}
         <div class="well">
-            <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
-                Hours: <span class="hours">{{ app.user.getNumOfHours() }}</span>
-            </div>
-            {#<div id="isPassed" class="alert alert-success{% if not (app.user.getPassedRules()) %} hidden{% endif %}">#}
-                    {#Passed {{ app.user.getNumOfHours() }}#}
-            {#</div>#}
-
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
             <div class="accordion" id="registration">
                 <div class="accordion-group">
@@ -37,7 +25,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                        {{ form_row(form.submit) }}
+                        {{ form_row(form.saveBaked, {'attr': {'class': 'btn btn-primary'}}) }}
                     </div>
                 </div>
                 <div class="accordion-group">
@@ -56,6 +44,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        {{ form_row(form.saveAuction, {'attr': {'class': 'btn btn-primary'}}) }}
                     </div>
                 </div>
                 <div class="accordion-group">
@@ -97,28 +86,6 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/fair/js/register/register.js') }}"></script>
     <script type="text/javascript">
-        function checkTimestamp(timestamp, currentId) {
-            var $times = $('[data-timestamp='+timestamp+']');
-
-            $times.each(function() {
-                var $this = $(this),
-                    ts = $this.data('timestamp'),
-                    id = $this.data('time-id'),
-                    attendToggle = $($this.find('.attend-toggle'));
-
-                if (id !== currentId) {
-                    attendToggle.addClass('disabled').text('Not Available');
-                } else {
-                    attendToggle.removeClass('disabled').text('Signup');
-                }
-            });
-        }
-        function checkAllTimestamps(timestamps) {
-            console.log(timestamps);
-            $.each(timestamps, function() {
-                checkTimestamp(this);
-            });
-        }
         /**
          * Will cycle through the submit buttons and will disable if the times are the same as the current times
          *
@@ -141,9 +108,7 @@
                 else if (data.userRemoved) {
                     $this.find('.attend-toggle').removeClass('disabled').text('Signup');
                 }
-
             });
-
         }
         function updateButtons(data) {
             if (data.userChanged) {

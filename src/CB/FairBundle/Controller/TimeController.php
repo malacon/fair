@@ -203,6 +203,9 @@ class TimeController extends Controller
         /** @var $time \CB\FairBundle\Entity\Time $entity */
         $time = $em->getRepository('FairBundle:Time')->find($id);
 
+        $ruleRepo = $this->getDoctrine()->getRepository('FairBundle:Rule');
+        $rules = $ruleRepo->findAll();
+
         if (!$time) {
             throw $this->createNotFoundException();
         }

@@ -224,6 +224,9 @@ class Rule
      */
     public function isPassed(User $worker)
     {
+        print_r('auction: '.$worker->getNumOfAuctionItems().' : '.$this->numberOfAuctionItems);
+        print_r('Baked: '.$worker->getNumOfBakedItems().' : '.$this->numberOfBakedItems);
+        print_r('Hours: '.$worker->getNumOfHours().' : '.$this->numberOfTimes);
         return
             $this->hasEnoughAuctionItems($worker->getNumOfAuctionItems()) &&
             $this->hasEnoughBakedItems($worker->getNumOfBakedItems()) &&
@@ -265,6 +268,16 @@ class Rule
 
     public function __toString()
     {
-        return $this->description.': '.$this->numberOfTimes.' hours, '.$this->numberOfBakedItems.' baked items, and '.$this->numberOfAuctionItems.' auction items';
+        $rule = $this->description.': ';
+        if ($this->numberOfTimes > 0) {
+            $rule .= $this->numberOfTimes.' hours';
+        }
+        if ($this->numberOfBakedItems > 0) {
+            $rule .= ', '.$this->numberOfBakedItems.' baked goods';
+        }
+        if ($this->numberOfAuctionItems > 0) {
+            $rule .= ', '.$this->numberOfAuctionItems.' auction items';
+        }
+        return $rule;
     }
 }

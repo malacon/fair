@@ -37,14 +37,23 @@ class RegisterType extends AbstractType
                 'by_reference' => false,
                 'allow_delete' => true,
             ))
-            ->add('submit', 'submit')
+            ->add('saveBaked', 'submit', array(
+                'label' => 'Update Baked Items'
+            ))
+            ->add('saveAuction', 'submit', array(
+                'label' => 'Update Auction Items'
+            ))
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-           'data_class' => 'CB\UserBundle\Entity\User',
+            'data_class' => 'CB\UserBundle\Entity\User',
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            // a unique key to help generate the secret token
+            'intention'       => 'register_items',
         ));
     }
 

@@ -20,8 +20,16 @@ class LoadRulesData extends AbstractFixture implements OrderedFixtureInterface
         $rule2->setNumberOfAuctionItems(2);
         $rule2->setDescription("Auction Item Rule");
 
+        $rule3 = new Rule();
+        $rule3->setNumberOfTimes(8);
+        $rule3->setNumberOfBakedItems(1);
+        $rule3->setNumberOfAuctionItems(1);
+        $rule3->setDescription("Baked Goods Rule");
+
+
         $manager->persist($rule1);
         $manager->persist($rule2);
+        $manager->persist($rule3);
         $manager->flush();
     }
 

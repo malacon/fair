@@ -29,7 +29,9 @@ class Controller extends BaseController
     {
         /** @var \CB\FairBundle\Entity\RuleRepository $rulesRepo */
         $rulesRepo = $this->getDoctrine()->getRepository('FairBundle:Rule');
-        $this->getUser()->setIsPassedRules($rulesRepo->findAll());
+        $rules = $rulesRepo->findAll();
+        $this->getUser()->setIsPassedRules($rules);
+        return $rules;
     }
 
 }
