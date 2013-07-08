@@ -6,12 +6,12 @@
 
 // Get the ul that holds the collection of bakedItems
 
-var collectionHolder1 = $('ul.bakedItems');
-var collectionHolder2 = $('ul.auctionItems');
+var collectionHolder1 = $('.bakedItems');
+var collectionHolder2 = $('.auctionItems');
 
 // setup an "add a baked item" link
 var $addBakedItemLink = $('<a href="#" class="add_baked_item_link">Add a baked good</a>');
-var $addAuctionItemLink = $('<a href="#" class="add_baked_item_link">Add a auction item</a>');
+var $addAuctionItemLink = $('<a href="#" class="add_auction_item_link">Add a auction item</a>');
 var $newLinkLi1 = $('<li></li>').append($addBakedItemLink);
 var $newLinkLi2 = $('<li></li>').append($addAuctionItemLink);
 

@@ -11,12 +11,10 @@ class RuleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('description')
             ->add('numberOfTimes')
             ->add('numberOfBakedItems')
             ->add('numberOfAuctionItems')
-            ->add('description')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 

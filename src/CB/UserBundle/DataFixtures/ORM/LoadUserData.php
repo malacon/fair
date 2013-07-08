@@ -41,7 +41,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $user3->addChild('Bobby', '8');
 
         $this->addReference('user-user', $user2);
-        $this->addReference('user-done', $user2);
+        $this->addReference('user-done', $user3);
 
         $manager->persist($user1);
         $manager->persist($user2);

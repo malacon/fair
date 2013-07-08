@@ -14,66 +14,79 @@
         </div>
     {% else %}
         <div class="well">
-            <div id="isPassed" class="alert{% if (app.user.getPassedRules()) %} alert-success{% else %} alert-danger{% endif %}">
-                Hours: {{ app.user.getNumOfHours() }}
+            <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
+                Hours: <span class="hours">{{ app.user.getNumOfHours() }}</span>
             </div>
             {#<div id="isPassed" class="alert alert-success{% if not (app.user.getPassedRules()) %} hidden{% endif %}">#}
                     {#Passed {{ app.user.getNumOfHours() }}#}
             {#</div>#}
 
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-                <h3>Baked Goods</h3>
-                <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
-                {% for bakedItem in form.bakedItems %}
-                    <li>
-                        {{ form_widget(bakedItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
-                        of
-                        {{ form_widget(bakedItem.description, {'attr': {'rows': '1'}}) }}
-                    </li>
-                {% endfor %}
-                </ul>
-
-                <h3>Auction Items</h3>
-                <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}}) }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}'>
-                    {% for auctionItem in form.auctionItems %}
-                        <li>
-                            {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
-                            of
-                            {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
-                            for
-                            {{ form_widget(auctionItem.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
-                        </li>
-                    {% endfor %}
-                </ul>
-            {{ form_end(form) }}
-
-            <h3>Booths</h3>
-            <dl>
-            {% for booth in booths %}
-                <dt>{{ booth }}</dt>
-                <dd>{{ booth.description }}</dd>
-                <dt>Location</dt>
-                <dd>{{ booth.location }}</dd>
-                <dt>Times</dt>
-                <dd class="times">
-                    <ul>
-                        {% for time in booth.times %}
-                            <li>
-                                {{ time }}
-                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                                    <a href="{{ path('booth_work', {'id': time.id}) }}" class="text-info attend-toggle{{ time.hasWorker(app.user) ? ' hidden' : '' }}">Signup</a>
-                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="text-warning attend-toggle{{ time.hasWorker(app.user) ? '' : ' hidden' }}">Remove</a>
-
-                                    {#{% else %}#}
-                                        {#<span class="text-muted">Unavailable</span>#}
-                                    {#{% endif %}#}
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </dd>
-            {% endfor %}
-            </dl>
+            <div class="accordion" id="registration">
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#bakedGoods">Baked Goods</a></div>
+                </div>
+                <div id="bakedGoods" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
+                            {% for bakedItem in form.bakedItems %}
+                                <li>
+                                    {{ form_widget(bakedItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
+                                    of
+                                    {{ form_widget(bakedItem.description, {'attr': {'rows': '1'}}) }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#auctionGoods">Auction Items</a></div>
+                </div>
+                <div id="auctionGoods" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}}) }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}'>
+                            {% for auctionItem in form.auctionItems %}
+                                <li>
+                                    {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
+                                    of
+                                    {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
+                                    for
+                                    {{ form_widget(auctionItem.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#booths">Booths</a></div>
+                </div>
+                <div id="booths" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                        <dl>
+                            {% for booth in booths %}
+                                <dt>{{ booth }}</dt>
+                                <dd>{{ booth.description }}</dd>
+                                <dt>Location</dt>
+                                <dd>{{ booth.location }}</dd>
+                                <dt>Times</dt>
+                                <dd class="times">
+                                    <ul>
+                                        {% for time in booth.times %}
+                                            <li data-time-id="{{ time.id }}" data-timestamp="{{ time.time.getTimestamp() }}">
+                                                {{ time }}
+                                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}  {# show not avaible if is filled and not using the current worker| true #}
+                                                    <a href="{{ path('booth_work', {'id': time.id}) }}" class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %}Not Available{% else %}Signup{% endif %}</a>
+                                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(app.user) %} hidden{% endif %}">Remove</a>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    </div>
+                </div>
+            </div>
         </div>
     {% endif %}
 
@@ -83,35 +96,74 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/fair/js/register/register.js') }}"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function() {
-            jQuery('.attend-toggle').click(function(e) {
+        function checkTimestamp(timestamp, currentId) {
+            var $times = $('[data-timestamp='+timestamp+']');
+
+            $times.each(function() {
                 var $this = $(this),
-                    url = $this.attr('href') + '.json',
-                    url2 = '{{ path('is_user_passed') }}.json';
+                    ts = $this.data('timestamp'),
+                    id = $this.data('time-id'),
+                    attendToggle = $($this.find('.attend-toggle'));
+
+                if (id !== currentId) {
+                    attendToggle.addClass('disabled').text('Not Available');
+                } else {
+                    attendToggle.removeClass('disabled').text('Signup');
+                }
+            });
+        }
+        function checkAllTimestamps(timestamps) {
+            console.log(timestamps);
+            $.each(timestamps, function() {
+                checkTimestamp(this);
+            });
+        }
+        /**
+         * Will cycle through the submit buttons and will disable if the times are the same as the current times
+         *
+         * @param data
+         */
+        function updateDisabledSubmitButtons(data) {
+            // for each data.timestamps
+            //   compare them to each list's timestamp
+            //      if they are equal and the IDs don't match, then disable the button
+            $('[data-timestamp='+data.timestamp+']').each(function() {
+                var $this = $(this),
+                    id = $this.data('time-id');
+
+                if (data.timeFilled) {
+                    $this.find('.attend-toggle').addClass('disabled').text('Not Available');
+                }
+                else if (id !== parseInt(data.id, 10) && data.userAdded) {
+                    $this.find('.attend-toggle').addClass('disabled').text('Not Available');
+                }
+                else if (data.userRemoved) {
+                    $this.find('.attend-toggle').removeClass('disabled').text('Signup');
+                }
+
+            });
+
+        }
+        function updateButtons(data) {
+            console.log(data);
+            if (data.userChanged) {
+                $('[data-time-id='+data.id+'] .attend-toggle').toggleClass('hidden', data.userAdded);
+                $('[data-time-id='+data.id+'] .not-attend-toggle').toggleClass('hidden',data.userRemoved);
+                $('.hours').text(data['quantities']['hours']);
+                $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+
+                updateDisabledSubmitButtons(data);
+            }
+        }
+        jQuery(document).ready(function() {
+            {#checkAllTimestamps({{ app.user.getTimeStamps()|json_encode() }});#}
+
+            jQuery('[data-time-id]').on('click', 'a', function(e) {
+                var $this = $(this),
+                    url = $this.attr('href') + '.json';
 
                 e.preventDefault();
-                $this.siblings().toggleClass('hidden');
-                $this.toggleClass('hidden');
-
-                $.post(url, null, function(data) {
-                    if (data.working) {
-                        console.log('Working!');
-                    } else {
-                        console.log('O well!');
-                    }
-                    updatePassed();
-                });
-
-                function updatePassed() {
-                    $.post(url2, null, function(data) {
-                        var alert = $('#isPassed');
-                        console.log(data);
-
-                        if ((data.isUserPassed&& alert.hasClass('alert-danger')) || (!data.isUserPassed && alert.hasClass('alert-success'))) {
-                            alert.toggleClass('alert-danger').toggleClass('alert-success');
-                        }
-                    })
-                }
+                $.post(url, null, updateButtons);
 
                 return false;
             });

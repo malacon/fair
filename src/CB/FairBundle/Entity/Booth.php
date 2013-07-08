@@ -49,7 +49,7 @@ class Booth
      *
      * @ORM\Column(name="quantity", type="integer")
      */
-    private $numberOfWorkers;
+    private $workerLimit;
 
     /**
      * @var ArrayCollection
@@ -169,17 +169,22 @@ class Booth
     /**
      * @return int
      */
-    public function getNumberOfWorkers()
+    public function getWorkerLimit()
     {
-        return $this->numberOfWorkers;
+        return $this->workerLimit;
+    }
+
+    public function getNumberOfWorkersWorkingAtTime(Time $time)
+    {
+
     }
 
     /**
      * @param int $quantity
      */
-    public function setNumberOfWorkers($quantity)
+    public function setWorkerLimit($quantity)
     {
-        $this->numberOfWorkers = $quantity;
+        $this->workerLimit = $quantity;
 
         return $this;
     }

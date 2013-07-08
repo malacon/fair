@@ -22,15 +22,14 @@ class Controller extends BaseController
         return parent::getUser();
     }
 
-    protected function setUserPassed()
+    /**
+     * Checks to see if the user is passed and updates the isPassed value of the user
+     */
+    protected function checkUserPassed()
     {
         /** @var \CB\FairBundle\Entity\RuleRepository $rulesRepo */
         $rulesRepo = $this->getDoctrine()->getRepository('FairBundle:Rule');
-        $this->getUser()->setIsPassedRules($rulesRepo->passesRule(
-            $this->getUser()->getNumOfHours(),
-            $this->getUser()->getNumOfBakedItems(),
-            $this->getUser()->getNumOfAuctionItems()
-        ));
+        $this->getUser()->setIsPassedRules($rulesRepo->findAll());
     }
 
 }

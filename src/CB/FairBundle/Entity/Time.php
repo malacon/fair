@@ -41,7 +41,7 @@ class Time
     private $booth;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="users", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="times", cascade={"persist"})
      */
     private $workers;
 
@@ -118,7 +118,7 @@ class Time
      */
     public function isFilled()
     {
-        return !($this->getNumOfWorkers() < $this->booth->getNumberOfWorkers());
+        return !$this->isAvailable();
     }
 
     /**
@@ -140,7 +140,7 @@ class Time
     public function addWorker(User $worker)
     {
         // If the worker is signed up
-        if (!$this->workers->contains($worker) && $this->isUserAlreadySignedUpAtThisTime($worker)) {
+         if (!$this->workers->contains($worker) && !$this->isUserAlreadySignedUpAtThisTime($worker) && $this->isAvailable()) {
             // Add the time to the worker
             $worker->addTime($this);
             // Add the worker to the time
@@ -157,12 +157,12 @@ class Time
      * @param User $worker
      * @return bool
      */
-    private function isUserAlreadySignedUpAtThisTime(User $worker)
+    public function isUserAlreadySignedUpAtThisTime(User $worker)
     {
         /** @var \CB\FairBundle\Entity\Time $time */
         foreach ($worker->getTimes() as $time) {
             // If the requested time is already on the user's schedule return true
-            if ($time->getTime() == $this->getTime()) {
+            if ($this->getTime()->diff($time->getTime())->h == 0) {
                 return true;
             }
         }
@@ -170,11 +170,22 @@ class Time
     }
 
     /**
+     * Checks to see if there are open spots during the time
+     *
+     * @return bool
+     */
+    public function isAvailable()
+    {
+        return $this->getNumOfWorkers() < $this->booth->getWorkerLimit();
+    }
+
+
+    /**
      * Removes a worker from the booth time
      *  OWNER
      *
      * @param User $worker
-     * @return $this
+     * @return Bool
      */
     public function removeWorker(User $worker)
     {
@@ -184,9 +195,10 @@ class Time
             $worker->removeTime($this);
             // Remove the worker from the time
             $this->workers->removeElement($worker);
+            return true;
         }
 
-        return $this;
+        return false;
     }
 
     /**
@@ -220,6 +232,11 @@ class Time
     public function __toString()
     {
         return (string)$this->time->format('D\, M jS \a\t g A');
+    }
+
+    public function getTimestamp()
+    {
+        return $this->getTime()->getTimestamp();
     }
 
     /**

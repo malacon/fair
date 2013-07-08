@@ -19,7 +19,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth1->setName('Darts');
         $booth1->setDescription('Throwing darts at balloons.  What could be more fun?');
         $booth1->setLocation('Field');
-        $booth1->setQuantity(4);
+        $booth1->setWorkerLimit(1);
 
         $times1 = new ArrayCollection();
 
@@ -27,7 +27,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth1);
-            if ($i == 14 || $i == 15) {
+            if ($i == 20 || $i == 21) {
                 $time->addWorker($user);
             }
             if ($i >8 && $i < 20) {
@@ -41,7 +41,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth2->setName('Cake Walk');
         $booth2->setDescription('Walk around the circle.  Win a cake or two!');
         $booth2->setLocation('Gym');
-        $booth2->setQuantity(4);
+        $booth2->setWorkerLimit(4);
 
         $times1 = new ArrayCollection();
 
@@ -60,7 +60,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth3->setName('Ring Toss');
         $booth3->setDescription('Toss your rings and get a prize!');
         $booth3->setLocation('Field');
-        $booth3->setQuantity(4);
+        $booth3->setWorkerLimit(4);
 
         $times1 = new ArrayCollection();
 

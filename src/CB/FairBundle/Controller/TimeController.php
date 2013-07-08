@@ -207,18 +207,41 @@ class TimeController extends Controller
             throw $this->createNotFoundException();
         }
 
-        if (!$time->hasWorker($this->getUser())) {
-            $time->getWorkers()->add($this->getUser());
+        $data = $this->getBaseData($time);
+
+        /**
+         * Questions to ask
+         *
+         *      When we add ourselves
+         *      1) Does it work:
+         *          Change button to Remove
+         *          Check if Full
+         *      2) If it doesn't:
+         *
+         *
+         */
+
+        // Add the worker to the time
+        if ($time->addWorker($this->getUser())) {
+            $data['userChanged'] = true;
+            $data['userAdded'] = true;
+            $data['timeFilled'] = $time->isFilled();
+            $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
+
+            // Check to see if the user now passes
+            $this->checkUserPassed();
+            $data['isPassed'] = $this->getUser()->getIsPassedRules();
+            $data['timestamps'] = $this->getUser()->getTimestamps();
+        } else {
+            // If it won't allow you to add the user check to see if its because
         }
 
         $em->persist($time);
-        $this->setUserPassed();
-
         $em->persist($this->getUser());
         $em->flush();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
-            return $this->createWorkingJson(true);
+            return $this->createJsonResponse($data);
         }
 
         return $this->redirect($this->generateUrl('home'));
@@ -239,33 +262,61 @@ class TimeController extends Controller
             throw $this->createNotFoundException();
         }
 
-        if ($time->hasWorker($this->getUser())) {
-            $time->getWorkers()->removeElement($this->getUser());
+        $data = $this->getBaseData($time);
+
+        // Remove the worker to the time
+        if ($time->removeWorker($this->getUser())) {
+            $data['userChanged'] = true;
+            $data['userRemoved'] = true;
+            $data['timeFilled'] = $time->isFilled();
+            $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
+
+            // Check to see if the user now passes
+            $this->checkUserPassed();
+            $data['isPassed'] = $this->getUser()->getIsPassedRules();
+            $data['timestamps'] = $this->getUser()->getTimestamps();
         }
 
         $em->persist($time);
-        $this->setUserPassed();
-
         $em->persist($this->getUser());
         $em->flush();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
-            return $this->createWorkingJson(false);
+            return $this->createJsonResponse($data);
         }
 
         return $this->redirect($this->generateUrl('home'));
     }
 
     /**
+     * @param \CB\FairBundle\Entity\Time $time
+     * @return array
+     */
+    private function getBaseData($time)
+    {
+        return array(
+            'id' => $time->getId(),
+            'timestamp' => $time->getTime()->getTimestamp(),
+            'timeFilled' => false,
+            'userChanged' => false,
+            'userAdded' => false,
+            'userRemoved' => false,
+            'quantities' => array(
+                'hours' => $this->getUser()->getNumOfHours(),
+                'bakedItems' => $this->getUser()->getNumOfBakedItems(),
+                'auctionItems' => $this->getUser()->getAuctionItems(),
+            ),
+            'isPassed' => $this->getUser()->getIsPassedRules(),
+        );
+
+    }
+
+    /**
      * @param bool $attending
      * @return Response
      */
-    private function createWorkingJson($attending)
+    private function createJsonResponse($data)
     {
-        $data = array(
-            'working' => $attending
-        );
-
         $response = new Response(json_encode($data));
 
         return $response;

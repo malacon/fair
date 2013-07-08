@@ -55,7 +55,7 @@ class User extends BaseUser
     private $bakedItems;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="workers", cascade={"persist"})
      * @ORM\JoinTable(name="users_times")
@@ -250,7 +250,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return int
+     * @return ArrayCollection
      */
     public function getAuctionItems()
     {
@@ -289,7 +289,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return int
+     * @return ArrayCollection
      */
     public function getBakedItems()
     {
@@ -340,10 +340,10 @@ class User extends BaseUser
     /**
      * Sets the user as having passed the rules or not
      *
-     * @param ArrayCollection $rules
+     * @param array $rules
      * @return $this
      */
-    public function setIsPassedRules(ArrayCollection $rules)
+    public function setIsPassedRules($rules)
     {
         /** @var \CB\FairBundle\Entity\Rule $rule */
         $isPassed = false;
@@ -386,5 +386,16 @@ class User extends BaseUser
     public function getNumOfAuctionItems()
     {
         return $this->auctionItems->count();
+    }
+
+    public function getTimestamps()
+    {
+        $timestamps = array();
+        /** @var \CB\FairBundle\Entity\Time $time */
+        foreach ($this->times as $time) {
+            $timestamps[$time->getId()] = $time->getTimestamp();
+        }
+
+        return $timestamps;
     }
 }
