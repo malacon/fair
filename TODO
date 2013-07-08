@@ -1,7 +1,3 @@
-TODO: Install Angular
-TODO: Change the booth register from jquery to angular
-TODO: Create auction form in angular
-TODO: Create booth form in angular
-TODO: Create auction submit action for json data in DefaultController
-TODO: Create booth submit action for json data in DefaultController
-TODO: Tie the booth and auction forms into the controller actions
+TODO:
+    Make the items automatically save (JSON)
+    Add Already Signed up at this time button

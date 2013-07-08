@@ -107,11 +107,11 @@ function updateDisabledSubmitButtons(data) {
         var $this = $(this),
             id = $this.data('time-id');
 
-        if (data.timeFilled) {
-            $this.find('.attend-toggle').addClass('disabled').text('Not Available');
+        if (data.timeWorked) {
+            $this.find('.attend-toggle').addClass('disabled').text('Already Working at this Time');
         }
         else if (id !== parseInt(data.id, 10) && data.userAdded) {
-            $this.find('.attend-toggle').addClass('disabled').text('Not Available');
+            $this.find('.attend-toggle').addClass('disabled').text('Currently Occupied');
         }
         else if (data.userRemoved) {
             $this.find('.attend-toggle').removeClass('disabled').text('Signup');
@@ -126,8 +126,8 @@ function updateButtons(data) {
         $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
 
         updateDisabledSubmitButtons(data);
-    } else if (data.timeFilled) {
-        $('[data-time-id='+data.id+']').find('.attend-toggle').addClass('disabled').text('Not Available');
+    } else if (data.timeFilled && !data.timeWorked) {
+        $('[data-time-id='+data.id+']').find('.attend-toggle').addClass('disabled').text('Currently Occupied');
     }
 }
 

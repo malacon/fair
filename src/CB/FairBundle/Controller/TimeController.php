@@ -229,6 +229,7 @@ class TimeController extends Controller
             $data['userChanged'] = true;
             $data['userAdded'] = true;
             $data['timeFilled'] = $time->isFilled();
+            $data['timeWorked'] = $time->isUserAlreadySignedUpAtThisTime($this->getUser());
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes
@@ -272,6 +273,7 @@ class TimeController extends Controller
             $data['userChanged'] = true;
             $data['userRemoved'] = true;
             $data['timeFilled'] = $time->isFilled();
+            $data['timeWorked'] = $time->isUserAlreadySignedUpAtThisTime($this->getUser());
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes
@@ -301,6 +303,7 @@ class TimeController extends Controller
             'id' => $time->getId(),
             'timestamp' => $time->getTime()->getTimestamp(),
             'timeFilled' => false,
+            'timeWorked' => false,
             'userChanged' => false,
             'userAdded' => false,
             'userRemoved' => false,
