@@ -233,7 +233,7 @@ class TimeController extends Controller
             $data['isPassed'] = $this->getUser()->getIsPassedRules();
             $data['timestamps'] = $this->getUser()->getTimestamps();
         } else {
-            // If it won't allow you to add the user check to see if its because
+            $data['timeFilled'] = $time->isFilled();
         }
 
         $em->persist($time);

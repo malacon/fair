@@ -37,6 +37,7 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        {{ form_row(form.submit) }}
                     </div>
                 </div>
                 <div class="accordion-group">
@@ -145,7 +146,6 @@
 
         }
         function updateButtons(data) {
-            console.log(data);
             if (data.userChanged) {
                 $('[data-time-id='+data.id+'] .attend-toggle').toggleClass('hidden', data.userAdded);
                 $('[data-time-id='+data.id+'] .not-attend-toggle').toggleClass('hidden',data.userRemoved);
@@ -153,6 +153,8 @@
                 $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
 
                 updateDisabledSubmitButtons(data);
+            } else if (data.timeFilled) {
+                $('[data-time-id='+data.id+']').find('.attend-toggle').addClass('disabled').text('Not Available');
             }
         }
         jQuery(document).ready(function() {
