@@ -224,9 +224,9 @@ class Rule
      */
     public function isPassed(User $worker)
     {
-        print_r('auction: '.$worker->getNumOfAuctionItems().' : '.$this->numberOfAuctionItems);
-        print_r('Baked: '.$worker->getNumOfBakedItems().' : '.$this->numberOfBakedItems);
-        print_r('Hours: '.$worker->getNumOfHours().' : '.$this->numberOfTimes);
+//        print_r('auction: '.$worker->getNumOfAuctionItems().' : '.$this->numberOfAuctionItems);
+//        print_r('Baked: '.$worker->getNumOfBakedItems().' : '.$this->numberOfBakedItems);
+//        print_r('Hours: '.$worker->getNumOfHours().' : '.$this->numberOfTimes);
         return
             $this->hasEnoughAuctionItems($worker->getNumOfAuctionItems()) &&
             $this->hasEnoughBakedItems($worker->getNumOfBakedItems()) &&
