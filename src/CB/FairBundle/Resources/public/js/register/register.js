@@ -15,7 +15,7 @@ var $addAuctionItemLink = $('<a href="#" class="add_auction_item_link">Add a auc
 var $newLinkLi1 = $('<li></li>').append($addBakedItemLink);
 var $newLinkLi2 = $('<li></li>').append($addAuctionItemLink);
 
-jQuery(document).ready(function() {
+$(function() {
     collectionHolder1.find('li').each(function() {
         addItemDeleteLink($(this));
     });

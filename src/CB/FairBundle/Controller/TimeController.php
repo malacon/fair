@@ -203,26 +203,11 @@ class TimeController extends Controller
         /** @var $time \CB\FairBundle\Entity\Time $entity */
         $time = $em->getRepository('FairBundle:Time')->find($id);
 
-        $ruleRepo = $this->getDoctrine()->getRepository('FairBundle:Rule');
-        $rules = $ruleRepo->findAll();
-
         if (!$time) {
             throw $this->createNotFoundException();
         }
 
         $data = $this->getBaseData($time);
-
-        /**
-         * Questions to ask
-         *
-         *      When we add ourselves
-         *      1) Does it work:
-         *          Change button to Remove
-         *          Check if Full
-         *      2) If it doesn't:
-         *
-         *
-         */
 
         // Add the worker to the time
         if ($time->addWorker($this->getUser())) {
@@ -324,6 +309,7 @@ class TimeController extends Controller
     private function createJsonResponse($data)
     {
         $response = new Response(json_encode($data));
+        $response->headers->set('Content-Type', 'text/json; charset=UTF-8');
 
         return $response;
     }
