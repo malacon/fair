@@ -96,3 +96,11 @@ ul.times > li a {
     border-radius: 4px;
 }
 
+.auctionItems {
+    padding-top: 10px;
+}
+
+.auctionItem {
+    margin-bottom: 5px;
+    width: 150px;
+}

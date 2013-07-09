@@ -4,33 +4,7 @@
  * Time: 8:38 PM
  */
 
-// Get the ul that holds the collection of bakedItems
-
-var collectionHolder = $('.auctionItems');
-
-var $addAuctionItemLink = $('<a href="#" class="add_auction_item_link">Add a auction item</a>');
-var $newLinkLi = $('<li></li>').append($addAuctionItemLink);
-
 $(function() {
-    collectionHolder.find('li').each(function() {
-        addItemDeleteLink($(this));
-    });
-
-    // add the "add a baked item" anchor and li to the bakedItems ul
-    collectionHolder.append($newLinkLi);
-
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
-    collectionHolder.data('index', collectionHolder.find(':input').length);
-
-    $addAuctionItemLink.on('click', function(e) {
-        // prevent the link from creating a "#" on the URL
-        e.preventDefault();
-
-        // add a new baked item form (see next code block)
-        addItemForm(collectionHolder, $newLinkLi);
-    });
-
     $('[data-time-id]').on('click', 'a', function(e) {
         var $this = $(this),
             url = $this.attr('href');
@@ -51,7 +25,23 @@ $(function() {
         if (!$this.hasClass('disabled')) {
             $.post(url, null, updateBakedButtons);
         }
-    })
+    });
+
+    $('.auctionItems').on('click', '.close', function(e) {
+        var $this = $(this),
+            url = $this.attr('href');
+
+        e.preventDefault();
+        $.post(url, null, updateAuctionButtons);
+    });
+
+    $('#auctionGoods').on('click', '.auction-add', function(e) {
+        var $this = $(this),
+            url = $this.attr('href');
+
+        e.preventDefault();
+        $.post(url, null, updateAuctionButtons);
+    });
 
 });
 
@@ -92,12 +82,32 @@ function updateButtons(data) {
     }
 }
 
+function updateAuctionButtons(data) {
+    $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+    $('.auction').text(data.numAuctions);
+    // IF removed, find the id and remove the tag
+    if (data.isRemoved) {
+        $('[data-auction-id='+data.id+']').remove();
+    } else {
+        var $div = $('<div data-auction-id='+data.id+'>'+data.description+'</div>')
+            .addClass('auctionItem alert')
+            .append($('<a>&times;</a>')
+                .addClass('close')
+                .attr('href', data.url));
+
+//        $div.append($a);
+
+        $('.auctionItems').append($div);
+    }
+}
+
 function updateBakedButtons(data) {
     var bakedItemButtons = $('[data-baked-id]'),
         btnBakingTXT = 'You are baking:',
         btnUnavailableTXT = 'is Unavailable';
 
     // Update the hours counter
+    $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
     $('.baked').text(data.isWorkerBaking?1:0);
     // Reset all buttons
     bakedItemButtons.each(function() {
@@ -123,46 +133,4 @@ function updateBakedButtons(data) {
         }
     });
 
-}
-
-function submitEnabled() {
-    var saveTopButton = $('#cb_user_registration_saveTop'),
-        saveBottomButton = $('#cb_user_registration_saveBottom');
-
-    saveTopButton.removeClass('disabled').addClass('btn-primary').text('Click here to save your items');
-    saveBottomButton.removeClass('disabled').addClass('btn-primary').text('Click here to save your items');
-}
-
-function addItemForm(collectionHolder, $newLinkLi) {
-    // Get the data-prototype explained earlier
-    var prototype = collectionHolder.data('prototype');
-
-    // get the new index
-    var index = collectionHolder.data('index');
-
-    // Replace '__name__' in the prototype's HTML to
-    // instead be a number based on how many items we have
-    var newForm = prototype.replace(/__name__/g, index);
-
-    // increase the index with one for the next item
-    collectionHolder.data('index', index + 1);
-
-    // Display the form in the page in an li, before the "Add a baked item" link li
-    var $newFormLi = $('<li></li>').append(newForm);
-
-    $newLinkLi.before($newFormLi);
-
-    addItemDeleteLink($newFormLi);
-    submitEnabled();
-}
-
-function addItemDeleteLink($itemFormLi) {
-    var $removeFormA = $('<a href="#"><i class="icon-remove-sign"></i></a>')
-    $itemFormLi.append($removeFormA);
-
-    $removeFormA.on('click', function(e) {
-        e.preventDefault();
-        $itemFormLi.remove();
-        submitEnabled()
-    });
 }

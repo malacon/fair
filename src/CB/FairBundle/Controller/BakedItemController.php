@@ -212,6 +212,8 @@ class BakedItemController extends Controller
             $this->getUser()->setBakedItem($bakedItem);
         }
 
+        $this->checkUserPassed();
+
         $em->persist($bakedItem);
         $em->persist($this->getUser());
         $em->flush();
@@ -238,6 +240,7 @@ class BakedItemController extends Controller
             'description' => $bakedItem->getDescription(),
             'isItemAvailable' => $bakedItem->isItemAvailable(),
             'isWorkerBaking' => $this->getUser()->isBaking(),
+            'isPassed' => $this->getUser()->getIsPassedRules(),
         );
     }
 

@@ -9,9 +9,6 @@
         </div>
     {% else %}
         <div class="well">
-            {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-            {{ form_row(form.saveTop, {'attr': {'class': 'btn disabled btn-block'}}) }}
-            <br>
             <p><strong>Instructions: </strong>You must work either 10 hours, or work 8 hours and bring one baked good and one $25 craft item or one $100 auction item, or work 8 hours and bring two auction/craft items.</p>
             <div class="accordion" id="registration">
                 <div class="accordion-group">
@@ -54,17 +51,13 @@
                 </div>
                 <div id="auctionGoods" class="accordion-body collapse in">
                     <div class="accordion-inner">
-                        <ul class="auctionItems" data-prototype='{{ form_widget(form.auctionItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.auctionItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }} for {{ form_widget(form.auctionItems.vars.prototype.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}})|e }}'>
-                            {% for auctionItem in form.auctionItems %}
-                                <li>
-                                    {{ form_widget(auctionItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
-                                    of
-                                    {{ form_widget(auctionItem.description, {'attr': {'rows': '1'}}) }}
-                                    for
-                                    {{ form_widget(auctionItem.cost, {'attr': {'placeholder': 'cost', 'class': 'input-small'}}) }}
-                                </li>
-                            {% endfor %}
-                        </ul>
+                        <p>You can bring up to two $25 craft item or $100 auction item.</p>
+                        <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a>
+                        <div class="auctionItems">
+                        {% for auctionItem in app.user.auctionItems %}
+                            <div class="auctionItem alert" data-auction-id="{{ auctionItem.id }}">{{ auctionItem }}<a class="close" href="{{ path('auction_remove', {'id': auctionItem.id}) }}">&times;</a></div>
+                        {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="accordion-group">
@@ -97,7 +90,6 @@
                     </div>
                 </div>
             </div>
-            {{ form_row(form.saveBottom, {'attr': {'class': 'btn disabled btn-block'}}) }}
         </div>
     {% endif %}
 

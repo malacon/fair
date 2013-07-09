@@ -7,19 +7,15 @@
         <thead>
             <tr>
                 <th>Description</th>
-                <th>Quantity</th>
-                <th>Cost</th>
-                <th>User</th>
+                <th>Family</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('auctionitem_show', { 'id': entity.id }) }}">{{ entity.description }}</a></td>
-                <td>{{ entity.quantity }}</td>
-                <td>{{ entity.cost }}</td>
-                <td>{{ entity.user }}</td>
+                <td><a href="{{ path('auctionitem_show', { 'id': entity.id }) }}">{{ entity }}</a></td>
+                <td>{{ entity.user.familyName }}</td>
                 <td>
                 <ul>
                     <li>

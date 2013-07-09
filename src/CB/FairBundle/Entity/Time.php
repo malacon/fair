@@ -231,7 +231,7 @@ class Time
      */
     public function __toString()
     {
-        return (string)$this->time->format('D\, M jS \a\t g A');
+        return (string)$this->time->format('D\, M jS \a\t g A').' - '.(string)$this->time->format('g A');
     }
 
     public function getTimestamp()

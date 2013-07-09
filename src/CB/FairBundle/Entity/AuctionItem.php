@@ -28,27 +28,10 @@ class AuctionItem
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
-     * @Assert\NotBlank()
-     * @Assert\Length(min = "3")
+     * @ORM\Column(name="type", type="string")
+     * @Assert\Choice(choices = {"craft", "auction"}, message = "Choose a valid item type")
      */
-    private $description;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantity", type="integer")
-     * @Assert\NotBlank()
-     */
-    private $quantity;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="cost", type="decimal")
-     * @Assert\NotBlank()
-     */
-    private $cost;
+    private $type;
 
     /**
      * @var integer
@@ -87,75 +70,6 @@ class AuctionItem
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return AuctionItem
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param integer $quantity
-     * @return AuctionItem
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    
-        return $this;
-    }
-
-    /**
-     * Get quantity
-     *
-     * @return integer 
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * Set cost
-     *
-     * @param float $cost
-     * @return AuctionItem
-     */
-    public function setCost($cost)
-    {
-        $this->cost = $cost;
-    
-        return $this;
-    }
-
-    /**
-     * Get cost
-     *
-     * @return float 
-     */
-    public function getCost()
-    {
-        return $this->cost;
     }
 
     /**
@@ -236,6 +150,28 @@ class AuctionItem
 
     public function __toString()
     {
-        return $this->description;
+        if ($this->type == 'craft') {
+            return '$25 craft item';
+        } else {
+            return '$100 auction item';
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

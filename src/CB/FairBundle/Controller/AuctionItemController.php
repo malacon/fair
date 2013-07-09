@@ -192,6 +192,75 @@ class AuctionItemController extends Controller
     }
 
     /**
+     * @Route("/{type}/add.{_format}", name="auction_add", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function addAuctionItemAction($type)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var \CB\FairBundle\Entity\AuctionItem $auctionItem */
+        $auctionItem = new AuctionItem();
+        $auctionItem->setType($type);
+        $this->getUser()->addAuctionItem($auctionItem);
+
+        $em->persist($auctionItem);
+        $em->persist($this->getUser());
+        $em->flush();
+
+        $this->checkUserPassed();
+        $data = $this->getBaseData($auctionItem);
+        $data['isRemoved'] = false;
+        $data['numAuctions'] = $this->getUser()->getNumOfAuctionItems();
+        $data['isPassed'] = $this->getUser()->getIsPassedRules();
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse($data);
+        }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @Route("/{id}/remove.{_format}", name="auction_remove", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function removeAuctionItemAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('FairBundle:AuctionItem')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find AuctionItem entity.');
+        }
+
+        $data = $this->getBaseData($entity);
+        $em->remove($entity);
+        $em->flush();
+
+        $this->checkUserPassed();
+        $data['isRemoved'] = true;
+        $data['numAuctions'] = $this->getUser()->getNumOfAuctionItems();
+        $data['isPassed'] = $this->getUser()->getIsPassedRules();
+
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse($data);
+        }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @param AuctionItem $auctionItem
+     * @return array
+     */
+    private function getBaseData($auctionItem)
+    {
+        return array(
+            'id' => $auctionItem->getId(),
+            'description' => $auctionItem->__toString(),
+            'url' => $this->generateUrl('auction_remove', array('id' => $auctionItem->getId())),
+            'isPassed' => $this->getUser()->getIsPassedRules(),
+        );
+    }
+
+    /**
      * Creates a form to delete a AuctionItem entity by id.
      *
      * @param mixed $id The entity id

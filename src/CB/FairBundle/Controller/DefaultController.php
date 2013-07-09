@@ -38,57 +38,10 @@ class DefaultController extends Controller
             $originalAuctionItems[] = $item;
         }
 
-        $form = $this->createForm(new RegisterType(), $this->getUser());
-
-        $form->handleRequest($request);
-
-        $validator = $this->get('validator');
-        $errors = $validator->validate($request);
-        if (count($errors) > 0) {
-            return new Response(print_r($errors, true));
-        }
-
-        if ($form->isSubmitted()) {
-
-//            foreach ($this->getUser()->getBakedItem() as $item) {
-//                foreach ($originalBakedItems as $key => $toDel) {
-//                    if ($toDel->getId() === $item->getId()) {
-//                        unset($originalBakedItems[$key]);
-//                    }
-//                }
-//            }
-//
-//            /** @var \CB\FairBundle\Entity\BakedItem $item */
-//            foreach ($originalBakedItems as $item) {
-//
-//                $em->remove($item);
-//            }
-
-            foreach ($this->getUser()->getAuctionItems() as $item) {
-                foreach ($originalAuctionItems as $key => $toDel) {
-                    if ($toDel->getId() === $item->getId()) {
-                        unset($originalAuctionItems[$key]);
-                    }
-                }
-            }
-
-            foreach ($originalAuctionItems as $item) {
-
-                $em->remove($item);
-            }
-
-            $this->checkUserPassed();
-
-            /** @var \Doctrine\ORM\EntityManager $em */
-            $em->merge($this->getUser());
-            $em->persist($this->getUser());
-            $em->flush();
-        }
 
         return array(
             'booths' => $booths,
             'bakedItems' => $bakedItems,
-            'form' => $form->createView(),
             'rules' => $rules,
         );
     }
