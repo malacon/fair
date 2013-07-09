@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadAuctionData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AuctionItemController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AuctionItemController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/BakedItemController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/BakedItemController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AuctionItem/index.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AuctionItem/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud" />
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/dummy.txt" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372802019277" ignored="false" />
@@ -101,7 +89,17 @@
     <favorites_list name="Fair" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="105" column="1" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.8226087">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -972,7 +970,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="748" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -985,7 +983,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26136363" sideWeight="0.31946754" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27045456" sideWeight="0.6705491" order="2" side_tool="true" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27045456" sideWeight="0.6705491" order="2" side_tool="true" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1165,16 +1163,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="20" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.90434784">
+        <state line="85" column="0" selection-start="2642" selection-end="2642" vertical-scroll-proportion="0.1378026">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="2642" selection-end="2642" vertical-scroll-proportion="0.1378026">
+        <state line="105" column="1" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.8226087">
           <folding />
         </state>
       </provider>
