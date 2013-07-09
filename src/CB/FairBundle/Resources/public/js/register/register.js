@@ -5,6 +5,7 @@
  */
 
 $(function() {
+    $('.accordion-heading .close').popover({placement: 'left', html: true});
     $('[data-time-id]').on('click', 'a', function(e) {
         var $this = $(this),
             url = $this.attr('href');
@@ -69,12 +70,23 @@ function updateDisabledSubmitButtons(data) {
         }
     });
 }
+
+function isPassed(data) {
+    $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+    $('.status').toggleClass('btn-danger', !data.isPassed).toggleClass('btn-success', data.isPassed);
+    if (data.isPassed) {
+        $('.status').text('Requirements Met');
+    } else {
+        $('.status').text('Requirements not Met');
+    }
+}
+
 function updateButtons(data) {
     if (data.userChanged) {
         $('[data-time-id='+data.id+'] .attend-toggle').toggleClass('hidden', data.userAdded);
         $('[data-time-id='+data.id+'] .not-attend-toggle').toggleClass('hidden',data.userRemoved);
         $('.hours').text(data['quantities']['hours']);
-        $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+        isPassed(data);
 
         updateDisabledSubmitButtons(data);
     } else if (data.timeFilled && !data.timeWorked) {
@@ -83,7 +95,7 @@ function updateButtons(data) {
 }
 
 function updateAuctionButtons(data) {
-    $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+    isPassed(data);
     $('.auction').text(data.numAuctions);
     // IF removed, find the id and remove the tag
     if (data.isRemoved) {
@@ -107,7 +119,7 @@ function updateBakedButtons(data) {
         btnUnavailableTXT = 'is Unavailable';
 
     // Update the hours counter
-    $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+    isPassed(data);
     $('.baked').text(data.isWorkerBaking?1:0);
     // Reset all buttons
     bakedItemButtons.each(function() {

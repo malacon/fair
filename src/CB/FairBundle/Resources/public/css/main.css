@@ -88,6 +88,10 @@ ul.times > li a {
     color: #F7C8C8;
 }
 
+.accordion-group:hover a.close {
+    color: inherit;
+}
+
 .accordion-body {
     background: #fff;
     border: 1px solid #E5E5E5;
@@ -103,4 +107,26 @@ ul.times > li a {
 .auctionItem {
     margin-bottom: 5px;
     width: 150px;
+}
+.accordion-heading {
+    position: relative;
+}
+
+.accordion-heading .close {
+    top: 0;
+    position: absolute;
+    right: 0;
+    color: #000;
+    font-weight: normal;
+    opacity: 1;
+    text-shadow: none;
+    z-index: 1000;
+}
+
+.accordion-heading .close:hover {
+    color: #000;
+}
+
+.popover-content .alert {
+    padding: 0;
 }

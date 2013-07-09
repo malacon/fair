@@ -120,9 +120,13 @@
                         </ul>
                     {% elseif is_granted('ROLE_USER') %}
                         <h4>Welcome Mr. and Mrs. {{ app.user.familyName }}</h4>
-
-                        <strong>Instructions</strong>
-                        <p>Select the booth times, baked items and auction items you commit to working/bringing to the Fair.</p>
+                        <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements Met{% else %}Requirements not Met{% endif %}</span>
+                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
+                            You have signed up for:
+                            <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
+                            <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
+                            <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> auction items,
+                        </div>
                         <div class="family">
                             <strong>Family Information:</strong>
                             <ul class="children unstyle">
@@ -142,12 +146,6 @@
                                     <li>{{ rule }}</li>
                                 {% endfor %}
                             </ul>
-                            <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
-                                You have signed up for:
-                                <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
-                                <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
-                                <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> auction items,
-                            </div>
                         </div>
                     {% else %}
                     {% endif %}

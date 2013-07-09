@@ -231,7 +231,10 @@ class Time
      */
     public function __toString()
     {
-        return (string)$this->time->format('D\, M jS \a\t g A').' - '.(string)$this->time->format('g A');
+//        $nextHour = clone $this->time;
+//        $nextHour->add(new \DateInterval('P01H'));
+//        $this->time->diff($this->time->add(new \DateInterval('P01H')))->format()
+        return (string)$this->time->format('D\, M jS \a\t g A');//.' - '.(string)$nextHour->format('g A');
     }
 
     public function getTimestamp()
