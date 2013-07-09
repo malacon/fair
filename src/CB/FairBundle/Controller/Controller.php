@@ -3,6 +3,7 @@
 namespace CB\FairBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+use Symfony\Component\HttpFoundation\Response;
 
 class Controller extends BaseController
 {
@@ -32,6 +33,18 @@ class Controller extends BaseController
         $rules = $rulesRepo->findAll();
         $this->getUser()->setIsPassedRules($rules);
         return $rules;
+    }
+
+    /**
+     * @param bool $attending
+     * @return Response
+     */
+    protected function createJsonResponse($data)
+    {
+        $response = new Response(json_encode($data));
+        $response->headers->set('Content-Type', 'text/json; charset=UTF-8');
+
+        return $response;
     }
 
 }

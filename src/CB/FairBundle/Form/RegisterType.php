@@ -25,12 +25,6 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('bakedItems', 'collection', array(
-                'type' => new BakedItemType(),
-                'allow_add' => true,
-                'by_reference' => false,
-                'allow_delete' => true,
-            ))
             ->add('auctionItems', 'collection', array(
                 'type' => new AuctionItemType(),
                 'allow_add' => true,

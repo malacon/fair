@@ -50,12 +50,12 @@ class User extends BaseUser
     private $auctionItems;
 
     /**
-     * @var ArrayCollection
+     * @var \CB\FairBundle\Entity\BakedItem
      *
-     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\BakedItem", mappedBy="user", cascade={"persist"})
-     * @Assert\Valid
+     * @ORM\ManyToOne(targetEntity="\CB\FairBundle\Entity\BakedItem", inversedBy="workers", cascade={"persist"})
+     * @ORM\JoinColumn(name="baked_item_id", referencedColumnName="id")
      */
-    private $bakedItems;
+    private $bakedItem;
 
     /**
      * @var ArrayCollection
@@ -78,7 +78,6 @@ class User extends BaseUser
         parent::__construct();
         $this->times = new ArrayCollection();
         $this->auctionItems = new ArrayCollection();
-        $this->bakedItems = new ArrayCollection();
     }
 
     /**
@@ -303,9 +302,9 @@ class User extends BaseUser
     /**
      * @return ArrayCollection
      */
-    public function getBakedItems()
+    public function getBakedItem()
     {
-        return $this->bakedItems;
+        return $this->bakedItem;
     }
 
     /**
@@ -314,12 +313,13 @@ class User extends BaseUser
      * @param BakedItem $bakedItem
      * @return $this
      */
-    public function addBakedItem(BakedItem $bakedItem)
+    public function setBakedItem(BakedItem $bakedItem)
     {
-        if (!$this->bakedItems->contains($bakedItem)) {
-            $bakedItem->setUser($this);
-            $this->bakedItems[] = $bakedItem;
+        // if baked item already set remove it from the worker
+        if ($this->bakedItem != null) {
+            $this->bakedItem->removeWorker($this);
         }
+        $this->bakedItem = $bakedItem;
 
         return $this;
     }
@@ -327,16 +327,28 @@ class User extends BaseUser
     /**
      * Adds a baked item to the user
      *
-     * @param BakedItem $bakedItem
      * @return $this
      */
-    public function removeBakedItem(BakedItem $bakedItem)
+    public function removeBakedItem()
     {
-        if ($this->bakedItems->contains($bakedItem)) {
-            $this->bakedItems->removeElement($bakedItem);
-        }
+        $this->bakedItem->removeWorker($this);
+        $this->bakedItem = null;
 
         return $this;
+    }
+
+    public function isBaking()
+    {
+        return (bool)$this->bakedItem;
+    }
+
+    /**
+     * @param BakedItem $item
+     * @return bool
+     */
+    public function isBakingItem(BakedItem $item)
+    {
+        return $item == $this->bakedItem;
     }
 
     /**
@@ -385,9 +397,9 @@ class User extends BaseUser
      *
      * @return int
      */
-    public function getNumOfBakedItems()
+    public function hasBakedItem()
     {
-        return $this->bakedItems->count();
+        return ($this->bakedItem == null? 0 : 1);
     }
 
     /**

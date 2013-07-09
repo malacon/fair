@@ -11,14 +11,21 @@ class LoadBakedData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $user = $this->getReference('user-user');
-
         $item1 = new BakedItem();
-        $item1->setDescription('cookies');
-        $item1->setQuantity(12);
-        $item1->setUser($user);
+        $item1->setDescription('2 Dozen Cookies')
+            ->setQuantity(12);
+
+        $item2 = new BakedItem();
+        $item2->setDescription('2 Dozen Brownies')
+            ->setQuantity(1);
+
+        $item3 = new BakedItem();
+        $item3->setDescription('42 Dozen Pies')
+            ->setQuantity(0);
 
         $manager->persist($item1);
+        $manager->persist($item2);
+        $manager->persist($item3);
         $manager->flush();
     }
 

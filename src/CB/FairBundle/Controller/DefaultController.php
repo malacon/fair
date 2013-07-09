@@ -24,12 +24,15 @@ class DefaultController extends Controller
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
         $booths = $boothRepo->findAll();
 
+        $bakedRepo = $this->getDoctrine()->getRepository('FairBundle:BakedItem');
+        $bakedItems = $bakedRepo->findAll();
+
         $rules = $this->checkUserPassed();
 
-        $originalBakedItems = array();
-        foreach($this->getUser()->getBakedItems() as $item) {
-            $originalBakedItems[] = $item;
-        }
+//        $originalBakedItems = array();
+//        foreach($this->getUser()->getBakedItem() as $item) {
+//            $originalBakedItems[] = $item;
+//        }
         $originalAuctionItems = array();
         foreach($this->getUser()->getAuctionItems() as $item) {
             $originalAuctionItems[] = $item;
@@ -47,19 +50,19 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted()) {
 
-            foreach ($this->getUser()->getBakedItems() as $item) {
-                foreach ($originalBakedItems as $key => $toDel) {
-                    if ($toDel->getId() === $item->getId()) {
-                        unset($originalBakedItems[$key]);
-                    }
-                }
-            }
-
-            /** @var \CB\FairBundle\Entity\BakedItem $item */
-            foreach ($originalBakedItems as $item) {
-
-                $em->remove($item);
-            }
+//            foreach ($this->getUser()->getBakedItem() as $item) {
+//                foreach ($originalBakedItems as $key => $toDel) {
+//                    if ($toDel->getId() === $item->getId()) {
+//                        unset($originalBakedItems[$key]);
+//                    }
+//                }
+//            }
+//
+//            /** @var \CB\FairBundle\Entity\BakedItem $item */
+//            foreach ($originalBakedItems as $item) {
+//
+//                $em->remove($item);
+//            }
 
             foreach ($this->getUser()->getAuctionItems() as $item) {
                 foreach ($originalAuctionItems as $key => $toDel) {
@@ -84,6 +87,7 @@ class DefaultController extends Controller
 
         return array(
             'booths' => $booths,
+            'bakedItems' => $bakedItems,
             'form' => $form->createView(),
             'rules' => $rules,
         );
@@ -133,7 +137,7 @@ class DefaultController extends Controller
             'isUserPassed' => $this->getUser()->getIsPassedRules(),
             'hours' => $this->getUser()->getNumOfHours(),
             'auction' => $this->getUser()->getNumOfAuctionItems(),
-            'baked' => $this->getUser()->getNumOfBakedItems(),
+            'baked' => $this->getUser()->hasBakedItem(),
         );
         if($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createWorkingJson($data);

@@ -225,11 +225,11 @@ class Rule
     public function isPassed(User $worker)
     {
 //        print_r('auction: '.$worker->getNumOfAuctionItems().' : '.$this->numberOfAuctionItems);
-//        print_r('Baked: '.$worker->getNumOfBakedItems().' : '.$this->numberOfBakedItems);
+//        print_r('Baked: '.$worker->hasBakedItem().' : '.$this->numberOfBakedItems);
 //        print_r('Hours: '.$worker->getNumOfHours().' : '.$this->numberOfTimes);
         return
             $this->hasEnoughAuctionItems($worker->getNumOfAuctionItems()) &&
-            $this->hasEnoughBakedItems($worker->getNumOfBakedItems()) &&
+            $this->hasEnoughBakedItems($worker->hasBakedItem()) &&
             $this->hasEnoughHours($worker->getNumOfHours());
     }
 

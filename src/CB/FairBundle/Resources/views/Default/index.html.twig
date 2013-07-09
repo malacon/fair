@@ -12,21 +12,41 @@
             {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
             {{ form_row(form.saveTop, {'attr': {'class': 'btn disabled btn-block'}}) }}
             <br>
+            <p><strong>Instructions: </strong>You must work either 10 hours, or work 8 hours and bring one baked good and one $25 craft item or one $100 auction item, or work 8 hours and bring two auction/craft items.</p>
             <div class="accordion" id="registration">
                 <div class="accordion-group">
                     <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#bakedGoods">Baked Goods</a></div>
                 </div>
                 <div id="bakedGoods" class="accordion-body collapse in">
                     <div class="accordion-inner">
-                        <ul class="bakedItems" data-prototype='{{ form_widget(form.bakedItems.vars.prototype.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}})|e }} of {{ form_widget(form.bakedItems.vars.prototype.description, {'attr': {'rows': '1'}})|e }}'>
-                            {% for bakedItem in form.bakedItems %}
-                                <li>
-                                    {{ form_widget(bakedItem.quantity, {'attr': {'placeholder': 'quantity', 'class': 'input-small'}}) }}
-                                    of
-                                    {{ form_widget(bakedItem.description, {'attr': {'rows': '1'}}) }}
-                                </li>
+                        <p>Click on the item you wish to bring.  You can only bring one baked item.  To unbring an item, click on it and the other options will be available.</p>
+                        <div class="bakedItems">
+                            {% for bakedItem in bakedItems %}
+                                {#
+                                    IF baking this item: have color be success, words say baking
+                                    IF baking another item, have color be inverse, disable, words say nothing
+                                    IF item is not available, have color be inverse, disable, words say Unavailable
+                                    ELSE color success, words say nothing
+                                #}
+                                <a data-baked-id="{{ bakedItem.id }}"
+                                   class="btn {% if not bakedItem.isItemAvailable() and not app.user.isBakingItem(bakedItem) -%}
+                                        disabled
+                                        {%- endif %} {% if app.user.isBakingItem(bakedItem) -%}
+                                        btn-warning
+                                        {%- elseif bakedItem.isItemAvailable() -%}
+                                        btn-success
+                                    {%- endif -%}"
+                                   href="{{ path('baked_bring', {'id': bakedItem.id}) }}.json">
+                                    {%- if app.user.isBakingItem(bakedItem) -%}
+                                        You are baking: <span>{{ bakedItem }}</span>
+                                    {%- elseif not bakedItem.isItemAvailable() -%}
+                                        <span>{{ bakedItem }}</span> is Unavailable
+                                    {%- else -%}
+                                        <span>{{ bakedItem }}</span>
+                                    {%- endif -%}
+                                </a>
                             {% endfor %}
-                        </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="accordion-group">
@@ -65,8 +85,8 @@
                                             <li data-time-id="{{ time.id }}" data-timestamp="{{ time.time.getTimestamp() }}">
                                                 {{ time }}
                                                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}  {# show not avaible if is filled and not using the current worker| true #}
-                                                    <a href="{{ path('booth_work', {'id': time.id}) }}" class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>
-                                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(app.user) %} hidden{% endif %}">Remove</a>
+                                                    <a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>
+                                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}.json" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(app.user) %} hidden{% endif %}">Remove</a>
                                                 {% endif %}
                                             </li>
                                         {% endfor %}

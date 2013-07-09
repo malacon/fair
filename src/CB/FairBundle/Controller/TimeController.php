@@ -294,24 +294,12 @@ class TimeController extends Controller
             'userRemoved' => false,
             'quantities' => array(
                 'hours' => $this->getUser()->getNumOfHours(),
-                'bakedItems' => $this->getUser()->getNumOfBakedItems(),
+                'bakedItems' => $this->getUser()->hasBakedItem(),
                 'auctionItems' => $this->getUser()->getAuctionItems(),
             ),
             'isPassed' => $this->getUser()->getIsPassedRules(),
         );
 
-    }
-
-    /**
-     * @param bool $attending
-     * @return Response
-     */
-    private function createJsonResponse($data)
-    {
-        $response = new Response(json_encode($data));
-        $response->headers->set('Content-Type', 'text/json; charset=UTF-8');
-
-        return $response;
     }
 
     /**

@@ -192,6 +192,56 @@ class BakedItemController extends Controller
     }
 
     /**
+     * Signs up the user for the baked item
+     *
+     * @Route("/{id}/bring.{_format}", name="baked_bring", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function bakedBringAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        /** @var \CB\FairBundle\Entity\BakedItem $bakedItem */
+        $bakedItem = $em->getRepository('FairBundle:BakedItem')->find($id);
+
+        if (!$bakedItem) {
+            throw $this->createNotFoundException();
+        }
+
+        if ($this->getUser()->getBakedItem() == $bakedItem) {
+            $this->getUser()->removeBakedItem();
+        } else {
+            $this->getUser()->setBakedItem($bakedItem);
+        }
+
+        $em->persist($bakedItem);
+        $em->persist($this->getUser());
+        $em->flush();
+
+        $filledItems = $em->getRepository('FairBundle:BakedItem')->getBakedItemsThatAreFilledAsArray();
+        $data = $this->getBaseData($bakedItem, $filledItems);
+
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse($data);
+        }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @param BakedItem $bakedItem
+     * @return array
+     */
+    private function getBaseData($bakedItem, $unfilledItems)
+    {
+        return array(
+            'id' => $bakedItem->getId(),
+            'unavailableItems' => $unfilledItems,
+            'description' => $bakedItem->getDescription(),
+            'isItemAvailable' => $bakedItem->isItemAvailable(),
+            'isWorkerBaking' => $this->getUser()->isBaking(),
+        );
+    }
+
+    /**
      * Creates a form to delete a BakedItem entity by id.
      *
      * @param mixed $id The entity id

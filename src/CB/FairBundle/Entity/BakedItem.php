@@ -2,6 +2,7 @@
 
 namespace CB\FairBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use CB\UserBundle\Entity\User;
@@ -42,15 +43,21 @@ class BakedItem
     private $quantity;
 
     /**
-     * @var integer
+     * @var ArrayCollection
      *
-     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\User", inversedBy="bakedItems")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="bakedItem", cascade={"persist"})
      */
-    private $user;
+    private $workers;
 
     /**
-     * @var datetime
+     * @var bool
+     *
+     * @ORM\Column(name="available", type="boolean")
+     */
+    private $available;
+
+    /**
+     * @var \Datetime
      *
      * @ORM\Column(name="created", type="datetime")
      * @Gedmo\Timestampable(on="create")
@@ -58,7 +65,7 @@ class BakedItem
     private $created;
 
     /**
-     * @var datetime
+     * @var \Datetime
      *
      * @ORM\Column(name="updated", type="datetime")
      * @Gedmo\Timestampable(on="update")
@@ -69,6 +76,8 @@ class BakedItem
     {
         $this->created = new \DateTime('NOW');
         $this->updated = new \DateTime('NOW');
+        $this->workers = new ArrayCollection();
+        $this->available = true;
     }
 
     /**
@@ -113,6 +122,7 @@ class BakedItem
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+        $this->available = $this->quantity>0?true:false;
     
         return $this;
     }
@@ -128,26 +138,73 @@ class BakedItem
     }
 
     /**
-     * Set user
-     *
-     * @param integer $user
-     * @return BakedITem
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
      * Get user
      *
      * @return integer 
      */
-    public function getUser()
+    public function getWorkers()
     {
-        return $this->user;
+        return $this->workers;
+    }
+
+    /**
+     * Adds worker to the baked item
+     *
+     * @param User $worker
+     * @return bool
+     */
+    public function addWorker(User $worker)
+    {
+        // If the worker is signed up
+        if (!$this->workers->contains($worker) && $this->isItemAvailable()) {
+            // Add the time to the worker
+            $worker->setBakedItem($this);
+            // Add the worker to the time
+            $this->workers[] = $worker;
+            $this->available = $this->isItemAvailable();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Removes a worker from the baked item
+     *  OWNER
+     *
+     * @param User $worker
+     * @return Bool
+     */
+    public function removeWorker(User $worker)
+    {
+        // If the worker isn't already signed up
+        if ($this->workers->contains($worker)) {
+            // Remove the time from the worker
+            // Remove the worker from the time
+            $this->workers->removeElement($worker);
+            $this->available = $this->isItemAvailable();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getNumberOfUsers()
+    {
+        return $this->workers->count();
+    }
+
+    /**
+     * @param User $worker
+     */
+    public function isUserAlreadyBringingABakedItem($worker)
+    {
+        return $worker->isBaking();
+    }
+
+    public function isItemAvailable()
+    {
+        return $this->getNumberOfUsers() < $this->quantity;
     }
 
     /**
