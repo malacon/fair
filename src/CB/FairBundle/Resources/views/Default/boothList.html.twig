@@ -31,8 +31,9 @@
                             <div data-time-id="{{ time.id }}" data-timestamp="{{ time.time.getTimestamp() }}">
                                 <span>{{ time }}</span>
                                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}  {# show not avaible if is filled and not using the current worker| true #}
-                                    <a href="{{ path('booth_work', {'id': time.id}) }}.json" data-loading-text="Loading..." class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>
-                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}.json" data-loading-text="Loading..." class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(app.user) %} hidden{% endif %}">Remove</a>
+                                    {#<a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>#}
+                                    <a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% elseif time.isUserAlreadySignedUpAtThisTime(app.user) %} btn-info disabled{% elseif time.isFilled() %} btn-inverse disabled{% else %} btn-info{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>
+                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}.json" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(app.user) %} hidden{% endif %}">Remove</a>
                                 {% endif %}
                             </div>
                             {% endfor %}
