@@ -1,0 +1,45 @@
+<div class="accordion" id="booths-list">
+    {% for booth in booths %}
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#booths-list" href="#collapse{{ loop.index }}">
+                    {{ booth }}<span>Click to {% if loop.index == 1 %}close{% else %}open{% endif %}</span>
+                </a>
+            </div>
+            <div id="collapse{{ loop.index }}" class="accordion-body collapse{% if loop.index == 1 %} in{% endif %}">
+                <div class="accordion-inner">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <p>{{ booth.description }}</p>
+                            <p><strong>Location: </strong>{{ booth.location }}</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid times">
+                        <div class="span4">
+                            {% set day = 'start' %}
+                            {% for time in booth.times %}
+                            {% if day == 'start' %}
+                            {% set day = time.time|date('l') %}
+                            <div class="heading text-center"><strong>{{ day }}</strong></div>
+                            {% elseif day != time.time|date('l') %}
+                        </div>
+                        <div class="span4">
+                            {% set day = time.time|date('l') %}
+                            <div class="heading text-center"><strong>{{ day }}</strong></div>
+                            {% else %}
+                            {% endif %}
+                            <div data-time-id="{{ time.id }}" data-timestamp="{{ time.time.getTimestamp() }}">
+                                <span>{{ time }}</span>
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}  {# show not avaible if is filled and not using the current worker| true #}
+                                    <a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>
+                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}.json" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(app.user) %} hidden{% endif %}">Remove</a>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

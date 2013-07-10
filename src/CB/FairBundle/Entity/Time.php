@@ -231,11 +231,11 @@ class Time
      */
     public function __toString()
     {
-//        $nextHour = clone $this->time;
-//        $nextHour->add(new \DateInterval('P01H'));
-//        $this->time->diff($this->time->add(new \DateInterval('P01H')))->format()
-        return (string)$this->time->format('D\, M jS \a\t g A');//.' - '.(string)$nextHour->format('g A');
+        $nextHour = new \DateTime($this->getTime()->format('Y-m-d H:i:s'));
+        $nextHour->add(new \DateInterval('PT01H'));
+        return $this->time->format('g A').' - '.$nextHour->format('g A');
     }
+
 
     public function getTimestamp()
     {

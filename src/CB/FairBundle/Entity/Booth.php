@@ -55,6 +55,7 @@ class Booth
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Time", mappedBy="booth", cascade={"persist"})
+     * @ORM\OrderBy({"time" = "ASC"})
      */
     private $times;
 

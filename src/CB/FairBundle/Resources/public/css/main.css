@@ -76,7 +76,7 @@ ul.times > li a {
     background: rgba(0, 0, 0, 0.58);
 }
 
-.accordion-group a {
+.accordion-heading > a {
     display: block;
     color: #C7C7C7;
     font-size: 20px;
@@ -84,7 +84,7 @@ ul.times > li a {
     text-decoration: none;
 }
 
-.accordion-group:hover a {
+.accordion-group:hover a.accordion-toggle {
     color: #F7C8C8;
 }
 
@@ -129,4 +129,30 @@ ul.times > li a {
 
 .popover-content .alert {
     padding: 0;
+}
+
+.times span {
+    width: 39%;
+    display: inline-table;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.times .heading {
+    margin-bottom:10px;
+}
+
+#booths .accordion-group {
+    background: #5967AF;
+    padding: 0;
+}
+
+#booths .accordion-toggle, #booths .accordion-toggle:hover {
+    color: #fff;
+}
+.accordion-toggle > span {
+    font-size: 16px;
+    font-family: serif;
+    color: #E2E2E2;
+    float:right;
 }

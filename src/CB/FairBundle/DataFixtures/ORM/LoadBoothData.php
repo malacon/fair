@@ -37,6 +37,22 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $manager->persist($time);
         }
 
+        for ($i = 16; $i < 21; $i++) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-06 '. $i .':00:00'));
+            $time->setBooth($booth1);
+            $booth1->addTime($time);
+            $manager->persist($time);
+        }
+
+        for ($i = 8; $i < 16; $i++) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-08 '. $i .':00:00'));
+            $time->setBooth($booth1);
+            $booth1->addTime($time);
+            $manager->persist($time);
+        }
+
         $booth2 = new Booth();
         $booth2->setName('Cake Walk');
         $booth2->setDescription('Walk around the circle.  Win a cake or two!');

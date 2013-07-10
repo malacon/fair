@@ -44,6 +44,17 @@ $(function() {
         $.post(url, null, updateAuctionButtons);
     });
 
+    $('#booths').on('click', '.accordion-toggle', function() {
+        $('#booths .accordion-toggle').each(function() {
+            $(this).children('span').text('Click to open');
+        })
+        if ($(this).parent().siblings().hasClass('in')) {
+            $(this).children('span').text('Click to open');
+        } else {
+            $(this).children('span').text('Click to close');
+        }
+    })
+
 });
 
 /**
