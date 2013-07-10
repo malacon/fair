@@ -35,7 +35,7 @@ monolog:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     %pdf_htmltopdf_location%
+        binary:     /usr/local/bin/wkhtmltopdf
         options:    []
     image:
         enabled:    true
