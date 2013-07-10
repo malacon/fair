@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new CB\FairBundle\FairBundle(),
             new CB\UserBundle\UserBundle(),
         );

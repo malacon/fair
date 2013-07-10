@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use CB\UserBundle\Entity\User;
 use CB\UserBundle\Form\UserType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * User controller.
@@ -206,6 +207,38 @@ class UserController extends Controller
 
         return array(
             'data' => $data,
+        );
+    }
+
+    /**
+     * @Route("/my/status", name="user_status_page")
+     * @Template()
+     */
+    public function printStatusAction()
+    {
+        return array(
+            'data' => $this->getUser()->getStatus(),
+        );
+    }
+
+    /**
+     * @Route("/me/status", name="user_status_pdf")
+     */
+    public function printUserStatusAction()
+    {
+        $data = $this->getUser()->getStatus();
+        $pageUrl = $this->generateUrl('user_status_page', array(), true);
+        $html = $this->renderView('UserBundle:User:printStatus.html.twig', array(
+            'data'  => $data,
+        ));
+
+        return new Response(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'attachment; filename="FairStatus.pdf"'
+            )
         );
     }
 

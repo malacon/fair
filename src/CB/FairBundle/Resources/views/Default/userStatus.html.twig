@@ -4,14 +4,11 @@
         <h3>{{ app.user.familyName }} Family Fair Responsibilities</h3>
     </div>
     <div class="modal-body">
-        <h4>Times</h4>
-        <p>You've signed up to work the following hours:</p>
-        <div class="modal-times">
-        </div>
 
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Print Status</button>
+        {#<a class="btn btn-primary" href="{{ path('user_status_pdf') }}">Print Status</a>#}
+        <a class="btn btn-primary" href="javascript:alert('Note implemented yet');">Print Status</a>
     </div>
 </div>

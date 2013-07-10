@@ -5,13 +5,14 @@
  */
 
 $(function() {
-    $('.accordion-heading .close').popover({placement: 'left', html: true});
+    $('.accordion-heading .close').popover({placement: 'left', html: true, trigger: 'hover'});
     $('[data-time-id]').on('click', 'a', function(e) {
         var $this = $(this),
             url = $this.attr('href');
 
         e.preventDefault();
         if (!$this.hasClass('disabled')) {
+            $this.button('loading..');
             $.post(url, null, updateButtons);
         }
 

@@ -1,22 +1,33 @@
-<p>You've signed up to work the following hours:</p>
-<div class="modal-times">
-    <ul>
-        {% for boothName, booth in data.boothTimes %}
-            <li>
-                <strong>{{ boothName }}</strong>
-                <ul>
-                    {% for time in booth %}
-                        <li>{{ time.time }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="alert{% if app.user.getIsPassedRules() %} alert-success{% else %} alert-danger{% endif %}">
+    {% if app.user.getIsPassedRules() %}
+        <strong>You have met all the requirements!</strong>
+    {% else %}
+        <strong>You need to sign up for more things.</strong>
+    {% endif %}
 </div>
+{% if data.boothTimes|length > 0 %}
+    <p>You've signed up to work the following hours:</p>
+    <div class="modal-times">
+        <ul>
+            {% for boothName, booth in data.boothTimes %}
+                <li>
+                    <strong>{{ boothName }} Booth in the {{ attribute(booth, 1).location }}</strong>
+                    <ul>
+                        {% for time in booth %}
+                            <li>{{ time.time }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <p>You have not signed up to work any times yet!</p>
+{% endif %}
 {% if data.bakedItem %}
-<div class="modal-bakedItem">
-    You agree to bring {{ data.bakedItem }}.
-</div>
+    <div class="modal-bakedItem">
+        You agree to bring {{ data.bakedItem }}.
+    </div>
 {% endif %}
 {% if data.auctionItems|length > 0 %}
     <div class="modal-auctionItem">

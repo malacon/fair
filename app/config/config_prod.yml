@@ -31,3 +31,13 @@ monolog:
             type:  stream
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: debug
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     %pdf_htmltopdf_location%
+        options:    []
+    image:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltoimage
+        options:    []

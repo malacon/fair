@@ -4,7 +4,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/fair/css/main.css') }}"/>
     {#{% stylesheets '@FairBundle/Resources/public/css/*' output='css/compiled/main.css' filter='cssrewrite' %}#}
-        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
     {#{% endstylesheets %}#}
 {% endblock %}
 
@@ -16,7 +16,7 @@
     <script type="text/javascript">
         function getUserList($query, $process) {
             var url = '{{ path('get_user') }}.json',
-                userData;
+                    userData;
             $.post(url, {user: $query}, function(data) {
                 var length = data.length, i = 0, usernames = [];
                 for ( ; i < length; i++) {
@@ -34,8 +34,8 @@
 
             $('.navbar-search').on('submit', function(e) {
                 var $this = $(this),
-                    username = $('.search-query').val(),
-                    url = '{{ path('is_user') }}.json';
+                        username = $('.search-query').val(),
+                        url = '{{ path('is_user') }}.json';
                 e.preventDefault();
                 $.post(url, {user: username}, function(data) {
                     if (data.isUser) {
@@ -61,43 +61,41 @@
                     <div class="nav-collapse">
                         <ul class="nav pull-right nav-list">
                             {% if is_granted("ROLE_ADMIN") %}
-                            <li>
-                                {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
-                                    <form class="navbar-search">
-                                        <input title="View the site via another user.  Type in their username here and press enter to switch to another user." data-action="{{ path('get_user') }}.json" type="text" autocomplete="off" class="search-query" placeholder="User Switch">
-                                    </form>
-                                {% endif %}
-                            </li>
-                            <li class="divider-vertical"></li>
-                            <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin Tools<b class="caret"></b></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a tabindex="-1" href="{{ path('rule') }}">Rules</a></li>
-                                    <li><a tabindex="-1" href="{{ path('booth') }}">Booths</a></li>
-                                    <li><a tabindex="-1" href="{{ path('auctionitem') }}">Auction Items</a></li>
-                                    <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>
-                                </ul>
-                            </li>
+                                <li>
+                                    {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
+                                        <form class="navbar-search">
+                                            <input title="View the site via another user.  Type in their username here and press enter to switch to another user." data-action="{{ path('get_user') }}.json" type="text" autocomplete="off" class="search-query" placeholder="User Switch">
+                                        </form>
+                                    {% endif %}
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin Tools<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                                        <li><a tabindex="-1" href="{{ path('rule') }}">Rules</a></li>
+                                        <li><a tabindex="-1" href="{{ path('booth') }}">Booths</a></li>
+                                        <li><a tabindex="-1" href="{{ path('auctionitem') }}">Auction Items</a></li>
+                                        <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>
+                                    </ul>
+                                </li>
                             {% endif %}
                             <li class="divider-vertical"></li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <li>
-                                    <a href="#modal-status" data-toggle="modal">Report</a>
-                                </li>
-                                <li class="divider-vertical"></li>
-                                <li>
-                                    <a href="{{ path('fos_user_security_logout') }}">
-                                        {{ 'Logout'|trans({}, 'FOSUserBundle') }}
-                                    </a>
-                                </li>
-                                <li class="divider-vertical"></li>
+                                {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
+                                    <li>
+                                        <a href="#modal-status" data-toggle="modal">Report</a>
+                                    </li>
+                                    <li class="divider-vertical"></li>
+                                {% endif %}
                                 <li class="nav-header ">
-                                    <span class="text-info">{{ 'User: ' ~ app.user.username -}}</span>
+                                    <span class="text-info">{{ 'User: ' ~ app.user.username }} - <a href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'Logout'|trans({}, 'FOSUserBundle') }}
+                                        </a></span>
                                 </li>
                                 {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-                                <li class="divider-vertical"></li>
-                                <li>
-                                    <a href="{{ path('home', {_switch_user: '_exit'}) }}">Exit impersonation</a>
-                                </li>
+                                    <li class="divider-vertical"></li>
+                                    <li>
+                                        <a href="{{ path('home', {_switch_user: '_exit'}) }}">Exit impersonation</a>
+                                    </li>
                                 {% endif %}
                             {% else %}
                                 <li><a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a></li>
@@ -112,49 +110,49 @@
     <div class="container-fluid">
         <div class="row-fluid">
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="span3">
-                <div class="sidebar" data-spy="affix" data-offset-top="50">
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <h4>Admin Tools</h4>
-                        <ul>
-                            <li><a href="{{ path('rule') }}">Rules</a></li>
-                            <li><a href="{{ path('booth') }}">Booths</a></li>
-                            <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
-                            <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
-                        </ul>
-                    {% elseif is_granted('ROLE_USER') %}
-                        <h4>Welcome Mr. and Mrs. {{ app.user.familyName }}</h4>
-                        <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements Met{% else %}Requirements not Met{% endif %}</span>
-                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
-                            You have signed up for:
-                            <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
-                            <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
-                            <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> auction items,
-                        </div>
-                        <div class="family">
-                            <strong>Family Information:</strong>
-                            <ul class="children unstyle">
-                                {% if app.user.children %}
-                                    {% for child in app.user.children %}
-                                        <li>{{ child.name }} in grade {{ child.grade }}</li>
+                <div class="span3">
+                    <div class="sidebar" data-spy="affix" data-offset-top="50">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <h4>Admin Tools</h4>
+                            <ul>
+                                <li><a href="{{ path('rule') }}">Rules</a></li>
+                                <li><a href="{{ path('booth') }}">Booths</a></li>
+                                <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
+                                <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
+                            </ul>
+                        {% elseif is_granted('ROLE_USER') %}
+                            <h4>Welcome Mr. and Mrs. {{ app.user.familyName }}</h4>
+                            <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements Met{% else %}Requirements not Met{% endif %}</span>
+                            <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
+                                You have signed up for:
+                                <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
+                                <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
+                                <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> auction items,
+                            </div>
+                            <div class="family">
+                                <strong>Family Information:</strong>
+                                <ul class="children unstyle">
+                                    {% if app.user.children %}
+                                        {% for child in app.user.children %}
+                                            <li>{{ child.name }} in grade {{ child.grade }}</li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <li>No Children???</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <strong>Rules:</strong>
+                                <ul class="rules">
+                                    {% for rule in rules %}
+                                        <li>{{ rule }}</li>
                                     {% endfor %}
-                                {% else %}
-                                    <li>No Children???</li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                        <div class="info">
-                            <strong>Rules:</strong>
-                            <ul class="rules">
-                                {% for rule in rules %}
-                                    <li>{{ rule }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% else %}
-                    {% endif %}
+                                </ul>
+                            </div>
+                        {% else %}
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
             {% endif %}
             <div class="{% if is_granted('IS_AUTHENTICATED_FULLY') %}span9{% else %}span12{% endif %}">
                 {% block content %}

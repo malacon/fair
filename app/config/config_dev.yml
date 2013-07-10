@@ -29,3 +29,14 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     C:\tools\wkhtmltopdf\wkhtmltopdf.exe
+        options:    []
+    image:
+        enabled:    true
+        binary:     "c:\Program Files (x86)\wkhtmltopdf\wkhtmltoimage.exe"
+        options:    []
