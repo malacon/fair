@@ -1,0 +1,25 @@
+<p>You've signed up to work the following hours:</p>
+<div class="modal-times">
+    <ul>
+        {% for boothName, booth in data.boothTimes %}
+            <li>
+                <strong>{{ boothName }}</strong>
+                <ul>
+                    {% for time in booth %}
+                        <li>{{ time.time }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% if data.bakedItem %}
+<div class="modal-bakedItem">
+    You agree to bring {{ data.bakedItem }}.
+</div>
+{% endif %}
+{% if data.auctionItems|length > 0 %}
+    <div class="modal-auctionItem">
+        You agree to bring {% for item in data.auctionItems %}one {{ item }}{% if loop.last %}.{% elseif loop.index == (loop.length - 1) %}, and {% else %}, {% endif %}{% endfor %}
+    </div>
+{% endif %}

@@ -1,0 +1,17 @@
+<div id="modal-status" class="modal hide fade" data-href="{{ path('user_status') }}.html" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>{{ app.user.familyName }} Family Fair Responsibilities</h3>
+    </div>
+    <div class="modal-body">
+        <h4>Times</h4>
+        <p>You've signed up to work the following hours:</p>
+        <div class="modal-times">
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Print Status</button>
+    </div>
+</div>

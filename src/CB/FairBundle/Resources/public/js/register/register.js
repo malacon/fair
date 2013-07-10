@@ -53,9 +53,24 @@ $(function() {
         } else {
             $(this).children('span').text('Click to close');
         }
+    });
+
+    $('#modal-status').on('show', function() {
+        var url = $(this).data('href');
+
+        $.get(url, updateUserStatusReport);
     })
 
 });
+
+function updateUserStatusReport(data) {
+    var $status = $('#modal-status'),
+        $body = $status.children('.modal-body'),
+        $timeList = $('.modal-times'),
+        $booths = $('<ul></ul>');
+
+    $body.html(data);
+}
 
 /**
  * Will cycle through the submit buttons and will disable if the times are the same as the current times

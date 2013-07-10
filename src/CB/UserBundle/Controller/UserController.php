@@ -3,7 +3,7 @@
 namespace CB\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use CB\FairBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -190,6 +190,23 @@ class UserController extends Controller
         }
 
         return $this->redirect($this->generateUrl('user'));
+    }
+
+    /**
+     * @Route("/me/get_status.{_format}", name="user_status", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     * @Template("UserBundle:User:status.html.twig")
+     */
+    public function getUserStatusAction()
+    {
+        $data = $this->getUser()->getStatus();
+
+//        if ($this->getRequest()->getRequestFormat() == 'json') {
+//            return $this->createJsonResponse($data);
+//        }
+
+        return array(
+            'data' => $data,
+        );
     }
 
     /**

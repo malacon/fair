@@ -212,6 +212,7 @@ class User extends BaseUser
 
     /**
      * @return ArrayCollection
+     * @ORM\OrderBy({"booth" = "ASC", "time = "ASC"})
      */
     public function getTimes()
     {
@@ -421,5 +422,37 @@ class User extends BaseUser
         }
 
         return $timestamps;
+    }
+
+    public function getStatus()
+    {
+        return array(
+            'auctionItems' => $this->getAuctionItemsArray(),
+            'boothTimes' => $this->getTimesArray(),
+            'bakedItem' => (string)$this->getBakedItem(),
+        );
+    }
+
+    public function getTimesArray()
+    {
+        $data = array();
+        /** @var \CB\FairBundle\Entity\Time $time */
+        foreach ($this->times as $time) {
+            $data[$time->getBooth()->getName()][] = array(
+                'time' => $time->getTime()->format('l ').$time,
+                'location' => $time->getBooth()->getLocation(),
+            );
+        }
+        return $data;
+    }
+
+    public function getAuctionItemsArray()
+    {
+        $data = array();
+        /** @var \CB\FairBundle\Entity\AuctionItem $item */
+        foreach ($this->auctionItems as $item) {
+            $data[] = (string)$item;
+        }
+        return $data;
     }
 }
