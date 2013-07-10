@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" afterPath="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -127,10 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="boothList.html.twig" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="boothList.html.twig" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="36" selection-start="2970" selection-end="2970" vertical-scroll-proportion="-9.346154">
+            <state line="34" column="113" selection-start="2558" selection-end="2558" vertical-scroll-proportion="0.43883497">
               <folding />
             </state>
           </provider>
@@ -172,10 +172,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="117" selection-start="3430" selection-end="3430" vertical-scroll-proportion="0.3770795">
+            <state line="112" column="117" selection-start="3430" selection-end="3430" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -185,7 +185,11 @@
         <entry file="file://$PROJECT_DIR$/app/config/config_prod.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="37" column="46" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1373468589602" expanded="true" signature="470:743" placeholder="monolog:" />
+                <marker date="1373468589602" expanded="true" signature="483:743" placeholder="handlers:" />
+                <marker date="1373468589602" expanded="true" signature="622:743" placeholder="nested:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -239,8 +243,8 @@
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/config/config_prod.yml" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" />
       </list>
     </option>
   </component>
@@ -791,13 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="11" selection-start="1369" selection-end="1369" vertical-scroll-proportion="-15.884615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
@@ -815,7 +812,11 @@
     <entry file="file://$PROJECT_DIR$/app/config/config_prod.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="46" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1373468589602" expanded="true" signature="470:743" placeholder="monolog:" />
+            <marker date="1373468589602" expanded="true" signature="483:743" placeholder="handlers:" />
+            <marker date="1373468589602" expanded="true" signature="622:743" placeholder="nested:" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -840,16 +841,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
+    <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="36" selection-start="2970" selection-end="2970" vertical-scroll-proportion="-9.346154">
+        <state line="112" column="117" selection-start="3430" selection-end="3430" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="117" selection-start="3430" selection-end="3430" vertical-scroll-proportion="0.3770795">
+        <state line="35" column="11" selection-start="1369" selection-end="1369" vertical-scroll-proportion="-15.884615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="113" selection-start="2558" selection-end="2558" vertical-scroll-proportion="0.43883497">
           <folding />
         </state>
       </provider>
