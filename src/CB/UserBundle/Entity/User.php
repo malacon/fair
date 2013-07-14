@@ -67,6 +67,13 @@ class User extends BaseUser
     private $times;
 
     /**
+     * @var Array
+     *
+     * @ORM\Column(name="spouses", type="array")
+     */
+    private $spouses;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="passedRules", type="boolean")
@@ -454,5 +461,23 @@ class User extends BaseUser
             $data[] = (string)$item;
         }
         return $data;
+    }
+
+    /**
+     * @return Array
+     */
+    public function getSpouses()
+    {
+        return $this->spouses;
+    }
+
+    /**
+     * @param Array $spouses
+     */
+    public function setSpouses($spouses)
+    {
+        $this->spouses = $spouses;
+
+        return $this;
     }
 }
