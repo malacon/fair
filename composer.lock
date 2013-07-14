@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "5333277d17875f58a02e874523784ae8",
+    "hash": "6af6f84b626ba290f01c4625974c0902",
     "packages": [
         {
             "name": "components/bootstrap",
@@ -251,12 +251,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "6924952026b77ff492da559b04ad166d25c611cb"
+                "reference": "b4a135c7db56ecc4602b54a2184368f440cac33e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/6924952026b77ff492da559b04ad166d25c611cb",
-                "reference": "6924952026b77ff492da559b04ad166d25c611cb",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/b4a135c7db56ecc4602b54a2184368f440cac33e",
+                "reference": "b4a135c7db56ecc4602b54a2184368f440cac33e",
                 "shasum": ""
             },
             "require": {
@@ -298,7 +298,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2013-04-11 23:14:04"
+            "time": "2013-07-10 17:04:07"
         },
         {
             "name": "doctrine/dbal",
@@ -594,7 +594,7 @@
                 {
                     "name": "Johannes Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -734,12 +734,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "f488f26fc0bf4d9c3be96135004ca42ab825a897"
+                "reference": "cb9c23b63a578f20d677292168ed739f3c2d4699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/f488f26fc0bf4d9c3be96135004ca42ab825a897",
-                "reference": "f488f26fc0bf4d9c3be96135004ca42ab825a897",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/cb9c23b63a578f20d677292168ed739f3c2d4699",
+                "reference": "cb9c23b63a578f20d677292168ed739f3c2d4699",
                 "shasum": ""
             },
             "require": {
@@ -799,7 +799,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2013-07-08 20:52:41"
+            "time": "2013-07-10 13:41:35"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -876,12 +876,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "5f29b798f1290dd994c4ca133dadf69cccb59a1f"
+                "reference": "ef7119fc9076c3c0b652aa9c8266286472e24dc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/5f29b798f1290dd994c4ca133dadf69cccb59a1f",
-                "reference": "5f29b798f1290dd994c4ca133dadf69cccb59a1f",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/ef7119fc9076c3c0b652aa9c8266286472e24dc1",
+                "reference": "ef7119fc9076c3c0b652aa9c8266286472e24dc1",
                 "shasum": ""
             },
             "require": {
@@ -948,7 +948,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-07-09 18:45:00"
+            "time": "2013-07-10 19:03:29"
         },
         {
             "name": "incenteev/composer-parameter-handler",
