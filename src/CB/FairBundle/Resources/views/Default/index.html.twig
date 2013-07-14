@@ -47,11 +47,11 @@
                     </div>
                 </div>
                 <div class="accordion-group">
-                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#auctionGoods">Auction Items</a><span data-toggle="popover" data-content="You may select as many auction/craft items as you want.  To select an item click on the button.  It will appear below in <span class='alert'>yellow</span>.  To remove an auction item click on the x in the <span class='alert'>yellow</span> box."   data-original-title="<strong>Auction Items Help</strong>" class="close">Help</span></div>
+                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#auctionGoods">Craft\Auction Items</a><span data-toggle="popover" data-content="You may select as many auction/craft items as you want.  To select an item click on the button.  It will appear below in <span class='alert'>yellow</span>.  To remove an auction item click on the x in the <span class='alert'>yellow</span> box."   data-original-title="<strong>Craft\Auction Items Help</strong>" class="close">Help</span></div>
                 </div>
                 <div id="auctionGoods" class="accordion-body collapse in">
                     <div class="accordion-inner">
-                        <p>You can bring up to two $25 craft item or $100 auction item.</p>
+                        <p>Add a craft or auction item by clicking on the buttons below.</p>
                         <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a>
                         <div class="auctionItems">
                         {% for auctionItem in app.user.auctionItems %}

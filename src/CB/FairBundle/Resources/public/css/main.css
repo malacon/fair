@@ -109,14 +109,16 @@ ul.times > li a {
 }
 
 .accordion-heading .close {
-    top: 0;
+    top: 4px;
     position: absolute;
     right: 0;
-    color: #000;
+    color: #FFF;
     font-weight: normal;
     opacity: 1;
-    text-shadow: none;
+    text-shadow: 1px 1px 1px #333;
     z-index: 1000;
+    font-size: 12px;
+    font-family: serif;
 }
 
 .accordion-heading .close:hover {
@@ -151,4 +153,13 @@ ul.times > li a {
     font-family: serif;
     color: #E2E2E2;
     float:right;
+}
+
+.status.btn-danger {
+    padding: 4px;
+    font-size: 16px;
+}
+
+#isPassed {
+    margin-top: 8px;
 }

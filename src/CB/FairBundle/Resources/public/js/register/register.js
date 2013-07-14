@@ -87,7 +87,7 @@ function updateDisabledSubmitButtons(data) {
             id = $this.data('time-id');
 
         if (data.timeWorked) {
-            $this.find('.attend-toggle').addClass('disabled').text('Already Working at this Time');
+            $this.find('.attend-toggle').addClass('disabled').text('Already Working');
         }
         else if (id !== parseInt(data.id, 10) && data.userAdded) {
             $this.find('.attend-toggle').addClass('disabled').text('Currently Occupied');

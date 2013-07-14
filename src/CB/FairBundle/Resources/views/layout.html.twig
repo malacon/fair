@@ -73,7 +73,7 @@
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                                         <li><a tabindex="-1" href="{{ path('rule') }}">Rules</a></li>
                                         <li><a tabindex="-1" href="{{ path('booth') }}">Booths</a></li>
-                                        <li><a tabindex="-1" href="{{ path('auctionitem') }}">Auction Items</a></li>
+                                        <li><a tabindex="-1" href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
                                         <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>
                                     </ul>
                                 </li>
@@ -118,16 +118,16 @@
                                 <li><a href="{{ path('rule') }}">Rules</a></li>
                                 <li><a href="{{ path('booth') }}">Booths</a></li>
                                 <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
-                                <li><a href="{{ path('auctionitem') }}">Auction Items</a></li>
+                                <li><a href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
                             <h4>Welcome Mr. and Mrs. {{ app.user.familyName }}</h4>
-                            <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements Met{% else %}Requirements not Met{% endif %}</span>
+                            <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                             <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
                                 You have signed up for:
                                 <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
                                 <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
-                                <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> auction items,
+                                <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> craft\auction items,
                             </div>
                             <div class="family">
                                 <strong>Family Information:</strong>
@@ -145,7 +145,7 @@
                                 <strong>Rules:</strong>
                                 <ul class="rules">
                                     {% for rule in rules %}
-                                        <li>{{ rule }}</li>
+                                        <li><strong>{{ rule.description }}:</strong> {{ rule }}</li>
                                     {% endfor %}
                                 </ul>
                             </div>

@@ -268,7 +268,7 @@ class Rule
 
     public function __toString()
     {
-        $rule = $this->description.': ';
+        $rule = '';
         if ($this->numberOfTimes > 0) {
             $rule .= $this->numberOfTimes.' hours';
         }
@@ -276,7 +276,7 @@ class Rule
             $rule .= ', '.$this->numberOfBakedItems.' baked goods';
         }
         if ($this->numberOfAuctionItems > 0) {
-            $rule .= ', '.$this->numberOfAuctionItems.' auction items';
+            $rule .= ', '.$this->numberOfAuctionItems.' craft\auction items';
         }
         return $rule;
     }
