@@ -25,7 +25,7 @@ class Family extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -42,7 +42,7 @@ class Family extends BaseUser
     private $eldest;
 
     /**
-     * @var User
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="family", cascade={"persist"})
      */
@@ -51,8 +51,7 @@ class Family extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\Column(name="item")
-     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="user", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="family", cascade={"persist"})
      * @Assert\Valid
      */
     private $saleItems;
@@ -60,7 +59,7 @@ class Family extends BaseUser
     /**
      * @var \CB\FairBundle\Entity\BakedItem
      *
-     * @ORM\Column(name="bakedItem")
+     * @ORM\ManyToOne(targetEntity="CB\UserBundle\Entity\Family", inversedBy="bakedItem", cascade={"persist"})
      */
     private $bakedItem;
 
@@ -76,6 +75,7 @@ class Family extends BaseUser
     {
         parent::__construct();
         $this->saleItems = new ArrayCollection();
+        $this->spouses = new ArrayCollection();
     }
 
     /**
@@ -117,10 +117,17 @@ class Family extends BaseUser
      * @param array $eldest
      * @return Family
      */
-    public function setEldest($eldest)
+    public function setEldest($name, $grade = null)
     {
-        $this->eldest = $eldest;
-    
+        if (is_array($name)) {
+            $this->eldest = $name;
+        } else {
+            $this->eldest = array(
+                'name' => $name,
+                'grade' => $grade,
+            );
+        }
+
         return $this;
     }
 
@@ -134,27 +141,31 @@ class Family extends BaseUser
         return $this->eldest;
     }
 
-    /**
-     * Set spouses
-     *
-     * @param User $spouses
-     * @return Family
-     */
-    public function setSpouses($spouses)
+    public function addSpouse(User $spouse)
     {
-        $this->spouses = $spouses;
-    
+        $spouse->setFamily($this);
+        $this->spouses->set($spouse->getId(), $spouse);
+
         return $this;
     }
 
-    /**
-     * Get spouses
-     *
-     * @return User
-     */
+    public function removeSpouse(User $spouse)
+    {
+        if ($this->spouses->contains($spouse)) {
+            $this->spouses->removeElement($spouse);
+        }
+
+        return $this;
+    }
+
     public function getSpouses()
     {
         return $this->spouses;
+    }
+
+    public function getSpouse($id)
+    {
+        return $this->spouses->get($id);
     }
 
     /**
@@ -180,7 +191,7 @@ class Family extends BaseUser
         return $this->saleItems;
     }
 
-    public function getAuctionItemNames()
+    public function getSaleItemNames()
     {
         $names = array();
         /** @var \CB\FairBundle\Entity\AuctionItem $item */
@@ -198,8 +209,10 @@ class Family extends BaseUser
      */
     public function addSaleItem(AuctionItem $saleItem)
     {
-        $saleItem->setFamily($this);
-        $this->saleItems->add($saleItem);
+        if ($saleItem !== null) {
+            $saleItem->setFamily($this);
+            $this->saleItems->add($saleItem);
+        }
 
         return $this;
     }
@@ -319,7 +332,7 @@ class Family extends BaseUser
      *
      * @return int
      */
-    public function getNumOfAuctionItems()
+    public function getNumOfSaleItems()
     {
         return $this->saleItems->count();
     }
@@ -352,7 +365,7 @@ class Family extends BaseUser
     public function getStatus()
     {
         return array(
-            'auctionItems' => $this->getAuctionItemsArray(),
+            'auctionItems' => $this->getSaleItemsArray(),
             'boothTimes' => $this->getTimesArray(),
             'bakedItem' => (string)$this->getBakedItem(),
         );
@@ -368,7 +381,7 @@ class Family extends BaseUser
         return $data;
     }
 
-    public function getAuctionItemsArray()
+    public function getSaleItemsArray()
     {
         $data = array();
         /** @var \CB\FairBundle\Entity\AuctionItem $item */

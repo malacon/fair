@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AuctionItemController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AuctionItemController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/BoothController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/BoothController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/Controller.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadAuctionData.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadAuctionData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Rule.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Rule.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/RuleController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/RuleController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -13,20 +26,20 @@
     <file path="/AppKernel.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373213159399" ignored="false" />
     <file path="/Dummy.txt" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373858047183" ignored="false" />
     <file path="/console.bat" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372801993172" ignored="false" />
-    <file path="/index.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373842151942" ignored="false" />
-    <file path="/layout.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373844653600" ignored="false" />
+    <file path="/index.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373866436925" ignored="false" />
+    <file path="/layout.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373866196463" ignored="false" />
     <file path="/Booth.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373222931051" ignored="false" />
     <file path="/Time.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373416214232" ignored="false" />
-    <file path="/LoadBoothData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373222242289" ignored="false" />
+    <file path="/LoadBoothData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373865227666" ignored="false" />
     <file path="/dummy.xml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373463996598" ignored="false" />
     <file path="/edit.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372973709817" ignored="false" />
     <file path="/new.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373085070272" ignored="false" />
     <file path="/show.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373166506641" ignored="false" />
     <file path="/main.css" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373418289130" ignored="false" />
-    <file path="/config.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373462605685" ignored="false" />
+    <file path="/config.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373865776476" ignored="false" />
     <file path="/config_dev.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373464458313" ignored="false" />
     <file path="/BoothType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372881957658" ignored="false" />
-    <file path="/BoothController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373047662530" ignored="false" />
+    <file path="/BoothController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373862809959" ignored="false" />
     <file path="/DatePickerType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372882595754" ignored="false" />
     <file path="/services.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372883471363" ignored="false" />
     <file path="/services.xml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372883913620" ignored="false" />
@@ -38,21 +51,21 @@
     <file path="/time.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372962311518" ignored="false" />
     <file path="/AuctionItem.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373858856742" ignored="false" />
     <file path="/BakedITem.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372972216142" ignored="false" />
-    <file path="/User.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373861211531" ignored="false" />
+    <file path="/User.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373864019781" ignored="false" />
     <file path="/security.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373425076746" ignored="false" />
     <file path="/UserBundle.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372978614740" ignored="false" />
     <file path="/login.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373169841453" ignored="false" />
     <file path="/messages.en.xlf" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372984294169" ignored="false" />
-    <file path="/LoadUserData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373292192035" ignored="false" />
-    <file path="/DefaultController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373399502409" ignored="false" />
+    <file path="/LoadUserData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373864243415" ignored="false" />
+    <file path="/DefaultController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373862538996" ignored="false" />
     <file path="/RegisterType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373295954711" ignored="false" />
     <file path="/UserController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373465402891" ignored="false" />
-    <file path="/TimeController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373381473096" ignored="false" />
+    <file path="/TimeController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373863031299" ignored="false" />
     <file path="/Controller.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373501411335" ignored="false" />
     <file path="/AuctionItemType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373162738819" ignored="false" />
     <file path="/BakedItem.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373860406643" ignored="false" />
     <file path="/register.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373469781195" ignored="false" />
-    <file path="/LoadAuctionData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373401314727" ignored="false" />
+    <file path="/LoadAuctionData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373864318207" ignored="false" />
     <file path="/TODO" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373858216297" ignored="false" />
     <file path="/base.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373460847404" ignored="false" />
     <file path="/bootstrap.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373124774979" ignored="false" />
@@ -67,9 +80,9 @@
     <file path="/BakedItemType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373287006910" ignored="false" />
     <file path="/BakedItemController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373397256334" ignored="false" />
     <file path="/BakedItemRepository.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373389319237" ignored="false" />
-    <file path="/AuctionItemController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373403855918" ignored="false" />
+    <file path="/AuctionItemController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373862666575" ignored="false" />
     <file path="/date.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373415965337" ignored="false" />
-    <file path="/boothList.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373469498254" ignored="false" />
+    <file path="/boothList.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373863648909" ignored="false" />
     <file path="/userStatus.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373468146015" ignored="false" />
     <file path="/status.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373465956623" ignored="false" />
     <file path="/printStatus.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373464683201" ignored="false" />
@@ -79,7 +92,7 @@
     <file path="/DocumentController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373501375443" ignored="false" />
     <file path="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373513926416" ignored="false" />
     <file path="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373844588961" ignored="false" />
-    <file path="/Family.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373861120242" ignored="false" />
+    <file path="/Family.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373866465970" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,24 +120,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TODO" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO">
+      <file leaf-file-name="Controller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="22" selection-start="960" selection-end="960" vertical-scroll-proportion="-19.36">
-              <folding />
+            <state line="211" column="88" selection-start="6768" selection-end="6775" vertical-scroll-proportion="-3.27451">
+              <folding>
+                <element signature="e#7#236#0" expanded="true" />
+              </folding>
             </state>
-          </provider>
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
+      <file leaf-file-name="security.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="0" selection-start="4707" selection-end="4707" vertical-scroll-proportion="-24.192308">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="43" selection-start="1917" selection-end="1917" vertical-scroll-proportion="-13.16">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadUserData.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="39" selection-start="1537" selection-end="1537" vertical-scroll-proportion="7.4615383">
               <folding>
-                <element signature="e#40#88#0" expanded="true" />
+                <element signature="e#49#98#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,7 +163,7 @@
       <file leaf-file-name="Family.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="375" column="0" selection-start="7605" selection-end="7605" vertical-scroll-proportion="0.69147">
+            <state line="61" column="76" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.2027833">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -141,13 +171,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rule.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Rule.php">
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="7" selection-start="667" selection-end="667" vertical-scroll-proportion="-2.6153846">
-              <folding>
-                <element signature="e#40#72#0" expanded="true" />
-              </folding>
+            <state line="141" column="39" selection-start="7786" selection-end="8334" vertical-scroll-proportion="-6.607843">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="113" selection-start="2365" selection-end="2377" vertical-scroll-proportion="-13.269231">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -155,7 +192,16 @@
       <file leaf-file-name="BakedItem.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="194" selection-end="194" vertical-scroll-proportion="-5.230769">
+            <state line="47" column="5" selection-start="944" selection-end="1047" vertical-scroll-proportion="-12.423077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="44" selection-start="954" selection-end="954" vertical-scroll-proportion="-11.769231">
               <folding />
             </state>
           </provider>
@@ -164,19 +210,10 @@
       <file leaf-file-name="AuctionItem.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="6" selection-start="452" selection-end="452" vertical-scroll-proportion="-5.3333335">
+            <state line="38" column="44" selection-start="860" selection-end="864" vertical-scroll-proportion="-3.27451">
               <folding>
                 <element signature="e#40#72#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Time.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="687" selection-end="687" vertical-scroll-proportion="-0.65384614">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -216,22 +253,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/Controller.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/AuctionItemController.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/BoothController.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/RuleController.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadRulesData.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/UserTime.php" />
-        <option value="$PROJECT_DIR$/TODO" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Rule.php" />
-        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadAuctionData.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
       </list>
     </option>
   </component>
@@ -395,6 +432,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="DataFixtures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ORM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FairBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -433,6 +500,7 @@
     <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="fr.adrienbrault.idea.symfony2plugin.SettingsForm" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="FullScreen" value="false" />
@@ -527,7 +595,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327787" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25454545" sideWeight="0.5973378" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18636364" sideWeight="0.49916804" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -537,14 +605,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26136363" sideWeight="0.31946754" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19848485" sideWeight="0.67164177" order="2" side_tool="true" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19848485" sideWeight="0.67221296" order="2" side_tool="true" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294509" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40266222" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
@@ -611,94 +679,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/BoothController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="54" selection-start="8446" selection-end="8446" vertical-scroll-proportion="0.24285714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="1" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.9381818">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="473" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.33268103">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="0" selection-start="2544" selection-end="2544" vertical-scroll-proportion="0.36499068">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="394" selection-start="2843" selection-end="2843" vertical-scroll-proportion="0.43444228">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadRulesData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="34" selection-start="954" selection-end="954" vertical-scroll-proportion="0.8051002">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="687" selection-end="687" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="960" selection-end="960" vertical-scroll-proportion="-19.36">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="6" selection-start="452" selection-end="452" vertical-scroll-proportion="-5.3333335">
-          <folding>
-            <element signature="e#40#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/BakedItemController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="194" selection-end="194" vertical-scroll-proportion="-5.230769">
+        <state line="6" column="30" selection-start="152" selection-end="152" vertical-scroll-proportion="-2.0">
           <folding />
         </state>
       </provider>
@@ -712,18 +695,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
+    <entry file="file://$PROJECT_DIR$/TODO">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="0" selection-start="4707" selection-end="4707" vertical-scroll-proportion="-24.192308">
+        <state line="29" column="22" selection-start="960" selection-end="960" vertical-scroll-proportion="-19.36">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="47" selection-start="2351" selection-end="2351" vertical-scroll-proportion="-8.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadAuctionData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="684" selection-end="684" vertical-scroll-proportion="-9.807693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="33" selection-start="534" selection-end="534" vertical-scroll-proportion="-12.423077">
           <folding>
-            <element signature="e#40#88#0" expanded="true" />
+            <element signature="e#44#119#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="88" selection-start="6768" selection-end="6775" vertical-scroll-proportion="-3.27451">
+          <folding>
+            <element signature="e#7#236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="43" selection-start="1917" selection-end="1917" vertical-scroll-proportion="-13.16">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="39" selection-start="1537" selection-end="1537" vertical-scroll-proportion="7.4615383">
+          <folding>
+            <element signature="e#49#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/AuctionItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="44" selection-start="860" selection-end="864" vertical-scroll-proportion="-3.27451">
+          <folding>
+            <element signature="e#40#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="39" selection-start="7786" selection-end="8334" vertical-scroll-proportion="-6.607843">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="44" selection-start="954" selection-end="954" vertical-scroll-proportion="-11.769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="113" selection-start="2365" selection-end="2377" vertical-scroll-proportion="-13.269231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="5" selection-start="944" selection-end="1047" vertical-scroll-proportion="-12.423077">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="375" column="0" selection-start="7605" selection-end="7605" vertical-scroll-proportion="0.69147">
+        <state line="61" column="76" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.2027833">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>

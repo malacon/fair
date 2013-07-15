@@ -12,14 +12,14 @@ class LoadAuctionData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        /** @var \CB\UserBundle\Entity\User $user */
-        $user = $this->getReference('user-user');
+        /** @var \CB\UserBundle\Entity\Family $family */
+        $family = $this->getReference('user-user');
 
         $item1 = new AuctionItem();
         $item1->setType('craft');
-        $user->addAuctionItem($item1);
+        $family->addSaleItem($item1);
 
-        $manager->persist($user);
+        $manager->persist($family);
         $manager->persist($item1);
         $manager->flush();
     }

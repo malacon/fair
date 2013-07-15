@@ -121,25 +121,25 @@
                                 <li><a href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
-                            <h4>Welcome Mr. and Mrs. {{ app.user.familyName }}</h4>
+                            <h4>Welcome Mr. and Mrs. {{ app.user.name }}</h4>
                             <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                             <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
                                 You have signed up for:
                                 <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
                                 <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
-                                <span class="auction">{{ app.user.getNumOfAuctionItems() }}</span> craft\auction items,
+                                <span class="auction">{{ app.user.getNumOfSaleItems() }}</span> craft\auction items,
                             </div>
                             <div class="family">
                                 <strong>Family Information:</strong>
-                                <ul class="children unstyle">
-                                    {% if app.user.children %}
-                                        {% for child in app.user.children %}
-                                            <li>{{ child.name }} in grade {{ child.grade }}</li>
-                                        {% endfor %}
-                                    {% else %}
-                                        <li>No Children???</li>
-                                    {% endif %}
-                                </ul>
+                                {#<ul class="children unstyle">#}
+                                    {#{% if app.user.children %}#}
+                                        {#{% for child in app.user.children %}#}
+                                            {#<li>{{ child.name }} in grade {{ child.grade }}</li>#}
+                                        {#{% endfor %}#}
+                                    {#{% else %}#}
+                                        {#<li>No Children???</li>#}
+                                    {#{% endif %}#}
+                                {#</ul>#}
                             </div>
                             <div class="info">
                                 <strong>Choice Options:</strong>

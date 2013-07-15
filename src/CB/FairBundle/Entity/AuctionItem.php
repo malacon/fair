@@ -36,7 +36,7 @@ class AuctionItem
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\Family", inversedBy="auctionItems", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\Family", inversedBy="saleItems", cascade={"persist"})
      * @ORM\JoinColumn(name="family_id", referencedColumnName="id")
      */
     private $family;

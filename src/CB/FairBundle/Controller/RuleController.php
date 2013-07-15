@@ -45,7 +45,7 @@ class RuleController extends Controller
     {
         $entity  = new Rule();
         $form = $this->createForm(new RuleType(), $entity);
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -155,7 +155,7 @@ class RuleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new RuleType(), $entity);
-        $editForm->bind($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);

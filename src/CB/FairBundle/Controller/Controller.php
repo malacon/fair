@@ -16,7 +16,7 @@ class Controller extends BaseController
     }
 
     /**
-     * @return \CB\UserBundle\Entity\User
+     * @return \CB\UserBundle\Entity\Family
      */
     public function getUser()
     {

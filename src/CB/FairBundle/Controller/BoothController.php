@@ -46,7 +46,7 @@ class BoothController extends Controller
     {
         $entity  = new Booth();
         $form = $this->createForm(new BoothType(), $entity);
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -76,7 +76,7 @@ class BoothController extends Controller
         $time1 = new Time();
         $time1->setTime(new \DateTime('2013-09-07'));
         $time1->setBooth($entity);
-        $entity->getTimes()->add($time1);
+        $entity->addTime($time1);
 
         $form   = $this->createForm(new BoothType(), $entity);
 
@@ -157,7 +157,7 @@ class BoothController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new BoothType(), $entity);
-        $editForm->bind($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
@@ -181,7 +181,7 @@ class BoothController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

@@ -12,8 +12,10 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $user = $this->getReference('user-user');
-        $userDone = $this->getReference('user-done');
+        /** @var \CB\UserBundle\Entity\Family $family1 */
+        $family1 = $this->getReference('user-user');
+        /** @var \CB\UserBundle\Entity\Family $family2 */
+        $family2 = $this->getReference('user-done');
 
         $booth1 = new Booth();
         $booth1->setName('Darts');
@@ -21,17 +23,18 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth1->setLocation('Field');
         $booth1->setWorkerLimit(1);
 
-        $times1 = new ArrayCollection();
-
+        $spouse = $family1->getSpouses()->first();
+        $family2->getSpouses()->next();
+        $spouse2 = $family2->getSpouses()->first();
         for ($i = 8; $i < 21; $i++) {
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth1);
             if ($i == 20 || $i == 21) {
-                $time->addWorker($user);
+                $time->addWorker($spouse);
             }
             if ($i >8 && $i < 20) {
-                $time->addWorker($userDone);
+                $time->addWorker($spouse2);
             }
             $booth1->addTime($time);
             $manager->persist($time);
@@ -59,14 +62,14 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth2->setLocation('Gym');
         $booth2->setWorkerLimit(4);
 
-        $times1 = new ArrayCollection();
-
+        $family1->getSpouses()->next();
+        $spouse = $family1->getSpouses()->first();
         for ($i = 8; $i < 21; $i++) {
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth2);
             if ($i == 16 || $i == 18) {
-                $time->addWorker($user);
+                $time->addWorker($spouse);
             }
             $booth2->addTime($time);
             $manager->persist($time);
@@ -77,8 +80,6 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth3->setDescription('Toss your rings and get a prize!');
         $booth3->setLocation('Field');
         $booth3->setWorkerLimit(4);
-
-        $times1 = new ArrayCollection();
 
         for ($i = 8; $i < 21; $i++) {
             $time = new Time();

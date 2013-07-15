@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * BakedITem
  *
- * @ORM\Table(name="fair_baked_items")
+ * @ORM\Table(name="fair_baked_item")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\BakedItemRepository")
  */
 class BakedItem

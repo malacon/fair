@@ -29,16 +29,6 @@ class DefaultController extends Controller
 
         $rules = $this->checkUserPassed();
 
-//        $originalBakedItems = array();
-//        foreach($this->getUser()->getBakedItem() as $item) {
-//            $originalBakedItems[] = $item;
-//        }
-        $originalAuctionItems = array();
-        foreach($this->getUser()->getAuctionItems() as $item) {
-            $originalAuctionItems[] = $item;
-        }
-
-
         return array(
             'booths' => $booths,
             'bakedItems' => $bakedItems,
@@ -53,7 +43,6 @@ class DefaultController extends Controller
      */
     public function getUsersJsonAction()
     {
-//        $user = $this->getRequest()->request->get('user');
         $user = $this->getRequest()->request->get('user');
         /** @var \CB\UserBundle\Entity\UserRepository $userRepo */
         $userRepo = $this->getDoctrine()->getRepository('UserBundle:User');
@@ -89,7 +78,7 @@ class DefaultController extends Controller
         $data = array(
             'isUserPassed' => $this->getUser()->getIsPassedRules(),
             'hours' => $this->getUser()->getNumOfHours(),
-            'auction' => $this->getUser()->getNumOfAuctionItems(),
+            'auction' => $this->getUser()->getNumOfSaleItems(),
             'baked' => $this->getUser()->hasBakedItem(),
         );
         if($this->getRequest()->getRequestFormat() == 'json') {

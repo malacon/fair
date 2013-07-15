@@ -224,11 +224,11 @@ class Rule
      */
     public function isPassed(Family $worker)
     {
-//        print_r('auction: '.$worker->getNumOfAuctionItems().' : '.$this->numberOfAuctionItems);
+//        print_r('auction: '.$worker->getNumOfSaleItems().' : '.$this->numberOfAuctionItems);
 //        print_r('Baked: '.$worker->hasBakedItem().' : '.$this->numberOfBakedItems);
 //        print_r('Hours: '.$worker->getNumOfHours().' : '.$this->numberOfTimes);
         return
-            $this->hasEnoughAuctionItems($worker->getNumOfAuctionItems()) &&
+            $this->hasEnoughAuctionItems($worker->getNumOfSaleItems()) &&
             $this->hasEnoughBakedItems($worker->hasBakedItem()) &&
             $this->hasEnoughHours($worker->getNumOfHours());
     }

@@ -197,19 +197,19 @@ class AuctionItemController extends Controller
     public function addAuctionItemAction($type)
     {
         $em = $this->getDoctrine()->getManager();
-        /** @var \CB\FairBundle\Entity\AuctionItem $auctionItem */
-        $auctionItem = new AuctionItem();
-        $auctionItem->setType($type);
-        $this->getUser()->addAuctionItem($auctionItem);
+        /** @var \CB\FairBundle\Entity\AuctionItem $saleItem */
+        $saleItem = new AuctionItem();
+        $saleItem->setType($type);
+        $this->getUser()->addSaleItem($saleItem);
 
-        $em->persist($auctionItem);
+        $em->persist($saleItem);
         $em->persist($this->getUser());
         $em->flush();
 
         $this->checkUserPassed();
-        $data = $this->getBaseData($auctionItem);
+        $data = $this->getBaseData($saleItem);
         $data['isRemoved'] = false;
-        $data['numAuctions'] = $this->getUser()->getNumOfAuctionItems();
+        $data['numAuctions'] = $this->getUser()->getNumOfSaleItems();
         $data['isPassed'] = $this->getUser()->getIsPassedRules();
         if ($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createJsonResponse($data);
@@ -236,7 +236,7 @@ class AuctionItemController extends Controller
 
         $this->checkUserPassed();
         $data['isRemoved'] = true;
-        $data['numAuctions'] = $this->getUser()->getNumOfAuctionItems();
+        $data['numAuctions'] = $this->getUser()->getNumOfSaleItems();
         $data['isPassed'] = $this->getUser()->getIsPassedRules();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
