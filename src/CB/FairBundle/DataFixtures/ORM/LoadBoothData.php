@@ -23,9 +23,9 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth1->setLocation('Field');
         $booth1->setWorkerLimit(1);
 
-        $spouse = $family1->getSpouses()->first();
-        $family2->getSpouses()->next();
-        $spouse2 = $family2->getSpouses()->first();
+        $spouses = $family1->getSpouses()->getValues();
+        $spouse = $spouses[0];
+        $spouse2 = $spouses[1];
         for ($i = 8; $i < 21; $i++) {
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));

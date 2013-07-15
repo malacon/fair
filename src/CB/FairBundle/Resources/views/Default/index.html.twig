@@ -54,8 +54,8 @@
                         <p>Add a craft or auction item by clicking on the buttons below.</p>
                         <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a>
                         <div class="auctionItems">
-                        {% for auctionItem in app.user.auctionItems %}
-                            <div class="auctionItem alert" data-auction-id="{{ auctionItem.id }}">{{ auctionItem }}<a class="close" href="{{ path('auction_remove', {'id': auctionItem.id}) }}">&times;</a></div>
+                        {% for saleItem in app.user.saleItems %}
+                            <div class="auctionItem alert" data-auction-id="{{ saleItem.id }}">{{ saleItem }}<a class="close" href="{{ path('auction_remove', {'id': saleItem.id}) }}">&times;</a></div>
                         {% endfor %}
                         </div>
                     </div>

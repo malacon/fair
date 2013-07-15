@@ -43,6 +43,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->addSpouse($parent1)
             ->addSpouse($parent2)
         ;
+        $manager->persist($parent1);
+        $manager->persist($parent2);
 
         $family2 = new Family();
         $parent1 = new User('Jim');
@@ -61,6 +63,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->addSpouse($parent1)
             ->addSpouse($parent2)
         ;
+        $manager->persist($parent1);
+        $manager->persist($parent2);
 
         $family3 = new Family();
         $encoder = $this->container

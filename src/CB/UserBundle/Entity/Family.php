@@ -59,7 +59,7 @@ class Family extends BaseUser
     /**
      * @var \CB\FairBundle\Entity\BakedItem
      *
-     * @ORM\ManyToOne(targetEntity="CB\UserBundle\Entity\Family", inversedBy="bakedItem", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="CB\FairBundle\Entity\BakedItem", inversedBy="workers", cascade={"persist"})
      */
     private $bakedItem;
 
@@ -390,4 +390,5 @@ class Family extends BaseUser
         }
         return $data;
     }
+
 }

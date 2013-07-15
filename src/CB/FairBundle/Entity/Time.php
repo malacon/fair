@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use CB\FairBundle\Entity\Booth;
 use Gedmo\Mapping\Annotation as Gedmo;
 use CB\UserBundle\Entity\User;
+use CB\UserBundle\Entity\Family;
 
 /**
  * Time
@@ -167,6 +168,24 @@ class Time
             }
         }
         return false;
+    }
+
+
+    /**
+     * @param \CB\UserBundle\Entity\Family $family
+     *
+     * true false false = false
+     * true true false = false
+     * true true true = true
+     */
+    public function areAllSpousesWorkingAtThisTime(Family $family)
+    {
+        foreach ($family->getSpouses() as $spouse) {
+             if (!$this->isUserAlreadySignedUpAtThisTime($spouse)) {
+                 return false;
+             }
+        }
+        return true;
     }
 
     /**
