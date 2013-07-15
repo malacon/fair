@@ -5,7 +5,7 @@ namespace CB\FairBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints\DateTime;
-use CB\UserBundle\Entity\User;
+use CB\UserBundle\Entity\Family;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -36,10 +36,10 @@ class AuctionItem
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\User", inversedBy="auctionItems", cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\Family", inversedBy="auctionItems", cascade={"persist"})
+     * @ORM\JoinColumn(name="family_id", referencedColumnName="id")
      */
-    private $user;
+    private $family;
 
     /**
      * @var datetime
@@ -73,33 +73,33 @@ class AuctionItem
     }
 
     /**
-     * Set user
+     * Set family
      *
-     * @param integer $user
+     * @param integer $family
      * @return AuctionItem
      */
-    public function setUser(User $user)
+    public function setFamily(Family $family)
     {
-        $this->user = $user;
+        $this->family = $family;
     
         return $this;
     }
 
-    public function addUser(User $user)
+    public function addFamily(Family $family)
     {
-        $this->user = $user;
+        $this->family = $family;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get family
      *
-     * @return User
+     * @return Family
      */
-    public function getUser()
+    public function getFamily()
     {
-        return $this->user;
+        return $this->family;
     }
 
     /**

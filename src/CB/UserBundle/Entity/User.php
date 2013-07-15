@@ -3,7 +3,6 @@
 namespace CB\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use CB\FairBundle\Entity\Time;
 use CB\FairBundle\Entity\AuctionItem;
@@ -16,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="fair_user")
  * @ORM\Entity(repositoryClass="CB\UserBundle\Entity\UserRepository")
  */
-class User extends BaseUser
+class User
 {
     /**
      * @var integer
@@ -28,18 +27,9 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="familyName", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\Family", inversedBy="spouses", cascade={"persist"})
      */
-    private $familyName;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="children", type="array")
-     */
-    private $children;
+    private $family;
 
     /**
      * @var ArrayCollection
@@ -65,20 +55,6 @@ class User extends BaseUser
      * @Assert\Valid
      */
     private $times;
-
-    /**
-     * @var Array
-     *
-     * @ORM\Column(name="spouses", type="array")
-     */
-    private $spouses;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="passedRules", type="boolean")
-     */
-    private $isPassedRules = false;
 
     public function __construct()
     {
@@ -169,12 +145,12 @@ class User extends BaseUser
     /**
      * Set familyName
      *
-     * @param string $familyName
+     * @param Family $familyName
      * @return User
      */
-    public function setFamilyName($familyName)
+    public function setFamily(Family $familyName)
     {
-        $this->familyName = $familyName;
+        $this->family = $familyName;
     
         return $this;
     }
@@ -182,39 +158,11 @@ class User extends BaseUser
     /**
      * Get familyName
      *
-     * @return string 
+     * @return Family
      */
     public function getFamilyName()
     {
-        return $this->familyName;
-    }
-
-    /**
-     * Set children
-     *
-     * @param array $children
-     * @return User
-     */
-    public function setChildren($children)
-    {
-        $this->children = $children;
-    
-        return $this;
-    }
-
-    /**
-     * Get children
-     *
-     * @return array 
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    public function addChild($name, $grade)
-    {
-        $this->children[] = array('name' => $name, 'grade' => $grade);
+        return $this->family;
     }
 
     /**

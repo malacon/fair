@@ -18,7 +18,7 @@
                 <td><a href="{{ path('bakeditem_show', { 'id': entity.id }) }}">{{ entity.description }}</a></td>
                 <td>{{ entity.quantity }}</td>
                 <td>
-                    <strong>Number of Users: {{ entity.getNumberOfUsers() }}</strong>
+                    <strong>Number of Users: {{ entity.getNumberOfFamiles() }}</strong>
                     {% for user in entity.users %}
                         {{ user.familyName }}
                     {% endfor %}

@@ -23,3 +23,8 @@ Details
 		Choice 2 - 8 hours, 2 craft/auction
 		Choice 3 - 8 hours, 1 baked good, 1 craft/auction
 		Always volonteer to bring in extra craft/auction items, however only one baked item per family
+
+
+Instead of editing the relationship between the user and the time, create a family object that has users.  people sign in with the family.
+Add baked and auction items to family
+Booth times to spouses

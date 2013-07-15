@@ -45,7 +45,7 @@ class BakedItem
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="bakedItem", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\Family", mappedBy="bakedItem", cascade={"persist"})
      */
     private $workers;
 
@@ -138,7 +138,7 @@ class BakedItem
     }
 
     /**
-     * Get user
+     * Get family
      *
      * @return integer 
      */
@@ -150,10 +150,10 @@ class BakedItem
     /**
      * Adds worker to the baked item
      *
-     * @param User $worker
+     * @param Family $worker
      * @return bool
      */
-    public function addWorker(User $worker)
+    public function addWorker(Family $worker)
     {
         // If the worker is signed up
         if (!$this->workers->contains($worker) && $this->isItemAvailable()) {
@@ -172,10 +172,10 @@ class BakedItem
      * Removes a worker from the baked item
      *  OWNER
      *
-     * @param User $worker
+     * @param Family $worker
      * @return Bool
      */
-    public function removeWorker(User $worker)
+    public function removeWorker(Family $worker)
     {
         // If the worker isn't already signed up
         if ($this->workers->contains($worker)) {
@@ -189,22 +189,22 @@ class BakedItem
         return false;
     }
 
-    public function getNumberOfUsers()
+    public function getNumberOfFamiles()
     {
         return $this->workers->count();
     }
 
     /**
-     * @param User $worker
+     * @param Family $worker
      */
-    public function isUserAlreadyBringingABakedItem($worker)
+    public function isFamilyAlreadyBringingABakedItem($worker)
     {
         return $worker->isBaking();
     }
 
     public function isItemAvailable()
     {
-        return $this->getNumberOfUsers() < $this->quantity;
+        return $this->getNumberOfFamiles() < $this->quantity;
     }
 
     /**
