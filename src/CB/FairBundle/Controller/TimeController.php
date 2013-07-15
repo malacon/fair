@@ -210,11 +210,11 @@ class TimeController extends Controller
         $data = $this->getBaseData($time);
 
         // Add the worker to the time
-        if ($time->addWorker($this->getUser())) {
+        if ($time->addSpouse($this->getUser())) {
             $data['userChanged'] = true;
             $data['userAdded'] = true;
             $data['timeFilled'] = $time->isFilled();
-            $data['timeWorked'] = $time->isUserAlreadySignedUpAtThisTime($this->getUser());
+            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($this->getUser());
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes
@@ -254,11 +254,11 @@ class TimeController extends Controller
         $data = $this->getBaseData($time);
 
         // Remove the worker to the time
-        if ($time->removeWorker($this->getUser())) {
+        if ($time->removeSpouse($this->getUser())) {
             $data['userChanged'] = true;
             $data['userRemoved'] = true;
             $data['timeFilled'] = $time->isFilled();
-            $data['timeWorked'] = $time->isUserAlreadySignedUpAtThisTime($this->getUser());
+            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($this->getUser());
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes

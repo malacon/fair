@@ -35,16 +35,18 @@ Select time for: {% for spouse in app.user.spouses -%}
                             <div data-time-id="{{ time.id }}" data-timestamp="{{ time.time.getTimestamp() }}">
                                 <span>{{ time }}</span>
                                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}  {# show not avaible if is filled and not using the current worker| true #}
-                                    {#<a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-info btn-mini attend-toggle{% if time.hasWorker(app.user) %} hidden{% endif %}{% if time.isUserAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isUserAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>#}
+                                    {#<a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-info btn-mini attend-toggle{% if time.hasSpouse(app.user) %} hidden{% endif %}{% if time.isSpouseAlreadySignedUpAtThisTime(app.user) or time.isFilled() %} disabled{% endif %}">{% if time.isSpouseAlreadySignedUpAtThisTime(app.user) %}Already Working at this Time{% elseif time.isFilled() %}Currently Occupied{% else %}Signup{% endif %}</a>#}
                                     <a href="{{ path('booth_work', {'id': time.id}) }}.json" class="btn btn-mini attend-toggle
-                                    {%- if time.hasWorker(spouse) %} hidden
-                                    {%- elseif time.areAllSpousesWorkingAtThisTime(app.user) %} btn-info disabled
-                                    {%- elseif time.isUserAlreadySignedUpAtThisTime(spouse) %} btn-info
-                                    {%- elseif time.isFilled() %} btn-inverse disabled{% else %} btn-info
-                                    {%- endif -%}">
-                                        {%- if time.areAllSpousesWorkingAtThisTime(app.user) -%}
-                                            Already Working
-                                        {%- elseif time.isUserAlreadySignedUpAtThisTime(spouse) -%}
+                                    {%- if time.hasSpouse(spouse) %} hidden
+                                    {%- elseif time.isOtherSpouseSignedUpAtThisTime(spouse) and time.isFilled() %} btn-inverse disabled
+                                    {%- elseif time.isFilled() %} btn-inverse disabled
+                                    {%- elseif time.isSpouseAlreadySignedUpAtThisTime(spouse) and not time.isFilled %} btn-info
+                                    {%- else %} btn-info
+                                    {%- endif -%}
+                                    ">
+                                        {%- if time.isOtherSpouseSignedUpAtThisTime(spouse) and time.isFilled() -%}
+                                            Spouse Working | Filled
+                                        {%- elseif time.isOtherSpouseSignedUpAtThisTime(spouse) -%}
                                             Spouse Working
                                         {%- elseif time.isFilled() -%}
                                             Currently Occupied
@@ -52,7 +54,7 @@ Select time for: {% for spouse in app.user.spouses -%}
                                             Signup
                                         {%- endif -%}
                                     </a>
-                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}.json" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasWorker(spouse) %} hidden{% endif %}">Remove</a>
+                                    <a href="{{ path('booth_unwork', {'id': time.id}) }}.json" class="btn btn-warning btn-mini not-attend-toggle{% if not time.hasSpouse(spouse) %} hidden{% endif %}">Remove</a>
                                 {% endif %}
                             </div>
                             {% endfor %}

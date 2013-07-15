@@ -44,7 +44,7 @@ class Time
     /**
      * @ORM\ManyToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="times", cascade={"persist"})
      */
-    private $workers;
+    private $spouses;
 
     /**
      * @var \Datetime
@@ -64,7 +64,7 @@ class Time
 
     public function __construct()
     {
-        $this->workers = new ArrayCollection();
+        $this->spouses = new ArrayCollection();
         $this->created = new \DateTime('NOW');
         $this->updated = new \DateTime('NOW');
     }
@@ -103,17 +103,17 @@ class Time
     }
 
     /**
-     * Gets the number of workers at a given time for the booth
+     * Gets the number of spouses at a given time for the booth
      *
      * @return int
      */
-    public function getNumOfWorkers()
+    public function getNumOfSpouses()
     {
-        return $this->workers->count();
+        return $this->spouses->count();
     }
 
     /**
-     * Tells if time is filled with workers
+     * Tells if time is filled with spouses
      *
      * @return bool
      */
@@ -127,25 +127,25 @@ class Time
      *
      * @return ArrayCollection
      */
-    public function getWorkers()
+    public function getSpouses()
     {
-        return $this->workers;
+        return $this->spouses;
     }
 
     /**
-     * Adds worker to the booth time
+     * Adds spouse to the booth time
      *
-     * @param User $worker
+     * @param User $spouse
      * @return Bool  If the sign-up is successful it returns true
      */
-    public function addWorker(User $worker)
+    public function addSpouse(User $spouse)
     {
         // If the worker is signed up
-         if (!$this->workers->contains($worker) && !$this->isUserAlreadySignedUpAtThisTime($worker) && $this->isAvailable()) {
+         if (!$this->spouses->contains($spouse) && !$this->isSpouseAlreadySignedUpAtThisTime($spouse) && $this->isAvailable()) {
             // Add the time to the worker
-            $worker->addTime($this);
+            $spouse->addTime($this);
             // Add the worker to the time
-            $this->workers[] = $worker;
+            $this->spouses[] = $spouse;
             return true;
         }
 
@@ -153,17 +153,33 @@ class Time
     }
 
     /**
-     * Checks to see if the user is already signed up for the time
+     * Checks to see if the spouse is already signed up for the time
      *
-     * @param User $worker
+     * @param User $spouse
      * @return bool
      */
-    public function isUserAlreadySignedUpAtThisTime(User $worker)
+    public function isSpouseAlreadySignedUpAtThisTime(User $spouse)
     {
         /** @var \CB\FairBundle\Entity\Time $time */
-        foreach ($worker->getTimes() as $time) {
+        foreach ($spouse->getTimes() as $time) {
             // If the requested time is already on the user's schedule return true
             if ($this->getTime()->diff($time->getTime())->h == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @param User $spouse current spouse
+     *
+     * To see if partner is working
+     */
+    public function isOtherSpouseSignedUpAtThisTime(User $spouse)
+    {
+        /** @var \CB\UserBundle\Entity\User $otherSpouses */
+        foreach ($spouse->getFamily()->getSpouses() as $otherSpouses) {
+            if ($otherSpouses != $spouse && $this->hasSpouse($otherSpouses)) {
                 return true;
             }
         }
@@ -181,7 +197,7 @@ class Time
     public function areAllSpousesWorkingAtThisTime(Family $family)
     {
         foreach ($family->getSpouses() as $spouse) {
-             if (!$this->isUserAlreadySignedUpAtThisTime($spouse)) {
+             if (!$this->isSpouseAlreadySignedUpAtThisTime($spouse)) {
                  return false;
              }
         }
@@ -195,7 +211,7 @@ class Time
      */
     public function isAvailable()
     {
-        return $this->getNumOfWorkers() < $this->booth->getWorkerLimit();
+        return $this->getNumOfSpouses() < $this->booth->getWorkerLimit();
     }
 
 
@@ -203,17 +219,17 @@ class Time
      * Removes a worker from the booth time
      *  OWNER
      *
-     * @param User $worker
+     * @param User $spouse
      * @return Bool
      */
-    public function removeWorker(User $worker)
+    public function removeSpouse(User $spouse)
     {
         // If the worker isn't already signed up
-        if ($this->workers->contains($worker)) {
+        if ($this->spouses->contains($spouse)) {
             // Remove the time from the worker
-            $worker->removeTime($this);
+            $spouse->removeTime($this);
             // Remove the worker from the time
-            $this->workers->removeElement($worker);
+            $this->spouses->removeElement($spouse);
             return true;
         }
 
@@ -224,9 +240,9 @@ class Time
      * @param User $worker
      * @return bool
      */
-    public function hasWorker(User $worker)
+    public function hasSpouse(User $spouse)
     {
-        return $this->getWorkers()->contains($worker);
+        return $this->getSpouses()->contains($spouse);
     }
 
     /**

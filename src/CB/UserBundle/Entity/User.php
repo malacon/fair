@@ -39,7 +39,7 @@ class User
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="workers", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="spouses", cascade={"persist"})
      * @ORM\JoinTable(name="users_times")
      * @Assert\Valid
      */
@@ -79,7 +79,7 @@ class User
      *
      * @return Family
      */
-    public function getFamilyName()
+    public function getFamily()
     {
         return $this->family;
     }
@@ -180,5 +180,10 @@ class User
         $this->name = $name;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

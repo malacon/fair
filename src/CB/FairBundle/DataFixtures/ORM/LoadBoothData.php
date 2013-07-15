@@ -26,20 +26,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $spouses = $family1->getSpouses()->getValues();
         $spouse = $spouses[0];
         $spouse2 = $spouses[1];
-        for ($i = 8; $i < 21; $i++) {
-            $time = new Time();
-            $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
-            $time->setBooth($booth1);
-            if ($i == 20 || $i == 21) {
-                $time->addWorker($spouse);
-            }
-            if ($i >8 && $i < 20) {
-                $time->addWorker($spouse2);
-            }
-            $booth1->addTime($time);
-            $manager->persist($time);
-        }
-
+        // Friday
         for ($i = 16; $i < 21; $i++) {
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-06 '. $i .':00:00'));
@@ -48,6 +35,27 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $manager->persist($time);
         }
 
+        // Saturday
+        for ($i = 8; $i < 22; $i++) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
+            $time->setBooth($booth1);
+            if ($i == 20 || $i == 21) {
+                $time->addSpouse($spouse);
+                print_r($spouse.' - '.$time->getTime()->format('Y-m-d g A  ')."\r\n");
+            }
+            if ($i >8 && $i < 20) {
+                $time->addSpouse($spouse2);
+                print_r($spouse2.' - '.$time->getTime()->format('Y-m-d g A  ')."\r\n");
+            }
+            $booth1->addTime($time);
+            $manager->persist($time);
+        }
+
+        $manager->persist($spouse);
+        $manager->persist($spouse2);
+
+        // Sunday
         for ($i = 8; $i < 16; $i++) {
             $time = new Time();
             $time->setTime(new \DateTime('2013-09-08 '. $i .':00:00'));
@@ -69,11 +77,14 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth2);
             if ($i == 16 || $i == 18) {
-                $time->addWorker($spouse);
+                $time->addSpouse($spouse);
             }
             $booth2->addTime($time);
             $manager->persist($time);
         }
+
+        $manager->persist($spouse);
+        $manager->persist($spouse2);
 
         $booth3 = new Booth();
         $booth3->setName('Ring Toss');
