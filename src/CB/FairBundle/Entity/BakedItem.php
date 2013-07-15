@@ -5,7 +5,7 @@ namespace CB\FairBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use CB\UserBundle\Entity\User;
+use CB\UserBundle\Entity\Family;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

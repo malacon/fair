@@ -27,6 +27,13 @@ class User
     protected $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
+
+    /**
      * @ORM\ManyToOne(targetEntity="\CB\UserBundle\Entity\Family", inversedBy="spouses", cascade={"persist"})
      */
     private $family;
@@ -208,135 +215,6 @@ class User
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getAuctionItems()
-    {
-        return $this->auctionItems;
-    }
-
-    public function getAuctionItemNames()
-    {
-        $names = array();
-        /** @var \CB\FairBundle\Entity\AuctionItem $item */
-        foreach ($this->auctionItems as $item) {
-            $names[] = $item->getDescription();
-        }
-        return $names;
-    }
-
-    /**
-     * Adds an auction item if it doesn't already exist
-     *
-     * @param AuctionItem $auctionItem
-     * @return $this
-     */
-    public function addAuctionItem(AuctionItem $auctionItem)
-    {
-        $auctionItem->setUser($this);
-        $this->auctionItems->add($auctionItem);
-
-        return $this;
-    }
-
-    /**
-     * Removes the auction item if it exists
-     *
-     * @param AuctionItem $auctionItem
-     * @return $this
-     */
-    public function removeAuctionItem(AuctionItem $auctionItem)
-    {
-        if ($this->auctionItems->contains($auctionItem)) {
-            $this->auctionItems->removeElement($auctionItem);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getBakedItem()
-    {
-        return $this->bakedItem;
-    }
-
-    /**
-     * Adds a baked item to the user
-     *
-     * @param BakedItem $bakedItem
-     * @return $this
-     */
-    public function setBakedItem(BakedItem $bakedItem)
-    {
-        // if baked item already set remove it from the worker
-        if ($this->bakedItem != null) {
-            $this->bakedItem->removeWorker($this);
-        }
-        $this->bakedItem = $bakedItem;
-
-        return $this;
-    }
-
-    /**
-     * Adds a baked item to the user
-     *
-     * @return $this
-     */
-    public function removeBakedItem()
-    {
-        $this->bakedItem->removeWorker($this);
-        $this->bakedItem = null;
-
-        return $this;
-    }
-
-    public function isBaking()
-    {
-        return (bool)$this->bakedItem;
-    }
-
-    /**
-     * @param BakedItem $item
-     * @return bool
-     */
-    public function isBakingItem(BakedItem $item)
-    {
-        return $item == $this->bakedItem;
-    }
-
-    /**
-     * Returns if the rules are passed for registration
-     *
-     * @return bool
-     */
-    public function getIsPassedRules()
-    {
-        return $this->isPassedRules;
-    }
-
-    /**
-     * Sets the user as having passed the rules or not
-     *
-     * @param array $rules
-     * @return $this
-     */
-    public function setIsPassedRules($rules)
-    {
-        /** @var \CB\FairBundle\Entity\Rule $rule */
-        $isPassed = false;
-        foreach ($rules as $rule) {
-            // Checks to see if the rules pass for the user
-            $isPassed = $rule->isPassed($this);
-            if ($isPassed) {
-                break;
-            }
-        }
-        $this->isPassedRules = $isPassed;
-        return $this;
-    }
 
     /**
      * Returns the number of hours signed up
@@ -346,26 +224,6 @@ class User
     public function getNumOfHours()
     {
         return $this->times->count();
-    }
-
-    /**
-     * Returns the number of baked items
-     *
-     * @return int
-     */
-    public function hasBakedItem()
-    {
-        return ($this->bakedItem == null? 0 : 1);
-    }
-
-    /**
-     * Returns the number of auction items
-     *
-     * @return int
-     */
-    public function getNumOfAuctionItems()
-    {
-        return $this->auctionItems->count();
     }
 
     public function getTimestamps()
@@ -379,53 +237,34 @@ class User
         return $timestamps;
     }
 
-    public function getStatus()
-    {
-        return array(
-            'auctionItems' => $this->getAuctionItemsArray(),
-            'boothTimes' => $this->getTimesArray(),
-            'bakedItem' => (string)$this->getBakedItem(),
-        );
-    }
-
     public function getTimesArray()
     {
         $data = array();
         /** @var \CB\FairBundle\Entity\Time $time */
         foreach ($this->times as $time) {
-            $data[$time->getBooth()->getName()][] = array(
+            /** @var \CB\FairBundle\Entity\Booth $booth */
+            $booth = $time->getBooth();
+            $data[$booth->getName()][] = array(
                 'time' => $time->getTime()->format('l ').$time,
-                'location' => $time->getBooth()->getLocation(),
+                'location' => $booth->getLocation(),
             );
         }
         return $data;
     }
 
-    public function getAuctionItemsArray()
+    /**
+     * @return string
+     */
+    public function getName()
     {
-        $data = array();
-        /** @var \CB\FairBundle\Entity\AuctionItem $item */
-        foreach ($this->auctionItems as $item) {
-            $data[] = (string)$item;
-        }
-        return $data;
+        return $this->name;
     }
 
     /**
-     * @return Array
+     * @param string $name
      */
-    public function getSpouses()
+    public function setName($name)
     {
-        return $this->spouses;
-    }
-
-    /**
-     * @param Array $spouses
-     */
-    public function setSpouses($spouses)
-    {
-        $this->spouses = $spouses;
-
-        return $this;
+        $this->name = $name;
     }
 }

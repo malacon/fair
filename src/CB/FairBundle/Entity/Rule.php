@@ -2,7 +2,7 @@
 
 namespace CB\FairBundle\Entity;
 
-use CB\UserBundle\Entity\User;
+use CB\UserBundle\Entity\Family;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -219,10 +219,10 @@ class Rule
     /**
      * This checks to see if the current rule is passed or not
      *
-     * @param User $worker
+     * @param Family $worker
      * @return bool
      */
-    public function isPassed(User $worker)
+    public function isPassed(Family $worker)
     {
 //        print_r('auction: '.$worker->getNumOfAuctionItems().' : '.$this->numberOfAuctionItems);
 //        print_r('Baked: '.$worker->hasBakedItem().' : '.$this->numberOfBakedItems);
