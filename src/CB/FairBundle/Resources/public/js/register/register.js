@@ -6,14 +6,25 @@
 
 $(function() {
     $('.accordion-heading .close').popover({placement: 'left', html: true, trigger: 'hover'});
+
+    $('#booths').on('click', '.spouse.btn', function(e) {
+        var $this = $(this);
+
+        e.preventDefault();
+
+        $this.siblings('.btn').removeClass('disabled btn-warning').addClass('btn-success');
+        $this.removeClass('btn-success').addClass('disabled btn-warning');
+    });
+
     $('[data-time-id]').on('click', 'a', function(e) {
         var $this = $(this),
-            url = $this.attr('href');
+            url = $this.attr('href'),
+            spouseId = $('.spouse.disabled').data('spouse-id');
 
         e.preventDefault();
         if (!$this.hasClass('disabled')) {
             $this.button('loading..');
-            $.post(url, null, updateButtons);
+            $.post(url, {spouse: spouseId}, updateButtons);
         }
 
         return false;

@@ -209,12 +209,15 @@ class TimeController extends Controller
 
         $data = $this->getBaseData($time);
 
+        /** @var \CB\UserBundle\Entity\User $spouse */
+        $spouse = $this->getUser()->getSpouse($this->getRequest()->request->get('spouse'));
+
         // Add the worker to the time
-        if ($time->addSpouse($this->getUser())) {
+        if ($time->addSpouse($spouse)) {
             $data['userChanged'] = true;
             $data['userAdded'] = true;
             $data['timeFilled'] = $time->isFilled();
-            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($this->getUser());
+            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($spouse);
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes
@@ -226,7 +229,7 @@ class TimeController extends Controller
         }
 
         $em->persist($time);
-        $em->persist($this->getUser());
+        $em->persist($spouse);
         $em->flush();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
@@ -253,12 +256,15 @@ class TimeController extends Controller
 
         $data = $this->getBaseData($time);
 
+        /** @var \CB\UserBundle\Entity\User $spouse */
+        $spouse = $this->getUser()->getSpouse($this->getRequest()->request->get('spouse'));
+
         // Remove the worker to the time
-        if ($time->removeSpouse($this->getUser())) {
+        if ($time->removeSpouse($spouse)) {
             $data['userChanged'] = true;
             $data['userRemoved'] = true;
             $data['timeFilled'] = $time->isFilled();
-            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($this->getUser());
+            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($spouse);
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes
@@ -268,7 +274,7 @@ class TimeController extends Controller
         }
 
         $em->persist($time);
-        $em->persist($this->getUser());
+        $em->persist($spouse);
         $em->flush();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
@@ -295,7 +301,7 @@ class TimeController extends Controller
             'quantities' => array(
                 'hours' => $this->getUser()->getNumOfHours(),
                 'bakedItems' => $this->getUser()->hasBakedItem(),
-                'auctionItems' => $this->getUser()->getAuctionItems(),
+                'auctionItems' => $this->getUser()->getSaleItems(),
             ),
             'isPassed' => $this->getUser()->getIsPassedRules(),
         );

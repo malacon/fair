@@ -1,5 +1,5 @@
 Select time for: {% for spouse in app.user.spouses -%}
-<a class="btn {% if loop.first %}btn-warning disabled{% else %}btn-success{% endif %}" href="#">{{ spouse.name }}</a>
+<a data-spouse-id="{{ loop.index0 }}" class="spouse btn {% if loop.first %}btn-warning disabled{% else %}btn-success{% endif %}" href="#">{{ spouse.name }}</a>
 {% endfor %}
 {% set spouse = app.user.spouses.first() %}
 <div class="accordion" id="booths-list">
@@ -49,7 +49,7 @@ Select time for: {% for spouse in app.user.spouses -%}
                                         {%- elseif time.isOtherSpouseSignedUpAtThisTime(spouse) -%}
                                             Spouse Working
                                         {%- elseif time.isFilled() -%}
-                                            Currently Occupied
+                                            Filled
                                         {%- else -%}
                                             Signup
                                         {%- endif -%}
