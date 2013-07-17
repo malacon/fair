@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +44,7 @@
     <file path="/DefaultController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374041057535" ignored="false" />
     <file path="/RegisterType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373295954711" ignored="false" />
     <file path="/UserController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373465402891" ignored="false" />
-    <file path="/TimeController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374040897455" ignored="false" />
+    <file path="/TimeController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374044746173" ignored="false" />
     <file path="/Controller.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373501411335" ignored="false" />
     <file path="/AuctionItemType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373162738819" ignored="false" />
     <file path="/BakedItem.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373903515991" ignored="false" />
@@ -73,7 +68,7 @@
     <file path="/date.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373415965337" ignored="false" />
     <file path="/boothList.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374042305525" ignored="false" />
     <file path="/userStatus.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373888922699" ignored="false" />
-    <file path="/status.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374043361025" ignored="false" />
+    <file path="/status.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374044960295" ignored="false" />
     <file path="/printStatus.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374043243090" ignored="false" />
     <file path="/.gitignore" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373480130783" ignored="false" />
     <file path="/config_prod.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373468585742" ignored="false" />
@@ -113,7 +108,7 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1011" selection-end="1011" vertical-scroll-proportion="-6.0">
+            <state line="178" column="20" selection-start="3793" selection-end="3793" vertical-scroll-proportion="-7.3846154">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -124,7 +119,7 @@
       <file leaf-file-name="Family.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="429" column="41" selection-start="8954" selection-end="8954" vertical-scroll-proportion="-15.230769">
+            <state line="386" column="51" selection-start="8016" selection-end="8016" vertical-scroll-proportion="-6.076923">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -144,7 +139,7 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="22" selection-start="3761" selection-end="3761" vertical-scroll-proportion="-7.1923075">
+            <state line="63" column="26" selection-start="2096" selection-end="2096" vertical-scroll-proportion="-17.653847">
               <folding>
                 <element signature="e#44#80#0" expanded="true" />
               </folding>
@@ -152,13 +147,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TimeController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TimeController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="250" column="42" selection-start="7030" selection-end="7030" vertical-scroll-proportion="0.65648854">
+            <state line="330" column="23" selection-start="9930" selection-end="9930" vertical-scroll-proportion="-7.6538463">
               <folding>
                 <element signature="e#44#89#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status.html.twig" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="82" selection-start="755" selection-end="755" vertical-scroll-proportion="0.45048544">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="202" column="0" selection-start="5373" selection-end="5373" vertical-scroll-proportion="-10.192307">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -218,13 +231,13 @@
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/printStatus.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
       </list>
     </option>
   </component>
@@ -874,20 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="438" selection-end="438" vertical-scroll-proportion="0.23106796">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="0" selection-start="5373" selection-end="5373" vertical-scroll-proportion="0.57007575">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="88" selection-start="615" selection-end="615" vertical-scroll-proportion="0.31716418">
@@ -923,27 +922,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1011" selection-end="1011" vertical-scroll-proportion="-6.0">
-          <folding>
-            <element signature="e#40#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="5" selection-start="2710" selection-end="2710" vertical-scroll-proportion="-7.0">
-          <folding>
-            <element signature="e#40#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="429" column="41" selection-start="8954" selection-end="8954" vertical-scroll-proportion="-15.230769">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>
@@ -959,7 +940,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="22" selection-start="3761" selection-end="3761" vertical-scroll-proportion="-7.1923075">
+        <state line="63" column="26" selection-start="2096" selection-end="2096" vertical-scroll-proportion="-17.653847">
           <folding>
             <element signature="e#44#80#0" expanded="true" />
           </folding>
@@ -968,10 +949,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="250" column="42" selection-start="7030" selection-end="7030" vertical-scroll-proportion="0.65648854">
+        <state line="330" column="23" selection-start="9930" selection-end="9930" vertical-scroll-proportion="-7.6538463">
           <folding>
             <element signature="e#44#89#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="0" selection-start="5373" selection-end="5373" vertical-scroll-proportion="-10.192307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="386" column="51" selection-start="8016" selection-end="8016" vertical-scroll-proportion="-6.076923">
+          <folding>
+            <element signature="e#40#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="178" column="20" selection-start="3793" selection-end="3793" vertical-scroll-proportion="-7.3846154">
+          <folding>
+            <element signature="e#40#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="82" selection-start="755" selection-end="755" vertical-scroll-proportion="0.45048544">
+          <folding />
         </state>
       </provider>
     </entry>

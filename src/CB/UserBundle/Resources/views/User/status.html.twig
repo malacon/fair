@@ -8,13 +8,13 @@
 {% if data.boothTimes|length > 0 %}
     <p>You've signed up to work the following hours:</p>
     <div class="modal-times row-fluid">
-        {% for userName, user in data.boothTimes %}
+        {% for userName, user in data.boothTimes if user %}
         <div class="span6">
             <strong>{{ userName }} will work</strong>
             <ul>
                 {% for boothName, booth in user %}
                     <li>
-                        <strong>{{ boothName }} Booth in the {{ attribute(booth, 1).location }} at</strong>
+                        <strong>{{ boothName }} Booth in the {{ attribute(booth, 0).location }} at</strong>
                         <ul>
                             {% for time in booth %}
                                 <li>{{ time.time }}</li>
