@@ -77,6 +77,13 @@ class Family extends BaseUser
      */
     private $maxHours;
 
+    /**
+     * @var \Datetime
+     *
+     * @ORM\Column(name="time_to_login", type="datetime")
+     */
+    private $timeToLogin;
+
 
     public function __construct()
     {
@@ -84,6 +91,7 @@ class Family extends BaseUser
         $this->saleItems = new ArrayCollection();
         $this->spouses = new ArrayCollection();
         $this->maxHours = 10;
+        $this->timeToLogin = new \DateTime('now');
     }
 
     /**
@@ -428,5 +436,39 @@ class Family extends BaseUser
     public function isTimeMaxedOut()
     {
         return !($this->getNumOfHours() < $this->maxHours);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimeToLogin()
+    {
+        return $this->timeToLogin;
+    }
+
+    /**
+     * @param mixed $timeToLogin
+     */
+    public function setTimeToLogin($timeToLogin)
+    {
+        $this->timeToLogin = $timeToLogin;
+
+        return $this;
+    }
+
+    public function isTimeToLogin()
+    {
+        $date = new \DateTime('now');
+//        var_dump($date->getTimestamp());die();
+//        return true;
+        if (!$this->timeToLogin) {
+            return true;
+        }
+        return $date->getTimestamp() > $this->timeToLogin->getTimestamp();
+    }
+
+    public function isEnabled()
+    {
+        return $this->isTimeToLogin() && $this->enabled;
     }
 }

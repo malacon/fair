@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Controller/RegistrationController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/EventListener/AuthenticationListener.php" afterPath="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/EventListener/AuthenticationListener.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManager.php" afterPath="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,9 +45,9 @@
     <file path="/User.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374044013180" ignored="false" />
     <file path="/security.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373425076746" ignored="false" />
     <file path="/UserBundle.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372978614740" ignored="false" />
-    <file path="/login.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374004268681" ignored="false" />
+    <file path="/login.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374049948438" ignored="false" />
     <file path="/messages.en.xlf" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1372984294169" ignored="false" />
-    <file path="/LoadUserData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373889198392" ignored="false" />
+    <file path="/LoadUserData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374048968063" ignored="false" />
     <file path="/DefaultController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374041057535" ignored="false" />
     <file path="/RegisterType.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373295954711" ignored="false" />
     <file path="/UserController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373465402891" ignored="false" />
@@ -75,9 +82,13 @@
     <file path="/Document.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373501197155" ignored="false" />
     <file path="/DocumentController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373501375443" ignored="false" />
     <file path="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373513926416" ignored="false" />
-    <file path="/Family.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374044252236" ignored="false" />
+    <file path="/Family.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374049589302" ignored="false" />
     <file path="/main.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374042332784" ignored="false" />
     <file path="/booth.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374035336919" ignored="false" />
+    <file path="/RegistrationController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374046906346" ignored="false" />
+    <file path="/AuthenticationListener.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374047223325" ignored="false" />
+    <file path="/LoginManager.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374048024356" ignored="false" />
+    <file path="$PROJECT_DIR$/app/cache/dev/doctrine/orm/Proxies/__CG__CBUserBundleEntityFamily.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374049649601" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,10 +116,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="20" selection-start="3793" selection-end="3793" vertical-scroll-proportion="-7.3846154">
+            <state line="178" column="20" selection-start="3793" selection-end="3793" vertical-scroll-proportion="0.36363637">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -116,73 +127,60 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Family.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
+      <file leaf-file-name="LoadUserData.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="386" column="51" selection-start="8016" selection-end="8016" vertical-scroll-proportion="-6.076923">
-              <folding>
-                <element signature="e#40#88#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="30" selection-start="3156" selection-end="3156" vertical-scroll-proportion="-12.6">
+            <state line="65" column="43" selection-start="2524" selection-end="2524" vertical-scroll-proportion="-15.038462">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
+      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Model/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="26" selection-start="2096" selection-end="2096" vertical-scroll-proportion="-17.653847">
-              <folding>
-                <element signature="e#44#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TimeController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="330" column="23" selection-start="9930" selection-end="9930" vertical-scroll-proportion="-7.6538463">
-              <folding>
-                <element signature="e#44#89#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="status.html.twig" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="82" selection-start="755" selection-end="755" vertical-scroll-proportion="0.45048544">
+            <state line="340" column="4" selection-start="6723" selection-end="6793" vertical-scroll-proportion="-5.8846154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
+      <file leaf-file-name="RegistrationController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/RegistrationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="202" column="0" selection-start="5373" selection-end="5373" vertical-scroll-proportion="-10.192307">
+            <state line="10" column="0" selection-start="374" selection-end="374" vertical-scroll-proportion="1.9615384">
+              <folding>
+                <element signature="e#44#101#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginManager.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="19" selection-start="1831" selection-end="1831" vertical-scroll-proportion="-2.0">
+              <folding>
+                <element signature="e#297#336#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserProvider.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/UserProvider.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="93" column="0" selection-start="2548" selection-end="2548" vertical-scroll-proportion="-18.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Time.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php">
+      <file leaf-file-name="LoginManagerInterface.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManagerInterface.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="5" selection-start="2710" selection-end="2710" vertical-scroll-proportion="-7.0">
-              <folding>
-                <element signature="e#40#88#0" expanded="true" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -222,22 +220,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/booth.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/Controller.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/printStatus.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
-        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/Controller/RegistrationController.php" />
+        <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/EventListener/AuthenticationListener.php" />
+        <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManager.php" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
       </list>
     </option>
   </component>
@@ -296,6 +294,238 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Security" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EventListener" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DependencyInjection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FOS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendsofsymfony" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -866,58 +1096,53 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="81" selection-start="202" selection-end="222" vertical-scroll-proportion="0.031716418">
+        <state line="202" column="0" selection-start="5373" selection-end="5373" vertical-scroll-proportion="-10.192307">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="21" selection-start="4112" selection-end="4112" vertical-scroll-proportion="0.94086957">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AuctionItem/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1172" selection-end="1172" vertical-scroll-proportion="0.8142077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="88" selection-start="615" selection-end="615" vertical-scroll-proportion="0.31716418">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="251" selection-start="4144" selection-end="4144" vertical-scroll-proportion="0.31902984">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="41" selection-start="4722" selection-end="4722" vertical-scroll-proportion="0.3955224">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/printStatus.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="75" selection-end="75" vertical-scroll-proportion="0.09289618">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/user_agent.php">
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/UserProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="0" selection-start="2548" selection-end="2548" vertical-scroll-proportion="-18.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="0" selection-end="269" vertical-scroll-proportion="-4.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManagerInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Security/LoginManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="19" selection-start="1831" selection-end="1831" vertical-scroll-proportion="-2.0">
+          <folding>
+            <element signature="e#297#336#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="2840" selection-end="2840" vertical-scroll-proportion="-15.884615">
           <folding />
         </state>
       </provider>
@@ -931,41 +1156,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js">
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Model/UserInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="30" selection-start="3156" selection-end="3156" vertical-scroll-proportion="-12.6">
+        <state line="224" column="0" selection-start="4684" selection-end="4684" vertical-scroll-proportion="0.4526515">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Model/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="26" selection-start="2096" selection-end="2096" vertical-scroll-proportion="-17.653847">
+        <state line="340" column="4" selection-start="6723" selection-end="6793" vertical-scroll-proportion="-5.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="374" selection-end="374" vertical-scroll-proportion="1.9615384">
           <folding>
-            <element signature="e#44#80#0" expanded="true" />
+            <element signature="e#44#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="330" column="23" selection-start="9930" selection-end="9930" vertical-scroll-proportion="-7.6538463">
-          <folding>
-            <element signature="e#44#89#0" expanded="true" />
-          </folding>
+        <state line="65" column="43" selection-start="2524" selection-end="2524" vertical-scroll-proportion="-15.038462">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="0" selection-start="5373" selection-end="5373" vertical-scroll-proportion="-10.192307">
+        <state line="99" column="43" selection-start="5607" selection-end="5607" vertical-scroll-proportion="0.67959183">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="211" selection-start="423" selection-end="423" vertical-scroll-proportion="0.2407767">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="386" column="51" selection-start="8016" selection-end="8016" vertical-scroll-proportion="-6.076923">
+        <state line="464" column="24" selection-start="9671" selection-end="9671" vertical-scroll-proportion="0.72962224">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>
@@ -974,17 +1211,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="20" selection-start="3793" selection-end="3793" vertical-scroll-proportion="-7.3846154">
+        <state line="178" column="20" selection-start="3793" selection-end="3793" vertical-scroll-proportion="0.36363637">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="82" selection-start="755" selection-end="755" vertical-scroll-proportion="0.45048544">
-          <folding />
         </state>
       </provider>
     </entry>

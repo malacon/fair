@@ -42,6 +42,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->setRoles(array('ROLE_USER'))
             ->addSpouse($parent1)
             ->addSpouse($parent2)
+            ->setTimeToLogin(new \DateTime('2013-08-01'))
         ;
         $manager->persist($parent1);
         $manager->persist($parent2);
@@ -62,6 +63,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->setRoles(array('ROLE_USER'))
             ->addSpouse($parent1)
             ->addSpouse($parent2)
+            ->setTimeToLogin(new \DateTime())
         ;
         $manager->persist($parent1);
         $manager->persist($parent2);
@@ -77,6 +79,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                 ->encodePassword('admin', $family3->getSalt()))
             ->setEnabled(true)
             ->setRoles(array('ROLE_ADMIN'))
+            ->setTimeToLogin(new \DateTime('now'))
         ;
 
         $this->addReference('user-user', $family1);
