@@ -138,14 +138,14 @@ class Time
      * @param User $worker
      * @return Bool  If the sign-up is successful it returns true
      */
-    public function addWorker(User $spouse)
+    public function addWorker(User $worker)
     {
         // If the worker is signed up
-         if (!$this->workers->contains($spouse) && !$this->isWorkerAlreadySignedUpAtThisTime($spouse) && $this->isAvailable()) {
+         if (!$this->workers->contains($worker) && !$worker->getFamily()->isTimeMaxedOut() && !$this->isWorkerAlreadySignedUpAtThisTime($worker) && $this->isAvailable()) {
             // Add the time to the worker
-            $spouse->addTime($this);
+            $worker->addTime($this);
             // Add the worker to the time
-            $this->workers[] = $spouse;
+            $this->workers[] = $worker;
             return true;
         }
 

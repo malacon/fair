@@ -232,15 +232,14 @@ class TimeController extends Controller
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
         $booth = $boothRepo->find($boothId);
 
+        /** @var \CB\UserBundle\Entity\User $spouse */
+        $spouse = $this->getUser()->getSpouse($this->getRequest()->query->get('spouse'));
+        $data['spouse'] = $spouse->getId();
+
         if (!$time) {
             throw $this->createNotFoundException();
         }
 
-        $data = $this->getBaseData($time);
-
-        /** @var \CB\UserBundle\Entity\User $spouse */
-        $spouse = $this->getUser()->getSpouse($this->getRequest()->query->get('spouse'));
-        $data['spouse'] = $spouse->getId();
 
         // Add the worker to the time
         if ($time->isWorkerAlreadySignedUpAtThisTime($spouse)) {
@@ -248,6 +247,8 @@ class TimeController extends Controller
         } else {
             $time->addWorker($spouse);
         }
+
+        $data = $this->getBaseData($time);
 
         // Check to see if the user now passes
         $this->checkUserPassed();

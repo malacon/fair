@@ -102,7 +102,6 @@ $(function() {
     {
         var spouseId = $('.btn-group-spouses .active').data('spouse-id');
 
-        console.log(spouseId)
         fade = fade || false;
         i = 0;
         if (fade) {
@@ -114,11 +113,10 @@ $(function() {
             $loadingBooth.html("Checking"+Array(i+1).join("."));
         }, 500);
 
-        console.log(url);
         $.getJSON(url, {spouse: spouseId}, function(data) {
-            console.log(data);
             updateStatus(data);
             updateHourCounter(data);
+            console.log(data);
             $('.hours').text(data['quantities']['hours']);
             $loadingBooth.addClass('hidden');
             $boothDisplay.html(data.html).fadeIn('slow');

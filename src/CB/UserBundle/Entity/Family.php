@@ -70,12 +70,20 @@ class Family extends BaseUser
      */
     private $isPassedRules = false;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="max_hours", type="integer")
+     */
+    private $maxHours;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->saleItems = new ArrayCollection();
         $this->spouses = new ArrayCollection();
+        $this->maxHours = 10;
     }
 
     /**
@@ -401,4 +409,24 @@ class Family extends BaseUser
         return $data;
     }
 
+    /**
+     * @return int
+     */
+    public function getMaxHours()
+    {
+        return $this->maxHours;
+    }
+
+    /**
+     * @param int $maxHours
+     */
+    public function setMaxHours($maxHours)
+    {
+        $this->maxHours = $maxHours;
+    }
+
+    public function isTimeMaxedOut()
+    {
+        return !($this->getNumOfHours() < $this->maxHours);
+    }
 }
