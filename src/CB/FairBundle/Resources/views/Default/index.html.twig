@@ -68,17 +68,11 @@
             </div>
             <div class="modal-body">
                 <p class="lead">Welcome {{ app.user.name }} Family<p>
-                <p>You will need to sign up to work the fair based on the following options.  Once you have successfully signed up for your hours and items the status box in the left side of the screen will turn <span class="alert-success">green</span>.</p>
-                <strong>Signup Options:</strong>
-                <ul class="rules">
-                    {% for rule in rules %}
-                        <li><strong>{{ rule.description }}:</strong> {{ rule }}</li>
-                    {% endfor %}
-                    <li><em>You can always volunteer to bring extra craft/auction items!</em></li>
-                </ul>
+                <p>The registration website can be completed in any order, but to assist you in making this a speedy process each section is numbered in the top right corner.  As you hover over them an information box will appear on the side to give you more information.</p>
+                <img src="{{ asset('bundles/fair/images/signup.png') }}" alt=""/>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
     {% endif %}
