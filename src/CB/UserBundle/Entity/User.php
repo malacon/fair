@@ -39,7 +39,7 @@ class User
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="spouses", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="\CB\FairBundle\Entity\Time", inversedBy="workers", cascade={"persist"})
      * @ORM\JoinTable(name="users_times")
      * @Assert\Valid
      */
@@ -136,6 +136,32 @@ class User
     public function getNumOfHours()
     {
         return $this->times->count();
+    }
+
+    public function getNumOfHoursByBoothId($id)
+    {
+        /** @var \CB\FairBundle\Entity\Time $time */
+        $count = 0;
+        foreach ($this->times as $time) {
+            if ($time->getBooth()->getId() == $id) {
+                $count += 1;
+            }
+        }
+        return $count;
+    }
+
+    public function getNumOfHoursByBooth()
+    {
+        /** @var \CB\FairBundle\Entity\Time $time */
+        $booths = array();
+        foreach ($this->times as $time) {
+            if (isset($booths[$time->getBooth()->getId()])) {
+                $booths[$time->getBooth()->getId()] += 1;
+            } else {
+                $booths[$time->getBooth()->getId()] = 1;
+            }
+        }
+        return $booths;
     }
 
     public function getTimestamps()

@@ -12,7 +12,8 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/fair/js/json2.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fair/js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/fair/js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fair/js/main.js') }}"></script>
     <script type="text/javascript">
         function getUserList($query, $process) {
             var url = '{{ path('get_user') }}.json',
@@ -57,7 +58,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="{{ path('home') }}">St. John Primary and St. Theresa School Fair Registration</a>
+                    <a class="brand" href="{{ path('home') }}">SJP & STS Fair Registration</a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right nav-list">
                             {% if is_granted("ROLE_ADMIN") %}
@@ -82,7 +83,7 @@
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
                                     <li>
-                                        <a href="#modal-status" data-toggle="modal">Report</a>
+                                        <a href="#modal-status" data-toggle="modal">Print Signup</a>
                                     </li>
                                     <li class="divider-vertical"></li>
                                 {% endif %}
@@ -121,35 +122,29 @@
                                 <li><a href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
-                            <h4>Welcome Mr. and Mrs. {{ app.user.name }}</h4>
-                            <strong>Status: </strong><span class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
-                            <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %}">
-                                You have signed up for:
-                                <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
-                                <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
-                                <span class="auction">{{ app.user.getNumOfSaleItems() }}</span> craft\auction items,
-                            </div>
+                            <h4>Welcome {{ app.user.name }} Family</h4>
+                            <strong>Status: </strong><span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                             <div class="family">
-                                <strong>Family Information:</strong>
-                                {#<ul class="children unstyle">#}
-                                    {#{% if app.user.children %}#}
-                                        {#{% for child in app.user.children %}#}
-                                            {#<li>{{ child.name }} in grade {{ child.grade }}</li>#}
-                                        {#{% endfor %}#}
-                                    {#{% else %}#}
-                                        {#<li>No Children???</li>#}
-                                    {#{% endif %}#}
-                                {#</ul>#}
+                                <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest.name }}, {{ app.user.eldest.grade }}
                             </div>
                             <div class="info">
-                                <strong>Choice Options:</strong>
+                                <strong>Signup Options:</strong>
                                 <ul class="rules">
                                     {% for rule in rules %}
                                         <li><strong>{{ rule.description }}:</strong> {{ rule }}</li>
                                     {% endfor %}
-                                    <li>You can always volunteer to bring extra craft/auction items!</li>
+                                    <li><em>You can always volunteer to bring extra craft/auction items!</em></li>
                                 </ul>
                             </div>
+                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item">
+                            <div class="content-title"">Status</div>
+                        <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Status Help">Help</div>
+                        <p>You have signed up for:
+                            <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
+                            <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
+                            <span class="auction">{{ app.user.getNumOfSaleItems() }}</span> craft\auction items.
+                        </p>
+                    </div>
                         {% else %}
                         {% endif %}
                     </div>

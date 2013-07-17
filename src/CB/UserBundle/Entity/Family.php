@@ -59,7 +59,7 @@ class Family extends BaseUser
     /**
      * @var \CB\FairBundle\Entity\BakedItem
      *
-     * @ORM\ManyToOne(targetEntity="CB\FairBundle\Entity\BakedItem", inversedBy="workers", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="\CB\FairBundle\Entity\BakedItem", inversedBy="workers", cascade={"persist"})
      */
     private $bakedItem;
 
@@ -324,7 +324,7 @@ class Family extends BaseUser
      */
     public function hasBakedItem()
     {
-        return (bool)($this->bakedItem == null? 0 : 1);
+        return ($this->bakedItem == null? 0 : 1);
     }
 
     /**
@@ -352,12 +352,22 @@ class Family extends BaseUser
         return $hours;
     }
 
+    public function getNumOfHoursBySpouse()
+    {
+        $hours = array();
+        /** @var \CB\UserBundle\Entity\User $spouse */
+        foreach ($this->spouses as $spouse) {
+            $hours[$spouse->getId()] = $spouse->getNumOfHours();
+        }
+        return $hours;
+    }
+
     public function getTimestamps()
     {
         $timestamps = array();
         /** @var \CB\UserBundle\Entity\User $spouse */
-        foreach ($this->spouses as $spouse) {
-            $timestamps[$spouse->getName()] = $spouse->getTimestamps();
+        foreach ($this->spouses as $key => $spouse) {
+            $timestamps[$key] = $spouse->getTimestamps();
         }
         return $timestamps;
     }

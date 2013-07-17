@@ -193,15 +193,44 @@ class TimeController extends Controller
     }
 
     /**
+     * @param $id
+     *
+     * @Route("/family.{_format}", name="booth_family", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function getFamilyDataJson()
+    {
+        $data = array();
+
+        $this->checkUserPassed();
+        $data['quantities'] = array(
+            'hours' => $this->getUser()->getNumOfHours(),
+            'bakedItems' => $this->getUser()->hasBakedItem(),
+            'auctionItems' => $this->getUser()->getSaleItems(),
+        );
+        $data['isPassed'] = $this->getUser()->getIsPassedRules();
+        $data['timestamps'] = $this->getUser()->getTimestamps();
+
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse($data);
+        }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
      * Assigns worker to booth time
      *
-     * @Route("/{id}/work.{_format}", name="booth_work", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     * @Route("/{id}/{boothId}/work.{_format}", name="booth_work", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
      */
-    public function workBoothTimeAction($id)
+    public function workBoothTimeAction($id, $boothId)
     {
         $em = $this->getDoctrine()->getManager();
         /** @var $time \CB\FairBundle\Entity\Time $entity */
         $time = $em->getRepository('FairBundle:Time')->find($id);
+
+        /** @var \CB\FairBundle\Entity\BoothRepository $boothRepo */
+        $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
+        $booth = $boothRepo->find($boothId);
 
         if (!$time) {
             throw $this->createNotFoundException();
@@ -210,30 +239,58 @@ class TimeController extends Controller
         $data = $this->getBaseData($time);
 
         /** @var \CB\UserBundle\Entity\User $spouse */
-        $spouse = $this->getUser()->getSpouse($this->getRequest()->request->get('spouse'));
+        $spouse = $this->getUser()->getSpouse($this->getRequest()->query->get('spouse'));
+        $data['spouse'] = $spouse->getId();
 
         // Add the worker to the time
-        if ($time->addSpouse($spouse)) {
-            $data['userChanged'] = true;
-            $data['userAdded'] = true;
-            $data['timeFilled'] = $time->isFilled();
-            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($spouse);
-            $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
-
-            // Check to see if the user now passes
-            $this->checkUserPassed();
-            $data['isPassed'] = $this->getUser()->getIsPassedRules();
-            $data['timestamps'] = $this->getUser()->getTimestamps();
+        if ($time->isWorkerAlreadySignedUpAtThisTime($spouse)) {
+            $time->removeWorker($spouse);
         } else {
-            $data['timeFilled'] = $time->isFilled();
+            $time->addWorker($spouse);
         }
+
+        // Check to see if the user now passes
+        $this->checkUserPassed();
+        $data['isPassed'] = $this->getUser()->getIsPassedRules();
+        $data['family'] = $this->getUser()->getName();
+        $data['boothHours'] = $spouse->getNumOfHoursByBooth();
+        $data['spouseHours'] = $this->getUser()->getNumOfHoursBySpouse();
+        $data['html'] = $this->renderView('FairBundle:Default:booth.html.twig',
+            array(
+                'booth' => $booth,
+                'spouse' => $spouse,
+            )
+        );
 
         $em->persist($time);
         $em->persist($spouse);
         $em->flush();
 
-        if ($this->getRequest()->getRequestFormat() == 'json') {
+
+        if($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createJsonResponse($data);
+        }
+        return $this->redirect($this->generateUrl('home'));
+
+    }
+
+    /**
+     * @Route("/isPassed.{_format}", name="is_passed", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function getIsPassed()
+    {
+        $this->checkUserPassed();
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse(
+                array(
+                    'isPassed' => $this->getUser()->getIsPassedRules(),
+                    'quantities' => array(
+                        'hours' => $this->getUser()->getNumOfHours(),
+                        'baked' => $this->getUser()->isBaking(),
+                        'auction' => $this->getUser()->getNumOfSaleItems(),
+                    ),
+                )
+            );
         }
 
         return $this->redirect($this->generateUrl('home'));
@@ -260,11 +317,11 @@ class TimeController extends Controller
         $spouse = $this->getUser()->getSpouse($this->getRequest()->request->get('spouse'));
 
         // Remove the worker to the time
-        if ($time->removeSpouse($spouse)) {
+        if ($time->removeWorker($spouse)) {
             $data['userChanged'] = true;
             $data['userRemoved'] = true;
             $data['timeFilled'] = $time->isFilled();
-            $data['timeWorked'] = $time->isSpouseAlreadySignedUpAtThisTime($spouse);
+            $data['timeWorked'] = $time->isWorkerAlreadySignedUpAtThisTime($spouse);
             $data['quantities']['hours'] = $this->getUser()->getNumOfHours();
 
             // Check to see if the user now passes

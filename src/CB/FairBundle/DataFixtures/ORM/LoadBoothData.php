@@ -41,11 +41,11 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth1);
             if ($i == 20 || $i == 21) {
-                $time->addSpouse($spouse);
+                $time->addWorker($spouse);
                 print_r($spouse.' - '.$time->getTime()->format('Y-m-d g A  ')."\r\n");
             }
             if ($i >8 && $i < 20) {
-                $time->addSpouse($spouse2);
+                $time->addWorker($spouse2);
                 print_r($spouse2.' - '.$time->getTime()->format('Y-m-d g A  ')."\r\n");
             }
             $booth1->addTime($time);
@@ -77,7 +77,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
             $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
             $time->setBooth($booth2);
             if ($i == 16 || $i == 18) {
-                $time->addSpouse($spouse);
+                $time->addWorker($spouse);
             }
             $booth2->addTime($time);
             $manager->persist($time);

@@ -5,31 +5,54 @@
  */
 
 $(function() {
-    $('.accordion-heading .close').popover({placement: 'left', html: true, trigger: 'hover'});
+    var $booths = $('#booths'),
+        $boothDisplay = $('.boothDisplay'),
+        $loadingBooth = $("#loadingBooth");
 
-    $('#booths').on('click', '.spouse.btn', function(e) {
-        var $this = $(this);
+    // Booth Navigation
+    $('.boothSelection li').on('click', 'a', function(e) {
+        var $this = $(this),
+            url = $this.attr('href');
+
+        e.preventDefault();
+        $this.parent().siblings('li').removeClass('active');
+        $this.parent().addClass('active');
+        if (!$this.hasClass('active')) {
+            loadingBooth(url, true);
+        }
+    });
+
+    // Spouse navigation
+    $booths.on('click', '.spouse.btn', function(e) {
+        var $this = $(this),
+            url = $('.boothSelection .nav').find('.active a').attr('href');
 
         e.preventDefault();
 
         $this.siblings('.btn').removeClass('disabled btn-warning').addClass('btn-success');
         $this.removeClass('btn-success').addClass('disabled btn-warning');
+
+        if ($this.hasClass('disabled')) {
+            loadingBooth(url, true);
+        }
+
     });
 
-    $('[data-time-id]').on('click', 'a', function(e) {
+    // Submit booth time
+    $('.boothData').on('click', 'a.btn-booth', function(e) {
         var $this = $(this),
             url = $this.attr('href'),
             spouseId = $('.spouse.disabled').data('spouse-id');
 
         e.preventDefault();
         if (!$this.hasClass('disabled')) {
-            $this.button('loading..');
-            $.post(url, {spouse: spouseId}, updateButtons);
+            loadingBooth(url, false);
         }
 
         return false;
     });
 
+    // Update baked item
     $('.bakedItems').on('click', 'a', function(e) {
         var $this = $(this),
             url = $this.attr('href');
@@ -40,6 +63,7 @@ $(function() {
         }
     });
 
+    // Remove Auction Item
     $('.auctionItems').on('click', '.close', function(e) {
         var $this = $(this),
             url = $this.attr('href');
@@ -48,7 +72,8 @@ $(function() {
         $.post(url, null, updateAuctionButtons);
     });
 
-    $('#auctionGoods').on('click', '.auction-add', function(e) {
+    // Add Auction Item
+    $('.content-item').on('click', '.auction-add', function(e) {
         var $this = $(this),
             url = $this.attr('href');
 
@@ -56,131 +81,155 @@ $(function() {
         $.post(url, null, updateAuctionButtons);
     });
 
-    $('#booths').on('click', '.accordion-toggle', function() {
-        $('#booths .accordion-toggle').each(function() {
-            $(this).children('span').text('Click to open');
-        })
-        if ($(this).parent().siblings().hasClass('in')) {
-            $(this).children('span').text('Click to open');
-        } else {
-            $(this).children('span').text('Click to close');
-        }
-    });
-
+    // Show User Report for printing
     $('#modal-status').on('show', function() {
         var url = $(this).data('href');
 
         $.get(url, updateUserStatusReport);
     })
 
+    function updateUserStatusReport(data) {
+        var $status = $('#modal-status'),
+            $body = $status.children('.modal-body'),
+            $timeList = $('.modal-times'),
+            $booths = $('<ul></ul>');
+
+        $body.html(data);
+    }
+
+    function loadingBooth(url, fade)
+    {
+        var spouseId = $('.spouse.disabled').data('spouse-id');
+
+        fade = fade || false;
+        i = 0;
+        if (fade) {
+            $boothDisplay.fadeOut('slow');
+        }
+        $loadingBooth.removeClass('hidden');
+        setInterval(function() {
+            i = ++i % 4;
+            $loadingBooth.html("Checking"+Array(i+1).join("."));
+        }, 500);
+
+        console.log(url);
+        $.getJSON(url, {spouse: spouseId}, function(data) {
+            console.log(data);
+            updateStatus(data);
+            updateHourCounter(data);
+            $('.hours').text(data['quantities']['hours']);
+            $loadingBooth.addClass('hidden');
+            $boothDisplay.html(data.html).fadeIn('slow');
+        });
+    }
+
+
+    /**
+     * Will cycle through the submit buttons and will disable if the times are the same as the current times
+     *
+     * @param data
+     */
+    function updateDisabledSubmitButtons(data) {
+        // for each data.timestamps
+        //   compare them to each list's timestamp
+        //      if they are equal and the IDs don't match, then disable the button
+        $('[data-timestamp='+data.timestamp+']').each(function() {
+            var $this = $(this),
+                id = $this.data('time-id');
+
+            if (isWorking(data)) {
+                $this.find('.attend-toggle').addClass('disabled').children('.msg').text('Already Working');
+            } else if (isFilled()) {
+                $this.find('.attend-toggle').addClass('disabled').children('.msg').text('Currently Occupied');
+            } else if (isRemoved()) {
+                $this.find('.attend-toggle').removeClass('disabled').addClass('btn-info').children('.msg').text('Signup');
+            }
+
+            function isWorking() { return data.timeWorked; }
+            function isFilled() { return id !== parseInt(data.id, 10) && data.userAdded; }
+            function isRemoved() { return data.userRemoved; }
+        });
+    }
+
+    function updateStatus(data) {
+        var $status = $('.status'),
+            url = $status.data('url'),
+            $isPassed = $('#isPassed');
+
+        $isPassed.toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
+        if (data.isPassed) {
+            $status.addClass('btn-success').removeClass('btn-danger');
+            $status.text($status.data('passed'));
+        } else {
+            $status.removeClass('btn-success').addClass('btn-danger');
+            $status.text($status.data('notpassed'));
+        }
+
+    }
+
+    function updateHourCounter(data) {
+        // Clear out the hours
+        $('span[data-booth-id]').text('0');
+        // Update new hour values
+        $.each(data.boothHours, function(id, data) {
+            $('span[data-booth-id='+id+']').text(data);
+        });
+
+        $.each(data.spouseHours, function(id, data) {
+            $('span[data-spouse-hour='+id+']').text(data);
+        })
+    }
+
+    function updateAuctionButtons(data) {
+        updateStatus(data);
+        $('.auction').text(data.numAuctions);
+        // IF removed, find the id and remove the tag
+        if (data.isRemoved) {
+            $('[data-auction-id='+data.id+']').remove();
+        } else {
+            var $div = $('<div data-auction-id='+data.id+'>'+data.description+'</div>')
+                .addClass('auctionItem alert')
+                .append($('<a>&times;</a>')
+                    .addClass('close')
+                    .attr('href', data.url));
+
+            $('.auctionItems').append($div);
+        }
+    }
+
+    function updateBakedButtons(data) {
+        var bakedItemButtons = $('[data-baked-id]'),
+            btnBakingTXT = 'You are baking:',
+            btnUnavailableTXT = 'is Unavailable';
+
+        // Update the hours counter
+        updateStatus(data);
+        $('.baked').text(data.isWorkerBaking?1:0);
+        // Reset all buttons
+        bakedItemButtons.each(function() {
+            var $this = $(this),
+                id = $this.data('baked-id'),
+                description = $this.children('span');
+
+            // Reset all buttons
+            $this.removeClass();
+            // set all buttons to btn-success
+            if (id !== data.id || !data.isWorkerBaking) {
+                $this.addClass('btn btn-success').html(description);
+            } else {
+                // Change the button you clicked
+                $this.addClass('btn btn-warning').text(btnBakingTXT+' ').append(description);
+            }
+        });
+
+        // Set all unavailable items
+        $.each(data.unavailableItems, function() {
+            if (this.id !== data.id) {
+                $('[data-baked-id='+this.id+']').addClass('disabled').removeClass('btn-success').text(this.description + ' ' + btnUnavailableTXT);
+            }
+        });
+
+    }
+
 });
 
-function updateUserStatusReport(data) {
-    var $status = $('#modal-status'),
-        $body = $status.children('.modal-body'),
-        $timeList = $('.modal-times'),
-        $booths = $('<ul></ul>');
-
-    $body.html(data);
-}
-
-/**
- * Will cycle through the submit buttons and will disable if the times are the same as the current times
- *
- * @param data
- */
-function updateDisabledSubmitButtons(data) {
-    // for each data.timestamps
-    //   compare them to each list's timestamp
-    //      if they are equal and the IDs don't match, then disable the button
-    $('[data-timestamp='+data.timestamp+']').each(function() {
-        var $this = $(this),
-            id = $this.data('time-id');
-
-        if (data.timeWorked) {
-            $this.find('.attend-toggle').addClass('disabled').text('Already Working');
-        }
-        else if (id !== parseInt(data.id, 10) && data.userAdded) {
-            $this.find('.attend-toggle').addClass('disabled').text('Currently Occupied');
-        }
-        else if (data.userRemoved) {
-            $this.find('.attend-toggle').removeClass('disabled').text('Signup');
-        }
-    });
-}
-
-function isPassed(data) {
-    $('#isPassed').toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
-    $('.status').toggleClass('btn-danger', !data.isPassed).toggleClass('btn-success', data.isPassed);
-    if (data.isPassed) {
-        $('.status').text('Requirements Met');
-    } else {
-        $('.status').text('Requirements not Met');
-    }
-}
-
-function updateButtons(data) {
-    if (data.userChanged) {
-        $('[data-time-id='+data.id+'] .attend-toggle').toggleClass('hidden', data.userAdded);
-        $('[data-time-id='+data.id+'] .not-attend-toggle').toggleClass('hidden',data.userRemoved);
-        $('.hours').text(data['quantities']['hours']);
-        isPassed(data);
-
-        updateDisabledSubmitButtons(data);
-    } else if (data.timeFilled && !data.timeWorked) {
-        $('[data-time-id='+data.id+']').find('.attend-toggle').addClass('disabled').text('Currently Occupied');
-    }
-}
-
-function updateAuctionButtons(data) {
-    isPassed(data);
-    $('.auction').text(data.numAuctions);
-    // IF removed, find the id and remove the tag
-    if (data.isRemoved) {
-        $('[data-auction-id='+data.id+']').remove();
-    } else {
-        var $div = $('<div data-auction-id='+data.id+'>'+data.description+'</div>')
-            .addClass('auctionItem alert')
-            .append($('<a>&times;</a>')
-                .addClass('close')
-                .attr('href', data.url));
-
-//        $div.append($a);
-
-        $('.auctionItems').append($div);
-    }
-}
-
-function updateBakedButtons(data) {
-    var bakedItemButtons = $('[data-baked-id]'),
-        btnBakingTXT = 'You are baking:',
-        btnUnavailableTXT = 'is Unavailable';
-
-    // Update the hours counter
-    isPassed(data);
-    $('.baked').text(data.isWorkerBaking?1:0);
-    // Reset all buttons
-    bakedItemButtons.each(function() {
-        var $this = $(this),
-            id = $this.data('baked-id'),
-            description = $this.children('span');
-
-        // Reset all buttons
-        $this.removeClass();
-        // set all buttons to btn-success
-        if (id !== data.id || !data.isWorkerBaking) {
-            $this.addClass('btn btn-success').html(description);
-        } else {
-            // Change the button you clicked
-            $this.addClass('btn btn-warning').text(btnBakingTXT+' ').append(description);
-        }
-    });
-
-    // Set all unavailable items
-    $.each(data.unavailableItems, function() {
-        if (this.id !== data.id) {
-            $('[data-baked-id='+this.id+']').addClass('disabled').removeClass('btn-success').text(this.description + ' ' + btnUnavailableTXT);
-        }
-    });
-
-}

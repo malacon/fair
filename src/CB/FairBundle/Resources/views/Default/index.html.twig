@@ -5,73 +5,61 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="well">
             <p class="lead">The following links will allow you to see (and edit, be careful!) the parts of the fair.</p>
-
         </div>
     {% else %}
-        <div class="well">
-            <p><strong>Instructions: </strong>You must work either 10 hours, or work 8 hours and bring one baked good and one $25 craft item or one $100 auction item, or work 8 hours and bring two auction/craft items.  Click on the help links for each section for more information.</p>
-            <div class="accordion" id="registration">
-                <div class="accordion-group">
-                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#bakedGoods">Baked Goods</a><span data-toggle="popover" data-content="You may select one baked item.  A <span class='btn-success'>green</span> button means it is selectable.  An <span class='btn-warning'>orange</span> button means you have selected that item.  Unavailable items will be grayed out.  To unselect something you have chosen re-click the <span class='btn-warning'>orange</span>."   data-original-title="<strong>Baked Goods Help</strong>" class="close">Help</span></div>
-                </div>
-                <div id="bakedGoods" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        <p>Click on the item you wish to bring.  You can only bring one baked item.  To unbring an item, click on it and the other options will be available.</p>
-                        <div class="bakedItems">
-                            {% for bakedItem in bakedItems %}
-                                {#
-                                    IF baking this item: have color be success, words say baking
-                                    IF baking another item, have color be inverse, disable, words say nothing
-                                    IF item is not available, have color be inverse, disable, words say Unavailable
-                                    ELSE color success, words say nothing
-                                #}
-                                <a data-baked-id="{{ bakedItem.id }}"
-                                   class="btn {% if not bakedItem.isItemAvailable() and not app.user.isBakingItem(bakedItem) -%}
+
+        <div class="content-item">
+            <div class="content-title">Baked Goods</div>
+            <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Baked Goods Help">Help</div>
+            <div class="bakedItems">
+                <p><strong>I agree to bring the following:</strong><br>
+                {% for bakedItem in bakedItems %}
+                    {#
+                        IF baking this item: have color be success, words say baking
+                        IF baking another item, have color be inverse, disable, words say nothing
+                        IF item is not available, have color be inverse, disable, words say Unavailable
+                        ELSE color success, words say nothing
+                    #}
+                    <a data-baked-id="{{ bakedItem.id }}"
+                       class="btn {% if not bakedItem.isItemAvailable() and not app.user.isBakingItem(bakedItem) -%}
                                         disabled
                                         {%- endif %} {% if app.user.isBakingItem(bakedItem) -%}
                                         btn-warning
                                         {%- elseif bakedItem.isItemAvailable() -%}
                                         btn-success
                                     {%- endif -%}"
-                                   href="{{ path('baked_bring', {'id': bakedItem.id}) }}.json">
-                                    {%- if app.user.isBakingItem(bakedItem) -%}
-                                        You are baking: <span>{{ bakedItem }}</span>
-                                    {%- elseif not bakedItem.isItemAvailable() -%}
-                                        <span>{{ bakedItem }}</span> is Unavailable
-                                    {%- else -%}
-                                        <span>{{ bakedItem }}</span>
-                                    {%- endif -%}
-                                </a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#auctionGoods">Craft\Auction Items</a><span data-toggle="popover" data-content="You may select as many auction/craft items as you want.  To select an item click on the button.  It will appear below in <span class='alert'>yellow</span>.  To remove an auction item click on the x in the <span class='alert'>yellow</span> box."   data-original-title="<strong>Craft\Auction Items Help</strong>" class="close">Help</span></div>
-                </div>
-                <div id="auctionGoods" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        <p>Add a craft or auction item by clicking on the buttons below.</p>
-                        <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a>
-                        <div class="auctionItems">
-                        {% for saleItem in app.user.saleItems %}
-                            <div class="auctionItem alert" data-auction-id="{{ saleItem.id }}">{{ saleItem }}<a class="close" href="{{ path('auction_remove', {'id': saleItem.id}) }}">&times;</a></div>
-                        {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading"><a data-toggle="collapse" data-parent="#registration" href="#booths">Booth Times</a><span data-toggle="popover" data-content="Select a time to work click on one of the buttons that is <span class='btn-info'>teal</span> and says Signup.  If a time is currently filled up it will say 'Currently Occupied'.  If the time says 'Already Working at this Time' you are already signed up at this time.  To be able to sign up for this time, unselect the time you are signed up for.  It will be highlighted in <span class='btn-warning'>orange</span>."   data-original-title="<strong>Booth Times Help</strong>" class="close">Help</span></div>
-                </div>
-                <div id="booths" class="accordion-body collapse in">
-                    <div class="accordion-inner">
-                        {{ include(
-                        'FairBundle:Default:boothList.html.twig',
-                        { 'booths': booths }
-                        ) }}
-                    </div>
-                </div>
+                       href="{{ path('baked_bring', {'id': bakedItem.id}) }}.json">
+                        {%- if app.user.isBakingItem(bakedItem) -%}
+                            You are baking: <span>{{ bakedItem }}</span>
+                        {%- elseif not bakedItem.isItemAvailable() -%}
+                            <span>{{ bakedItem }}</span> is Unavailable
+                        {%- else -%}
+                            <span>{{ bakedItem }}</span>
+                        {%- endif -%}
+                    </a>
+                {% endfor %}
+                </p>
             </div>
+        </div>
+        <div class="content-item">
+            <div class="content-title">Craft/Auction Items</div>
+            <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Craft/Auction Help">Help</div>
+                <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a><br>
+                <p></p><strong>I agree to bring the following:</strong><br>
+                <div class="auctionItems">
+                    {% for saleItem in app.user.saleItems %}
+                        <div class="auctionItem alert" data-auction-id="{{ saleItem.id }}">{{ saleItem }}<a class="close" href="{{ path('auction_remove', {'id': saleItem.id}) }}">&times;</a></div>
+                    {% endfor %}
+                </div>
+                </p>
+        </div>
+        <div class="content-item" id="booths">
+            <div class="content-title">Booths</div>
+            <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Booth Help">Help</div>
+            {{ include(
+            'FairBundle:Default:boothList.html.twig',
+            { 'booths': booths }
+            ) }}
         </div>
         {{ include(
         'FairBundle:Default:userStatus.html.twig'
