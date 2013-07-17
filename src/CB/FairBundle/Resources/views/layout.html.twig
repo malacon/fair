@@ -125,18 +125,17 @@
                             <div class="family">
                                 <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest }}, {{ app.user.eldestGrade }}
                             </div>
-                            <div class="info">
-                                <strong>Signup Options:</strong>
-                                <ul class="rules">
+                            <div class="info content-item" data-toggle="popover" data-placement="right" data-content="As you begin to sign up, take note of the various options for signing up.  If you do not meet one of these options you will not meet your obligation.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-info-sign'></i> Status</strong>." title="" data-original-title="Beginning Help">
+                                <div class="content-title"><i class="icon-list"></i> 1. Signup Options</div>
+                                <ul class="rules unstyled">
                                     {% for rule in rules %}
                                         <li><strong>{{ rule.description }}:</strong> {{ rule }}</li>
                                     {% endfor %}
                                     <li><em>You can always volunteer to bring extra craft/auction items!</em></li>
                                 </ul>
                             </div>
-                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item">
-                            <div class="content-title"">Status</div>
-                        <div class="help" data-toggle="popover" data-placement="right" data-content="To change your status you must make your selections to the right by clicking the various buttons.  The signup options above govern your status.  This box will turn <span class='btn-success'>green</span> when you have fulfilled your requirements." title="" data-original-title="Status Help">Help</div>
+                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item" data-toggle="popover" data-placement="right" data-content="To change your status you must make your selections to the right by clicking the various buttons.  The signup options above govern your status.  This box will turn <span class='btn-success'>green</span> when you have fulfilled your requirements.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-fire'></i> Baked Goods</strong>." title="" data-original-title="Status Help">
+                            <div class="content-title""><i class="icon-info-sign"></i> 2. Status</div>
                         <p><i class="icon {% if app.user.isPassedRules %}icon-thumbs-up{% else %} icon-exclamation-sign{% endif %}"></i> You have signed up for:
                             <ul class="no-style">
                             <li><span class="hours">{{ app.user.getNumOfHours() }}</span> <i class="icon-time"></i> hours of work,

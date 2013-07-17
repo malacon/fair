@@ -63,8 +63,8 @@ ul.times > li a {
     position: absolute;
     top: -1px;
     right: -1px;
-    padding: 3px 7px;
-    font-size: 12px;
+    padding: 5px 7px;
+    font-size: 14px;
     font-weight: bold;
     background-color: #F5F5F5;
     border: 1px solid #DDD;
@@ -193,8 +193,8 @@ span.msg {
     position: absolute;
     top: -1px;
     left: -1px;
-    padding: 3px 7px;
-    font-size: 12px;
+    padding: 5px 7px;
+    font-size: 14px;
     font-weight: bold;
     background-color: #F5F5F5;
     border: 1px solid #DDD;
@@ -234,7 +234,7 @@ span.msg {
 
 .popover {
     z-index:2000;
-    max-width: 400px;
+    max-width: 320px;
 }
 
 .modal-header {

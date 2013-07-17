@@ -18,10 +18,10 @@
                 <td><a href="{{ path('bakeditem_show', { 'id': entity.id }) }}">{{ entity.description }}</a></td>
                 <td>{{ entity.quantity }}</td>
                 <td>
-                    <strong>Number of Users: {{ entity.getNumberOfFamiles() }}</strong>
-                    {% for user in entity.users %}
-                        {{ user.familyName }}
-                    {% endfor %}
+                    <strong>Number of Families: {{ entity.getNumberOfFamiles() }}</strong>
+                    <br>Families: <em>{%- for family in entity.workers -%}
+                        {{ family.name }}{% if not loop.last %}, {% endif %}
+                    {%- endfor -%}</em>
                 </td>
                 <td>
                 <ul>

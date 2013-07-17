@@ -12,15 +12,14 @@
         {% endif %}
     </td>
     <td>
-        <div class="btn-group btn-group-vertical">
-            <a class="btn btn-info btn-small" href="{{ path('rule_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
-
-            <form action="{{ path('rule_delete', { 'id': entity.id }) }}" method="post">
-                <input type="hidden" name="_method" value="DELETE" />
+        <form action="{{ path('rule_delete', { 'id': entity.id }) }}" method="post">
+            <div class="btn-group btn-group-vertical">
+                <a class="btn btn-info btn-small" href="{{ path('rule_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
                 {{ form_widget(delete_form) }}
                 <button class="btn btn-danger btn-small delete-rule" type="submit"><i class="icon-trash"></i> Delete</button>
-            </form>
-        </div>
+                <input type="hidden" name="_method" value="DELETE" />
+            </div>
+        </form>
     </td>
 </tr>
 
