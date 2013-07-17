@@ -44,7 +44,7 @@ class Family extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="eldest", type="string")
+     * @ORM\Column(name="eldest_grade", type="string")
      */
     private $eldestGrade;
 

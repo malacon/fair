@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,19 +108,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoadUserData.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LoadUserData.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="927" selection-end="927" vertical-scroll-proportion="0.3717694">
+            <state line="25" column="0" selection-start="927" selection-end="927" vertical-scroll-proportion="-3.6666667">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Family.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Family.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="496" column="21" selection-start="10278" selection-end="10278" vertical-scroll-proportion="-7.529412">
+            <state line="46" column="37" selection-start="939" selection-end="939" vertical-scroll-proportion="0.27037773">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -1196,19 +1194,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="496" column="21" selection-start="10278" selection-end="10278" vertical-scroll-proportion="-7.529412">
-          <folding>
-            <element signature="e#40#88#0" expanded="true" />
-          </folding>
+        <state line="25" column="0" selection-start="927" selection-end="927" vertical-scroll-proportion="-3.6666667">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="927" selection-end="927" vertical-scroll-proportion="0.3717694">
-          <folding />
+        <state line="46" column="37" selection-start="939" selection-end="939" vertical-scroll-proportion="0.27037773">
+          <folding>
+            <element signature="e#40#88#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
