@@ -37,9 +37,16 @@ class Family extends BaseUser
     /**
      * @var array
      *
-     * @ORM\Column(name="eldest", type="array")
+     * @ORM\Column(name="eldest", type="string")
      */
     private $eldest;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="eldest", type="string")
+     */
+    private $eldestGrade;
 
     /**
      * @var ArrayCollection
@@ -470,5 +477,23 @@ class Family extends BaseUser
     public function isEnabled()
     {
         return $this->isTimeToLogin() && $this->enabled;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEldestGrade()
+    {
+        return $this->eldestGrade;
+    }
+
+    /**
+     * @param string $eldestGrade
+     */
+    public function setEldestGrade($eldestGrade)
+    {
+        $this->eldestGrade = $eldestGrade;
+
+        return $this;
     }
 }

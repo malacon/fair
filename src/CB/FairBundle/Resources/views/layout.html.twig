@@ -123,7 +123,7 @@
                             <h4>Welcome {{ app.user.name }} Family</h4>
                             <strong>Status: </strong><span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                             <div class="family">
-                                <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest.name }}, {{ app.user.eldest.grade }}
+                                <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest }}, {{ app.user.eldestGrade }}
                             </div>
                             <div class="info">
                                 <strong>Signup Options:</strong>

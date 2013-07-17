@@ -34,7 +34,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->getEncoder($family1);
         $family1->setUsername('baker')
             ->setName('Baker')
-            ->setEldest('Lucy', '2A')
+            ->setEldest('Lucy')
+            ->setEldestGrade('2A')
             ->setEmail('craig.d.baker+fair@gmail.com')
             ->setPassword($encoder
                 ->encodePassword('baker', $family1->getSalt()))
@@ -55,7 +56,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->getEncoder($family2);
         $family2->setUsername('smith')
             ->setName('Smith')
-            ->setEldest('Gillian', '6A')
+            ->setEldest('Gillian')
+            ->setEldestGrade('6A')
             ->setEmail('craig.d.baker+fair2@gmail.com')
             ->setPassword($encoder
                 ->encodePassword('smith', $family2->getSalt()))
