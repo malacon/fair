@@ -13,13 +13,13 @@ body {
     height: auto !important;
     height: 100%;
     /* Negative indent footer by it's height */
-    margin: 0 auto -81px;
+    margin: 0 auto -51px;
 }
 
 /* Set the fixed height of the footer here */
 #push,
 #footer {
-    height: 60px;
+    height: 30px;
 }
 #footer {
     background-color: #f5f5f5;
@@ -27,6 +27,16 @@ body {
     border-top: 1px solid #E5E5E5;
     background-color: #F5F5F5;
     padding-top: 20px;
+}
+
+#footer p {
+    bottom: 0;
+    position: absolute;
+    right: 50%;
+    margin-right: -36px;
+    display: block;
+    text-align: center;
+    width: 70px;
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */

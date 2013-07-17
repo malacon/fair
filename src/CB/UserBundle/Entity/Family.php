@@ -470,7 +470,7 @@ class Family extends BaseUser
 
     public function isEnabled()
     {
-        return $this->isTimeToLogin() && $this->enabled;
+        return  $this->isTimeToLogin() && $this->enabled;
     }
 
     /**

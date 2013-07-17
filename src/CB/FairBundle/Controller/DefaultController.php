@@ -44,9 +44,10 @@ class DefaultController extends Controller
     public function getUsersJsonAction()
     {
         $user = $this->getRequest()->request->get('user');
-        /** @var \CB\UserBundle\Entity\UserRepository $userRepo */
-        $userRepo = $this->getDoctrine()->getRepository('UserBundle:User');
+        /** @var \CB\UserBundle\Entity\FamilyRepository $userRepo */
+        $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
         $users = $userRepo->findByUsernameChunk($user);
+        print_r($users);die();
 
         if ($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createJsonResponse($users);
@@ -61,8 +62,8 @@ class DefaultController extends Controller
     public function isUserAction()
     {
         $user = $this->getRequest()->request->get('user');
-        /** @var \CB\UserBundle\Entity\UserRepository $userRepo */
-        $userRepo = $this->getDoctrine()->getRepository('UserBundle:User');
+        /** @var \CB\UserBundle\Entity\FamilyRepository $userRepo */
+        $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
         $isUser = $userRepo->isUser($user);
         if ($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createJsonResponse(array('isUser' => $isUser));
