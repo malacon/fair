@@ -44,7 +44,7 @@
         <div class="content-item">
             <div class="content-title">Craft/Auction Items</div>
             <div class="help" data-toggle="popover" data-placement="left" data-content="You may select as many auction/craft items as you want.  To select an item click on the button.  It will appear below in <span class='alert'>yellow</span>.  To remove an auction item click on the x in the <span class='alert'>yellow</span> box." title="" data-original-title="Craft/Auction Help">Help</div>
-                <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a><br>
+                <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json"><i class="icon-plus icon-white"></i> Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json"><i class="icon-plus icon-white"></i> Add $100 auction item</a><br>
                 <p></p><strong>I agree to bring the following:</strong><br>
                 <div class="auctionItems">
                     {% for saleItem in app.user.saleItems %}
@@ -64,6 +64,26 @@
         {{ include(
         'FairBundle:Default:userStatus.html.twig'
         ) }}
+        <div id="instructions" data-toggle="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Fair Registration Instructions</h3>
+            </div>
+            <div class="modal-body">
+                <p class="lead">Welcome {{ app.user.name }} Family<p>
+                <p>You will need to sign up to work the fair based on the following options.  Once you have successfully signed up for your hours and items the status box in the left side of the screen will turn <span class="alert-success">green</span>.</p>
+                <strong>Signup Options:</strong>
+                <ul class="rules">
+                    {% for rule in rules %}
+                        <li><strong>{{ rule.description }}:</strong> {{ rule }}</li>
+                    {% endfor %}
+                    <li><em>You can always volunteer to bring extra craft/auction items!</em></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
     {% endif %}
 
 {% endblock %}

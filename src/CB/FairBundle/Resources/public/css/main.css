@@ -236,3 +236,7 @@ span.msg {
     z-index:2000;
     max-width: 400px;
 }
+
+.modal-header {
+    background: rgba(204, 192, 178, 0.38);
+}

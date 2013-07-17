@@ -83,7 +83,7 @@
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
                                     <li>
-                                        <a href="#modal-status" data-toggle="modal">Print Your Responsibilities</a>
+                                        <a href="#modal-status" data-toggle="modal"><i class="icon-print"></i> Print Your Responsibilities</a>
                                     </li>
                                     <li class="divider-vertical"></li>
                                 {% endif %}
@@ -121,7 +121,7 @@
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
                             <h4>Welcome {{ app.user.name }} Family</h4>
-                            <strong>Status: </strong><span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
+                            {#<strong>Status: </strong><span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>#}
                             <div class="family">
                                 <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest }}, {{ app.user.eldestGrade }}
                             </div>
@@ -137,10 +137,13 @@
                         <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item">
                             <div class="content-title"">Status</div>
                         <div class="help" data-toggle="popover" data-placement="right" data-content="To change your status you must make your selections to the right by clicking the various buttons.  The signup options above govern your status.  This box will turn <span class='btn-success'>green</span> when you have fulfilled your requirements." title="" data-original-title="Status Help">Help</div>
-                        <p>You have signed up for:
-                            <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
-                            <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,
-                            <span class="auction">{{ app.user.getNumOfSaleItems() }}</span> craft\auction items.
+                        <p><i class="icon {% if app.user.isPassedRules %}icon-thumbs-up{% else %} icon-exclamation-sign{% endif %}"></i> You have signed up for:
+                            <ul class="no-style">
+                            <li><span class="hours">{{ app.user.getNumOfHours() }}</span> <i class="icon-time"></i> hours of work,
+                            <li><span class="baked">{{ app.user.hasBakedItem() }}</span> <i class="icon-fire"></i> baked goods,
+                            <li><span class="auction">{{ app.user.getNumOfSaleItems() }}</span> <i class="icon-gift"></i> craft\auction items.
+                            </ul>
+                        <span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                         </p>
                     </div>
                         {% else %}

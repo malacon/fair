@@ -3,11 +3,12 @@
  * Date: 7/3/13
  * Time: 8:38 PM
  */
-
 $(function() {
     var $booths = $('#booths'),
         $boothDisplay = $('.boothDisplay'),
         $loadingBooth = $("#loadingBooth");
+
+    $('#instructions').modal('show');
 
     // Booth Navigation
     $('.boothSelection li').on('click', 'a', function(e) {
@@ -160,9 +161,11 @@ $(function() {
         if (data.isPassed) {
             $status.addClass('btn-success').removeClass('btn-danger');
             $status.text($status.data('passed'));
+            $isPassed.find('i.icon').addClass('icon-thumbs-up').removeClass('icon-exclamation-sign');
         } else {
             $status.removeClass('btn-success').addClass('btn-danger');
             $status.text($status.data('notpassed'));
+            $isPassed.find('i.icon').removeClass('icon-thumbs-up').addClass('icon-exclamation-sign');
         }
 
     }
