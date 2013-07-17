@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>{{ app.user.familyName }} Family Fair Responsibilities</h1>
+    <h1>{{ app.user.name }} Family Fair Responsibilities</h1>
     {{ include(
     'UserBundle:User:status.html.twig',
     { 'data': data }

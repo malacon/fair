@@ -7,19 +7,24 @@
 </div>
 {% if data.boothTimes|length > 0 %}
     <p>You've signed up to work the following hours:</p>
-    <div class="modal-times">
-        <ul>
-            {% for boothName, booth in data.boothTimes %}
-                <li>
-                    <strong>{{ boothName }} Booth in the {{ attribute(booth, 1).location }}</strong>
-                    <ul>
-                        {% for time in booth %}
-                            <li>{{ time.time }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="modal-times row-fluid">
+        {% for userName, user in data.boothTimes %}
+        <div class="span6">
+            <strong>{{ userName }} will work</strong>
+            <ul>
+                {% for boothName, booth in user %}
+                    <li>
+                        <strong>{{ boothName }} Booth in the {{ attribute(booth, 1).location }} at</strong>
+                        <ul>
+                            {% for time in booth %}
+                                <li>{{ time.time }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
     </div>
 {% else %}
     <p>You have not signed up to work any times yet!</p>
