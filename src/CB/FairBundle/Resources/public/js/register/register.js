@@ -6,9 +6,13 @@
 $(function() {
     var $booths = $('#booths'),
         $boothDisplay = $('.boothDisplay'),
-        $loadingBooth = $("#loadingBooth");
+        $loadingBooth = $("#loadingBooth"),
+        $instructions = $('#instructions');
 
-    $('#instructions').modal('show');
+    $instructions.modal('show');
+    $instructions.on('hidden', function() {
+        $('.info').popover('show');
+    });
 
     // Booth Navigation
     $('.boothSelection li').on('click', 'a', function(e) {
