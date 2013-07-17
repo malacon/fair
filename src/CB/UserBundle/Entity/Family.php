@@ -35,7 +35,7 @@ class Family extends BaseUser
     private $name;
 
     /**
-     * @var array
+     * @var string
      *
      * @ORM\Column(name="eldest", type="string")
      */

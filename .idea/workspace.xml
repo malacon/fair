@@ -120,7 +120,7 @@
       <file leaf-file-name="Family.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="37" selection-start="939" selection-end="939" vertical-scroll-proportion="0.27037773">
+            <state line="37" column="18" selection-start="782" selection-end="782" vertical-scroll-proportion="0.06759443">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -1203,7 +1203,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="37" selection-start="939" selection-end="939" vertical-scroll-proportion="0.27037773">
+        <state line="37" column="18" selection-start="782" selection-end="782" vertical-scroll-proportion="0.06759443">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>
