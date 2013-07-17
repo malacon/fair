@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/printStatus.html.twig" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/printStatus.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,10 +105,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="layout.html.twig" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="50" selection-start="4615" selection-end="4615" vertical-scroll-proportion="-7.5">
+            <state line="86" column="41" selection-start="4722" selection-end="4722" vertical-scroll-proportion="0.41165048">
               <folding />
             </state>
           </provider>
@@ -163,10 +161,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="status.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="status.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="98" selection-start="763" selection-end="763" vertical-scroll-proportion="0.5281553">
+            <state line="16" column="98" selection-start="763" selection-end="763" vertical-scroll-proportion="-10.461538">
               <folding />
             </state>
           </provider>
@@ -236,11 +234,11 @@
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/printStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
       </list>
     </option>
   </component>
@@ -923,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="50" selection-start="4615" selection-end="4615" vertical-scroll-proportion="-7.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="251" selection-start="4144" selection-end="4144" vertical-scroll-proportion="-6.576923">
@@ -983,7 +974,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/User/status.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="98" selection-start="763" selection-end="763" vertical-scroll-proportion="0.5281553">
+        <state line="16" column="98" selection-start="763" selection-end="763" vertical-scroll-proportion="-10.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="41" selection-start="4722" selection-end="4722" vertical-scroll-proportion="0.41165048">
           <folding />
         </state>
       </provider>
