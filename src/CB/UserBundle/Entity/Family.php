@@ -37,14 +37,14 @@ class Family extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="eldest", type="string")
+     * @ORM\Column(name="eldest", type="string", nullable=true)
      */
     private $eldest;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="eldest_grade", type="string")
+     * @ORM\Column(name="eldest_grade", type="string", nullable=true)
      */
     private $eldestGrade;
 
@@ -140,16 +140,10 @@ class Family extends BaseUser
      * @param array $eldest
      * @return Family
      */
-    public function setEldest($name, $grade = null)
+    public function setEldest($name)
     {
-        if (is_array($name)) {
-            $this->eldest = $name;
-        } else {
-            $this->eldest = array(
-                'name' => $name,
-                'grade' => $grade,
-            );
-        }
+
+        $this->eldest = $name;
 
         return $this;
     }

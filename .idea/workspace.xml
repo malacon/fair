@@ -111,7 +111,7 @@
       <file leaf-file-name="LoadUserData.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="927" selection-end="927" vertical-scroll-proportion="-3.6666667">
+            <state line="64" column="35" selection-start="2463" selection-end="2463" vertical-scroll-proportion="-9.153846">
               <folding />
             </state>
           </provider>
@@ -120,7 +120,7 @@
       <file leaf-file-name="Family.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="18" selection-start="782" selection-end="782" vertical-scroll-proportion="0.06759443">
+            <state line="46" column="68" selection-start="986" selection-end="986" vertical-scroll-proportion="0.6083499">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -1196,14 +1196,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="927" selection-end="927" vertical-scroll-proportion="-3.6666667">
+        <state line="64" column="35" selection-start="2463" selection-end="2463" vertical-scroll-proportion="-9.153846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="18" selection-start="782" selection-end="782" vertical-scroll-proportion="0.06759443">
+        <state line="46" column="68" selection-start="986" selection-end="986" vertical-scroll-proportion="0.6083499">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>
