@@ -138,7 +138,7 @@
                             </div>
                         <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item">
                             <div class="content-title"">Status</div>
-                        <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Status Help">Help</div>
+                        <div class="help" data-toggle="popover" data-placement="right" data-content="To change your status you must make your selections to the right by clicking the various buttons.  The signup options above govern your status.  This box will turn <span class='btn-success'>green</span> when you have fulfilled your requirements." title="" data-original-title="Status Help">Help</div>
                         <p>You have signed up for:
                             <span class="hours">{{ app.user.getNumOfHours() }}</span> hours of work,
                             <span class="baked">{{ app.user.hasBakedItem() }}</span> baked goods,

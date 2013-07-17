@@ -29,10 +29,11 @@ $(function() {
 
         e.preventDefault();
 
-        $this.siblings('.btn').removeClass('disabled btn-warning').addClass('btn-success');
-        $this.removeClass('btn-success').addClass('disabled btn-warning');
+        $this.siblings('.btn').removeClass('active');
+        $this.addClass('active');
 
-        if ($this.hasClass('disabled')) {
+        loadingBooth(url, true);
+        if ($this.hasClass('active')) {
             loadingBooth(url, true);
         }
 
@@ -99,8 +100,9 @@ $(function() {
 
     function loadingBooth(url, fade)
     {
-        var spouseId = $('.spouse.disabled').data('spouse-id');
+        var spouseId = $('.btn-group-spouses .active').data('spouse-id');
 
+        console.log(spouseId)
         fade = fade || false;
         i = 0;
         if (fade) {

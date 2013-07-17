@@ -10,7 +10,7 @@
 
         <div class="content-item">
             <div class="content-title">Baked Goods</div>
-            <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Baked Goods Help">Help</div>
+            <div class="help" data-toggle="popover" data-placement="left" data-content="You may select one baked item.  A <span class='btn-success'>green</span> button means it is selectable.  An <span class='btn-warning'>orange</span> button means you have selected that item.  Unavailable items will be grayed out.  To unselect something you have chosen re-click the <span class='btn-warning'>orange</span>." title="" data-original-title="Baked Goods Help">Help</div>
             <div class="bakedItems">
                 <p><strong>I agree to bring the following:</strong><br>
                 {% for bakedItem in bakedItems %}
@@ -43,7 +43,7 @@
         </div>
         <div class="content-item">
             <div class="content-title">Craft/Auction Items</div>
-            <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Craft/Auction Help">Help</div>
+            <div class="help" data-toggle="popover" data-placement="left" data-content="You may select as many auction/craft items as you want.  To select an item click on the button.  It will appear below in <span class='alert'>yellow</span>.  To remove an auction item click on the x in the <span class='alert'>yellow</span> box." title="" data-original-title="Craft/Auction Help">Help</div>
                 <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json">Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json">Add $100 auction item</a><br>
                 <p></p><strong>I agree to bring the following:</strong><br>
                 <div class="auctionItems">
@@ -55,7 +55,7 @@
         </div>
         <div class="content-item" id="booths">
             <div class="content-title">Booths</div>
-            <div class="help" data-toggle="popover" data-placement="left" data-content="" title="" data-original-title="Booth Help">Help</div>
+            <div class="help" data-toggle="popover" data-placement="left" data-content="Select a time to work click on one of the buttons that is <span class='btn-info'>teal</span> and says Signup.  If a time is currently filled up it will say 'Filled'.  If the time says 'Already Working at this Time' you are already signed up at this time.  To be able to sign up for this time, unselect the time you are signed up for.  It will be highlighted in <span class='btn-warning'>orange</span>." title="" data-original-title="Booth Help">Help</div>
             {{ include(
             'FairBundle:Default:boothList.html.twig',
             { 'booths': booths }

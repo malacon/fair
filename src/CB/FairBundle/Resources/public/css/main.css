@@ -231,3 +231,8 @@ span.msg {
 .spouse .badge.badge-important {
     margin-right: 5px;
 }
+
+.popover {
+    z-index:2000;
+    max-width: 400px;
+}
