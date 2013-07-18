@@ -1,0 +1,11 @@
+    <form class="form-inline" action="{{ path('admin_docs_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        <div class="input-append">
+            {{ form_widget(edit_form.name, {'attr': {'class': 'input-small input-small-height'}}) }}
+            <button class="btn btn-primary btn-mini" type="submit">Save</button>
+        </div>
+        <a href="{{ path('admin_docs') }}">
+           <i class="icon-share-alt"></i> Back to the list
+        </a>
+
+    </form>

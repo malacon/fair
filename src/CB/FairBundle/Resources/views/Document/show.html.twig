@@ -1,0 +1,26 @@
+<div class="fileBlock alert alert-block">
+    <div class="fileName" data-edit-form="{{ render(controller('FairBundle:Document:edit', {
+    'id': entity.id
+    }))|e }}"><a target="_blank" href="{{ asset(entity.getWebPath()) }}">
+            {% if entity.name -%}
+                {{ entity.name }}.
+            {%- endif -%}
+            {%- if entity.type -%}
+                {{ entity.type }}
+            {%- endif -%}</a>
+        <br>
+        <span class="filedate">{{ entity.created|date('Y-m-d h:m A') }}</span>
+    </div>
+    <form class="fileEdit" action="{{ path('admin_docs_delete', { 'id': entity.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <div class="btn-group">
+            <a class="btn btn-info btn-small btn-edit" href="{{ path('admin_docs_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
+            <button class="btn btn-success btn-small" href="#"><i class="icon-play"></i> Run</button>
+            <button class="btn btn-danger btn-small delete-rule" type="submit"><i class="icon-trash"></i> Delete</button>
+        </div>
+        <input type="hidden" name="_method" value="DELETE" />
+    </form>
+</div>
+
+
+

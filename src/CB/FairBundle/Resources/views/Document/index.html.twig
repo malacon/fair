@@ -1,0 +1,17 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Documents</h1>
+
+    {% for entity in entities %}
+        {{ render(controller('FairBundle:Document:show', {
+        'id': entity.id
+        })) }}
+    {% endfor %}
+
+        <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('admin_docs_new') }}"><i class="icon-file icon-white"></i> Upload a new file</a>
+        </li>
+    </ul>
+    {% endblock %}

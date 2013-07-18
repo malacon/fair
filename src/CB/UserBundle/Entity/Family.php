@@ -440,7 +440,7 @@ class Family extends BaseUser
     }
 
     /**
-     * @return mixed
+     * @return \Datetime
      */
     public function getTimeToLogin()
     {
@@ -471,6 +471,7 @@ class Family extends BaseUser
     public function isEnabled()
     {
         return  $this->isTimeToLogin() && $this->enabled;
+//        return $this->enabled;
     }
 
     /**

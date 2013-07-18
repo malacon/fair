@@ -289,3 +289,32 @@ span.msg {
 .modal-header {
     background: rgba(204, 192, 178, 0.38);
 }
+
+.fileBlock {
+    width: 500px;
+    font-weight: bold;
+    position: relative;
+    height: 30px;
+}
+
+.fileName {
+    margin-right: 20px;
+    top: 20%;
+    position: absolute;
+    left: 10px;
+}
+
+.fileEdit {
+    position: absolute;
+    right: 10px;
+}
+
+.filedate {
+    font-weight: normal;
+    font-size: 10px;
+}
+
+input.input-small-height {
+    font-size: 10px;
+    height: 12px;
+}
