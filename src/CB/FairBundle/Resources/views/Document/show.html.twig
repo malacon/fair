@@ -15,7 +15,9 @@
         {{ form_widget(delete_form) }}
         <div class="btn-group">
             <a class="btn btn-info btn-small btn-edit" href="{{ path('admin_docs_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
-            <button class="btn btn-success btn-small" href="#"><i class="icon-play"></i> Run</button>
+            {% if entity.type == 'xls' %}
+            <a class="btn btn-success btn-small" href="{{ path('load_csv', {'id': entity.id}) }}"><i class="icon-play"></i> Run</a>
+            {% endif %}
             <button class="btn btn-danger btn-small delete-rule" type="submit"><i class="icon-trash"></i> Delete</button>
         </div>
         <input type="hidden" name="_method" value="DELETE" />

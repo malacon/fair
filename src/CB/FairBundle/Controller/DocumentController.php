@@ -2,12 +2,15 @@
 
 namespace CB\FairBundle\Controller;
 
+use CB\FairBundle\Entity\Booth;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use CB\FairBundle\Form\DocumentType;
 use CB\FairBundle\Entity\Document;
+
+use Ddeboer\DataImport\Reader\ExcelReader;
 
 /**
  * Document controller.
@@ -16,6 +19,61 @@ use CB\FairBundle\Entity\Document;
  */
 class DocumentController extends Controller
 {
+
+
+    /**
+     * @Route("/csv/{id}", name="load_csv")
+     * @Template()
+     */
+    public function loadCSVAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var \CB\FairBundle\Entity\Document $document */
+        $document = $em->getRepository('FairBundle:Document')->find($id);
+
+        // Create and configure the reader
+        $excelReader = new ExcelReader(new \SplFileObject($document->getAbsolutePath()));
+        $excelReader->setHeaderRowNumber(0);
+
+        $booths = array();
+        foreach ($excelReader as $key => $row) {
+            $booth = new Booth();
+            foreach ($row as $key1 => $value) {
+                switch (strtolower($key1)) {
+                    case 'booth':
+                        $booth->$key($value);
+                        break;
+                    case 'description':
+//                        $booth['description'] = ($value);
+                        break;
+                    case 'Location':
+                        $booth->setLocation($value);
+                        break;
+                    default:
+
+                        break;
+                }
+
+            }
+
+            $booths[$key] = $booth;
+        }
+        $headers = $excelReader->getColumnHeaders();
+        $rows = $excelReader->getFields();
+
+        if (!$document) {
+            throw $this->createNotFoundException('Unable to find Document entity.');
+        }
+
+        return array(
+            'doc' => $document,
+            'headers' => $headers,
+            'fields' => $rows,
+            'reader' => $excelReader,
+            'booths' => $booths,
+        );
+    }
 
     /**
      * Lists all Document entities.
@@ -210,4 +268,5 @@ class DocumentController extends Controller
             ->getForm()
         ;
     }
+
 }

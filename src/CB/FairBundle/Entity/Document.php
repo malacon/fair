@@ -65,6 +65,8 @@ class Document
     private $path;
 
     /**
+     * @var \SplFileInfo
+     *
      * @Assert\File(maxSize="6000000")
      */
     private $file;
@@ -77,6 +79,11 @@ class Document
     private $type;
 
     private $temp;
+
+//    public function __set($name, $value)
+//    {
+//        $this->
+//    }
 
     private function isCSV()
     {

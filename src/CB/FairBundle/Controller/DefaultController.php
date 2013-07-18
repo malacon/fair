@@ -17,6 +17,9 @@ class DefaultController extends Controller
      */
     public function registerAction(Request $request)
     {
+        if ($this->getUser()->hasRole('ROLE_ADMIN')) {
+            $this->redirect($this->generateUrl('admin_panel'));
+        }
         $em = $this->getDoctrine()->getManager();
 
         // Get Booths

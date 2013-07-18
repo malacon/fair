@@ -217,7 +217,7 @@ class Booth
 
     public function __toString()
     {
-        return $this->name;
+        return (!is_string($this->name)) ? 'Booth not set' : $this->name;
     }
 
     /**
