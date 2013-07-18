@@ -2,7 +2,6 @@
 
 namespace CB\FairBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -19,7 +18,7 @@ class AdminPanelController extends Controller
      */
     public function defaultAction()
     {
-
+        return array();
     }
 
     /**
@@ -28,6 +27,43 @@ class AdminPanelController extends Controller
      */
     public function configAction()
     {
+        return array();
     }
+
+    /**
+     * Retrieves the list of basic users
+     *
+     * @Route("/getUser.{_format}", name="get_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function getUsersJsonAction()
+    {
+        $user = $this->getRequest()->request->get('user');
+        /** @var \CB\UserBundle\Entity\FamilyRepository $userRepo */
+        $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
+        $users = $userRepo->findByUsernameChunk($user);
+
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse($users);
+        }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @Route("/isUser.{_format}", name="is_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     */
+    public function isUserAction()
+    {
+        $user = $this->getRequest()->request->get('user');
+        /** @var \CB\UserBundle\Entity\FamilyRepository $userRepo */
+        $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
+        $isUser = $userRepo->isUser($user);
+        if ($this->getRequest()->getRequestFormat() == 'json') {
+            return $this->createJsonResponse(array('isUser' => $isUser));
+        }
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+
 
 }

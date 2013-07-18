@@ -13,14 +13,13 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="home")
-     * @Template("FairBundle:Default:index.html.twig")
+     * @Template()
      */
-    public function registerAction(Request $request)
+    public function defaultAction(Request $request)
     {
         if ($this->getUser()->hasRole('ROLE_ADMIN')) {
-            $this->redirect($this->generateUrl('admin_panel'));
+            return $this->redirect($this->generateUrl('admin_panel'));
         }
-        $em = $this->getDoctrine()->getManager();
 
         // Get Booths
         /** @var \CB\FairBundle\Entity\BoothRepository $boothRepo */
@@ -37,41 +36,6 @@ class DefaultController extends Controller
             'bakedItems' => $bakedItems,
             'rules' => $rules,
         );
-    }
-
-    /**
-     * Retrieves the list of basic users
-     *
-     * @Route("/getUser.{_format}", name="get_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
-     */
-    public function getUsersJsonAction()
-    {
-        $user = $this->getRequest()->request->get('user');
-        /** @var \CB\UserBundle\Entity\FamilyRepository $userRepo */
-        $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
-        $users = $userRepo->findByUsernameChunk($user);
-        print_r($users);die();
-
-        if ($this->getRequest()->getRequestFormat() == 'json') {
-            return $this->createJsonResponse($users);
-        }
-
-        return $this->redirect($this->generateUrl('home'));
-    }
-
-    /**
-     * @Route("/isUser.{_format}", name="is_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
-     */
-    public function isUserAction()
-    {
-        $user = $this->getRequest()->request->get('user');
-        /** @var \CB\UserBundle\Entity\FamilyRepository $userRepo */
-        $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
-        $isUser = $userRepo->isUser($user);
-        if ($this->getRequest()->getRequestFormat() == 'json') {
-            return $this->createJsonResponse(array('isUser' => $isUser));
-        }
-        return $this->redirect($this->generateUrl('home'));
     }
 
     /**

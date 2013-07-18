@@ -1,7 +1,10 @@
-{% extends "::base.html.twig" %}
+{% extends 'FairBundle::layout.html.twig' %}
 
-{% block title %}FairBundle:AdminPanel:default{% endblock %}
+{% block content -%}
+    <h1>Welcome to the Admin Panel</h1>
 
-{% block body %}
-<h1>Welcome to the AdminPanel:default page</h1>
+<div class="well">
+    <p class="lead">The following links will allow you to see (and edit, be careful!) the parts of the fair.</p>
+</div>
+
 {% endblock %}

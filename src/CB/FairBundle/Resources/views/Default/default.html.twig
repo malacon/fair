@@ -1,13 +1,6 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
 {% block content -%}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <div class="well">
-            <p class="lead">The following links will allow you to see (and edit, be careful!) the parts of the fair.</p>
-        </div>
-    {% else %}
-
         <div class="content-item" data-toggle="popover" data-placement="left" data-content="You may select one baked item.  A <span class='btn-success'>green</span> button means it is selectable.  An <span class='btn-warning'>orange</span> button means you have selected that item.  Unavailable items will be grayed out.  To unselect something you have chosen re-click the <span class='btn-warning'>orange</span>.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-gift'></i> Craft/Auction Items</strong>." title="" data-original-title="Baked Goods Help">
             <div class="content-title"><i class="icon-fire"></i> 3. Baked Goods</div>
             <div class="bakedItems">
@@ -75,7 +68,6 @@
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
-    {% endif %}
 
 {% endblock %}
 

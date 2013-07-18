@@ -20,7 +20,7 @@ jQuery(document).ready(function() {
         var $this = $(this),
             $searchQuery = $('.search-query'),
             username = $searchQuery.val(),
-            url = $searchQuery.data('action');
+            url = $searchQuery.data('check');
         e.preventDefault();
         $.post(url, {user: username}, function(data) {
             if (data.isUser) {

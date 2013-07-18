@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+    {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -36,7 +36,7 @@
                                 <li>
                                     {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
                                         <form class="navbar-search">
-                                            <input title="View the site via another user.  Type in their username here and press enter to switch to another user." data-target="{{ path('home') }}" data-action="{{ path('get_user') }}.json" type="text" autocomplete="off" class="search-query" placeholder="User Switch">
+                                            <input title="View the site via another user.  Type in their username here and press enter to switch to another user." data-target="{{ path('home') }}" data-check="{{ path('is_user') }}.json" data-action="{{ path('get_user') }}.json" type="text" autocomplete="off" class="search-query" placeholder="User Switch">
                                         </form>
                                     {% endif %}
                                 </li>
