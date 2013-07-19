@@ -4,7 +4,8 @@ namespace CB\FairBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
+use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
 /**
  * Time controller.
  *
@@ -27,7 +28,10 @@ class AdminPanelController extends Controller
      */
     public function configAction()
     {
-        return array();
+        $data = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
+        return array(
+            'data' => $data,
+        );
     }
 
     /**

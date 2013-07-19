@@ -1,7 +1,14 @@
-{% extends "::base.html.twig" %}
+{% extends 'FairBundle::layout.html.twig' %}
 
-{% block title %}FairBundle:AdminPanel:config{% endblock %}
+{% block content -%}
+    <h1>Welcome to the Admin Panel: Configuration</h1>
 
-{% block body %}
-<h1>Welcome to the AdminPanel:config page</h1>
+    {% for key, setting in data.settings %}
+        <h3>{{ key }}</h3>
+        <ul>
+        {% for date in setting %}
+            <li>{{ date }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

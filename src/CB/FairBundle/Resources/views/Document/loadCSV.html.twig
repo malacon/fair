@@ -6,6 +6,10 @@
     <br>
     {% for booth in booths %}
         {{ booth }} {{ booth.description }} {{ booth.location }}
+        <br>
+        {% for time in booth.times %}
+            {{ time }}
+        {% endfor %}
     {% endfor %}
     <br>
     <table class="table table-striped">

@@ -264,6 +264,8 @@ class Time
     public function setBooth(Booth $booth)
     {
         $this->booth = $booth;
+
+        return $this;
     }
 
     /**

@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/config/settings.yml" />
+      <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\web\uploads\documents\12ac8d270db4e053014947d1044690f1fd591da8.xls" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\web\uploads\documents\4a5d928184c5478e9989bf2b0f8a6e78d2c66033.pdf" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\web\uploads\documents\9d51df3e51f757e6360d219c56cd9cbf2616cdf2.xls" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\src\CB\FairBundle\Resources\views\Default\index.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/default.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/default.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/config.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/config.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fair.iws" />
@@ -20,7 +22,7 @@
     <file path="/index.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374091485180" ignored="false" />
     <file path="/layout.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374165314800" ignored="false" />
     <file path="/Booth.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374163725754" ignored="false" />
-    <file path="/Time.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374044120684" ignored="false" />
+    <file path="/Time.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374189027907" ignored="false" />
     <file path="/LoadBoothData.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373904637761" ignored="false" />
     <file path="/dummy.xml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374097060557" ignored="false" />
     <file path="/edit.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374097591677" ignored="false" />
@@ -80,7 +82,7 @@
     <file path="/.gitignore" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373480130783" ignored="false" />
     <file path="/config_prod.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1373468585742" ignored="false" />
     <file path="/Document.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374159660231" ignored="false" />
-    <file path="/DocumentController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374164114112" ignored="false" />
+    <file path="/DocumentController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374236267568" ignored="false" />
     <file path="/Family.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374128080429" ignored="false" />
     <file path="/main.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374071218802" ignored="false" />
     <file path="/booth.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374035336919" ignored="false" />
@@ -92,8 +94,11 @@
     <file path="/admin.js" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374098686793" ignored="false" />
     <file path="/composer.json" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374105271795" ignored="false" />
     <file path="/TimeAuthenticator.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374128347351" ignored="false" />
-    <file path="/loadCSV.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374159780326" ignored="false" />
-    <file path="/AdminPanelController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374164802819" ignored="false" />
+    <file path="/loadCSV.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374189767005" ignored="false" />
+    <file path="/AdminPanelController.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374188243336" ignored="false" />
+    <file path="/Yaml.php" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374166025515" ignored="false" />
+    <file path="/settings.yml" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374166118782" ignored="false" />
+    <file path="/config.html.twig" changelist="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" time="1374188421079" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,19 +126,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DocumentController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="34" selection-start="377" selection-end="377" vertical-scroll-proportion="-6.5384617">
+            <state line="63" column="0" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.3465909">
+              <folding>
+                <element signature="e#44#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Booth.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Booth.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="200" column="27" selection-start="3482" selection-end="3489" vertical-scroll-proportion="-5.607843">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Yaml.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Yaml/Yaml.php">
+      <file leaf-file-name="Time.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="951" selection-end="951" vertical-scroll-proportion="-0.65384614">
+            <state line="267" column="21" selection-start="5828" selection-end="5828" vertical-scroll-proportion="-10.346154">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loadCSV.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="64" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.576923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Yaml/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="121" selection-end="186" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -142,7 +176,7 @@
       <file leaf-file-name="AdminPanelController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="6.5384617">
+            <state line="30" column="8" selection-start="610" selection-end="694" vertical-scroll-proportion="-0.65384614">
               <folding>
                 <element signature="e#44#103#0" expanded="true" />
               </folding>
@@ -150,37 +184,39 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AppKernel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="10" selection-start="1386" selection-end="1386" vertical-scroll-proportion="-6.923077">
+              <folding>
+                <element signature="e#7#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/config.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="26" selection-start="193" selection-end="193" vertical-scroll-proportion="-3.9230769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="default.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="34" selection-start="101" selection-end="101" vertical-scroll-proportion="-1.9615384">
+            <state line="3" column="34" selection-start="0" selection-end="263" vertical-scroll-proportion="-1.9615384">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.html.twig" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="default.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="14" selection-start="5857" selection-end="5857" vertical-scroll-proportion="0.57864076">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="1242" selection-end="1242" vertical-scroll-proportion="-13.730769">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TimeController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="386" selection-end="435" vertical-scroll-proportion="-3.9230769">
+            <state line="69" column="14" selection-start="5857" selection-end="5857" vertical-scroll-proportion="-11.461538">
               <folding />
             </state>
           </provider>
@@ -221,22 +257,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/src/CB/UserBundle/DependencyInjection/Securty/Authentication/TimeAuthenticator.php" />
-        <option value="$PROJECT_DIR$/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/show.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Booth.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/default.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Yaml/Yaml.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/config/settings.yml" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/config.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
       </list>
     </option>
   </component>
@@ -402,6 +438,166 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Routing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Routing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Loader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Symfony" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Loader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -971,6 +1167,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FairBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1179,117 +1405,121 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/ddeboer/data-import/src/Ddeboer/DataImport/Reader/ExcelReader.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/default.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="7" selection-start="2294" selection-end="2294" vertical-scroll-proportion="-4.3333335">
+        <state line="3" column="34" selection-start="0" selection-end="263" vertical-scroll-proportion="-1.9615384">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="7" selection-start="1620" selection-end="1689" vertical-scroll-proportion="-6.3333335">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="171" selection-end="171" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Booth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="11" selection-start="297" selection-end="297" vertical-scroll-proportion="-7.8461537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Stopwatch/Stopwatch.php">
+    <entry file="file://$PROJECT_DIR$/app/AppCache.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Config/FileLocatorInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="377" selection-end="377" vertical-scroll-proportion="-6.5384617">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Yaml/Yaml.php">
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Config/Loader/FileLoader.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="951" selection-end="951" vertical-scroll-proportion="-0.65384614">
+        <state line="42" column="0" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.8371212">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js">
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="45" selection-start="86" selection-end="86" vertical-scroll-proportion="0.03068592">
+        <state line="29" column="10" selection-start="1386" selection-end="1386" vertical-scroll-proportion="-6.923077">
+          <folding>
+            <element signature="e#7#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Routing/Loader/YamlFileLoader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="7" selection-end="7" vertical-scroll-proportion="0.06407767">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/config.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="225" selection-start="2110" selection-end="2110" vertical-scroll-proportion="0.4291262">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/AdminPanel/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="34" selection-start="101" selection-end="101" vertical-scroll-proportion="-1.9615384">
+        <state line="6" column="26" selection-start="193" selection-end="193" vertical-scroll-proportion="-3.9230769">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="44" selection-end="44" vertical-scroll-proportion="6.5384617">
+        <state line="30" column="8" selection-start="610" selection-end="694" vertical-scroll-proportion="-0.65384614">
           <folding>
             <element signature="e#44#103#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/phpexcel/phpexcel/Classes/PHPExcel/Shared/PDF/fonts/times.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.12878788">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.18411553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/TimeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="386" selection-end="435" vertical-scroll-proportion="-3.9230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="1242" selection-end="1242" vertical-scroll-proportion="-13.730769">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.38636363">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="14" selection-start="5857" selection-end="5857" vertical-scroll-proportion="0.57864076">
+        <state line="69" column="14" selection-start="5857" selection-end="5857" vertical-scroll-proportion="-11.461538">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="64" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.576923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/config/settings.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="10" selection-end="10" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Booth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="27" selection-start="3482" selection-end="3489" vertical-scroll-proportion="-5.607843">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="267" column="21" selection-start="5828" selection-end="5828" vertical-scroll-proportion="-10.346154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="2029" selection-end="2029" vertical-scroll-proportion="0.3465909">
+          <folding>
+            <element signature="e#44#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

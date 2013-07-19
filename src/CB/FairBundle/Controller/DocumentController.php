@@ -3,6 +3,7 @@
 namespace CB\FairBundle\Controller;
 
 use CB\FairBundle\Entity\Booth;
+use CB\FairBundle\Entity\Time;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -11,6 +12,8 @@ use CB\FairBundle\Form\DocumentType;
 use CB\FairBundle\Entity\Document;
 
 use Ddeboer\DataImport\Reader\ExcelReader;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Document controller.
@@ -27,34 +30,76 @@ class DocumentController extends Controller
      */
     public function loadCSVAction($id)
     {
+        /** @var \ $em */
         $em = $this->getDoctrine()->getManager();
 
         /** @var \CB\FairBundle\Entity\Document $document */
         $document = $em->getRepository('FairBundle:Document')->find($id);
+
+        if (!$document) {
+            throw $this->createNotFoundException('Unable to find Document entity.');
+        }
 
         // Create and configure the reader
         $excelReader = new ExcelReader(new \SplFileObject($document->getAbsolutePath()));
         $excelReader->setHeaderRowNumber(0);
 
         $booths = array();
+        $settings = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
+        $settings = $settings['settings'];
+        $dates = $settings['dates'];
         foreach ($excelReader as $key => $row) {
             $booth = new Booth();
             foreach ($row as $key1 => $value) {
                 switch (strtolower($key1)) {
                     case 'booth':
-                        $booth->$key($value);
+                        $booth->setName($value);
                         break;
                     case 'description':
-//                        $booth['description'] = ($value);
+                        $booth->setDescription($value);
                         break;
-                    case 'Location':
+                    case 'location':
                         $booth->setLocation($value);
+                        break;
+                    case 'quantity':
+                        $booth->setWorkerLimit($value);
+                        break;
+                    case 'day 1':
+                        $timeRange = explode('-', $value);
+                        $times = array();
+                        for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
+                            $time = new Time();
+                            $time->setTime(new \DateTime($dates[0].$i.':00:00'));
+                            $booth->addTime($time);
+                            $times[] = $time;
+                        }
+                        break;
+                    case 'day 2':
+                        $timeRange = explode('-', $value);
+                        $times = array();
+                        for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
+                            $time = new Time();
+                            $time->setTime(new \DateTime($dates[1].$i.':00:00'));
+                            $booth->addTime($time);
+                            $times[] = $time;
+                        }
+                        break;
+                    case 'day 3':
+                        $timeRange = explode('-', $value);
+                        $times = array();
+                        for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
+                            $time = new Time();
+                            $time->setTime(new \DateTime($dates[2].$i.':00:00'));
+                            $booth->addTime($time);
+                            $times[] = $time;
+                        }
                         break;
                     default:
 
                         break;
                 }
 
+                $em->persist($booth);
             }
 
             $booths[$key] = $booth;
@@ -62,9 +107,7 @@ class DocumentController extends Controller
         $headers = $excelReader->getColumnHeaders();
         $rows = $excelReader->getFields();
 
-        if (!$document) {
-            throw $this->createNotFoundException('Unable to find Document entity.');
-        }
+        $em->flush();
 
         return array(
             'doc' => $document,
@@ -72,6 +115,7 @@ class DocumentController extends Controller
             'fields' => $rows,
             'reader' => $excelReader,
             'booths' => $booths,
+            'times' => $times,
         );
     }
 
