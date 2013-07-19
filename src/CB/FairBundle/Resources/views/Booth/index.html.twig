@@ -19,7 +19,7 @@
                 <td><a href="{{ path('booth_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.location }}</td>
-                <td>{{ entity.quantity }}</td>
+                <td>{{ entity.getWorkerLimit }}</td>
                 <td>
                 <ul>
                     <li>

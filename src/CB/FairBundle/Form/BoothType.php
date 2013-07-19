@@ -15,7 +15,7 @@ class BoothType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('location')
-            ->add('quantity')
+            ->add('workerLimit')
             ->add('times', 'collection', array(
                 'type' => new TimeType(),
                 'allow_add' => true,

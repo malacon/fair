@@ -42,17 +42,25 @@ class DocumentController extends Controller
 
         // Create and configure the reader
         $excelReader = new ExcelReader(new \SplFileObject($document->getAbsolutePath()));
-        $excelReader->setHeaderRowNumber(0);
+        $excelReader->setHeaderRowNumber(9);
+        for ($i = 0; $i<10; $i++) {
+            $excelReader->next();
+        }
 
+//        print_r($excelReader->getColumnHeaders());
+//        print_r($excelReader->current());die();
         $booths = array();
         $settings = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
         $settings = $settings['settings'];
         $dates = $settings['dates'];
         foreach ($excelReader as $key => $row) {
+            if ($row['Name'] == '') {
+                break;
+            }
             $booth = new Booth();
             foreach ($row as $key1 => $value) {
                 switch (strtolower($key1)) {
-                    case 'booth':
+                    case 'name':
                         $booth->setName($value);
                         break;
                     case 'description':
@@ -99,9 +107,9 @@ class DocumentController extends Controller
                         break;
                 }
 
-                $em->persist($booth);
-            }
 
+            }
+            $em->persist($booth);
             $booths[$key] = $booth;
         }
         $headers = $excelReader->getColumnHeaders();

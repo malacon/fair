@@ -3,6 +3,9 @@
 {% block content -%}
     <h1>Documents</h1>
 
+    <p>To load booths, please download the following spreadsheet, edit it and upload it here.  Once uploaded run the file.</p>
+    <p><a href="{{ asset('/bundles/fair/spreadsheets/Fair Booths.xlsx') }}" >Fair Booth Upload</a></p>
+
     {% for entity in entities %}
         {{ render(controller('FairBundle:Document:show', {
         'id': entity.id

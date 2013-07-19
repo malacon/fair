@@ -77,7 +77,7 @@ class Booth
 
     /**
      * @Gedmo\Slug(fields={"name"})
-     * @ORM\Column(name="slug", length=255, unique=true)
+     * @ORM\Column(name="slug", length=255, unique=true, nullable=true)
      */
     protected $slug;
 
