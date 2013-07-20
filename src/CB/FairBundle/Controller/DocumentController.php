@@ -4,6 +4,8 @@ namespace CB\FairBundle\Controller;
 
 use CB\FairBundle\Entity\Booth;
 use CB\FairBundle\Entity\Time;
+use CB\UserBundle\Entity\Family;
+use CB\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,9 +48,36 @@ class DocumentController extends Controller
         for ($i = 0; $i<10; $i++) {
             $excelReader->next();
         }
+        /** @var Array $arr */
+        $arr = $excelReader->getRow(0);
+        switch (reset($arr)) {
+            case 'SJP & STS Fair Booths':
+                $this->loadBoothInfo($excelReader, $em);
+                break;
+            case 'SJP & STS Fair Users':
+                $this->loadUserInfo($excelReader, $em);
+                break;
+            default:
+                break;
+        }
 
-//        print_r($excelReader->getColumnHeaders());
-//        print_r($excelReader->current());die();
+        $document->setIsRun(true);
+        $em->persist($document);
+        $headers = $excelReader->getColumnHeaders();
+        $rows = $excelReader->getFields();
+
+        $em->flush();
+
+        return array(
+            'doc' => $document,
+            'headers' => $headers,
+            'fields' => $rows,
+            'reader' => $excelReader,
+        );
+    }
+
+    private function loadBoothInfo($excelReader, $em)
+    {
         $booths = array();
         $settings = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
         $settings = $settings['settings'];
@@ -77,7 +106,10 @@ class DocumentController extends Controller
                         $times = array();
                         for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
                             $time = new Time();
-                            $time->setTime(new \DateTime($dates[0].$i.':00:00'));
+                            $dtime = new \DateTime();
+                            $dtime->setTimestamp($dates[0]);
+                            $dtime->setTime($i, 0, 0);
+                            $time->setTime($dtime);
                             $booth->addTime($time);
                             $times[] = $time;
                         }
@@ -87,7 +119,10 @@ class DocumentController extends Controller
                         $times = array();
                         for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
                             $time = new Time();
-                            $time->setTime(new \DateTime($dates[1].$i.':00:00'));
+                            $dtime = new \DateTime();
+                            $dtime->setTimestamp($dates[1]);
+                            $dtime->setTime($i, 0, 0);
+                            $time->setTime($dtime);
                             $booth->addTime($time);
                             $times[] = $time;
                         }
@@ -97,7 +132,10 @@ class DocumentController extends Controller
                         $times = array();
                         for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
                             $time = new Time();
-                            $time->setTime(new \DateTime($dates[2].$i.':00:00'));
+                            $dtime = new \DateTime();
+                            $dtime->setTimestamp($dates[2]);
+                            $dtime->setTime($i, 0, 0);
+                            $time->setTime($dtime);
                             $booth->addTime($time);
                             $times[] = $time;
                         }
@@ -112,19 +150,62 @@ class DocumentController extends Controller
             $em->persist($booth);
             $booths[$key] = $booth;
         }
-        $headers = $excelReader->getColumnHeaders();
-        $rows = $excelReader->getFields();
+    }
 
+    /**
+     * @param $excelReader ExcelReader
+     * @param $em
+     */
+    private function loadUserInfo($excelReader, $em)
+    {
+        $users = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
+        foreach ($users as $user) {
+            $em->remove($user);
+        }
         $em->flush();
-
-        return array(
-            'doc' => $document,
-            'headers' => $headers,
-            'fields' => $rows,
-            'reader' => $excelReader,
-            'booths' => $booths,
-            'times' => $times,
-        );
+        
+        $users = array();
+        foreach ($excelReader as $key => $row) {
+            if ($row['Family'] == '') {
+                break;
+            }
+            $family = new Family();
+            $encoder = $this->container
+                ->get('security.encoder_factory')
+                ->getEncoder($family);
+            $family->setName($row['Family']);
+            $family->setEldest($row['Eldest Child']);
+            $family->setEldestGrade($row['Grade of Child']);
+            $family->setUsername($row['Username']);
+            $family->setPassword($encoder->encodePassword($row['Password'], $family->getSalt()));
+            if (trim($row['Email']) != '')
+                $family->setEmail($row['Email']);
+            if (trim($row['Adult1']) != '') {
+                $adult1 = new User($row['Adult1']);
+                $family->addSpouse($adult1);
+                $em->persist($adult1);
+            }
+            if (trim($row['Adult2']) != '') {
+                $adult2 = new User($row['Adult2']);
+                $family->addSpouse($adult2);
+                $em->persist($adult2);
+            }
+            if (trim($row['Adult3']) != '') {
+                $adult3 = new User($row['Adult3']);
+                $family->addSpouse($adult3);
+                $em->persist($adult3);
+            }
+            if (trim($row['Adult4']) != '') {
+                $adult4 = new User($row['Adult4']);
+                $family->addSpouse($adult4);
+                $em->persist($adult4);
+            }
+            $family->setTimeToLogin(new \DateTime($row['Time to Signin']));
+            $family->setRoles(array('ROLE_USER'));
+            $family->setEnabled(true);
+            $em->persist($family);
+            $families[$key] = $family;
+        }
     }
 
     /**

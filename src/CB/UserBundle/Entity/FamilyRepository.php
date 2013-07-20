@@ -46,4 +46,13 @@ class FamilyRepository extends EntityRepository
 
         return $result?true:false;
     }
+
+    public function findAllUsersNotAdmins()
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.roles NOT LIKE :role')
+            ->setParameter('role', '%ROLE_ADMIN%')
+            ->getQuery()
+            ->getResult();
+    }
 }

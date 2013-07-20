@@ -18,7 +18,7 @@ class LoadRulesData extends AbstractFixture implements OrderedFixtureInterface
         $rule2 = new Rule();
         $rule2->setNumberOfTimes(8);
         $rule2->setNumberOfAuctionItems(2);
-        $rule2->setDescription("Choice3");
+        $rule2->setDescription("Choice 3");
 
         $rule3 = new Rule();
         $rule3->setNumberOfTimes(8);

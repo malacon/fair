@@ -3,14 +3,7 @@
 {% block content -%}
     <h1>Loading Your Data</h1>
     {{ doc.name }}.{{ doc.type }}
-    <br>
-    {% for booth in booths %}
-        {{ booth }} {{ booth.description }} {{ booth.location }}
-        <br>
-        {% for time in booth.times %}
-            {{ time }}
-        {% endfor %}
-    {% endfor %}
+
     <br>
     <table class="table table-striped">
         <thead>

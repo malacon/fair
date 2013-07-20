@@ -38,4 +38,12 @@ jQuery(document).ready(function() {
         $(this).parent().parent().siblings('.fileName').html(form);
         console.log($(this).parent().parent().siblings('.fileName').data('edit-form'));
     });
+
+    $('.isrun').on('click', function(e) {
+        e.preventDefault();
+        var c = confirm('You have already run this file, are you sure you want to run it again?');
+        if (c) {
+            window.location = $(this).attr('href');
+        }
+    });
 });

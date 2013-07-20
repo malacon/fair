@@ -29,7 +29,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         // Friday
         for ($i = 16; $i < 21; $i++) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-06 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-13 '. $i .':00:00'));
             $time->setBooth($booth1);
             $booth1->addTime($time);
             $manager->persist($time);
@@ -38,7 +38,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         // Saturday
         for ($i = 8; $i < 22; $i++) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-14 '. $i .':00:00'));
             $time->setBooth($booth1);
             if ($i == 20 || $i == 21) {
                 $time->addWorker($spouse);
@@ -58,7 +58,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         // Sunday
         for ($i = 8; $i < 16; $i++) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-08 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-15 '. $i .':00:00'));
             $time->setBooth($booth1);
             $booth1->addTime($time);
             $manager->persist($time);
@@ -74,7 +74,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $spouse = $family1->getSpouses()->first();
         for ($i = 8; $i < 21; $i++) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-14 '. $i .':00:00'));
             $time->setBooth($booth2);
             if ($i == 16 || $i == 18) {
                 $time->addWorker($spouse);
@@ -94,7 +94,7 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
 
         for ($i = 8; $i < 21; $i++) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-07 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-14 '. $i .':00:00'));
             $time->setBooth($booth3);
             $booth3->addTime($time);
             $manager->persist($time);

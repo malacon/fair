@@ -51,14 +51,14 @@ class Family extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="family", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="family", cascade={"remove"})
      */
     private $spouses;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="family", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="\CB\FairBundle\Entity\AuctionItem", mappedBy="family", cascade={"remove"})
      * @Assert\Valid
      */
     private $saleItems;
@@ -99,6 +99,7 @@ class Family extends BaseUser
         $this->spouses = new ArrayCollection();
         $this->maxHours = 10;
         $this->timeToLogin = new \DateTime('now');
+        $this->email = 'fake+'.rand(1,100000).'@fake.com';
     }
 
     /**

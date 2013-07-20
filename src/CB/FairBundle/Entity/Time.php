@@ -330,4 +330,12 @@ class Time
         return $this->updated;
     }
 
+    /**
+     * @param $day \Datetime
+     * @return bool
+     */
+    public function isInDay($day)
+    {
+        return $this->time->format('Y-m-d') == $day->format('Y-m-d');
+    }
 }

@@ -9,27 +9,17 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Location</th>
-                <th>Quantity</th>
+                <th>Worker Limit</th>
+                <th>Times</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('booth_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                <td>{{ entity.description }}</td>
-                <td>{{ entity.location }}</td>
-                <td>{{ entity.getWorkerLimit }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a class="btn btn-info btn-mini" href="{{ path('booth_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-success btn-mini" href="{{ path('booth_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                {{ render(controller('FairBundle:Booth:show', {
+                'id': entity.id
+                })) }}
             </tr>
         {% endfor %}
         </tbody>

@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use CB\FairBundle\Entity\Booth;
 use CB\FairBundle\Form\BoothType;
+use Symfony\Component\Yaml\Yaml;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Booth controller.
@@ -98,15 +100,25 @@ class BoothController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('FairBundle:Booth')->find($id);
-
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Booth entity.');
+        }
+
+        $data = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
+        $times = array();
+        foreach ($data['settings']['dates'] as $date) {
+            $currentDate = new \DateTime();
+            $currentDate->setTimestamp($date);
+            /** @var ArrayCollection $dates */
+            $timeRange = $em->getRepository('FairBundle:Time')->getTimesRangeByDateAndBooth($currentDate, $id);
+            $times[$date] = $timeRange;
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
+            'dates' => $times,
             'delete_form' => $deleteForm->createView(),
         );
     }

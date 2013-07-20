@@ -15,7 +15,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('auctionitem_show', { 'id': entity.id }) }}">{{ entity }}</a></td>
-                <td>{{ entity.user.familyName }}</td>
+                <td>{{ entity.family.name }} ({% for spouse in entity.family.spouses %}{{ spouse }}{% if not loop.last %}, {% endif %}{% endfor %})</td>
                 <td>
                 <ul>
                     <li>

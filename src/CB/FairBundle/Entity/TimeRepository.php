@@ -12,4 +12,48 @@ use Doctrine\ORM\EntityRepository;
  */
 class TimeRepository extends EntityRepository
 {
+    /**
+     * @param $date \Datetime
+     */
+    public function getTimesByDate($date)
+    {
+        $time1 = $date->format('Y-m-d ').'00:00:00';
+        $time2 = $date->format('Y-m-d ').'23:59:59';
+        return $this->createQueryBuilder('t')
+            ->select('*')
+            ->where('t.time between :time1 and :time2')
+            ->setParameters(array(
+                'time1' => $time1,
+                'time2' => $time2,
+            ))
+            ->orderBy('t.time')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+    public function getTimesRangeByDateAndBooth($date, $booth)
+    {
+        $time1 = $date->format('Y-m-d ').'00:00:00';
+        $time2 = $date->format('Y-m-d ').'23:59:59';
+        $result = $this->createQueryBuilder('t')
+            ->select('MAX(t.time) as max_time, MIN(t.time) as min_time')
+            ->where('t.time between :time1 and :time2')
+            ->andWhere('t.booth = :booth')
+            ->setParameter('time1', $time1)
+            ->setParameter('time2', $time2)
+            ->setParameter('booth', $booth)
+            ->getQuery()
+            ->getOneOrNullResult()
+//            ->getResult()
+        ;
+
+        if (isset($result['min_time']) && isset($result['max_time'])) {
+            $start = new \DateTime($result['min_time']);
+            $end = new \DateTime($result['max_time']);
+            return $start->format('g A') . ' - ' . $end->format('g A');
+        } else {
+            return 'No times set';
+        }
+    }
 }

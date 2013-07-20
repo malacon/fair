@@ -80,6 +80,29 @@ class Document
 
     private $temp;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_run", type="boolean")
+     */
+    private $isRun = false;
+
+    /**
+     * @return boolean
+     */
+    public function getIsRun()
+    {
+        return $this->isRun;
+    }
+
+    /**
+     * @param boolean $isRun
+     */
+    public function setIsRun($isRun)
+    {
+        $this->isRun = $isRun;
+    }
+
 //    public function __set($name, $value)
 //    {
 //        $this->

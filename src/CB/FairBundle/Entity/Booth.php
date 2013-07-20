@@ -265,4 +265,21 @@ class Booth
     {
         return $this->updated;
     }
+
+    /**
+     * @param $day \Datetime
+     */
+    public function getTimeRangeByDay($day)
+    {
+        $start = '';
+        $end = '';
+
+        /** @var \CB\FairBundle\Entity\Time $time */
+        foreach ($this->times as $time) {
+            if ($time->isInDay($day)) {
+                $start = true;
+            }
+        }
+
+    }
 }

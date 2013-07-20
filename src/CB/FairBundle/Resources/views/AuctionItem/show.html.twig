@@ -1,29 +1,17 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
 {% block content -%}
-    <h1>AuctionItem</h1>
+    <h1>Craft/Auction Item</h1>
 
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th>Type</th>
+                <td>{{ entity }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Quantity</th>
-                <td>{{ entity.quantity }}</td>
-            </tr>
-            <tr>
-                <th>Cost</th>
-                <td>{{ entity.cost }}</td>
-            </tr>
-            <tr>
-                <th>User</th>
-                <td>{{ entity.user }}</td>
+                <th>Family</th>
+                <td>{{ entity.family.name }} ({% for spouse in entity.family.spouses %}{{ spouse }}{% if not loop.last %}, {% endif %}{% endfor %})</td>
             </tr>
         </tbody>
     </table>
