@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use CB\FairBundle\Entity\Booth;
 use CB\FairBundle\Form\BoothType;
 use Symfony\Component\Yaml\Yaml;
@@ -26,6 +27,7 @@ class BoothController extends Controller
      * @Route("/", name="booth")
      * @Method("GET")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function indexAction()
     {
@@ -43,6 +45,7 @@ class BoothController extends Controller
      * @Route("/", name="booth_create")
      * @Method("POST")
      * @Template("FairBundle:Booth:new.html.twig")
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function createAction(Request $request)
     {
@@ -70,6 +73,7 @@ class BoothController extends Controller
      * @Route("/new", name="booth_new")
      * @Method("GET")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction()
     {
@@ -94,6 +98,7 @@ class BoothController extends Controller
      * @Route("/{id}", name="booth_show")
      * @Method("GET")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function showAction($id)
     {
@@ -129,6 +134,7 @@ class BoothController extends Controller
      * @Route("/{id}/edit", name="booth_edit")
      * @Method("GET")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function editAction($id)
     {
@@ -156,6 +162,7 @@ class BoothController extends Controller
      * @Route("/{id}", name="booth_update")
      * @Method("PUT")
      * @Template("FairBundle:Booth:edit.html.twig")
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function updateAction(Request $request, $id)
     {
@@ -189,6 +196,7 @@ class BoothController extends Controller
      *
      * @Route("/{id}", name="booth_delete")
      * @Method("DELETE")
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction(Request $request, $id)
     {

@@ -23,10 +23,10 @@
         <a class="btn btn-success btn-small" href="{{ path('booth_edit', { 'id': entity.id }) }}">
             Edit
         </a>
-        <button class="btn btn-danger btn-small" type="submit">Delete</button>
+        <button class="btn btn-danger btn-small delete-rule" type="submit">Delete</button>
     </div>
-        <input type="hidden" name="_method" value="DELETE" />
-        {{ form_widget(delete_form) }}
+    <input type="hidden" name="_method" value="DELETE" />
+    {{ form_widget(delete_form) }}
     </form>
 </td>
 {#{% extends 'FairBundle::layout.html.twig' %}#}

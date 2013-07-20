@@ -3,8 +3,8 @@
 {% block content -%}
     <h1>Documents</h1>
 
-    <p>To load booths, please download the following spreadsheet, edit it and upload it here.  Once uploaded run the file.</p>
-    <p><a href="{{ asset('/bundles/fair/spreadsheets/Fair Booths.xlsx') }}" >Fair Booth Upload</a></p>
+    <p>To load booths or users, please download the following spreadsheet, edit it and upload it here.  Once uploaded run the file.</p>
+    <p><a class="btn btn-success" href="{{ asset('/bundles/fair/spreadsheets/Fair Booths.xlsx') }}" ><i class="icon-download-alt icon-white"></i> Booths Upload Template</a> <a class="btn btn-success" href="{{ asset('/bundles/fair/spreadsheets/Fair Users.xlsx') }}" ><i class="icon-download-alt icon-white"></i> Users Upload Template</a></p>
 
     {% for entity in entities %}
         {{ render(controller('FairBundle:Document:show', {

@@ -4,6 +4,7 @@ namespace CB\FairBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 /**
@@ -16,6 +17,7 @@ class AdminPanelController extends Controller
     /**
      * @Route("/", name="admin_panel")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function defaultAction()
     {
@@ -25,6 +27,7 @@ class AdminPanelController extends Controller
     /**
      * @Route("/settings")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function configAction()
     {
@@ -38,6 +41,7 @@ class AdminPanelController extends Controller
      * Retrieves the list of basic users
      *
      * @Route("/getUser.{_format}", name="get_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function getUsersJsonAction()
     {
@@ -55,6 +59,7 @@ class AdminPanelController extends Controller
 
     /**
      * @Route("/isUser.{_format}", name="is_user", defaults={"_format" = "json"}, requirements={"_format"="html|json"})
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function isUserAction()
     {

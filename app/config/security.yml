@@ -1,4 +1,6 @@
 security:
+    access_denied_url: /
+
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
 
@@ -33,3 +35,6 @@ security:
         - { path: ^/, role: ROLE_USER }
         - { path: ^/user/, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin/docs/, role: ROLE_ADMIN }
+        - { path: ^/admin/rule/, role: ROLE_ADMIN }
+        - { path: ^/admin/booth/, role: ROLE_ADMIN }

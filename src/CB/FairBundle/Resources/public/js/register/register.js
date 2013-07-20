@@ -163,13 +163,15 @@ $(function() {
 
         $isPassed.toggleClass('alert-danger', !data.isPassed).toggleClass('alert-success', data.isPassed);
         if (data.isPassed) {
-            $status.addClass('btn-success').removeClass('btn-danger');
+            $status.addClass('label-success').removeClass('label-important');
             $status.text($status.data('passed'));
             $isPassed.find('i.icon').addClass('icon-thumbs-up').removeClass('icon-exclamation-sign');
+            $('.printStatus').removeClass('hidden');
         } else {
-            $status.removeClass('btn-success').addClass('btn-danger');
+            $status.removeClass('label-success').addClass('label-important');
             $status.text($status.data('notpassed'));
             $isPassed.find('i.icon').removeClass('icon-thumbs-up').addClass('icon-exclamation-sign');
+            $('.printStatus').addClass('hidden');
         }
 
     }

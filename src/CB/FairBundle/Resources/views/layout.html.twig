@@ -53,12 +53,9 @@
                             <li class="divider-vertical"></li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_ADMIN") %}
-                                    <li>
-                                        <a href="#modal-status" data-toggle="modal"><i class="icon-print"></i> Print Your Responsibilities</a>
-                                    </li>
-                                    <li class="divider-vertical"></li>
+                                    <a href="#modal-status" data-toggle="modal" class="printStatus pull-left btn btn-success{% if not app.user.isPassedRules() %} hidden{% endif %}"><i class="icon-print"></i> Print Your Responsibilities</a>
                                 {% endif %}
-                                <li class="nav-header ">
+                                <li class="nav-header nav-text">
                                     <span class="text-info">{{ 'User: ' ~ app.user.username }} - <a href="{{ path('fos_user_security_logout') }}">
                                             {{ 'Logout'|trans({}, 'FOSUserBundle') }}
                                         </a></span>
@@ -97,8 +94,10 @@
                             <div class="family">
                                 <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest }}, {{ app.user.eldestGrade }}
                             </div>
-                            <div class="info content-item" data-toggle="popover" data-placement="right" data-content="As you begin to sign up, take note of the various options for signing up.  If you do not meet one of these options you will not meet your obligation.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-info-sign'></i> Status</strong>." title="" data-original-title="Beginning Help">
+                            <div class="info content-item">
+                                <div class="help" data-toggle="popover" data-placement="right" data-content="As you begin to sign up, take note of the various options for signing up.  If you do not meet one of these options you will not meet your obligation.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-info-sign'></i> Status</strong>." title="" data-original-title="Beginning Help">Help</div>
                                 <div class="content-title"><i class="icon-list"></i> 1. Signup Options</div>
+                                <p>These are the options you have to sign up for.  Once you have met one of these choices, the box below will turn from <span class="alert-danger">red</span> to <span class="alert-success">green.</span></p>
                                 <ul class="rules unstyled">
                                     {% for rule in rules %}
                                         <li><strong>{{ rule.description }}:</strong> {{ rule }}</li>
@@ -106,7 +105,8 @@
                                     <li><em>You can always volunteer to bring extra craft/auction items!</em></li>
                                 </ul>
                             </div>
-                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item" data-toggle="popover" data-placement="right" data-content="To change your status you must make your selections to the right by clicking the various buttons.  The signup options above govern your status.  This box will turn <span class='btn-success'>green</span> when you have fulfilled your requirements.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-fire'></i> Baked Goods</strong>." title="" data-original-title="Status Help">
+                        <div id="isPassed" class="alert{% if (app.user.isPassedRules) %} alert-success{% else %} alert-danger{% endif %} content-item">
+                            <div class="help" data-toggle="popover" data-placement="right" data-content="To change your status you must make your selections to the right by clicking the various buttons.  The signup options above govern your status.  This box will turn <span class='btn-success'>green</span> when you have fulfilled your requirements.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-fire'></i> Baked Goods</strong>." title="" data-original-title="Status Help">Help</div>
                             <div class="content-title""><i class="icon-info-sign"></i> 2. Status</div>
                         <p><i class="icon {% if app.user.isPassedRules %}icon-thumbs-up{% else %} icon-exclamation-sign{% endif %}"></i> You have signed up for:
                             <ul class="no-style">
@@ -114,7 +114,7 @@
                             <li><span class="baked">{{ app.user.hasBakedItem() }}</span> <i class="icon-fire"></i> baked goods,
                             <li><span class="auction">{{ app.user.getNumOfSaleItems() }}</span> <i class="icon-gift"></i> craft\auction items.
                             </ul>
-                        <span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
+                        <span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status label {% if (app.user.isPassedRules) %} label-success{% else %} btn-important{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                         </p>
                     </div>
                         {% else %}

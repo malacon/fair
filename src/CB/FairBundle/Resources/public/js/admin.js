@@ -36,7 +36,6 @@ jQuery(document).ready(function() {
         form = $(this).parent().parent().siblings('.fileName').data('edit-form');
         label = $(this).parent().parent().siblings('.fileName').html();
         $(this).parent().parent().siblings('.fileName').html(form);
-        console.log($(this).parent().parent().siblings('.fileName').data('edit-form'));
     });
 
     $('.isrun').on('click', function(e) {
@@ -44,6 +43,14 @@ jQuery(document).ready(function() {
         var c = confirm('You have already run this file, are you sure you want to run it again?');
         if (c) {
             window.location = $(this).attr('href');
+        }
+    });
+
+    $('.delete-rule').on('click', function(e) {
+        e.preventDefault();
+        var c = confirm('Are you sure you want to delete this?');
+        if (c) {
+            $(this).parent().parent().submit();
         }
     });
 });

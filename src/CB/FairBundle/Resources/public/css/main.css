@@ -319,3 +319,12 @@ input.input-small-height {
     font-size: 10px;
     height: 12px;
 }
+
+.printStatus {
+    display: block;
+}
+
+.nav .nav-text {
+    margin-left: 5px;
+    margin-top: 5px;
+}

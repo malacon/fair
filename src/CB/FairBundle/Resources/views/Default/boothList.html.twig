@@ -1,7 +1,8 @@
-<strong>Select time for: </strong><div class="btn-group btn-group-spouses" data-toggle="buttons-radio">{% for spouse in app.user.spouses -%}
+<strong>I am signing up: </strong><div class="btn-group btn-group-spouses" data-toggle="buttons-radio">{% for spouse in app.user.spouses -%}
     <a data-spouse-id="{{ loop.index0 }}" {% if loop.first %}data-toggle="button"{% endif %}class="spouse btn btn-info" href="{{ path('booth_family') }}.json"><span data-spouse-hour="{{ spouse.id }}" class="badge badge-important">{{ spouse.getNumOfHours() }}</span>{{ spouse.name }}</a>
-{% endfor %}
+{%- endfor -%}
 </div>
+<strong>for hours</strong>
 {% set spouse = app.user.spouses.first() %}
 <div class="row-fluid boothData">
     <div class="span2 boothSelection">

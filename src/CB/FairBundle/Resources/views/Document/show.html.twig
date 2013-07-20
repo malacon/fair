@@ -1,4 +1,4 @@
-<div class="fileBlock alert alert-block">
+<div class="fileBlock alert alert-block {% if not entity.isRun %}alert-success{% endif %}">
     <div class="fileName" data-edit-form="{{ render(controller('FairBundle:Document:edit', {
     'id': entity.id
     }))|e }}"><a target="_blank" href="{{ asset(entity.getWebPath()) }}">
@@ -16,7 +16,7 @@
         <div class="btn-group">
             <a class="btn btn-info btn-small btn-edit" href="{{ path('admin_docs_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
             {% if entity.type == 'xls' %}
-            <a class="btn btn-success btn-small{% if entity.isRun %} isrun{% endif %}" href="{{ path('load_csv', {'id': entity.id}) }}"><i class="icon-play"></i> Run</a>
+            <a class="btn btn-small{% if entity.isRun %} isrun btn-warning{% else %} btn-success{% endif %}" href="{{ path('load_csv', {'id': entity.id}) }}"><i class="icon-play"></i> Run{% if entity.isRun %} (already run){% endif %}</a>
             {% endif %}
             <button class="btn btn-danger btn-small delete-rule" type="submit"><i class="icon-trash"></i> Delete</button>
         </div>

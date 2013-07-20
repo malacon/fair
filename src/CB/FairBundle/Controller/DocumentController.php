@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use CB\FairBundle\Form\DocumentType;
 use CB\FairBundle\Entity\Document;
 
@@ -29,6 +30,7 @@ class DocumentController extends Controller
     /**
      * @Route("/csv/{id}", name="load_csv")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function loadCSVAction($id)
     {
@@ -214,6 +216,7 @@ class DocumentController extends Controller
      * @Route("/", name="admin_docs")
      * @Method("GET")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function indexAction()
     {
@@ -234,6 +237,7 @@ class DocumentController extends Controller
      * @Route("/", name="admin_docs_create")
      * @Method("POST")
      * @Template("FairBundle:Document:new.html.twig")
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function createAction(Request $request)
     {
@@ -261,6 +265,7 @@ class DocumentController extends Controller
      * @Route("/new", name="admin_docs_new")
      * @Method("GET")
      * @Template()
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction()
     {
