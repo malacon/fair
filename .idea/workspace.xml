@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/index.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,7 +126,7 @@
       <file leaf-file-name="AdminPanelController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="45" selection-start="1457" selection-end="1457" vertical-scroll-proportion="-12.423077">
+            <state line="53" column="47" selection-start="1507" selection-end="1507" vertical-scroll-proportion="-13.076923">
               <folding>
                 <element signature="e#44#103#0" expanded="true" />
               </folding>
@@ -138,19 +134,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FamilyRepository.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FamilyRepository.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="22" selection-start="993" selection-end="993" vertical-scroll-proportion="-15.692307">
+            <state line="33" column="23" selection-start="985" selection-end="994" vertical-scroll-proportion="0.7431694">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoadUserData.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LoadUserData.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="30" selection-start="2436" selection-end="2436" vertical-scroll-proportion="0.712204">
+            <state line="47" column="4" selection-start="1814" selection-end="1814" vertical-scroll-proportion="-7.8461537">
               <folding>
                 <element signature="e#49#98#0" expanded="true" />
               </folding>
@@ -211,7 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/tableSorter.min.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Family/index.html.twig" />
@@ -223,10 +218,11 @@
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/index.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/loadCSV.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" />
-        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php" />
+        <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" />
       </list>
     </option>
   </component>
@@ -1715,13 +1711,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/config/settings.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="42" selection-start="52" selection-end="52" vertical-scroll-proportion="0.03068592">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/upload.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1803,19 +1792,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="45" selection-start="1457" selection-end="1457" vertical-scroll-proportion="-12.423077">
-          <folding>
-            <element signature="e#44#103#0" expanded="true" />
-          </folding>
+        <state line="88" column="62" selection-start="3027" selection-end="3030" vertical-scroll-proportion="0.33206108">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="22" selection-start="993" selection-end="993" vertical-scroll-proportion="-15.692307">
-          <folding />
+        <state line="47" column="4" selection-start="1814" selection-end="1814" vertical-scroll-proportion="-7.8461537">
+          <folding>
+            <element signature="e#49#98#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1826,12 +1815,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="30" selection-start="2436" selection-end="2436" vertical-scroll-proportion="0.712204">
+        <state line="53" column="47" selection-start="1507" selection-end="1507" vertical-scroll-proportion="-13.076923">
           <folding>
-            <element signature="e#49#98#0" expanded="true" />
+            <element signature="e#44#103#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="23" selection-start="985" selection-end="994" vertical-scroll-proportion="0.7431694">
+          <folding />
         </state>
       </provider>
     </entry>

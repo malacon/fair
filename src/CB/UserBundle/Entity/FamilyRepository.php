@@ -31,7 +31,7 @@ class FamilyRepository extends EntityRepository
             ->setParameter('time', $timestamp)
             ->orderBy('u.username', 'ASC')
             ->getQuery()
-            ->getDQL()
+            ->getResult()
             ;
     }
 
