@@ -8,7 +8,7 @@
     <div class="span2 boothSelection">
         <div class="well sidebar-nav">
             <ul class="nav nav-list">
-                <li class="nav-header">Select Booth</li>
+                <li class="nav-header boothList">Select Booth</li>
                 {% for booth in booths %}
                     <li class="{% if loop.first %}active{% endif %}">
                         <a class="booth" href="{{ path('get_booth', {'id': booth.id}) }}.json"><span class="badge badge-important" data-booth-id="{{ booth.id }}">{{ spouse.getNumOfHoursByBoothId(booth.id) }}</span> {{ booth }}</a>

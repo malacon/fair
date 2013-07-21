@@ -167,6 +167,7 @@ $(function() {
             $status.text($status.data('passed'));
             $isPassed.find('i.icon').addClass('icon-thumbs-up').removeClass('icon-exclamation-sign');
             $('.printStatus').removeClass('hidden');
+
         } else {
             $status.removeClass('label-success').addClass('label-important');
             $status.text($status.data('notpassed'));

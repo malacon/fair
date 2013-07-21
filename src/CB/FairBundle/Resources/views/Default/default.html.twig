@@ -1,7 +1,10 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
 {% block content -%}
-        <div class="content-item" data-toggle="popover" data-placement="left" data-content="You may select one baked item.  A <span class='btn-success'>green</span> button means it is selectable.  An <span class='btn-warning'>orange</span> button means you have selected that item.  Unavailable items will be grayed out.  To unselect something you have chosen re-click the <span class='btn-warning'>orange</span>.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-gift'></i> Craft/Auction Items</strong>." title="" data-original-title="Baked Goods Help">
+        <div class="content-item">
+            <div class="help" data-toggle="popover" data-placement="left" data-content="You may only select one baked item to bring.<br>
+<strong>To bring an item</strong> click the <span class='label label-success'>green button</span>.  After it has been selected it will turn into an <span class='label label-warning'>orange button</span>.<br>
+<strong>To remove am item</strong> click the <span class='label label-warning'>orange button</span>." title="" data-original-title="Baked Goods Help">Help</div>
             <div class="content-title"><i class="icon-fire"></i> 3. Baked Goods</div>
             <div class="bakedItems">
                 <p><strong>I agree to bring the following:</strong><br>
@@ -33,7 +36,10 @@
                 </p>
             </div>
         </div>
-        <div class="content-item" data-toggle="popover" data-placement="left" data-content="You may select as many auction/craft items as you want.  To select an item click on the button.  It will appear below in <span class='alert'>yellow</span>.  To remove an auction item click on the x in the <span class='alert'>yellow</span> box.<br><br>Follow the numbers to the next area: <br><strong><i class='icon-time'></i> Booths</strong>." title="" data-original-title="Craft/Auction Help">
+        <div class="content-item">
+            <div class="help" data-toggle="popover" data-placement="left" data-content="You many select as many craft or auction items as you want.<br>
+<strong>To add</strong> a craft item or auction item, click on the <span class='label label-success'>green button</span>. Once added it will appear as a <span class='alert'>yellow box</span>.<br>
+<strong>To remove</strong> a craft item or auction item, click on the 'x' on the box." title="" data-original-title="Craft/Auction Help">Help</div>
             <div class="content-title"><i class="icon-gift"></i> 4. Craft/Auction Items</div>
                 <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'craft'}) }}.json"><i class="icon-plus icon-white"></i> Add $25 craft item</a> <a class="btn btn-success auction-add" href="{{ path('auction_add', {'type': 'auction'}) }}.json"><i class="icon-plus icon-white"></i> Add $100 auction item</a><br>
                 <p></p><strong>I agree to bring the following:</strong><br>
@@ -44,7 +50,12 @@
                 </div>
                 </p>
         </div>
-        <div class="content-item" id="booths" data-toggle="popover" data-placement="left" data-content="Select a time to work click on one of the buttons that is <span class='btn-info'>teal</span> and says Signup.  If a time is currently filled up it will say 'Filled'.  If the time says 'Already Working at this Time' you are already signed up at this time.  To be able to sign up for this time, unselect the time you are signed up for.  It will be highlighted in <span class='btn-warning'>orange</span>.<br><br>You are ready to review your registration at the top: <br><strong><i class='icon-print'></i> Print Your Responsibilities</strong>." title="" data-original-title="Booth Help">
+        <div class="content-item" id="booths">
+            <div class="help" data-toggle="popover" data-placement="left" data-content="In this section you can sign up for a total of 10 hours of booth time.<br>
+<ol>
+<li>First select which adult you want to sign up for. The red circle signifies the number of hours the person has signed up for.  Then select the appropriate booth.  The red circle next to the booth names tells how many hours the active adult is signed up for.</li>
+<li>Once you have signed up, cick on the hours you would like to sign up for.  Only times that are <span class='label label-info'>teal</span> will be selectable.  To remove an hour, click on the <span class='label label-warning'>orange</span> time and it will remove it.</li>
+<li>Once you have your appropriate number of hours, the status box on the left will turn green and a <button class='btn btn-success btn-mini'>Print Your Responsibilities</button> button will appear in the top.</li>" title="" data-original-title="Booth Help">Help</div>
             <div class="content-title"><i class="icon-time"></i> 5. Booths</div>
             {{ include(
             'FairBundle:Default:boothList.html.twig',
@@ -61,8 +72,13 @@
             </div>
             <div class="modal-body">
                 <p class="lead">Welcome {{ app.user.name }} Family<p>
-                <p>The registration website can be completed in any order, but to assist you in making this a speedy process each section is numbered in the top right corner.  As you hover over them an information box will appear on the side to give you more information.</p>
-                <img src="{{ asset('bundles/fair/images/signup.png') }}" alt=""/>
+                <p>After you close this box (button in the bottom right), take note of the signup options and status on the left hand side of the site.<p>
+                <ol>
+                    <li><div class='content-title instructions'><i class='icon-list'></i> 1. Signup Options</div>will tell you what your options are for successfully completing the registration.  Registration is done real-time, so as soon as you click on something you are claiming that spot and no one else can.  Most of the booth times have between 2 and 4 spots.</li>
+                    <li><div class='content-title instructions' '=''><i class='icon-info-sign'></i> 2. Status</div> area will tell you what you have currently signed up for.  As long as it is <span class='label label-warning'>red</span> you have not completed your registration.  Once it turns <span class='label label-success'>green</span> you have successfully completed your registration.</li>
+                    <li>Upon meeting the requirements a <a href='#' class='btn btn-primary btn-mini'><i class='icon-print icon-white'></i> Print Your Responsibilities</a> button will appear at the top that will allow you to print a copy of your registration.</li>
+                    <li>Your registration may be completed and changed at any time, but once you remove a time or item from your registration it becomes available to other families.</li>
+                </ol>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>

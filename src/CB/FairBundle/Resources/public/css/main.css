@@ -196,6 +196,9 @@ ul.times > li a {
 .popover-content .alert {
     padding: 0;
 }
+.popover-title {
+    font-weight: bold;
+}
 
 span.time {
     width: 35%;
@@ -254,6 +257,12 @@ span.msg {
     border-radius: 4px 0 4px 0;
 }
 
+.content-title.instructions {
+    position: relative;
+    width: 160px;
+    display: inline-block;
+}
+
 .boothData {
     margin-top: 10px;
 }
@@ -284,7 +293,7 @@ span.msg {
 
 .popover {
     z-index:2000;
-    max-width: 320px;
+    max-width: 400px;
 }
 
 .modal-header {
@@ -327,4 +336,9 @@ input.input-small-height {
 .nav .nav-text {
     margin-left: 5px;
     margin-top: 5px;
+}
+
+.boothList {
+    font-size: 13px;
+    color: #2884AF;
 }

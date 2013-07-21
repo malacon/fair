@@ -270,13 +270,13 @@ class Rule
     {
         $rule = '';
         if ($this->numberOfTimes > 0) {
-            $rule .= $this->numberOfTimes.' hours';
+            $rule .= $this->numberOfTimes." <i class='icon-time'></i> hours";
         }
         if ($this->numberOfBakedItems > 0) {
-            $rule .= ', '.$this->numberOfBakedItems.' baked goods';
+            $rule .= ', '.$this->numberOfBakedItems.' <i class="icon-fire"></i> baked goods';
         }
         if ($this->numberOfAuctionItems > 0) {
-            $rule .= ', '.$this->numberOfAuctionItems.' craft\auction items';
+            $rule .= ', '.$this->numberOfAuctionItems.' <i class="icon-gift"></i> craft\auction items';
         }
         return $rule;
     }
