@@ -43,7 +43,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->setRoles(array('ROLE_USER'))
             ->addSpouse($parent1)
             ->addSpouse($parent2)
-            ->setTimeToLogin(new \DateTime('2013-08-01'))
+            ->setTimeToLogin(new \DateTime('2013-08-01 09:00:00'))
         ;
         $manager->persist($parent1);
         $manager->persist($parent2);
@@ -78,7 +78,35 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
             ->setName('Admin')
             ->setEmail('craig.d.baker@gmail.com')
             ->setPassword($encoder
-                ->encodePassword('admin', $family3->getSalt()))
+                ->encodePassword('catho1ic', $family3->getSalt()))
+            ->setEnabled(true)
+            ->setRoles(array('ROLE_ADMIN'))
+            ->setTimeToLogin(new \DateTime('now'))
+        ;
+
+        $family4 = new Family();
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($family4);
+        $family4->setUsername('kim')
+            ->setName('Kim')
+            ->setEmail('kimnaquin@sjp-sta.org')
+            ->setPassword($encoder
+                ->encodePassword('k1i2m3', $family4->getSalt()))
+            ->setEnabled(true)
+            ->setRoles(array('ROLE_ADMIN'))
+            ->setTimeToLogin(new \DateTime('now'))
+        ;
+
+        $family5 = new Family();
+        $encoder = $this->container
+            ->get('security.encoder_factory')
+            ->getEncoder($family5);
+        $family5->setUsername('dayna')
+            ->setName('Dayna')
+            ->setEmail('daynasanchez@sjp-sta.org')
+            ->setPassword($encoder
+                ->encodePassword('d1a2y3n4a', $family5->getSalt()))
             ->setEnabled(true)
             ->setRoles(array('ROLE_ADMIN'))
             ->setTimeToLogin(new \DateTime('now'))
@@ -90,6 +118,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $manager->persist($family1);
         $manager->persist($family2);
         $manager->persist($family3);
+        $manager->persist($family4);
+        $manager->persist($family5);
         $manager->flush();
     }
 

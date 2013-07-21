@@ -1,0 +1,38 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h3>Families</h3>
+
+    <table class="records_list table table-striped table-hover table-sort">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Family</th>
+                <th>Spouses</th>
+                <th>Eldest Enrolled Child</th>
+                <th>Login Time</th>
+                <th>Registration Complete?</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_family_show', { 'id': entity.id }) }}">{{ entity.username }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{% for spouse in entity.spouses %}{{ spouse }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+                <td>{{ entity.eldest }} ({{ entity.eldestGrade }})</td>
+                <td>{{ entity.timeToLogin|date("D, M jS \\a\\t g A") }}</td>
+                <td>{% if entity.isPassedRules %}<span class="label label-success">Passed</span>{% else %}<span class="label label-important">Not Passed</span>{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('admin_family_new') }}">
+                Create a new user
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/components/bootstrap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/components/jquery" vcs="Git" />
   </component>
 </project>
 

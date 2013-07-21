@@ -202,7 +202,7 @@ class DocumentController extends Controller
                 $family->addSpouse($adult4);
                 $em->persist($adult4);
             }
-            $family->setTimeToLogin(new \DateTime($row['Time to Signin']));
+            $family->setTimeToLogin(new \DateTime($row['Time to Signin'].'09:00:00'));
             $family->setRoles(array('ROLE_USER'));
             $family->setEnabled(true);
             $em->persist($family);

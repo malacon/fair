@@ -15,8 +15,9 @@
     <script type="text/javascript" src="{{ asset('bundles/fair/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/fair/js/main.js') }}"></script>
     {% if is_granted('ROLE_ADMIN') -%}
-    <script type="text/javascript" src="{{ asset('bundles/fair/js/admin.js') }}"></script>
-        {%- endif -%}
+        <script type="text/javascript" src="{{ asset('bundles/fair/js/tableSorter.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fair/js/admin.js') }}"></script>
+    {%- endif -%}
 {% endblock %}
 
 {% block body %}
@@ -47,6 +48,8 @@
                                         <li><a tabindex="-1" href="{{ path('booth') }}">Booths</a></li>
                                         <li><a tabindex="-1" href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
                                         <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>
+                                        <li><a tabindex="-1" href="{{ path('admin_family') }}">Users</a></li>
+                                        <li><a href="{{ path('admin_docs') }}">Upload Data</a></li>
                                     </ul>
                                 </li>
                             {% endif %}
@@ -86,7 +89,8 @@
                                 <li><a href="{{ path('booth') }}">Booths</a></li>
                                 <li><a href="{{ path('bakeditem') }}">Baked Items</a></li>
                                 <li><a href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
-                                <li><a href="{{ path('admin_docs') }}">Documents</a></li>
+                                <li><a tabindex="-1" href="{{ path('admin_family') }}">Users</a></li>
+                                <li><a href="{{ path('admin_docs') }}">Upload Data</a></li>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
                             <h4>Welcome {{ app.user.name }} Family</h4>
