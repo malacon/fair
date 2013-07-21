@@ -1,20 +1,41 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
 {% block content -%}
-    <h1>BakedItem creation</h1>
+    <div class="row-fluid">
+        <div class="span10">
+            <h3>Create Baked Goods</h3>
+            <p class="lead">I love baked items!  What type will you add here?</p>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span5">
+            <form class="form-horizontal" action="{{ path('admin_docs_create') }}" method="post" {{ form_enctype(form) }}>
+                <div class="control-group">
+                    <div class="control-label">
+                        {{ form_label(form.description) }}
+                    </div>
+                    <div class="controls">
+                        {{ form_widget(form.description, {'attr': {'placeholder': 'How would you describe this scrumptious delight?'}}) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">
+                        {{ form_label(form.quantity) }}
+                    </div>
+                    <div class="controls">
+                        {{ form_widget(form.quantity, {'attr': {'placeholder': 'How many should we make?'}}) }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button class="btn btn-primary btn-small btn-block"  type="submit">Create the scrumptious item</button><br>
+                        <a href="{{ path('admin_docs') }}">
+                            <i class="icon-share-alt"></i> Back to the list of goods
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <form action="{{ path('bakeditem_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit">Create</button>
-        </p>
-    </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('bakeditem') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

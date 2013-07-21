@@ -118,7 +118,7 @@
                             <li><span class="baked">{{ app.user.hasBakedItem() }}</span> <i class="icon-fire"></i> baked goods,
                             <li><span class="auction">{{ app.user.getNumOfSaleItems() }}</span> <i class="icon-gift"></i> craft\auction items.
                             </ul>
-                        <span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status label {% if (app.user.isPassedRules) %} label-success{% else %} btn-important{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
+                        <span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status label {% if (app.user.isPassedRules) %} label-success{% else %} label-important{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>
                         </p>
                     </div>
                         {% else %}

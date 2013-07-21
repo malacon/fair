@@ -51,6 +51,7 @@ class TimeRepository extends EntityRepository
         if (isset($result['min_time']) && isset($result['max_time'])) {
             $start = new \DateTime($result['min_time']);
             $end = new \DateTime($result['max_time']);
+            $end->add(new \DateInterval('PT01H'));
             return $start->format('g A') . ' - ' . $end->format('g A');
         } else {
             return 'No times set';
