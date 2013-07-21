@@ -98,7 +98,7 @@ class Family extends BaseUser
         $this->saleItems = new ArrayCollection();
         $this->spouses = new ArrayCollection();
         $this->maxHours = 10;
-        $this->timeToLogin = new \DateTime('now');
+        $this->timeToLogin = new \DateTime('last week');
         $this->email = 'fake+'.rand(1,100000).'@fake.com';
     }
 

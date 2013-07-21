@@ -81,7 +81,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                 ->encodePassword('catho1ic', $family3->getSalt()))
             ->setEnabled(true)
             ->setRoles(array('ROLE_ADMIN'))
-            ->setTimeToLogin(new \DateTime('now'))
         ;
 
         $family4 = new Family();
@@ -95,7 +94,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                 ->encodePassword('k1i2m3', $family4->getSalt()))
             ->setEnabled(true)
             ->setRoles(array('ROLE_ADMIN'))
-            ->setTimeToLogin(new \DateTime('now'))
         ;
 
         $family5 = new Family();
@@ -109,7 +107,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
                 ->encodePassword('d1a2y3n4a', $family5->getSalt()))
             ->setEnabled(true)
             ->setRoles(array('ROLE_ADMIN'))
-            ->setTimeToLogin(new \DateTime('now'))
         ;
 
         $this->addReference('user-user', $family1);

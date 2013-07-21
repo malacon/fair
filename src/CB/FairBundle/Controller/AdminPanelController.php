@@ -50,6 +50,7 @@ class AdminPanelController extends Controller
         $userRepo = $this->getDoctrine()->getRepository('UserBundle:Family');
         $users = $userRepo->findByUsernameChunk($user);
 
+        print_r($users);print_r($user);die();
         if ($this->getRequest()->getRequestFormat() == 'json') {
             return $this->createJsonResponse($users);
         }
