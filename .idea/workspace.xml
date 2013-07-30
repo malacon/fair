@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,28 +36,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="show.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/show.html.twig">
+      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="527">
+            <state line="139" column="18" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.58" vertical-offset="2044" max-vertical-offset="9605">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/edit.html.twig">
+      <file leaf-file-name="layout.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="75" selection-start="1619" selection-end="1619" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1224">
-              <folding />
+            <state line="58" column="79" selection-start="3894" selection-end="3894" vertical-scroll-proportion="-3.3333333" vertical-offset="816" max-vertical-offset="2516">
+              <folding>
+                <element signature="e#1226#1246#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/index.html.twig">
+      <file leaf-file-name="default.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="21" selection-start="909" selection-end="909" vertical-scroll-proportion="-3.4615386" vertical-offset="318" max-vertical-offset="918">
+            <state line="2" column="20" selection-start="66" selection-end="66" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1700">
               <folding />
             </state>
           </provider>
@@ -63,25 +68,7 @@
       <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="31" selection-start="5167" selection-end="5167" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="4267">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="1" selection-start="79" selection-end="79" vertical-scroll-proportion="0.059130434" vertical-offset="0" max-vertical-offset="575">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="time.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="-7.72" vertical-offset="1320" max-vertical-offset="1870">
+            <state line="170" column="39" selection-start="5379" selection-end="5379" vertical-scroll-proportion="0.0" vertical-offset="2482" max-vertical-offset="4301">
               <folding />
             </state>
           </provider>
@@ -122,9 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/new.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/new.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/Time.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/TimeRepository.php" />
@@ -135,9 +119,12 @@
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Form/FamilyType.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/edit.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/index.html.twig" />
-        <option value="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
+        <option value="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
       </list>
     </option>
   </component>
@@ -1737,26 +1724,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Family/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="16" selection-start="62" selection-end="62" vertical-scroll-proportion="0.061930783" vertical-offset="0" max-vertical-offset="549" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Family/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="44" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Family/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="9" selection-start="1707" selection-end="1707" vertical-scroll-proportion="0.50455374" vertical-offset="743" max-vertical-offset="1292" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/TimeRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="46" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.5974499" vertical-offset="573" max-vertical-offset="1122" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Booth/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="0" />
@@ -1772,13 +1739,6 @@
         <state line="7" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.21675774" vertical-offset="0" max-vertical-offset="549" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Booth/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="23" selection-start="158" selection-end="158" vertical-scroll-proportion="0.030965392" vertical-offset="51" max-vertical-offset="918" />
@@ -1789,20 +1749,6 @@
         <state line="7" column="11" selection-start="483" selection-end="513" vertical-scroll-proportion="0.21675774" vertical-offset="0" max-vertical-offset="549" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="75" selection-start="1619" selection-end="1619" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1224">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="21" selection-start="909" selection-end="909" vertical-scroll-proportion="-3.4615386" vertical-offset="318" max-vertical-offset="918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="16" selection-start="1466" selection-end="1466" vertical-scroll-proportion="0.36298934" vertical-offset="510" max-vertical-offset="3706">
@@ -1810,23 +1756,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="1" selection-start="79" selection-end="79" vertical-scroll-proportion="0.059130434" vertical-offset="0" max-vertical-offset="575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="21" selection-start="909" selection-end="909" vertical-scroll-proportion="0.16393442" vertical-offset="318" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="75" selection-start="1619" selection-end="1619" vertical-scroll-proportion="0.04007286" vertical-offset="675" max-vertical-offset="1224">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Rule/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="-7.72" vertical-offset="1320" max-vertical-offset="1870">
+        <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="0.35090908" vertical-offset="1320" max-vertical-offset="1870">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/compiled/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="20" selection-start="66" selection-end="66" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="79" selection-start="3894" selection-end="3894" vertical-scroll-proportion="-3.3333333" vertical-offset="816" max-vertical-offset="2516">
+          <folding>
+            <element signature="e#1226#1246#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="31" selection-start="5167" selection-end="5167" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="4267">
+        <state line="170" column="39" selection-start="5379" selection-end="5379" vertical-scroll-proportion="0.0" vertical-offset="2482" max-vertical-offset="4301">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="1" selection-start="79" selection-end="79" vertical-scroll-proportion="0.059130434" vertical-offset="0" max-vertical-offset="575">
+        <state line="139" column="18" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.58" vertical-offset="2044" max-vertical-offset="9605">
           <folding />
         </state>
       </provider>

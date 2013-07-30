@@ -130,7 +130,14 @@ ul.times > li a {
 }
 
 .sidebar.affix {
-    width: inherit;
+    top: 40px;
+    width: 22%;
+}
+
+.sidebar.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 270px;
 }
 
 .accordion-group {
@@ -204,15 +211,15 @@ span.time {
     width: 35%;
     display: inline-table;
     text-align: right;
-    padding-right: 6px;
-    font-size: 12px;
+    /*padding-right: 6px;*/
+    font-size: .9em;
 }
 
 span.msg {
     width: 60%;
     display: inline-table;
     text-align: right;
-    font-size: 12px;
+    font-size: .9em;
 }
 
 .times .btn-block+.btn-block {
@@ -282,6 +289,13 @@ span.msg {
     margin-top: -9px;
 }
 
+.alert-passed {
+    position: fixed;
+    top: 1px;
+    left: 35%;
+    z-index: 10000;
+}
+
 .spouse .badge.badge-important {
     margin-right: 5px;
 }
@@ -333,9 +347,34 @@ input.input-small-height {
     margin-top: 5px;
 }
 
+.nav-list {
+    padding-right: 5px;
+    padding-left: 5px;
+    margin-bottom: 0;
+}
+
+.boothSelection .nav-header {
+    padding: 3px 5px;
+}
+
+.nav-list > li > a {
+    padding: 3px 5px;
+}
+.nav-list > li > a, .nav-list .nav-header {
+    margin-right: -5px;
+    margin-left: -5px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+
+
 .boothList {
     font-size: 13px;
     color: #2884AF;
+}
+
+.rules li {
+    font-size: 12px;
 }
 
 /** Table Sort **/
@@ -458,6 +497,8 @@ ul.DTTT_dropdown.dropdown-menu li:hover a {
     background-color: #0088cc;
     color: white !important;
 }
+
+
 
 /* TableTools information display */
 div.DTTT_print_info.modal {

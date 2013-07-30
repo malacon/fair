@@ -167,12 +167,14 @@ $(function() {
             $status.text($status.data('passed'));
             $isPassed.find('i.icon').addClass('icon-thumbs-up').removeClass('icon-exclamation-sign');
             $('.printStatus').removeClass('hidden');
-
+//            $('.printStatus').tooltip('show');
+//            $('body').append($('<div class="alert alert-success fade in alert-passed"><button type="button" class="close" data-dismiss="alert">×</button><strong>Requiements Met!</strong> You can print your requirements to the right.</div>'));
         } else {
             $status.removeClass('label-success').addClass('label-important');
             $status.text($status.data('notpassed'));
             $isPassed.find('i.icon').removeClass('icon-thumbs-up').addClass('icon-exclamation-sign');
             $('.printStatus').addClass('hidden');
+//            $(".alert-passed").alert('close')
         }
 
     }
