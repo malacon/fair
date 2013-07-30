@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'FairBundle::layout.html.twig' %}
 
-{% block body -%}
+{% block content -%}
     <h1>Family creation</h1>
 
     <form action="{{ path('admin_family_create') }}" method="post" {{ form_enctype(form) }}>

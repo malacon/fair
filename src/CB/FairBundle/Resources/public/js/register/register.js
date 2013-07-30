@@ -65,7 +65,7 @@ $(function() {
 
         e.preventDefault();
         if (!$this.hasClass('disabled')) {
-            $.post(url, null, updateBakedButtons);
+            $.post(url, null, updateBakedButtons, 'json');
         }
     });
 
@@ -75,7 +75,7 @@ $(function() {
             url = $this.attr('href');
 
         e.preventDefault();
-        $.post(url, null, updateAuctionButtons);
+        $.post(url, null, updateAuctionButtons, 'json');
     });
 
     // Add Auction Item
@@ -84,14 +84,14 @@ $(function() {
             url = $this.attr('href');
 
         e.preventDefault();
-        $.post(url, null, updateAuctionButtons);
+        $.post(url, null, updateAuctionButtons, 'json');
     });
 
     // Show User Report for printing
     $('#modal-status').on('show', function() {
         var url = $(this).data('href');
 
-        $.get(url, updateUserStatusReport);
+        $.get(url, updateUserStatusReport, 'json');
     })
 
     function updateUserStatusReport(data) {

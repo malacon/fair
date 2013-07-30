@@ -1,28 +1,66 @@
 {% extends 'FairBundle::layout.html.twig' %}
 
 {% block content -%}
-    <h1>Rule edit</h1>
+    <h1>Edit Rule</h1>
 
-    <form action="{{ path('rule_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <form class="form-horizontal" action="{{ path('rule_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
         <input type="hidden" name="_method" value="PUT" />
-        {{ form_widget(edit_form) }}
+        <div class="control-group">
+            <label class="control-label" for="">
+                {{ form_label(edit_form.description) }}
+            </label>
+            <div class="controls">
+                {{ form_widget(edit_form.description) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="">
+                {{ form_label(edit_form.numberOfTimes) }}
+            </label>
+            <div class="controls">
+                {{ form_widget(edit_form.numberOfTimes) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="">
+                {{ form_label(edit_form.numberOfBakedItems) }}
+            </label>
+            <div class="controls">
+                {{ form_widget(edit_form.numberOfBakedItems) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="">
+                {{ form_label(edit_form.numberOfAuctionItems) }}
+            </label>
+            <div class="controls">
+                {{ form_widget(edit_form.numberOfAuctionItems) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button class="btn btn-primary" type="submit">Edit</button>
+                <form action="{{ path('rule_delete', { 'id': entity.id }) }}" method="post">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    {{ form_widget(delete_form) }}
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+                <a href="{{ path('rule') }}">
+                    <i class="icon-share-alt"></i> Back to the list
+                </a>
+            </div>
+        </div>
         <p>
-            <button type="submit">Edit</button>
+
         </p>
     </form>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('rule') }}">
-            Back to the list
-        </a>
+
     </li>
     <li>
-        <form action="{{ path('rule_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
+
     </li>
 </ul>
 {% endblock %}

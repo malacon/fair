@@ -24,7 +24,10 @@ class FamilyType extends AbstractType
             ->add('eldestGrade')
             ->add('isPassedRules')
             ->add('maxHours')
-            ->add('timeToLogin')
+            ->add('timeToLogin', 'datetime', array(
+                'input'  => 'datetime',
+                'widget' => 'choice',
+            ))
             ->add('bakedItem')
         ;
     }

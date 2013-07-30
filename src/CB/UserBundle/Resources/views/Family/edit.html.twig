@@ -1,6 +1,7 @@
-{% extends '::base.html.twig' %}
+{% extends 'FairBundle::layout.html.twig' %}
 
-{% block body -%}
+{% form_theme edit_form 'FairBundle:Form:form_cb_type.html.twig' %}
+{% block content -%}
     <h1>Family edit</h1>
 
     <form action="{{ path('admin_family_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>

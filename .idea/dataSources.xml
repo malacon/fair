@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" hash="2396075118">
-    <data-source source="LOCAL" name="symfair" product="MySQL" version="5.5.24-log" jdbc-version="4.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.22 ( Revision: ${bzr.revision-id} )" uuid="15b99bdc-94c8-4167-b0b1-0cfe9ab93c7d">
-      <extra-name-characters>#@</extra-name-characters>
-      <identifier-quote-string>`</identifier-quote-string>
+    <data-source source="LOCAL" name="symfair" uuid="15b99bdc-94c8-4167-b0b1-0cfe9ab93c7d">
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost/symfair</jdbc-url>
