@@ -49,6 +49,13 @@ class Family extends BaseUser
     private $eldestGrade;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     */
+    private $phone;
+
+    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="CB\UserBundle\Entity\User", mappedBy="family", cascade={"remove"})
@@ -491,5 +498,21 @@ class Family extends BaseUser
         $this->eldestGrade = $eldestGrade;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
     }
 }
