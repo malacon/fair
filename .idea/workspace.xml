@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/register/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,16 +63,25 @@
       <file leaf-file-name="register.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="0" selection-start="3323" selection-end="3323" vertical-scroll-proportion="-6.48" vertical-offset="1929" max-vertical-offset="4267">
+            <state line="167" column="31" selection-start="5167" selection-end="5167" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="4267">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="time.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="1" selection-start="79" selection-end="79" vertical-scroll-proportion="0.059130434" vertical-offset="0" max-vertical-offset="575">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="time.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="0.35090908" vertical-offset="1320" max-vertical-offset="1870">
+            <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="-7.72" vertical-offset="1320" max-vertical-offset="1870">
               <folding />
             </state>
           </provider>
@@ -115,7 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/new.html.twig" />
@@ -131,6 +137,7 @@
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/BakedItem/index.html.twig" />
         <option value="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js" />
       </list>
     </option>
   </component>
@@ -1796,13 +1803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="575">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="16" selection-start="1466" selection-end="1466" vertical-scroll-proportion="0.36298934" vertical-offset="510" max-vertical-offset="3706">
@@ -1810,16 +1810,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="0" selection-start="3323" selection-end="3323" vertical-scroll-proportion="-6.48" vertical-offset="1929" max-vertical-offset="4267">
+        <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="-7.72" vertical-offset="1320" max-vertical-offset="1870">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/time/time.js">
+    <entry file="file://$PROJECT_DIR$/web/bundles/fair/js/register/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="17" selection-start="3168" selection-end="3175" vertical-scroll-proportion="0.35090908" vertical-offset="1320" max-vertical-offset="1870">
+        <state line="167" column="31" selection-start="5167" selection-end="5167" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="4267">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="1" selection-start="79" selection-end="79" vertical-scroll-proportion="0.059130434" vertical-offset="0" max-vertical-offset="575">
           <folding />
         </state>
       </provider>
