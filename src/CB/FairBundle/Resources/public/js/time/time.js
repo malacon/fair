@@ -29,7 +29,7 @@ jQuery(document).ready(function() {
             var id_input=this.id.split('_datepicker')[0];
             var sfInput = $('#'+id_input)[0];
             if(! (sfInput)){
-                console.error('An error has occurred while creating the datepicker');
+//                console.error('An error has occurred while creating the datepicker');
             }
             $(this).datepicker({
                 'yearRange':$(this).data('yearrange'),
@@ -87,7 +87,7 @@ jQuery(document).ready(function() {
 
         // Display the form in the page in an li, before the "Add a time" link li
         var $newFormLi = $('<li></li>').append(newForm);
-        console.log(newForm)
+//        console.log(newForm)
         $newLinkLi.before($newFormLi);
 
         addTimeDeleteLink($newLinkLi);

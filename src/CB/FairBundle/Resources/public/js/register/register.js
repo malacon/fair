@@ -121,7 +121,7 @@ $(function() {
         $.getJSON(url, {spouse: spouseId}, function(data) {
             updateStatus(data);
             updateHourCounter(data);
-            console.log(data);
+
             $('.hours').text(data['quantities']['hours']);
             $loadingBooth.addClass('hidden');
             $boothDisplay.html(data.html).fadeIn('slow');
