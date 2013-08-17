@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Family
  *
- * @ORM\Table()
+ * @ORM\Table(name="fair_family")
  * @ORM\Entity(repositoryClass="CB\UserBundle\Entity\FamilyRepository")
  */
 class Family extends BaseUser

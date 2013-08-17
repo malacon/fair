@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table()
+ * @ORM\Table(name="fair_documents")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\DocumentRepository")
  */
 class Document

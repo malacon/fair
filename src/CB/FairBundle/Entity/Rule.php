@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Rule
  *
- * @ORM\Table()
+ * @ORM\Table(name="fair_rule")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\RuleRepository")
  */
 class Rule
