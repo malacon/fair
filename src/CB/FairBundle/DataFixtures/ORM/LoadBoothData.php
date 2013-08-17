@@ -21,31 +21,28 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth1->setName('Darts');
         $booth1->setDescription('Throwing darts at balloons.  What could be more fun?');
         $booth1->setLocation('Field');
-        $booth1->setWorkerLimit(1);
 
         $spouses = $family1->getSpouses()->getValues();
         $spouse = $spouses[0];
         $spouse2 = $spouses[1];
         // Friday
-        for ($i = 16; $i < 21; $i++) {
+        foreach (array(15, 19) as $t) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-13 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-13 '. $t .':00:00'));
+            $time->setDuration(4);
             $time->setBooth($booth1);
+            $time->setWorkerLimit(1);
             $booth1->addTime($time);
             $manager->persist($time);
         }
 
         // Saturday
-        for ($i = 8; $i < 22; $i++) {
+        foreach (array(7, 13, 18) as $t) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-14 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-14 '. $t .':00:00'));
+            $time->setDuration(5);
             $time->setBooth($booth1);
-            if ($i == 20 || $i == 21) {
-                $time->addWorker($spouse);
-            }
-            if ($i >8 && $i < 20) {
-                $time->addWorker($spouse2);
-            }
+            $time->setWorkerLimit(1);
             $booth1->addTime($time);
             $manager->persist($time);
         }
@@ -54,10 +51,12 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($spouse2);
 
         // Sunday
-        for ($i = 8; $i < 16; $i++) {
+        foreach (array(7, 13, 18) as $t) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-15 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-15 '. $t .':00:00'));
+            $time->setDuration(5);
             $time->setBooth($booth1);
+            $time->setWorkerLimit(1);
             $booth1->addTime($time);
             $manager->persist($time);
         }
@@ -66,17 +65,39 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth2->setName('Cake Walk');
         $booth2->setDescription('Walk around the circle.  Win a cake or two!');
         $booth2->setLocation('Gym');
-        $booth2->setWorkerLimit(4);
+
 
         $family1->getSpouses()->next();
         $spouse = $family1->getSpouses()->first();
-        for ($i = 8; $i < 21; $i++) {
+        // Friday
+        foreach (array(15, 19) as $t) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-14 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-13 '. $t .':00:00'));
+            $time->setDuration(4);
             $time->setBooth($booth2);
-            if ($i == 16 || $i == 18) {
-                $time->addWorker($spouse);
-            }
+            $time->setWorkerLimit(1);
+            $booth2->addTime($time);
+            $manager->persist($time);
+        }
+
+        // Saturday
+        foreach (array(7, 13, 18) as $t) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-14 '. $t .':00:00'));
+            $time->setDuration(4);
+            $time->setBooth($booth2);
+            $time->setWorkerLimit(1);
+            $booth2->addTime($time);
+            $manager->persist($time);
+        }
+
+        // Sunday
+        foreach (array(7, 13, 18) as $t) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-15 '. $t .':00:00'));
+            $time->setDuration(4);
+            $time->setBooth($booth1);
+            $time->setWorkerLimit(2);
             $booth2->addTime($time);
             $manager->persist($time);
         }
@@ -88,12 +109,40 @@ class LoadBoothData extends AbstractFixture implements OrderedFixtureInterface
         $booth3->setName('Ring Toss');
         $booth3->setDescription('Toss your rings and get a prize!');
         $booth3->setLocation('Field');
-        $booth3->setWorkerLimit(4);
 
-        for ($i = 8; $i < 21; $i++) {
+
+        // Friday
+        foreach (array(15, 19) as $t) {
             $time = new Time();
-            $time->setTime(new \DateTime('2013-09-14 '. $i .':00:00'));
+            $time->setTime(new \DateTime('2013-09-13 '. $t .':00:00'));
+            $time->setDuration(4);
+            $time->setBooth($booth1);
+            $time->setWorkerLimit(3);
+            $booth3->addTime($time);
+            $manager->persist($time);
+        }
+
+        // Saturday
+        foreach (array(7, 13, 18) as $t) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-14 '. $t .':00:00'));
+            $time->setDuration(4);
             $time->setBooth($booth3);
+            $time->setWorkerLimit(1);
+            $booth3->addTime($time);
+            $manager->persist($time);
+        }
+
+        $manager->persist($spouse);
+        $manager->persist($spouse2);
+
+        // Sunday
+        foreach (array(7, 13, 18) as $t) {
+            $time = new Time();
+            $time->setTime(new \DateTime('2013-09-15 '. $t .':00:00'));
+            $time->setDuration(4);
+            $time->setBooth($booth3);
+            $time->setWorkerLimit(1);
             $booth3->addTime($time);
             $manager->persist($time);
         }

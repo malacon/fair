@@ -34,6 +34,20 @@ class Time
     private $time;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="duration", type="integer")
+     */
+    private $duration;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantity", type="integer")
+     */
+    private $workerLimit;
+
+    /**
      * @var \CB\FairBundle\Entity\Booth
      *
      * @ORM\ManyToOne(targetEntity="Booth", inversedBy="times", cascade={"remove"})
@@ -216,7 +230,7 @@ class Time
      */
     public function isAvailable()
     {
-        return $this->getNumOfWorkers() < $this->booth->getWorkerLimit();
+        return $this->getNumOfWorkers() < $this->getWorkerLimit();
     }
 
 
@@ -274,7 +288,7 @@ class Time
     public function __toString()
     {
         $nextHour = new \DateTime($this->getTime()->format('Y-m-d H:i:s'));
-        $nextHour->add(new \DateInterval('PT01H'));
+        $nextHour->add(new \DateInterval('PT0' . $this->duration . 'H'));
         return $this->time->format('g A').' - '.$nextHour->format('g A');
     }
 
@@ -337,5 +351,37 @@ class Time
     public function isInDay($day)
     {
         return $this->time->format('Y-m-d') == $day->format('Y-m-d');
+    }
+
+    /**
+     * @return int
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param int $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWorkerLimit()
+    {
+        return $this->workerLimit;
+    }
+
+    /**
+     * @param int $workerLimit
+     */
+    public function setWorkerLimit($workerLimit)
+    {
+        $this->workerLimit = $workerLimit;
     }
 }

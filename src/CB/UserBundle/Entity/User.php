@@ -45,6 +45,13 @@ class User
      */
     private $times;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     */
+    private $phone;
+
 
     public function __construct($name)
     {
@@ -87,6 +94,7 @@ class User
 
     /**
      * @return ArrayCollection
+     *
      * @ORM\OrderBy({"booth" = "ASC", "time = "ASC"})
      */
     public function getTimes()
@@ -136,7 +144,12 @@ class User
      */
     public function getNumOfHours()
     {
-        return $this->times->count();
+        /** @var \CB\FairBundle\Entity\Time $time */
+        $count = 0;
+        foreach ($this->times as $time) {
+            $count += $time->getDuration();
+        }
+        return $count;
     }
 
     public function getNumOfHoursByBoothId($id)
@@ -145,7 +158,7 @@ class User
         $count = 0;
         foreach ($this->times as $time) {
             if ($time->getBooth()->getId() == $id) {
-                $count += 1;
+                $count += $time->getDuration();
             }
         }
         return $count;
@@ -157,9 +170,9 @@ class User
         $booths = array();
         foreach ($this->times as $time) {
             if (isset($booths[$time->getBooth()->getId()])) {
-                $booths[$time->getBooth()->getId()] += 1;
+                $booths[$time->getBooth()->getId()] += $time->getDuration();
             } else {
-                $booths[$time->getBooth()->getId()] = 1;
+                $booths[$time->getBooth()->getId()] = $time->getDuration();
             }
         }
         return $booths;
@@ -212,5 +225,21 @@ class User
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
     }
 }

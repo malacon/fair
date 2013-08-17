@@ -45,13 +45,6 @@ class Booth
     private $location;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantity", type="integer")
-     */
-    private $workerLimit;
-
-    /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="Time", mappedBy="booth", cascade={"persist"})
@@ -165,29 +158,6 @@ class Booth
     public function getLocation()
     {
         return $this->location;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWorkerLimit()
-    {
-        return $this->workerLimit;
-    }
-
-    public function getNumberOfWorkersWorkingAtTime(Time $time)
-    {
-
-    }
-
-    /**
-     * @param int $quantity
-     */
-    public function setWorkerLimit($quantity)
-    {
-        $this->workerLimit = $quantity;
-
-        return $this;
     }
 
     /**

@@ -48,12 +48,6 @@ class Family extends BaseUser
      */
     private $eldestGrade;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="phone", type="string", nullable=true)
-     */
-    private $phone;
 
     /**
      * @var ArrayCollection
@@ -372,7 +366,7 @@ class Family extends BaseUser
         $hours = 0;
         /** @var \CB\UserBundle\Entity\User $spouse */
         foreach ($this->spouses as $spouse) {
-            $hours += $spouse->getTimes()->count();
+            $hours += $spouse->getNumOfHours();
         }
         return $hours;
     }
@@ -500,19 +494,4 @@ class Family extends BaseUser
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-    }
 }

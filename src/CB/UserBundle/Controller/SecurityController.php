@@ -3,13 +3,13 @@
 namespace CB\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use FOS\UserBundle\Controller\SecurityController;
 
-class RegistrationController extends SecurityController
+class SecurityController extends ContainerAware
 {
     public function loginAction(Request $request)
     {
@@ -33,14 +33,31 @@ class RegistrationController extends SecurityController
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get(SecurityContext::LAST_USERNAME);
 
+        $users = $this->container->get('doctrine')->getManager()->getRepository('UserBundle:Family')->findAll();
+
         $csrfToken = $this->container->has('form.csrf_provider')
             ? $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate')
             : null;
 
         return $this->renderLogin(array(
+            'users' => $users,
             'last_username' => $lastUsername,
             'error'         => $error,
             'csrf_token' => $csrfToken,
         ));
+    }
+
+    /**
+     * Overriding the FOS default method so that we can choose a template
+     */
+    protected function renderLogin(array $data)
+    {
+        if ($this->container->get('request')->get('admin')) {
+            $template = sprintf('UserBundle:Security:login2.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        } else {
+            $template = sprintf('UserBundle:Security:login.html.%s', $this->container->getParameter('fos_user.template.engine'));
+        }
+
+        return $this->container->get('templating')->renderResponse($template, $data);
     }
 }

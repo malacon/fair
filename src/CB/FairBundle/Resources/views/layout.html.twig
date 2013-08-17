@@ -96,9 +96,9 @@
                             <h4>Welcome {{ app.user.name }} Family</h4>
                             {#<strong>Status: </strong><span data-passed="Requirements met" data-notpassed="Requirements not met yet" data-url="{{ path('is_passed') }}.json" class="status {% if (app.user.isPassedRules) %} btn-success{% else %} btn-danger{% endif %}">{% if (app.user.isPassedRules) %}Requirements met{% else %}Requirements not met yet{% endif %}</span>#}
                             <div class="family">
-                                <strong>Oldest Child Enrolled:</strong> {{ app.user.eldest }}, {{ app.user.eldestGrade }}<br>
-                                <strong>Parents: </strong> {% for spouse in app.user.spouses %}{{ spouse }}{% if not loop.last %}, {% endif %}{% endfor %}<br>
-                                <strong>Phone: </strong> {% if app.user.phone %}{{ app.user.phone }}{% else %}n/a{% endif %}
+                                <strong>Eldest Student:</strong> {{ app.user.eldest }} {{ app.user.name }}, {{ app.user.eldestGrade }}<br>
+                                <strong>Parents: </strong> {% for spouse in app.user.spouses %}{{ spouse }} ({{ spouse.phone }}){% if not loop.last %}, {% endif %}{% endfor %}<br>
+                                {#<strong>Phone: </strong> {% for spouse in app.user.spouses %}{{ spouse.phone }}{% if not loop.last %}, {% endif %}{% endfor %}#}
                             </div>
                             <div class="info content-item">
                                 <div class="help" data-toggle="popover" data-placement="right" data-content="These are the options you have to sign up for.  Once you have met one of these choices, the box below will turn from <span class='alert-danger'>red</span> to <span class='alert-success'>green.</span>" title="" data-original-title="Beginning Help">Help</div>

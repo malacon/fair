@@ -32,7 +32,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $encoder = $this->container
             ->get('security.encoder_factory')
             ->getEncoder($family1);
-        $family1->setUsername('baker')
+        $family1->setUsername('Baker, Lucy')
             ->setName('Baker')
             ->setEldest('Lucy')
             ->setEldestGrade('2A')
@@ -54,7 +54,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $encoder = $this->container
             ->get('security.encoder_factory')
             ->getEncoder($family2);
-        $family2->setUsername('smith')
+        $family2->setUsername('Smith, Gillian')
             ->setName('Smith')
             ->setEldest('Gillian')
             ->setEldestGrade('6A')
