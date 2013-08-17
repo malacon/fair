@@ -7,7 +7,10 @@ $(function() {
     var $booths = $('#booths'),
         $boothDisplay = $('.boothDisplay'),
         $loadingBooth = $("#loadingBooth"),
-        $instructions = $('#instructions');
+        $instructions = $('#instructions'),
+        $window = $(window);
+
+
 
     $instructions.modal('show');
     $instructions.on('hidden', function() {
@@ -91,7 +94,7 @@ $(function() {
     $('#modal-status').on('show', function() {
         var url = $(this).data('href');
 
-        $.get(url, updateUserStatusReport, 'json');
+        $.get(url, updateUserStatusReport);
     })
 
     function updateUserStatusReport(data) {
@@ -101,6 +104,7 @@ $(function() {
             $booths = $('<ul></ul>');
 
         $body.html(data);
+        console.log($body);
     }
 
     function loadingBooth(url, fade)

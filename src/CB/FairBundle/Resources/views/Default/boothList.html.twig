@@ -5,7 +5,7 @@
 <strong>for hours</strong>
 {% set spouse = app.user.spouses.first() %}
 <div class="row-fluid boothData">
-    <div class="span4 boothSelection">
+    <div class="span5 boothSelection">
         <div class="well sidebar-nav">
             <ul class="nav nav-list">
                 <li class="nav-header boothList">Select Booth</li>
@@ -17,7 +17,7 @@
             </ul>
         </div>
     </div>
-    <div class="span8">
+    <div class="span7">
         <div class="boothDisplay well">
         {{ include(
         'FairBundle:Default:booth.html.twig',

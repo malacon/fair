@@ -40,16 +40,6 @@ body {
     width: 70px;
 }
 
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
 #wrap > .container-fluid {
     padding-top: 60px;
 }
@@ -208,18 +198,30 @@ ul.times > li a {
 }
 
 span.time {
-    width: 35%;
-    display: inline-table;
-    text-align: right;
+    /*width: 35%;*/
+    /*display: inline-table;*/
+    /*text-align: right;*/
     /*padding-right: 6px;*/
-    font-size: .9em;
+    /*font-size: .9em;*/
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1.3em;
 }
 
 span.msg {
-    width: 60%;
-    display: inline-table;
-    text-align: right;
-    font-size: .9em;
+    /*width: 60%;*/
+    /*display: inline-table;*/
+    /*text-align: right;*/
+    /*font-size: .9em;*/
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 1em;
+}
+
+.time-button {
+    margin-bottom:4px;
 }
 
 .times .btn-block+.btn-block {
@@ -278,6 +280,10 @@ span.msg {
     padding: 0;
     overflow-y: scroll;
     height: 400px;
+}
+
+.oneBooth .heading {
+    padding-top: 10px;
 }
 
 #loadingBooth {
@@ -559,3 +565,44 @@ div.DTFC_LeftFootWrapper table {
     border-top: none;
 }
 
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (min-width: 980px) and (max-width: 1010px) {
+    .sidebar.affix {
+        position: static;
+        width: 100%;
+        top: 0;
+    }
+}
+@media (min-width: 768px) and (max-width: 980px) {
+    #wrap > .container-fluid {
+        padding-top: 0;
+    }
+
+
+    .sidebar.affix {
+        position: static;
+        width: 100%;
+        top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #wrap > .container-fluid {
+        padding-top: 0;
+    }
+
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .sidebar.affix {
+        position: static;
+        width: 100%;
+        top: 0;
+    }
+
+}
