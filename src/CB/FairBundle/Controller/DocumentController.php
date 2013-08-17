@@ -34,7 +34,6 @@ class DocumentController extends Controller
      */
     public function loadCSVAction($id)
     {
-        /** @var \ $em */
         $em = $this->getDoctrine()->getManager();
 
         /** @var \CB\FairBundle\Entity\Document $document */
@@ -46,7 +45,7 @@ class DocumentController extends Controller
 
         // Create and configure the reader
         $excelReader = new ExcelReader(new \SplFileObject($document->getAbsolutePath()));
-        $excelReader->setHeaderRowNumber(9);
+        $excelReader->setHeaderRowNumber(1);
         for ($i = 0; $i<10; $i++) {
             $excelReader->next();
         }
@@ -54,10 +53,10 @@ class DocumentController extends Controller
         $arr = $excelReader->getRow(0);
         switch (reset($arr)) {
             case 'SJP & STS Fair Booths':
-                $this->loadBoothInfo($excelReader, $em);
+                $this->loadBoothInfo($excelReader);
                 break;
             case 'SJP & STS Fair Users':
-                $this->loadUserInfo($excelReader, $em);
+                $this->loadUserInfo($excelReader);
                 break;
             default:
                 break;
@@ -78,136 +77,120 @@ class DocumentController extends Controller
         );
     }
 
-    private function loadBoothInfo($excelReader, $em)
+    private function loadBoothInfo($excelReader)
     {
+        $em = $this->getDoctrine()->getManager();
+        $booths = $em->getRepository('FairBundle:Booth')->findAll();
+        foreach ($booths as $booth) {
+            $em->remove($booth);
+        }
+        $em->flush();
         $booths = array();
         $settings = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
         $settings = $settings['settings'];
         $dates = $settings['dates'];
+        var_dump($settings);
         foreach ($excelReader as $key => $row) {
-            if ($row['Name'] == '') {
+            if ($row['Booth Name'] == '') {
                 break;
             }
-            $booth = new Booth();
-            foreach ($row as $key1 => $value) {
-                switch (strtolower($key1)) {
-                    case 'name':
-                        $booth->setName($value);
-                        break;
-                    case 'description':
-                        $booth->setDescription($value);
-                        break;
-                    case 'location':
-                        $booth->setLocation($value);
-                        break;
-                    case 'quantity':
-                        $booth->setWorkerLimit($value);
-                        break;
-                    case 'day 1':
-                        $timeRange = explode('-', $value);
-                        $times = array();
-                        for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
-                            $time = new Time();
-                            $dtime = new \DateTime();
-                            $dtime->setTimestamp($dates[0]);
-                            $dtime->setTime($i, 0, 0);
-                            $time->setTime($dtime);
-                            $booth->addTime($time);
-                            $times[] = $time;
-                        }
-                        break;
-                    case 'day 2':
-                        $timeRange = explode('-', $value);
-                        $times = array();
-                        for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
-                            $time = new Time();
-                            $dtime = new \DateTime();
-                            $dtime->setTimestamp($dates[1]);
-                            $dtime->setTime($i, 0, 0);
-                            $time->setTime($dtime);
-                            $booth->addTime($time);
-                            $times[] = $time;
-                        }
-                        break;
-                    case 'day 3':
-                        $timeRange = explode('-', $value);
-                        $times = array();
-                        for ($i = $timeRange[0]; $i<$timeRange[1]; $i++) {
-                            $time = new Time();
-                            $dtime = new \DateTime();
-                            $dtime->setTimestamp($dates[2]);
-                            $dtime->setTime($i, 0, 0);
-                            $time->setTime($dtime);
-                            $booth->addTime($time);
-                            $times[] = $time;
-                        }
-                        break;
-                    default:
+            if (!array_key_exists($row['Booth Name'], $booths)) {
+                $booth = new Booth();
+                $name = ucwords(strtolower($row['Booth Name']));
+                $booth->setName($name);
+                $booth->setDescription($name);
+                $booth->setLocation($row['Location']);
+            } else {
+                $booth = $booths[$row['Booth Name']];
+            }
+            $time = new Time();
+            if($row['Day 1'] !== null) {
+                $timeRange = explode('-', $row['Day 1']);
+                array_walk($timeRange, function(&$item) {$item = $item/100;});
+                $time->setDuration($timeRange[1] - $timeRange[0]);
+                $time->setWorkerLimit($row['Quantity']);
 
-                        break;
-                }
+                $dtime = new \DateTime();
+                $dtime->setTimestamp(strtotime($dates[0]));
+                $dtime->setTime($timeRange[0], 0, 0);
+                $time->setTime($dtime);
+                $booth->addTime($time);
+            } else if ($row['Day 2'] !== null) {
+                $timeRange = explode('-', $row['Day 2']);
+                array_walk($timeRange, function(&$item) {$item = $item/100;});
+                $time->setDuration($timeRange[1] - $timeRange[0]);
+                $time->setWorkerLimit($row['Quantity']);
 
+                $dtime = new \DateTime();
+                $dtime->setTimestamp(strtotime($dates[1]));
+                $dtime->setTime($timeRange[0], 0, 0);
+                $time->setTime($dtime);
+                $booth->addTime($time);
+            } else if($row['Day 3'] !== null) {
+                $timeRange = explode('-', $row['Day 3']);
+                array_walk($timeRange, function(&$item) {$item = $item/100;});
+                $time->setDuration($timeRange[1] - $timeRange[0]);
+                $time->setWorkerLimit($row['Quantity']);
+
+                $dtime = new \DateTime();
+                $dtime->setTimestamp(strtotime($dates[2]));
+                $dtime->setTime($timeRange[0], 0, 0);
+                $time->setTime($dtime);
+                $booth->addTime($time);
 
             }
+            $em->persist($time);
             $em->persist($booth);
-            $booths[$key] = $booth;
+            $em->flush();
+            $booths[$row['Booth Name']] = $booth;
         }
     }
 
     /**
      * @param $excelReader ExcelReader
-     * @param $em
+     * @param $em \
      */
-    private function loadUserInfo($excelReader, $em)
+    private function loadUserInfo($excelReader)
     {
+        $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
         foreach ($users as $user) {
             $em->remove($user);
         }
         $em->flush();
         
-        $users = array();
+        $families = array();
         foreach ($excelReader as $key => $row) {
-            if ($row['Family'] == '') {
+            if ($row['Student Name'] == '') {
                 break;
             }
-            $family = new Family();
-            $encoder = $this->container
-                ->get('security.encoder_factory')
-                ->getEncoder($family);
-            $family->setName($row['Family']);
-            $family->setEldest($row['Eldest Child']);
-            $family->setEldestGrade($row['Grade of Child']);
-            $family->setUsername($row['Username']);
-            $family->setPassword($encoder->encodePassword($row['Password'], $family->getSalt()));
-            if (trim($row['Email']) != '')
-                $family->setEmail($row['Email']);
-            if (trim($row['Adult1']) != '') {
-                $adult1 = new User($row['Adult1']);
-                $family->addSpouse($adult1);
-                $em->persist($adult1);
+            if (!array_key_exists((string) $row['Student ID'], $families)) {
+                $family = new Family();
+                $encoder = $this->container
+                    ->get('security.encoder_factory')
+                    ->getEncoder($family);
+                $family->setName($row['Last']);
+                $family->setEldest($row['First']);
+                $family->setEldestGrade($row['Grade']);
+                $family->setUsername($row['Student Name']);
+                $family->setPassword($encoder->encodePassword($row['Student ID'], $family->getSalt()));
+            } else {
+                $family = $families[$row['Student ID']];
             }
-            if (trim($row['Adult2']) != '') {
-                $adult2 = new User($row['Adult2']);
-                $family->addSpouse($adult2);
-                $em->persist($adult2);
-            }
-            if (trim($row['Adult3']) != '') {
-                $adult3 = new User($row['Adult3']);
-                $family->addSpouse($adult3);
-                $em->persist($adult3);
-            }
-            if (trim($row['Adult4']) != '') {
-                $adult4 = new User($row['Adult4']);
-                $family->addSpouse($adult4);
-                $em->persist($adult4);
-            }
-            $family->setTimeToLogin(new \DateTime($row['Time to Signin'].'09:00:00'));
+
+            $adult = new User($row['Full Name']);
+            $adult->setPhone($row['Cell Phone']);
+            $family->addSpouse($adult);
+            $em->persist($adult);
+
+            $family->setTimeToLogin(new \DateTime());
             $family->setRoles(array('ROLE_USER'));
             $family->setEnabled(true);
             $em->persist($family);
-            $families[$key] = $family;
+            $families[$row['Student ID']] = $family;
         }
+        $em->flush();
+        return true;
     }
 
     /**

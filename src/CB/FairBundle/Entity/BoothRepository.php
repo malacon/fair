@@ -13,4 +13,21 @@ use Doctrine\ORM\EntityRepository;
 class BoothRepository extends EntityRepository
 {
 
+    public function findAllOrderByLocation()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b FROM FairBundle:Booth b ORDER BY b.location ASC, b.name ASC'
+            )
+            ->getResult();
+    }
+
+    public function findAllOrderByName()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b FROM FairBundle:Booth b ORDER BY b.name ASC'
+            )
+            ->getResult();
+    }
 }

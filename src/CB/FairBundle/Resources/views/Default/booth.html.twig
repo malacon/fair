@@ -4,12 +4,11 @@
 <div class="row-fluid">
     <div class="span12">
         <p><h4>{{ booth }}</h4>
-            <strong>Description: </strong>{{ booth.description }}<br>
             <strong>Location: </strong>{{ booth.location }}</p>
     </div>
 </div>
 <div class="row-fluid times">
-    <div class="span4">
+    <div class="span8">
         {% set day = 'start' %}
         {% for time in booth.times %}
         {% if day == 'start' %}
@@ -17,7 +16,7 @@
         <div class="heading text-center"><strong>{{ day }}</strong></div>
         {% elseif day != time.time|date('l') %}
     </div>
-    <div class="span4">
+    <div class="span8">
         {% set day = time.time|date('l') %}
         <div class="heading text-center"><strong>{{ day }}</strong></div>
         {% else %}

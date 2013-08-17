@@ -137,6 +137,7 @@ class Document
      */
     public function preUpload()
     {
+        print_r($this->getFile()); die();
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
@@ -152,10 +153,11 @@ class Document
     public function upload()
     {
         if (null === $this->getFile()) {
+            print_r($this->getName());die();
             return;
         }
 
-        // if there is an error when moving the file, an exception will
+        // if there is an er ror when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
         $this->getFile()->move($this->getUploadRootDir(), $this->path);

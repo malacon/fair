@@ -276,6 +276,8 @@ span.msg {
 
 .boothSelection .well {
     padding: 0;
+    overflow-y: scroll;
+    height: 400px;
 }
 
 #loadingBooth {

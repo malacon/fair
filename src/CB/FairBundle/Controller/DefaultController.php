@@ -24,7 +24,7 @@ class DefaultController extends Controller
         // Get Booths
         /** @var \CB\FairBundle\Entity\BoothRepository $boothRepo */
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');
-        $booths = $boothRepo->findAll();
+        $booths = $boothRepo->findAllOrderByLocation();
 
         $bakedRepo = $this->getDoctrine()->getRepository('FairBundle:BakedItem');
         $bakedItems = $bakedRepo->findAll();

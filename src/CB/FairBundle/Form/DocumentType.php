@@ -25,6 +25,6 @@ class DocumentType extends AbstractType
 
     public function getName()
     {
-        return 'cb_fairbundle_documenttype';
+        return 'cb_fairbundle_document';
     }
 }
