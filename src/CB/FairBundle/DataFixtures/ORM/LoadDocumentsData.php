@@ -14,7 +14,7 @@ class LoadDocumentsData extends AbstractFixture implements OrderedFixtureInterfa
         $usersDoc = new Document();
         $usersDoc->setName('Users');
         $usersDoc->setType('xls');
-        $usersDoc->setPath('Fair Users Test.xlsx');
+        $usersDoc->setPath('Fair Users  .xlsx');
 
         $boothDoc = new Document();
         $boothDoc->setName('Booths');

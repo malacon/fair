@@ -152,7 +152,6 @@ class Document
     public function upload()
     {
         if (null === $this->getFile()) {
-            print_r($this->getName());
             return;
         }
 

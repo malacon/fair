@@ -4,9 +4,6 @@
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/DataFixtures/ORM/LoadUserData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,7 +64,7 @@
       <file leaf-file-name="LoadDocumentsData.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="51" selection-start="340" selection-end="340" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="782">
+            <state line="16" column="40" selection-start="577" selection-end="577" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="782">
               <folding>
                 <element signature="e#49#98#0" expanded="true" />
               </folding>
@@ -78,7 +75,7 @@
       <file leaf-file-name="Document.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="38" selection-start="3237" selection-end="3237" vertical-scroll-proportion="0.33200794" vertical-offset="2400" max-vertical-offset="5797">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5780">
               <folding />
             </state>
           </provider>
@@ -1264,7 +1261,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="51" selection-start="340" selection-end="340" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="782">
+        <state line="16" column="40" selection-start="577" selection-end="577" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="782">
           <folding>
             <element signature="e#49#98#0" expanded="true" />
           </folding>
@@ -1273,7 +1270,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="38" selection-start="3237" selection-end="3237" vertical-scroll-proportion="0.33200794" vertical-offset="2400" max-vertical-offset="5797">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5780">
           <folding />
         </state>
       </provider>
