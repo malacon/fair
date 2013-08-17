@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="fair_documents")
+ * @ORM\Table(name="fair_document")
  * @ORM\Entity(repositoryClass="CB\FairBundle\Entity\DocumentRepository")
  */
 class Document
@@ -37,7 +37,7 @@ class Document
      * @var \Datetime $created
      *
      * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created;
 
@@ -45,7 +45,7 @@ class Document
      * @var \Datetime $updated
      *
      * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated;
 
@@ -87,6 +87,11 @@ class Document
      */
     private $isRun = false;
 
+    public function __construct()
+    {
+        $this->created = new \DateTime('now');
+    }
+
     /**
      * @return boolean
      */
@@ -102,11 +107,6 @@ class Document
     {
         $this->isRun = $isRun;
     }
-
-//    public function __set($name, $value)
-//    {
-//        $this->
-//    }
 
     private function isCSV()
     {
@@ -137,7 +137,6 @@ class Document
      */
     public function preUpload()
     {
-        print_r($this->getFile()); die();
         if (null !== $this->getFile()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
@@ -153,7 +152,7 @@ class Document
     public function upload()
     {
         if (null === $this->getFile()) {
-            print_r($this->getName());die();
+            print_r($this->getName());
             return;
         }
 
@@ -289,7 +288,7 @@ class Document
     }
 
     /**
-     * @return \CB\FairBundle\Entity\datetime
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -297,7 +296,7 @@ class Document
     }
 
     /**
-     * @param \CB\FairBundle\Entity\datetime $created
+     * @param \DateTime $created
      */
     public function setCreated($created)
     {

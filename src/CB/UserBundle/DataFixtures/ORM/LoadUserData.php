@@ -113,6 +113,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $this->addReference('user-done', $family2);
 
         $manager->persist($family1);
+        print_r($family1->getName());
         $manager->persist($family2);
         $manager->persist($family3);
         $manager->persist($family4);

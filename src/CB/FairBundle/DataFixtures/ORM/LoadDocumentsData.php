@@ -6,7 +6,6 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use CB\FairBundle\Entity\Document;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class LoadDocumentsData extends AbstractFixture implements OrderedFixtureInterface
 {

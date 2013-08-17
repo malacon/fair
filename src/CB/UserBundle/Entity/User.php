@@ -95,7 +95,7 @@ class User
     /**
      * @return ArrayCollection
      *
-     * @ORM\OrderBy({"booth" = "ASC", "time = "ASC"})
+     * @ORM\OrderBy({'booth' = 'ASC', 'time' = 'ASC'})
      */
     public function getTimes()
     {
