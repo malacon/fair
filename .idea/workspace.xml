@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,19 +34,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="boothList.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
+      <file leaf-file-name="DocumentController.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="21" selection-start="1224" selection-end="1224" vertical-scroll-proportion="-9.423077" vertical-offset="78" max-vertical-offset="595">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="116" selection-start="6714" selection-end="6714" vertical-scroll-proportion="-7.230769" vertical-offset="1138" max-vertical-offset="1700">
+            <state line="218" column="5" selection-start="7401" selection-end="7401" vertical-scroll-proportion="0.57954544" vertical-offset="3162" max-vertical-offset="6545">
               <folding />
             </state>
           </provider>
@@ -60,10 +52,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
+            <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadBoothData.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="5211" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2856">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadDocumentsData.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="27" selection-start="782" selection-end="782" vertical-scroll-proportion="-3.1578948" vertical-offset="134" max-vertical-offset="799">
+              <folding>
+                <element signature="e#49#98#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Document.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="122" column="28" selection-start="2290" selection-end="2290" vertical-scroll-proportion="-8.692307" vertical-offset="1797" max-vertical-offset="5814">
               <folding />
             </state>
           </provider>
@@ -87,31 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userStatus.html.twig" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="323">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DefaultController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="40" selection-start="2413" selection-end="2414" vertical-scroll-proportion="-3.27451" vertical-offset="904" max-vertical-offset="1632">
+            <state line="66" column="0" selection-start="2318" selection-end="2318" vertical-scroll-proportion="-8.0" vertical-offset="629" max-vertical-offset="1632">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="5" selection-start="5325" selection-end="5325" vertical-scroll-proportion="-7.3846154" vertical-offset="3208" max-vertical-offset="4505">
-              <folding>
-                <element signature="e#44#89#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -162,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Resources/views/Security/login2.html.twig" />
@@ -178,6 +178,7 @@
         <option value="$PROJECT_DIR$/web/bundles/fair/js/register/register.js" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php" />
       </list>
     </option>
   </component>
@@ -902,6 +903,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="DataFixtures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ORM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fair" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FairBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1118,71 +1149,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="41" selection-start="942" selection-end="942" vertical-scroll-proportion="0.56116503" vertical-offset="0" max-vertical-offset="578" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="16" selection-start="947" selection-end="947" vertical-scroll-proportion="0.4291262" vertical-offset="0" max-vertical-offset="515" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/BoothRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="75" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="663">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/booth.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="24" selection-start="668" selection-end="679" vertical-scroll-proportion="-7.1923075" vertical-offset="102" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/boothList.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="1224" selection-end="1224" vertical-scroll-proportion="-9.423077" vertical-offset="78" max-vertical-offset="595">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="116" selection-start="6714" selection-end="6714" vertical-scroll-proportion="-7.230769" vertical-offset="1138" max-vertical-offset="1700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/userStatus.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="541">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="40" selection-start="2413" selection-end="2414" vertical-scroll-proportion="-3.27451" vertical-offset="904" max-vertical-offset="1632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="5" selection-start="5325" selection-end="5325" vertical-scroll-proportion="-7.3846154" vertical-offset="3208" max-vertical-offset="4505">
-          <folding>
-            <element signature="e#44#89#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1226,6 +1196,73 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBoothData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="5211" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2856">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Entity/Document.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="28" selection-start="2290" selection-end="2290" vertical-scroll-proportion="-8.692307" vertical-offset="1797" max-vertical-offset="5814">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadDocumentsData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="27" selection-start="782" selection-end="782" vertical-scroll-proportion="-3.1578948" vertical-offset="134" max-vertical-offset="799">
+          <folding>
+            <element signature="e#49#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/AdminPanelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2339" selection-end="2339" vertical-scroll-proportion="0.8068182" vertical-offset="849" max-vertical-offset="1377">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/FamilyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="218" column="0" selection-start="5884" selection-end="5884" vertical-scroll-proportion="0.8068182" vertical-offset="3161" max-vertical-offset="3689">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="5" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.4185606" vertical-offset="561" max-vertical-offset="4505">
+          <folding>
+            <element signature="e#44#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="0" selection-start="2318" selection-end="2318" vertical-scroll-proportion="-8.0" vertical-offset="629" max-vertical-offset="1632">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="218" column="5" selection-start="7401" selection-end="7401" vertical-scroll-proportion="0.57954544" vertical-offset="3162" max-vertical-offset="6545">
           <folding />
         </state>
       </provider>
