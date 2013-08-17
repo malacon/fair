@@ -109,21 +109,21 @@ class BoothController extends Controller
             throw $this->createNotFoundException('Unable to find Booth entity.');
         }
 
-        $data = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
-        $times = array();
-        foreach ($data['settings']['dates'] as $date) {
-            $currentDate = new \DateTime();
-            $currentDate->setTimestamp($date);
-            /** @var ArrayCollection $dates */
-            $timeRange = $em->getRepository('FairBundle:Time')->getTimesRangeByDateAndBooth($currentDate, $id);
-            $times[$date] = $timeRange;
-        }
+//        $data = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
+//        $times = array();
+//        foreach ($data['settings']['dates'] as $date) {
+//            $currentDate = new \DateTime();
+//            $currentDate->setTimestamp(strtotime($date));
+//            /** @var ArrayCollection $dates */
+//            $timeRange = $em->getRepository('FairBundle:Time')->getTimesRangeByDateAndBooth($currentDate, $id);
+//            $times[$date] = $timeRange;
+//        }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
-            'dates' => $times,
+//            'dates' => $times,
             'delete_form' => $deleteForm->createView(),
         );
     }

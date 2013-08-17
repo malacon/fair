@@ -8,14 +8,11 @@
     {{ entity.location }}
 </td>
 <td>
-    {{ entity.workerLimit }}
-</td>
-<td>
-    <ul class="unstyled">
-        {% for date, time in dates %}
-            <li><strong>{{ date|date('l') }}: </strong>{{ time }}</li>
-        {% endfor %}
-    </ul>
+    {#<ul class="unstyled">#}
+        {#{% for date, time in dates %}#}
+            {#<li><strong>{{ date|date('l') }}: </strong>{{ time }}</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
 </td>
 <td>
     <form action="{{ path('booth_delete', { 'id': entity.id }) }}" method="post">

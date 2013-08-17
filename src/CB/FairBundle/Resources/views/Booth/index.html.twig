@@ -9,7 +9,6 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Location</th>
-                <th>Worker Limit</th>
                 <th>Times</th>
                 <th>Actions</th>
             </tr>
@@ -17,9 +16,23 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                {{ render(controller('FairBundle:Booth:show', {
-                'id': entity.id
-                })) }}
+                <td>
+                    {{ entity.name }}
+                </td>
+                <td>
+                    {{ entity.description }}
+                </td>
+                <td>
+                    {{ entity.location }}
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <a class="btn btn-success btn-small" href="{{ path('booth_edit', { 'id': entity.id }) }}">
+                        Edit
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

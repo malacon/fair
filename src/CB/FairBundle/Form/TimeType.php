@@ -12,6 +12,8 @@ class TimeType extends AbstractType
     {
         $builder
             ->add('time', 'dateTimePicker', array())
+            ->add('duration')
+            ->add('workerLimit')
         ;
     }
 
