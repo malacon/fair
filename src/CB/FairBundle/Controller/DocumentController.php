@@ -113,6 +113,8 @@ class DocumentController extends Controller
                 $dtime = new \DateTime();
                 $dtime->setTimestamp(strtotime($dates[0]));
                 $dtime->setTime($timeRange[0], 0, 0);
+                print_r($timeRange);
+                print_r($dtime->format('  Y-m-d h  '));
                 $time->setTime($dtime);
                 $booth->addTime($time);
             } else if ($row['Day 2'] !== null) {
