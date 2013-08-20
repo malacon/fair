@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae609785-5b5e-4312-ae2b-5b96ed10d8f5" name="Default" comment="initial crud">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Report/auctionReport.html.twig" />
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\src\CB\FairBundle\Resources\public\spreadsheets\Fair Booths.xlsx" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\src\CB\FairBundle\Resources\public\spreadsheets\Fair Users.xlsx" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\web\uploads\documents\booths.xls" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" afterPath="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app_dev.php" afterPath="$PROJECT_DIR$/web/app_dev.php" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,13 +36,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ReportController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ReportController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/ReportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="82" selection-start="1740" selection-end="1761" vertical-scroll-proportion="0.72200775" vertical-offset="833" max-vertical-offset="1428">
+            <state line="71" column="82" selection-start="1740" selection-end="1761" vertical-scroll-proportion="-14.384615" vertical-offset="833" max-vertical-offset="1428">
               <folding>
                 <element signature="e#44#103#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app_dev.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/app_dev.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="13" selection-start="678" selection-end="719" vertical-scroll-proportion="0.49227798" vertical-offset="0" max-vertical-offset="612">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,15 +96,6 @@
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Report/auctionReport.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="0" selection-start="402" selection-end="402" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="544">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="235" column="5" selection-start="5033" selection-end="5033" vertical-scroll-proportion="-5.5384617" vertical-offset="3800" max-vertical-offset="4318">
               <folding />
             </state>
           </provider>
@@ -165,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Document/new.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/DataFixtures/ORM/LoadBakedData.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Entity/BakedItem.php" />
@@ -181,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Report/auctionReport.html.twig" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/FamilyRepository.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/ReportController.php" />
+        <option value="$PROJECT_DIR$/web/app_dev.php" />
       </list>
     </option>
   </component>
@@ -1347,13 +1345,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Resources/views/Default/default.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="2402" selection-end="2402" vertical-scroll-proportion="-9.730769" vertical-offset="189" max-vertical-offset="1717">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="652" selection-end="711" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="6800">
@@ -1456,10 +1447,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/ReportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="82" selection-start="1740" selection-end="1761" vertical-scroll-proportion="0.72200775" vertical-offset="833" max-vertical-offset="1428">
+        <state line="71" column="82" selection-start="1740" selection-end="1761" vertical-scroll-proportion="-14.384615" vertical-offset="833" max-vertical-offset="1428">
           <folding>
             <element signature="e#44#103#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/app_dev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="678" selection-end="719" vertical-scroll-proportion="0.49227798" vertical-offset="0" max-vertical-offset="612">
+          <folding />
         </state>
       </provider>
     </entry>
