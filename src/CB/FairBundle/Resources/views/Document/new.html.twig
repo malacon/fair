@@ -10,6 +10,7 @@
     <div class="row-fluid">
         <div class="span5">
         <form class="form-horizontal" action="{{ path('admin_docs_create') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_errors(form) }}
             <div class="control-group">
                 <div class="control-label">
                     {{ form_label(form.name) }}
@@ -34,7 +35,7 @@
                     </a>
                 </div>
             </div>
-        </form>
+            {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}

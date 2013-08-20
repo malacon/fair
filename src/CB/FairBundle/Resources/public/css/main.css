@@ -197,6 +197,12 @@ ul.times > li a {
     font-weight: bold;
 }
 
+.bakedItems .btn {
+    margin-bottom: 3px;
+    width: 250px;
+    height: 40px;
+}
+
 span.time {
     /*width: 35%;*/
     /*display: inline-table;*/

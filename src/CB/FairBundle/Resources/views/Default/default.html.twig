@@ -7,6 +7,7 @@
 <strong>To remove am item</strong> click the <span class='label label-warning'>orange button</span>." title="" data-original-title="Baked Goods Help">Help</div>
             <div class="content-title"><i class="icon-fire"></i> 3. Baked Goods</div>
             <div class="bakedItems">
+                <p><span class="lead">All sweets must be homemade.</span> Items may be dropped off in the STA Cafe. On Friday, October 4th, from 7:30 a.m.-8:30 a.m. and 5:00 p.m.-6:00 p.m.  Items may be dropped off on Saturday, October 5th from 10:00 a.m.-11:00 a.m.  You will need to sign in at drop off in order to receive your 1 hour credit.  No sweets will be collected on Sunday.  If sweets are not turned in, you will be required to work an extra hour at the fair.  Remember all items must be individually wrapped (cookies, brownies, fudge, etc.).  Please provide 2 dozen of each item.</p>
                 <p><strong>I agree to bring the following:</strong><br>
                 {% for bakedItem in bakedItems %}
                     {#
@@ -25,11 +26,11 @@
                                     {%- endif -%}"
                        href="{{ path('baked_bring', {'id': bakedItem.id}) }}.json">
                         {%- if app.user.isBakingItem(bakedItem) -%}
-                            You are baking: <span>{{ bakedItem }}</span>
+                            You are baking: <span>{{ bakedItem|replace({'-': "<br>"})|raw }}</span>
                         {%- elseif not bakedItem.isItemAvailable() -%}
-                            <span>{{ bakedItem }}</span> is Unavailable
+                            <span>{{ bakedItem|replace({'-': "<br>"})|raw }}</span> is Unavailable
                         {%- else -%}
-                            <span>{{ bakedItem }}</span>
+                            <span>{{ bakedItem|replace({'-': "<br>"})|raw }}</span>
                         {%- endif -%}
                     </a>
                 {% endfor %}
