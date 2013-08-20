@@ -44,7 +44,7 @@ class ReportController extends Controller
 
     /**
      *
-     * @Route("/report/booth", name="admin_reports_baked")
+     * @Route("/report/baked", name="admin_reports_baked")
      * @Method("GET")
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
@@ -52,14 +52,16 @@ class ReportController extends Controller
     public function bakedReportAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
+        $families = $em->getRepository('UserBundle:Family')->findAllUsersBaking();
 
-        return array();
+        return array(
+            'families' => $families,
+        );
     }
 
     /**
      *
-     * @Route("/report/booth", name="admin_reports_auction")
+     * @Route("/report/auction", name="admin_reports_auction")
      * @Method("GET")
      * @Template()
      * @Secure(roles="ROLE_ADMIN")
@@ -67,8 +69,10 @@ class ReportController extends Controller
     public function auctionReportAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
+        $families = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
 
-        return array();
+        return array(
+            'families' => $families,
+        );
     }
 }

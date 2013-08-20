@@ -55,4 +55,16 @@ class FamilyRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
+    public function findAllUsersBaking()
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.roles NOT LIKE :role')
+            ->andWhere('f.bakedItem != :baked')
+            ->setParameter('role', '%ROLE_ADMIN%')
+            ->setParameter('baked', 'null')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -20,4 +20,5 @@ class BakedItemRepository extends EntityRepository
             ->getQuery()
             ->getArrayResult();
     }
+
 }
