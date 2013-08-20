@@ -87,7 +87,7 @@ class DocumentController extends Controller
         $em->flush();
 
         $booths = array();
-        $settings = Yaml::parse(file_get_contents(__DIR__.'\..\Resources\config\settings.yml'));
+        $settings = Yaml::parse(file_get_contents(__DIR__.'/../Resources/config/settings.yml'));
         $settings = $settings['settings'];
         $dates = $settings['dates'];
         var_dump($settings);
