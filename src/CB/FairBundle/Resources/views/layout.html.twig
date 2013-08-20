@@ -50,6 +50,7 @@
                                         <li><a tabindex="-1" href="{{ path('bakeditem') }}">Baked Items</a></li>
                                         <li><a tabindex="-1" href="{{ path('admin_family') }}">Users</a></li>
                                         <li><a href="{{ path('admin_docs') }}">Upload Data</a></li>
+                                        <li><a href="{{ path('admin_reports') }}">REPORTS</a></li>
                                     </ul>
                                 </li>
                             {% endif %}
@@ -91,6 +92,7 @@
                                 <li><a href="{{ path('auctionitem') }}">Craft\Auction Items</a></li>
                                 <li><a tabindex="-1" href="{{ path('admin_family') }}">Users</a></li>
                                 <li><a href="{{ path('admin_docs') }}">Upload Data</a></li>
+                                <li><a href="{{ path('admin_reports') }}">REPORTS</a></li>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
                             <h4>Welcome {{ app.user.name }} Family</h4>

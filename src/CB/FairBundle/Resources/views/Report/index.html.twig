@@ -1,0 +1,10 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Reports</h1>
+    <ul>
+        <li><a href="{{ path('admin_reports_booths') }}">Booths</a></li>
+        <li><a href="{{ path('admin_reports_baked') }}">Baked Goods</a></li>
+        <li><a href="{{ path('admin_reports_auction') }}">Auction/Craft Items</a></li>
+    </ul>
+{% endblock %}

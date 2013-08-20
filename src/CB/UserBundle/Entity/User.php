@@ -242,4 +242,10 @@ class User
     {
         $this->phone = $phone;
     }
+
+    public function toString()
+    {
+        return $this->name;
+    }
+
 }

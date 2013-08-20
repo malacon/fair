@@ -1,0 +1,35 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Reports: Booths</h1>
+
+    <table class="table table-striped table-hover table-sort">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>HR</th>
+                <th>Parent</th>
+                <th>Phone</th>
+                <th>Name of Booth</th>
+                <th>Day</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for family in families %}
+                {% for adult in family.spouses %}
+                    {% for time in adult.times %}
+                        <tr>
+                            <td>{{ family.eldest }} {{ family.name }}</td>
+                            <td>{{ family.eldestGrade }}</td>
+                            <td>{{ adult }}</td>
+                            <td>{{ adult.phone }}</td>
+                            <td>{{ time.booth }}</td>
+                            <td>{{ time.time|date("l") }}</td>
+                            <td>{{ time.time|date("ga") }} - {{ time.time|date_modify("+#{time.duration} hours")|date("ga") }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+    </table>
+{% endblock %}
