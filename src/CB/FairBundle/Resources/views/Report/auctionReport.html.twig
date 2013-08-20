@@ -1,0 +1,27 @@
+{% extends 'FairBundle::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Reports: Auction/Craft Items</h1>
+
+    <table class="table table-striped table-hover table-sort">
+        <thead>
+        <tr>
+            <th>Student</th>
+            <th>HR</th>
+            <th>Parents (Phone)</th>
+            <th>Item</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for family in families %}
+            {% if family.saleItems|length > 0 %}
+                <tr>
+                    <td>{{ family.eldest }} {{ family.name }}</td>
+                    <td>{{ family.eldestGrade }}</td>
+                    <td>{% for adult in family.spouses %}{{ adult }} ({{ adult.phone }}){% if not loop.last %}, {% endif %}{% endfor %}</td>
+                    <td>{% for item in family.saleItems %}{{ item }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

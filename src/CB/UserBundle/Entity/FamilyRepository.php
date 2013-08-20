@@ -67,4 +67,15 @@ class FamilyRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAllUsersWithItems()
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.roles NOT LIKE :role')
+            ->andWhere('COUNT(f.saleItems) > :items')
+            ->setParameter('role', '%ROLE_ADMIN%')
+            ->setParameter('items', 0)
+            ->getQuery()
+            ->getResult();
+    }
 }
