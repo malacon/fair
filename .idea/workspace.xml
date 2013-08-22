@@ -7,6 +7,7 @@
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\src\CB\FairBundle\Resources\public\spreadsheets\Fair Users.xlsx" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\web\uploads\documents\af6a684cf097873758386fd0f0d2bfa25d784c99.xls" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\cbaker\PhpstormProjects\Fair\web\uploads\documents\booths.xls" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" afterPath="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
     </list>
     <ignored path="Fair.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,10 +38,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DocumentController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DocumentController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="82" selection-start="6474" selection-end="6474" vertical-scroll-proportion="-4.509804" vertical-offset="2626" max-vertical-offset="6766">
+            <state line="182" column="82" selection-start="6474" selection-end="6474" vertical-scroll-proportion="0.43560606" vertical-offset="2626" max-vertical-offset="6766">
               <folding />
             </state>
           </provider>
@@ -75,10 +76,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Family.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Family.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="424" column="0" selection-start="8858" selection-end="8858" vertical-scroll-proportion="0.03219697" vertical-offset="7191" max-vertical-offset="8857">
+            <state line="424" column="0" selection-start="8858" selection-end="8858" vertical-scroll-proportion="-0.33333334" vertical-offset="7191" max-vertical-offset="8857">
               <folding>
                 <element signature="e#40#88#0" expanded="true" />
               </folding>
@@ -162,8 +163,8 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Controller/RegistrationController.php" />
         <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
         <option value="$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php" />
+        <option value="$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php" />
       </list>
     </option>
   </component>
@@ -1175,19 +1176,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="82" selection-start="6474" selection-end="6474" vertical-scroll-proportion="-4.509804" vertical-offset="2626" max-vertical-offset="6766">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CB/UserBundle/Entity/Family.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="424" column="0" selection-start="8858" selection-end="8858" vertical-scroll-proportion="0.03219697" vertical-offset="7191" max-vertical-offset="8857">
+        <state line="424" column="0" selection-start="8858" selection-end="8858" vertical-scroll-proportion="-0.33333334" vertical-offset="7191" max-vertical-offset="8857">
           <folding>
             <element signature="e#40#88#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CB/FairBundle/Controller/DocumentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="82" selection-start="6474" selection-end="6474" vertical-scroll-proportion="0.43560606" vertical-offset="2626" max-vertical-offset="6766">
+          <folding />
         </state>
       </provider>
     </entry>
