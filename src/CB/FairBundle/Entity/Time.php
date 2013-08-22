@@ -194,7 +194,7 @@ class Time
             while ($boothTimeDuration <= $this->duration) {
                 $lastHourWorkerTime = $workerTime->getDuration()*60*60 + $workerTime->getTimestamp();
                 $curBooth = $this->getTimestamp() + $boothTimeDuration*60*60;
-                if ($workerTime->getTimestamp() <= $curBooth && $lastHourWorkerTime >= $curBooth) {
+                if ($workerTime->getTimestamp() < $curBooth && $lastHourWorkerTime > $curBooth) {
                     return true;
                 }
                 $boothTimeDuration++;
