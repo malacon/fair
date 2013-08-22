@@ -166,6 +166,16 @@ class Time
         return false;
     }
 
+//    WORKING -> 5, 6, 7, 8 (duration 4)
+//    TIME -> 4, 5, 6, 7, 8 (duration 5)
+//
+//      IF for each time, the working time and the max working tim are within
+//    working != time
+//        works
+//    cycle through time
+//        cycle through working
+//            IF working == time
+//                return false
     /**
      * Checks to see if the worker is already signed up for the time
      *
@@ -174,13 +184,27 @@ class Time
      */
     public function isWorkerAlreadySignedUpAtThisTime(User $worker)
     {
-        /** @var \CB\FairBundle\Entity\Time $time */
-        foreach ($worker->getTimes() as $time) {
-            // If the requested time is already on the user's schedule return true
-            if ($this->getTimestamp() == $time->getTimestamp()) {
+        /** @var \CB\FairBundle\Entity\Time $workerTime */
+        foreach ($worker->getTimes() as $workerTime) {
+            if ($this->getTimestamp() == $workerTime->getTimestamp()) {
                 return true;
             }
+            $boothTimeDuration = 0;
+            // if workerTime
+            while ($boothTimeDuration <= $this->duration) {
+                $lastHourWorkerTime = $workerTime->getDuration()*60*60 + $workerTime->getTimestamp();
+                $curBooth = $this->getTimestamp() + $boothTimeDuration*60*60;
+                if ($workerTime->getTimestamp() <= $curBooth && $lastHourWorkerTime >= $curBooth) {
+                    return true;
+                }
+                $boothTimeDuration++;
+            }
         }
+
+        /**
+         * for each worker's time:
+         *      for each computer
+         */
         return false;
     }
 
