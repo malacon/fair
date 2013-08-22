@@ -11,20 +11,20 @@ class LoadDocumentsData extends AbstractFixture implements OrderedFixtureInterfa
 {
     public function load(ObjectManager $manager)
     {
-        $usersDoc = new Document();
-        $usersDoc->setName('Users');
-        $usersDoc->setType('xls');
-        $usersDoc->setPath('Fair Users  .xlsx');
-
-        $boothDoc = new Document();
-        $boothDoc->setName('Booths');
-        $boothDoc->setType('xls');
-        $usersDoc->setPath('booths.xls');
-
-
-        $manager->persist($boothDoc);
-        $manager->persist($usersDoc);
-        $manager->flush();
+//        $usersDoc = new Document();
+//        $usersDoc->setName('Users');
+//        $usersDoc->setType('xls');
+//        $usersDoc->setPath('Fair Users  .xlsx');
+//
+//        $boothDoc = new Document();
+//        $boothDoc->setName('Booths');
+//        $boothDoc->setType('xls');
+//        $usersDoc->setPath('booths.xls');
+//
+//
+//        $manager->persist($boothDoc);
+//        $manager->persist($usersDoc);
+//        $manager->flush();
     }
 
     /**

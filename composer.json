@@ -27,8 +27,8 @@
         "jms/security-extra-bundle": "1.5.*@dev",
         "gedmo/doctrine-extensions": "2.3.*@dev",
         "stof/doctrine-extensions-bundle": "1.1.*@dev",
-        "friendsofsymfony/rest-bundle": "0.13.*@dev",
-        "jms/serializer-bundle": "0.12.*@dev",
+        "friendsofsymfony/rest-bundle": "1.0.*@dev",
+        "jms/serializer-bundle": "0.13.*@dev",
         "knplabs/knp-snappy-bundle": "dev-master",
         "phpexcel/phpexcel": "dev-master",
         "ddeboer/data-import-bundle": "dev-master"
@@ -52,7 +52,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

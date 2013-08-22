@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use PHPExcel;
+use PHPExcel_Worksheet;
+use PHPExcel_IOFactory;
 
 /**
  * Report controller.
@@ -42,6 +45,41 @@ class ReportController extends Controller
         );
     }
 
+
+    /**
+     * @Route("/report/booth/xls", name="admin_reports_booths_xls")
+     * @Method("GET")
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function createBoothXlsAction()
+    {
+        $objExcel = new \PHPExcel();
+//        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, "Excel2007");
+//        $objWriter->save("booths.xlsx");
+//        $objPHPExcel->getSheet(0)->setTitle('Booths');
+//
+//        $objPHPExcel->getProperties()->setCreator("Craig Baker")
+//            ->setLastModifiedBy("Craig Baker")
+//            ->setTitle("2013 Fair - Booths")
+//            ->setSubject("2013 Fair - Booths")
+//            ->setDescription("2013 Fair - Booths");
+//
+//        $objPHPExcel->setActiveSheetIndex(0)
+//            ->setCellValue('A1', '2013 Booths')
+//            ->setCellValue('A2', 'LIST OF BOOTHS');
+//
+
+
+
+        $response = $excelService->getResponse();
+
+//        $response->headers->set('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+//        $response->headers->set('Content-Disposition: attachment;filename="booths.xlsx"');
+//        $response->headers->set('Cache-Control: max-age=0');
+
+        return $response;
+    }
+
     /**
      *
      * @Route("/report/baked", name="admin_reports_baked")
@@ -75,4 +113,5 @@ class ReportController extends Controller
             'families' => $families,
         );
     }
+
 }

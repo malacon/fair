@@ -21,6 +21,12 @@ class DefaultController extends Controller
             return $this->redirect($this->generateUrl('admin_panel'));
         }
 
+        if (!$this->getUser()->isTimeToLogin()) {
+            return $this->redirect($this->generateUrl('fos_user_security_logout'));
+        }
+
+        print_r($this->getUser()->getTimeToLogin());
+
         // Get Booths
         /** @var \CB\FairBundle\Entity\BoothRepository $boothRepo */
         $boothRepo = $this->getDoctrine()->getRepository('FairBundle:Booth');

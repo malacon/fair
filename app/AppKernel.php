@@ -24,7 +24,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            new Ddeboer\DataImportBundle\DdeboerDataImportBundle(),
+//            new Ddeboer\DataImportBundle\DdeboerDataImportBundle(),
+//            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             new CB\FairBundle\FairBundle(),
             new CB\UserBundle\UserBundle(),
         );

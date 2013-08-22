@@ -174,6 +174,18 @@ class DocumentController extends Controller
                 $family->setEldest($row['First']);
                 $family->setEldestGrade($row['Grade']);
                 $family->setUsername($row['Student Name']);
+                if ($row['Starts'] !== null) {
+                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $row['Starts']);
+                } else {
+                    $date = new \DateTime();
+                }
+                if ($row['Ends'] !== null) {
+                    $date2 = \DateTime::createFromFormat('Y-m-d H:i:s', $row['Ends']);
+                } else {
+                    $date2 = new \DateTime();
+                }
+                $family->setTimeToLogin($date);
+                $family->setExpiresAt($date2);
                 $family->setPassword($encoder->encodePassword($row['Student ID'], $family->getSalt()));
             } else {
                 $family = $families[$row['Student ID']];
@@ -184,7 +196,7 @@ class DocumentController extends Controller
             $family->addSpouse($adult);
             $em->persist($adult);
 
-            $family->setTimeToLogin(new \DateTime());
+//            $family->setTimeToLogin(new \DateTime());
             $family->setRoles(array('ROLE_USER'));
             $family->setEnabled(true);
             $em->persist($family);

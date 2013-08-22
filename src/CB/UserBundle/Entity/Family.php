@@ -99,7 +99,7 @@ class Family extends BaseUser
         $this->saleItems = new ArrayCollection();
         $this->spouses = new ArrayCollection();
         $this->maxHours = 10;
-        $this->timeToLogin = new \DateTime('last week');
+//        $this->timeToLogin = new \DateTime();
         $this->email = 'fake+'.rand(1,100000).'@fake.com';
     }
 
@@ -450,13 +450,27 @@ class Family extends BaseUser
     }
 
     /**
-     * @param mixed $timeToLogin
+     * @param \Datetime $timeToLogin
      */
     public function setTimeToLogin($timeToLogin)
     {
         $this->timeToLogin = $timeToLogin;
 
         return $this;
+    }
+
+    public function isPastTimeToLogin()
+    {
+        $date = new \DateTime('now');
+
+        if (!$this->timeToLogin) {
+            return true;
+        }
+        $timestamp = $this->timeToLogin;
+        $timestamp->add(new \DateInterval('P1D'));
+        return ($date->getTimestamp() < $timestamp->getTimestamp());
+
+
     }
 
     public function isTimeToLogin()
@@ -472,7 +486,11 @@ class Family extends BaseUser
 
     public function isEnabled()
     {
-        return  $this->isTimeToLogin() && $this->enabled;
+//        $userManager = $this->get('fos_user.user_manager');
+
+        if ($this->timeToLogin instanceof \DateTime)
+            return  time() > $this->timeToLogin->getTimestamp();// && $this->enabled;
+        return false;
 //        return $this->enabled;
     }
 
