@@ -17,6 +17,7 @@ use CB\FairBundle\Entity\Document;
 use Ddeboer\DataImport\Reader\ExcelReader;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\Yaml\Yaml;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Document controller.
@@ -154,18 +155,28 @@ class DocumentController extends Controller
     private function loadUserInfo($excelReader)
     {
         $em = $this->getDoctrine()->getManager();
+        /** @var ArrayCollection $users */
         $users = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
-        foreach ($users as $user) {
-            $em->remove($user);
+        $userNames = $em->getRepository('UserBundle:Family')->findUserNames();
+        $userList = array();
+        foreach($userNames as $user) {
+            $userList[$user['username']] = $user['id'];
         }
-        $em->flush();
-        
+        //var_dump(in_array('Braud Jr, Derek James', $userNames, false));
+//        var_dump($userNames->getKeys());
+//        var_dump($userNames);die();
+//        foreach ($users as $user) {
+//            $em->remove($user);
+//        }
+//        $em->flush();
+//
         $families = array();
         foreach ($excelReader as $key => $row) {
             if ($row['Student Name'] == '') {
                 break;
             }
-            if (!array_key_exists((string) $row['Student ID'], $families)) {
+
+            if (!array_key_exists((string) $row['Student ID'], $families) && !array_key_exists((string) $row['Student Name'], $userList)) {
                 $family = new Family();
                 $encoder = $this->container
                     ->get('security.encoder_factory')
@@ -187,6 +198,8 @@ class DocumentController extends Controller
                 $family->setTimeToLogin($date);
                 $family->setExpiresAt($date2);
                 $family->setPassword($encoder->encodePassword($row['Student ID'], $family->getSalt()));
+            } else if (!in_array($row['Student Name'], $userList)) {
+                $family = $em->getRepository('UserBundle:Family')->find($userList[$row['Student Name']]);;
             } else {
                 $family = $families[$row['Student ID']];
             }
