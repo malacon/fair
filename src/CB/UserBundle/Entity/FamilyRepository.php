@@ -78,4 +78,14 @@ class FamilyRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findUserNames()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.username, u.id')
+            ->where('u.roles NOT LIKE :role')
+            ->setParameter('role', '%ROLE_ADMIN%')
+            ->getQuery()
+            ->getResult();
+    }
 }
