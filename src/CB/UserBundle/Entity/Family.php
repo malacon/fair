@@ -481,6 +481,7 @@ class Family extends BaseUser
         if (!$this->timeToLogin) {
             return true;
         }
+        var_dump($this->timeToLogin); var_dump($this->timeToLogin->getTimestamp());var_dump($date->getTimestamp());
         return $date->getTimestamp() > $this->timeToLogin->getTimestamp();
     }
 
