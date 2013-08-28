@@ -176,7 +176,7 @@ class DocumentController extends Controller
                 break;
             }
 
-            if ((!array_key_exists((string) $row['Student ID'], $families) && !array_key_exists((string) $row['Student Name'], $userList)) || true) {
+            if (!array_key_exists((string) $row['Student ID'], $families) && !array_key_exists((string) $row['Student Name'], $userList)) {
                 $family = new Family();
                 $encoder = $this->container
                     ->get('security.encoder_factory')
@@ -198,12 +198,11 @@ class DocumentController extends Controller
                 $family->setTimeToLogin($date);
                 $family->setExpiresAt($date2);
                 $family->setPassword($encoder->encodePassword($row['Student ID'], $family->getSalt()));
+            } else if (!in_array($row['Student Name'], $userList)) {
+                $family = $em->getRepository('UserBundle:Family')->find($userList[$row['Student Name']]);
+            } else {
+                $family = $families[$row['Student ID']];
             }
-//            } else if (!in_array($row['Student Name'], $userList)) {
-//                $family = $em->getRepository('UserBundle:Family')->find($userList[$row['Student Name']]);
-//            } else {
-//                $family = $families[$row['Student ID']];
-//            }
 
             $adult = new User($row['Full Name']);
             $adult->setPhone($row['Cell Phone']);
