@@ -38,10 +38,10 @@ class ReportController extends Controller
     public function boothReportAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $families = $em->getRepository('UserBundle:Family')->findAllUsersNotAdmins();
+        $users = $em->getRepository('UserBundle:User')->findUsersWithBoothTimes();
 
         return array(
-            'families' => $families,
+            'adults' => $users,
         );
     }
 
@@ -112,6 +112,29 @@ class ReportController extends Controller
         return array(
             'families' => $families,
         );
+    }
+
+    /**
+     * @Route("/report/test", name="admin_reports_test")
+     * @Method("GET")
+     * @Template()
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function testReportAction()
+    {
+//        $qb = $this->getDoctrine()->getManager()->createQueryBuilder()
+//            ->from('UserBundle:User', 'u')
+//            ->select('u.name as parent, f.username as child, f.eldestGrade as grade, u.phone, b.name, t.time, t.duration')
+//            ->innerJoin('u.times', 't')
+//            ->innerJoin('t.booth', 'b')
+//            ->innerJoin('u.family', 'f')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('UserBundle:User')->findUsersWithBoothTimes();
+        var_dump($users);die();
     }
 
 }

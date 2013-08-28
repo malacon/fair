@@ -40,4 +40,15 @@ class UserRepository extends EntityRepository
 
         return $result?true:false;
     }
+
+    public function findUsersWithBoothTimes()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.name as parent, f.username as child, f.eldestGrade as grade, u.phone, b.name as booth, t.time as time, t.duration as duration')
+            ->innerJoin('u.times', 't')
+            ->innerJoin('t.booth', 'b')
+            ->innerJoin('u.family', 'f')
+            ->getQuery()
+            ->getResult();
+    }
 }

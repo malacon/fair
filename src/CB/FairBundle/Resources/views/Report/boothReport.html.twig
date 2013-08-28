@@ -16,20 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            {% for family in families %}
-                {% for adult in family.spouses %}
-                    {% for time in adult.times %}
-                        <tr>
-                            <td>{{ family.eldest }} {{ family.name }}</td>
-                            <td>{{ family.eldestGrade }}</td>
-                            <td>{{ adult }}</td>
-                            <td>{{ adult.phone }}</td>
-                            <td>{{ time.booth }}</td>
-                            <td>{{ time.time|date("l") }}</td>
-                            <td>{{ time.time|date("ga") }} - {{ time.time|date_modify("+#{time.duration} hours")|date("ga") }}</td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
+            {% for adult in adults %}
+                <tr>
+                    <td>{{ adult.child }}</td>
+                    <td>{{ adult.grade }}</td>
+                    <td>{{ adult.parent }}</td>
+                    <td>{{ adult.phone }}</td>
+                    <td>{{ adult.booth }}</td>
+                    <td>{{ adult.time|date("l") }}</td>
+                    <td>{{ adult.time|date("ga") }} - {{ adult.time|date_modify("+#{adult.duration} hours")|date("ga") }}</td>
+                </tr>
             {% endfor %}
     </table>
 {% endblock %}
