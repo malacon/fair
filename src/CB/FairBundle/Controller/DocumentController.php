@@ -199,7 +199,7 @@ class DocumentController extends Controller
                 $family->setExpiresAt($date2);
                 $family->setPassword($encoder->encodePassword($row['Student ID'], $family->getSalt()));
             } else if (!in_array($row['Student Name'], $userList)) {
-                $family = $em->getRepository('UserBundle:Family')->find($userList[$row['Student Name']]);
+                $family = $em->getRepository('UserBundle:Family')->find($userList[$row['Student Name']]);;
             } else {
                 $family = $families[$row['Student ID']];
             }
