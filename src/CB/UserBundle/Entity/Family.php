@@ -488,9 +488,14 @@ class Family extends BaseUser
     public function isEnabled()
     {
 //        $userManager = $this->get('fos_user.user_manager');
+        $date = new \DateTime('now');
 
-        if ($this->timeToLogin instanceof \DateTime)
-            return  time() > $this->timeToLogin->getTimestamp();// && $this->enabled;
+        if ($this->timeToLogin instanceof \DateTime) {
+//            echo "<pre>";echo "TIMETO LOGIN</pre>";
+//            var_dump($this->timeToLogin);var_dump($date);
+//            var_dump($date->getTimestamp() > $this->timeToLogin->getTimestamp());
+            return  $date->getTimestamp() > $this->timeToLogin->getTimestamp();// && $this->enabled;
+        }
         return false;
 //        return $this->enabled;
     }
