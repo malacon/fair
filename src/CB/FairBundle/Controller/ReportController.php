@@ -209,7 +209,7 @@ class ReportController extends Controller
             200,
             array(
                 'Content-Type'          => 'application/xlsx',
-                'Content-Disposition'   => 'attachment; filename="1booths.xlsx"'
+                'Content-Disposition'   => 'attachment; filename="Fair 2013 - Booths.xlsx"'
             )
         );
     }
