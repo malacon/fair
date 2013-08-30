@@ -205,7 +205,7 @@ class ReportController extends Controller
         $writer = PHPExcel_IOFactory::createWriter($excel, "Excel2007");
         $writer->save(__DIR__.'/../../../../web/uploads/documents/booths report.xlsx');
         return new BinaryFileResponse(
-            __DIR__.'/../../../../web/uploads/documents/booths report.xls',
+            __DIR__.'/../../../../web/uploads/documents/booths_report.xls',
             200,
             array(
                 'Content-Type'          => 'application/xlsx',
