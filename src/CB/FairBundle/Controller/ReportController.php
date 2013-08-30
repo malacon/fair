@@ -5,6 +5,8 @@ namespace CB\FairBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Response;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use PHPExcel;
 use PHPExcel_Worksheet;
@@ -53,31 +55,31 @@ class ReportController extends Controller
      */
     public function createBoothXlsAction()
     {
-        $objExcel = new \PHPExcel();
-//        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, "Excel2007");
-//        $objWriter->save("booths.xlsx");
-//        $objPHPExcel->getSheet(0)->setTitle('Booths');
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('UserBundle:User')->findUsersWithBoothTimes();
+
+//        $objExcel = new \PHPExcel();
+//        $objExcel->getSheet(0)->setTitle('Booths');
 //
-//        $objPHPExcel->getProperties()->setCreator("Craig Baker")
+//        $objExcel->getProperties()->setCreator("Craig Baker")
 //            ->setLastModifiedBy("Craig Baker")
 //            ->setTitle("2013 Fair - Booths")
 //            ->setSubject("2013 Fair - Booths")
 //            ->setDescription("2013 Fair - Booths");
 //
-//        $objPHPExcel->setActiveSheetIndex(0)
-//            ->setCellValue('A1', '2013 Booths')
-//            ->setCellValue('A2', 'LIST OF BOOTHS');
+//        foreach($users as $user) {
+//            $objExcel->setActiveSheetIndex(0)
+//                ->setCellValue('A1', '2013 Booths')
+//                ->setCellValue('A2', 'LIST OF BOOTHS');
+//        }
 //
+//
+//        $objWriter = new \PHPExcel_Writer_Excel2007($objExcel);
+//        $objWriter->save("booths.xlsx");
 
+        var_dump($users);
 
-
-        $response = $excelService->getResponse();
-
-//        $response->headers->set('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-//        $response->headers->set('Content-Disposition: attachment;filename="booths.xlsx"');
-//        $response->headers->set('Cache-Control: max-age=0');
-
-        return $response;
+        return array();
     }
 
     /**
@@ -117,7 +119,6 @@ class ReportController extends Controller
     /**
      * @Route("/report/test", name="admin_reports_test")
      * @Method("GET")
-     * @Template()
      * @Secure(roles="ROLE_ADMIN")
      */
     public function testReportAction()
@@ -134,7 +135,83 @@ class ReportController extends Controller
 //        ;
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('UserBundle:User')->findUsersWithBoothTimes();
-        var_dump($users);die();
+
+        $excel = new PHPExcel();
+        $excel->getSheet(0)->setTitle('Booths');
+        $excel->getProperties()->setCreator("Craig Baker")
+            ->setLastModifiedBy("Craig Baker")
+            ->setTitle("2013 Fair - Report")
+            ->setSubject("2013 Fair - Report")
+            ->setDescription("2013 Fair - Report");
+
+        $headers = array('Student', 'HR', 'Parent', 'Phone', 'Name of Booth', 'Day', 'Time');
+        $row = 1;
+        foreach($headers as $col => $header) {
+            $excel->getActiveSheet()
+                ->setCellValueByColumnAndRow($col, $row, $header)
+                ->getStyleByColumnAndRow($col, $row)
+                ->getFont()->setBold(true);
+            switch($col) {
+                case 0:
+                    $width = 27.0;
+                    break;
+                case 1:
+                    $width = 3.0;
+                    break;
+                case 2:
+                    $width = 30.0;
+                    break;
+                case 3:
+                    $width = 30.0;
+                    break;
+                case 4:
+                    $width = 35.0;
+                    break;
+                case 5:
+                    $width = 11.0;
+                    break;
+                case 6:
+                    $width = 16.0;
+                    break;
+                default:
+                    $width = 12.0;
+                    break;
+            }
+            $excel->getActiveSheet()->getColumnDimensionByColumn($col)->setWidth($width);
+        }
+        foreach($users as $user) {
+            $row += 1;
+            $col = 0;
+            foreach($user as $name=>$item) {
+                if ($name == 'time') {
+                    /** var \DateTime $item **/
+                    $excel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $item->format('l'));
+                    $col += 1;
+
+                    $nextHour = new \DateTime($item->format('Y-m-d H:i:s'));
+                    $nextHour->add(new \DateInterval('PT0' . $user['duration'] . 'H'));
+
+                    $excel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $item->format('g A').' - '.$nextHour->format('g A'));
+                } elseif ($name != 'duration') {
+                    $excel->getActiveSheet()->setCellValueByColumnAndRow($col, $row, $item);
+                    $col += 1;
+                }
+            }
+        }
+
+        $excel->getSheet(0)->setAutoFilterByColumnAndRow(0,1,$col,$row);
+//        print_r($excel->getActiveSheet()->getAutoFilter());die();
+
+        $writer = PHPExcel_IOFactory::createWriter($excel, "Excel2007");
+        $writer->save(__DIR__.'/../../../../web/uploads/documents/booths report.xlsx');
+        return new BinaryFileResponse(
+            __DIR__.'/../../../../web/uploads/documents/booths report.xls',
+            200,
+            array(
+                'Content-Type'          => 'application/xlsx',
+                'Content-Disposition'   => 'attachment; filename="1booths.xlsx"'
+            )
+        );
     }
 
 }
