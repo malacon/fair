@@ -203,9 +203,9 @@ class ReportController extends Controller
 //        print_r($excel->getActiveSheet()->getAutoFilter());die();
 
         $writer = PHPExcel_IOFactory::createWriter($excel, "Excel2007");
-        $writer->save(__DIR__.'/../../../../web/uploads/documents/booths report.xlsx');
+        $writer->save(__DIR__.'/../../../../web/uploads/documents/booths_report.xlsx');
         return new BinaryFileResponse(
-            __DIR__.'/../../../../web/uploads/documents/booths_report.xls',
+            __DIR__.'/../../../../web/uploads/documents/booths_report.xlsx',
             200,
             array(
                 'Content-Type'          => 'application/xlsx',
