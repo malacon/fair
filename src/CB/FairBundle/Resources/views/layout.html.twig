@@ -106,9 +106,11 @@
                                 <div class="help" data-toggle="popover" data-placement="right" data-content="These are the options you have to sign up for.  Once you have met one of these choices, the box below will turn from <span class='alert-danger'>red</span> to <span class='alert-success'>green.</span>" title="" data-original-title="Beginning Help">Help</div>
                                 <div class="content-title"><i class="icon-list"></i> 1. Signup Options</div>
                                 <ul class="rules unstyled">
-                                    {% for rule in rules %}
-                                        <li><strong>{{ rule.description }}:</strong> {{ rule|raw }}</li>
-                                    {% endfor %}
+                                    {% if rules is defined %}
+                                        {% for rule in rules %}
+                                            <li><strong>{{ rule.description }}:</strong> {{ rule|raw }}</li>
+                                        {% endfor %}
+                                    {% endif %}
                                     <li><em>You can always volunteer to bring extra craft/auction items!</em></li>
                                 </ul>
                             </div>
