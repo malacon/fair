@@ -15,7 +15,7 @@
         <tbody>
         {% for family in families %}
             <tr>
-                <td>{{ family.eldest }} {{ family.name }}</td>
+                <td>{{ family.username }}</td>
                 <td>{{ family.eldestGrade }}</td>
                 <td>{% for adult in family.spouses %}{{ adult }} ({{ adult.phone }}){% if not loop.last %}, {% endif %}{% endfor %}</td>
                 <td>{{ family.bakedItem }}</td>

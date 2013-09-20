@@ -16,7 +16,7 @@
         {% for family in families %}
             {% if family.saleItems|length > 0 %}
                 <tr>
-                    <td>{{ family.eldest }} {{ family.name }}</td>
+                    <td>{{ family.username }}</td>
                     <td>{{ family.eldestGrade }}</td>
                     <td>{% for adult in family.spouses %}{{ adult }} ({{ adult.phone }}){% if not loop.last %}, {% endif %}{% endfor %}</td>
                     <td>{% for item in family.saleItems %}{{ item }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
